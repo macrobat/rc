@@ -1,0 +1,22 @@
+Keep conf files under version control.
+Different machines can branch.
+ln -sb file_in_rc default_name
+
+leave some things out:
+	~/.ssh/
+	~/.macromedia/
+
+
+pick and choose:
+	games
+		xonotic
+		nexuiz
+		quake
+		warsow
+		openarena
+
+	emacs
+
+	~/.config/
+
+
