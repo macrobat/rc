@@ -1,0 +1,26 @@
+" vim:ft=vim
+
+" suggestions S search engines
+set complete=slSf
+nmap <C-Left> :bprevious<CR>
+nmap <C-Right> :bnext<CR>
+
+" text _and_ image zoom keys
+nmap + :zoom! +18<CR>
+nmap - :zoom! -18<CR>
+" text zoom keys
+nmap <C-+> :zoom +16<CR>
+nmap <C--> :zoom -16<CR>
+
+cabbreviate H sidebar History
+
+" Enable passthrough mode on some Google sites:
+:autocmd LocationChange ^https?://(spreadsheets|mail)\.google\.com/ :normal! <C-z>
+" Set the filetype to mail when editing email at Gmail:
+" don't know what this does...
+:autocmd LocationChange !mail.google.com,* :set editor&
+
+" E518 unknown option -f     Do i eveb want an external editor?
+":autocmd LocationChange mail.google.com :set editor=gvim -f -c 'set ft=mail'
+"+<line>"
+

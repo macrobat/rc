@@ -1,0 +1,3 @@
+#$TERM="x-terminal-emulator"
+$TERM="urxvt -pe tabbed"
+

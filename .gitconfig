@@ -1,0 +1,9 @@
+[user]
+	name = macrobat
+	email = kanonmatswe@gmail.com
+[giggle]
+	main-window-maximized = false
+	main-window-geometry = 1596x1168+0+0
+	history-view-vpane-position = 880
+[core]
+	excludesfile = /home/occam/.gitignore

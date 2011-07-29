@@ -1,0 +1,10 @@
+Neutral_Plus XCursor theme
+based off Neutral Xcursor theme
+
+Changes made by Björn Janßen, 23. June 2007
+You can reach Björn (name) Janßen (surname) by sending E-Mail to name.surname@gmail.com
+
+* replaced the left_prt_watch.xfc file and accordingly all left_ptr_watch*-png-files. 
+* replaced the hand1.xfc file and accordingly fleur and hand1 png-files.
+
+Thanks to Alexey Nikitine for his great work on Neutral!

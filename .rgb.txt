@@ -1,0 +1,3 @@
+150  60  89		magenta3
+156  56 133		magenta2
+227  41 184		magenta1

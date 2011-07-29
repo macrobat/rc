@@ -1,0 +1,553 @@
+T 1304018366 18<19angvp>	npouillard: they introduce patch with vulnerable stuff too :D
+T 1304018368 18<22npouillard>	I understand that signing does not make it safe. I just want to download the right package.
+T 1304018371 18<19RedRobot>	halfie: btw, there is a qemu replacement comming "soon"
+T 1304018376 18<22npouillard>	angvp: sure they did
+T 1304018388 18<26halfie>	RedRobot: what are you talking about?
+T 1304018409 18<22npouillard>	don't get me wrong I'm a 100% ArchLinux user.
+T 1304018415 18<19RedRobot>	halfie: some kernel/kvm devs are not to happy with the qemu code, so they are making some new stuff
+T 1304018425 18<19RedRobot>	halfie: sec and I'll get a link
+T 1304018436 18<19RedRobot>	halfie: http://www.h-online.com/open/features/Kernel-Log-native-KVM-tool-new-kernels-galore-1229981.html
+T 1304018439 18<22phrik>	Title: Kernel Log: native KVM tool, new kernels galore - The H Open Source: News and Features (at www.h-online.com)
+T 1304018456 18<26halfie>	RedRobot: cool. thanks. checking this out.
+T 1304018461 18<19RedRobot>	halfie: http://thread.gmane.org/gmane.linux.kernel/1121307
+T 1304018462 18<22phrik>	Title: Gmane Loom (at thread.gmane.org)
+T 1304018484 18<22npouillard>	Would be happier with repo signing.
+T 1304018489 18<20andevellicus>	Is there a way of getting pcmanfm to open the context menu with just the keyboard? Like a keybinding of some sort?
+T 1304018496 18<20andevellicus>	Hitting the menu key doesn't seem to work
+T 1304018499 18<19RedRobot>	npouillard: patches wecomed
+T 1304018502 18<19RedRobot>	welcomed*
+T 1304018538 18<22npouillard>	RedRobot: By reading some discussion it seems to be not completely the case...
+T 1304018573 18<19RedRobot>	npouillard: nha, that's only what the fud crowd claims
+T 1304018595 18*	22npouillard is hoping so
+T 1304018608 18<19RedRobot>	npouillard: http://www.toofishes.net/blog/real-story-behind-arch-linux-package-signing/
+T 1304018611 18<22phrik>	Title: toofishes.net - The real story behind Arch Linux package signing (at www.toofishes.net)
+T 1304018632 18<19RedRobot>	npouillard: short story: many people yelling, almost noone actually doing something about it
+T 1304018672 18<19RedRobot>	"What happened next was typical of both pacman development and OSS development in general- the original contributor of this work sent a few more patches, stopped responding to requests to fix issues in the work, and left it in our laps."
+T 1304018740 18<26halfie>	anyone here using btrfs for daily work / development / desktop?
+T 1304018746 18<19RedRobot>	npouillard: specially "The Forbidden Subject" part is lols
+T 1304018754 18<26halfie>	is it ok enough for home use?
+T 1304018776 18<19RedRobot>	halfie: just don't store anything important on it unless you have backups
+T 1304018776 18<20ethail>	RedRobot, what are you talking about? (asking, not the WTF expression)
+T 1304018779 18<20grawity>	falconindy:  "environment-like shell-compatible files" ought to be shell-compatible, http://sprunge.us/diTj (although I couldn't find any documentation on the exact format beyond src/util.c:3679)
+T 1304018785 18<19RedRobot>	ethail: ?
+T 1304018796 18<19RedRobot>	ethail: see http://www.toofishes.net/blog/real-story-behind-arch-linux-package-signing/
+T 1304018798 18<22phrik>	Title: toofishes.net - The real story behind Arch Linux package signing (at www.toofishes.net)
+T 1304018804 18<20ethail>	RedRobot: the pacman development and OSS related thing
+T 1304018809 18<19RedRobot>	^
+T 1304018811 18<20falconindy>	grawity: quoting isn't necessary in that case
+T 1304018813 18<20ethail>	thx
+T 1304018824 18<20falconindy>	grawity: on the command line, yes, you would need quotes
+T 1304018917 18<22ashren>	networkmanager does not store my group password for vpnc. Anyone know a solution for this problem?
+T 1304018925 18<20grawity>	falconindy: the exact same rules apply to scripts and sourced files
+T 1304018934 18<20falconindy>	nope
+T 1304018945 18<20grawity>	Tell that to ". /etc/os-release" .
+T 1304018964 18<20falconindy>	oh, erg... im thinking of variables with spaces assigned to variables
+T 1304018972 18<20falconindy>	yes yes, i'll commit with your name on it
+T 1304018983 18<20falconindy>	need to finish tearing this other pull request apart
+T 1304018983 18<22zi>	I've got a program, that prints a line each 1/20th of a second, and I want egrep to print out lines that match my pattern, problem is that it does that only when it's output buffer is full. How can I override that and make him flush all the time?
+T 1304019008 18<20grawity>	The name doesn't matter
+T 1304019013 18<20grawity>	zi: egrep --line-buffered
+T 1304019033 18<19RedRobot>	funny that the arch coding "standard" say "don't use ., use source" but the rc.d scripts and some of the rc.* scripts uses .
+T 1304019035 18<19RedRobot>	:p
+T 1304019039 18<22zi>	grawity - Hmm, still.
+T 1304019054 18<22zi>	Not as fast.
+T 1304019064 18<20grawity>	RedRobot: . is POSIX after all
+T 1304019085 18<22str1ngs>	its better then freaking back ticks
+T 1304019087 18*	19RedRobot actually prefers . to source
+T 1304019092 18<20grawity>	zi: perl -ne '/blah/ and print'
+T 1304019110 18<20grawity>	zi: No idea if it's faster, but worth trying.
+T 1304019125 18<19RedRobot>	btw, fun thing is when people make a source() in a bash script, and then does source stuff later
+T 1304019133 18<19RedRobot>	:D
+T 1304019202 22*	meisth0th is now known as meisth0th_zzz
+T 1304019210 18<20falconindy>	grawity: oh, bah... this is directly in systemd. i'll show up next release.
+T 1304019213 18<20falconindy>	and thank you
+T 1304019225 18<28Tay101>	does anybody remember the comment i made yesterday, " Is anybody there"?
+T 1304019253 18<20grawity>	Not unless you received more than two negative answers.
+T 1304019254 18<20falconindy>	Tay101: yes, i distinctly recall playing with some small amount of belly button lint at the time. a bluejay flew past my window
+T 1304019267 18<28Tay101>	lol
+T 1304019275 18<28Tay101>	I was stupid
+T 1304019282 18<20falconindy>	!grab Tay101
+T 1304019283 18*	22str1ngs vomits
+T 1304019283 18<22phrik>	falconindy: Tada!
+T 1304019289 18<28Tay101>	lol
+T 1304019320 18<28Tay101>	funny
+T 1304019352 18<20grawity>	...Is there a tool to kill an entire cgroup at once?
+T 1304019362 18<28Tay101>	lots of people here
+T 1304019370 18<29DigitalKiwi>	lies
+T 1304019442 18<28abbec>	hi i have problems with kernel 2.6.38. It gives unclean shutdowns... after shutting down 2.6.38 next boot fails at random point and computer resets. it ONLY occurs with 2.6.38...
+T 1304019447 18<20grawity>	Apparently Upstart got DBus and socket activation too
+T 1304019458 18<29X-tonic>	Can anyone put a vlc-as-root package to aur?
+T 1304019481 18<29X-tonic>	i would appreciate it
+T 1304019483 18<20grawity>	What's "vlc-as-root"?
+T 1304019484 18<22str1ngs>	grawity: cgroups in a systemd context?
+T 1304019486 18<19RedRobot>	X-tonic: you should never ever run vlc as root
+T 1304019487 22*	Varraway is now known as Varriount
+T 1304019497 18<19RedRobot>	X-tonic: there is absolutly no reason to ever run vlc as root
+T 1304019498 18<29X-tonic>	but why is it such a taboo?
+T 1304019503 18<19RedRobot>	X-tonic: security
+T 1304019506 18<22str1ngs>	grawity: I guess you could use systemd-cgls then kill the service
+T 1304019516 18<20grawity>	str1ngs: in this particular case yes, but not necessarily
+T 1304019518 18<28abbec>	hi i have problems with kernel 2.6.38. It gives unclean shutdowns... after shutting down 2.6.38 next boot fails at random point and computer resets. it ONLY occurs with 2.6.38...
+T 1304019528 18<20grawity>	str1ngs: for example, I sometimes want to kill the entire systemd:/user/grawity/foo
+T 1304019549 18<20falconindy>	i'd like to kill systemd entirely. but that would mean going back to sysvinit
+T 1304019595 18<26zeekill>	kill it too
+T 1304019603 18<20falconindy>	killall
+T 1304019611 18<26zeekill>	killall is a lie
+T 1304019617 18<20falconindy>	not on solaris
+T 1304019617 18<22zi>	pkill
+T 1304019619 18<26zeekill>	it doesn't kill everything
+T 1304019626 18<22zi>	-9
+T 1304019632 18<25JokerBoy>	9mm
+T 1304019659 18<22npouillard>	RedRobot: thank you, I've just finished to read "The real story behind..."
+T 1304019666 18<20grawity>	zeekill: on Solaris it does; a nice welcome surprise for Lunixoids.
+T 1304019675 18<29X-tonic>	i mean i use my computer in root mode just for the ake of convinience. But how does networking in such a manner make my computer vulnerable?. I know my actions offend many, but i dont understand the reason.
+T 1304019697 18<22str1ngs>	X-tonic: define root mode
+T 1304019702 18<19RedRobot>	abbec: try booting with acpi disabled and see if the same happens
+T 1304019724 18<26zeekill>	grawity: It should do that on linux too :3
+T 1304019739 18<29X-tonic>	str1ngs, something which gives me access to perform any action i wis unrestricted
+T 1304019746 18<29X-tonic>	*wish
+T 1304019752 18<22str1ngs>	X-tonic: so you log in as root?
+T 1304019761 18<29X-tonic>	yes
+T 1304019764 18<26zeekill>	thats sysrq rite?
+T 1304019766 18<29X-tonic>	that is my only account
+T 1304019766 18<22str1ngs>	X-tonic: dont do that its bad
+T 1304019771 18<26zeekill>	since root can't do everything
+T 1304019773 18<26zeekill>	lol
+T 1304019775 18<28abbec>	RedRobot: the problem was introduced with version 2.6.38.. has something changed to cause this?
+T 1304019783 18<26zeekill>	you don't run irc as root
+T 1304019784 18<22str1ngs>	X-tonic: root can rape hardware even.
+T 1304019785 18<26zeekill>	thats bad
+T 1304019786 18<20grawity>	X-tonic: Software has bugs. It always does. For example, a remote code execution hole in your web browser -- if you are running the browser as uid 0, the attacker can literally destroy the system.
+T 1304019788 18<26zeekill>	badbadbad
+T 1304019799 18<26zeekill>	yeah
+T 1304019805 18<26zeekill>	Attacker could flash your bios
+T 1304019816 18<26zeekill>	or make it divide with zero
+T 1304019822 18<20grawity>	X-tonic: For same reasons Windows is cursed so often for making users Admins by default. (Until XP, that is.)
+T 1304019830 18<27td123>	yet another reason flash is bad, it can ruin your bios!
+T 1304019837 18<20grawity>	lol
+T 1304019842 18<22str1ngs>	but generally most people that run as root eventually execute some retarded rm *
+T 1304019842 18<20ethail>	lmao
+T 1304019850 18<20falconindy>	td123: but my bios is flash rom! does this mean im fucked?
+T 1304019861 18<26zeekill>	Sure
+T 1304019870 18<26zeekill>	You are fucked
+T 1304019884 18<22str1ngs>	he might have a backup bios :P
+T 1304019887 18<20falconindy>	O NOES. THE NICE SALESMAN LIED TO ME
+T 1304019891 18<20grawity>	actually, some boxen have a secondary "total fuckup repair" chip (I think it's read-only)
+T 1304019896 18<26zeekill>	yeah
+T 1304019903 18<19RedRobot>	abbec: shouldn't, but you never know, a regression can sneak in anywhere
+T 1304019904 18<20falconindy>	usually, yeah
+T 1304019907 18<26zeekill>	you can write on readonly chips, youknow
+T 1304019916 18<20grawity>	With a pencil, sure
+T 1304019918 18<20falconindy>	mobos advertised as 'dual bios'
+T 1304019920 18<26zeekill>	yeah
+T 1304019930 18<26zeekill>	or butterflies
+T 1304019947 18<20grawity>	How do I do that in Notepad?
+T 1304019949 18<26zeekill>	Because real programmers use butterflies
+T 1304019952 18*	24oskude would not run around with a loaded gun in his pocket...
+T 1304019959 18<26zeekill>	oskude: Why not?
+T 1304019970 18<19RedRobot>	oskude: I've done it
+T 1304019973 18<19RedRobot>	(legally)
+T 1304019985 18<26zeekill>	I have done that with a loaded assault rifle
+T 1304019988 18<26zeekill>	(army)
+T 1304019989 18<19RedRobot>	it was however not cocked
+T 1304019990 18<24oskude>	zeekill: *pump* and your ding is off...
+T 1304019993 18<20grawity>	oskude: that's right, you ought to hold it in your hand >_>
+T 1304020010 18<19RedRobot>	zeekill: the AG3 (basicly a G3) was a bit large to keep in my pocket
+T 1304020012 18<24oskude>	grawity: hehe
+T 1304020023 18<19RedRobot>	zeekill: the gloc fitted nicely though
+T 1304020047 18<26zeekill>	hm
+T 1304020059 18<26zeekill>	I once saw a dell computer
+T 1304020068 18<26zeekill>	its bios seemed to be windows based
+T 1304020069 18<25Montague>	Hello,
+T 1304020077 18<19RedRobot>	sort of strange to use the gloc in the beginning, since it doesn't have a seperate safety button/switch
+T 1304020078 18<28tzervo>	aaaah. dell. kill, kill
+T 1304020085 18<26zeekill>	http://www.zdnet.com.au/story_media/339294482/BIOS.jpg
+T 1304020085 18<19RedRobot>	it's intigrated in the trigger instead
+T 1304020086 18<26zeekill>	that
+T 1304020089 18<25Montague>	Looking to get support with Btrfs and Extlinux
+T 1304020100 18<26zeekill>	sure looks like windows
+T 1304020105 18<19RedRobot>	!give Montague testiso
+T 1304020106 18<22phrik>	Montague: http://releng.archlinux.org/isos/
+T 1304020109 18<28tzervo>	yes, and they do what they can to not let you extract the actual bios update from the win installer...
+T 1304020109 18<19RedRobot>	Montague: use those
+T 1304020122 18<28mscoolnerd>	zeekill: aaaah is probably WinCE
+T 1304020134 18<25Montague>	what is testiso?
+T 1304020141 18<19ststst>	redrobot: http://pastebin.com/FCqDxESL
+T 1304020143 18<22phrik>	Title: firefox strace - Pastebin.com (at pastebin.com)
+T 1304020144 18<19RedRobot>	Montague: new and better isos
+T 1304020145 18<20grawity>	zeekill: nah, it just comes with a Windows program that is able to modify the CMOS data (by using a special driver, the security of which I have doubts about)
+T 1304020157 18<26zeekill>	thats weird
+T 1304020167 18<19RedRobot>	Montague: the latest ones can do both btrfs and extlinux witout you having to touch pacman
+T 1304020170 18<26zeekill>	computer had no hard drives mounted
+T 1304020172 18<19ststst>	sorry i meant to send that earlier
+T 1304020178 18<20grawity>	zeekill: hm
+T 1304020180 18<26zeekill>	because I nulled the cmos
+T 1304020192 18<26zeekill>	It couldn't detect any hard drives
+T 1304020214 18<20grawity>	what BIOS needs special settings to detect a simple SATA drive
+T 1304020230 18<19RedRobot>	grawity: dell
+T 1304020230 18<26zeekill>	dell
+T 1304020241 18<26zeekill>	I win
+T 1304020250 18<19ststst>	lol
+T 1304020257 18<26zeekill>	by 1 second
+T 1304020258 18<20grawity>	My Asus motherboard came with a Windows-based BIOS update tool. UGLIEST SKINNED GUI EVER.
+T 1304020260 22*	Ivan1` is now known as Ivan1`off
+T 1304020260 18<19RedRobot>	21:50:30   RedRobot ╡ grawity: dell
+T 1304020261 18<19RedRobot>	21:50:30    zeekill ╡ dell
+T 1304020263 18<19RedRobot>	>_>
+T 1304020273 18<26zeekill>	21:51:46 < zeekill> dell
+T 1304020273 18<26zeekill>	21:51:47 < RedRobot> grawity: dell
+T 1304020281 18<20grawity>	RedRobot wins at my end
+T 1304020287 18<20grawity>	[not like it matters]
+T 1304020290 18<19RedRobot>	zeekill: only because of your lag
+T 1304020293 18<26zeekill>	this is a dedicated server with 100/100 uplink
+T 1304020295 18<22NoReflex>	hello! After getting nowhere with Gnome3 I decided to give KDE a try. In the KDE wiki I found I should do "pacman -S kdebase kde-l10n-yourlanguagehere phonon-vlc" but kdebase does not seem to exist anymore
+T 1304020295 18<26zeekill>	Sure is no lag
+T 1304020304 18<19ststst>	albert einstein would have something to say to all of you!
+T 1304020305 18<20grawity>	zeekill: inter-server lag, though
+T 1304020312 18<26zeekill>	sure
+T 1304020316 18<19RedRobot>	!give NoReflex wiki kde packages
+T 1304020317 18<22phrik>	NoReflex: http://wiki.archlinux.org/index.php/KDE_Packages
+T 1304020320 22*	HD|away is now known as HarryD
+T 1304020321 18<19RedRobot>	!give NoReflex wiki kde
+T 1304020322 18<22phrik>	NoReflex: https://wiki.archlinux.org/index.php/KDE
+T 1304020330 18<26zeekill>	Irc has way too much latencies
+T 1304020333 18<25Montague>	RedRobot: okay, like the Archboot iso by tpowa?
+T 1304020341 18<19RedRobot>	Montague: not really
+T 1304020349 18<19RedRobot>	Montague: archboot is a seperate project
+T 1304020363 18<19RedRobot>	Montague: while the testisos are testbuilds of what will become the official install images
+T 1304020365 18<20grawity>	NoReflex: kdebase's still here :\
+T 1304020377 18<20ethail>	I'm going to build/install kernel26-pf from AUR. Does anyone know if I have to modify something from the pkgbuild? I'm reading the file and feeling like don't need to, but I need to be sure
+T 1304020383 18<25Montague>	Okay well, I don't think an iso is what I need ATM anyway
+T 1304020384 18<20grawity>	NoReflex: it's a group though, not a package, so pacman -Si won't show it
+T 1304020399 18<25Montague>	I already installed Arch on Btrfs root a while ago
+T 1304020408 18<22NoReflex>	grawity, RedRobot thank you
+T 1304020413 18<19RedRobot>	Montague: well, just pacman -Syu syslinux and set it up then
+T 1304020509 18<19ststst>	So the long story short is I've been finding the same "Couldn't load XPCOM" error on several different computers, including one where i only just installed firefox to test this
+T 1304020536 18<19ststst>	so i'm really curious what these boxes have in common if it's not a packaging bug
+T 1304020542 18<25Montague>	Yes, done that already, Btrfs and syslinux worked smoothly for a few months, not system is unbootble
+T 1304020548 18<22str1ngs>	ststst: is xpcom a lib?
+T 1304020564 18<25Montague>	typo: "now" system is unbootable
+T 1304020567 18<29chx>	So latest BIOS didnt help
+T 1304020582 18<26zeekill>	Bioses are evil
+T 1304020595 18<22str1ngs>	efi!
+T 1304020595 18<19RedRobot>	Montague: error?
+T 1304020596 18<26zeekill>	They have a secret plan to destroy the mankind
+T 1304020610 18<26zeekill>	str1ngs: don't even mention that
+T 1304020635 18<22str1ngs>	zeekill: lol, just when you think its as bad as it can get. it gets worst.
+T 1304020642 18<28loljack>	Someone please kill the dev team of nivida drivers
+T 1304020646 18<25Montague>	Yes, actually I posted in the forum, error is: "too many chunk items"
+T 1304020682 18<28loljack>	better off writing my own drivers then using their bs
+T 1304020690 18<25Montague>	Syslinux prints "too many chunk items" 5 times and stalls
+T 1304020691 18<26zeekill>	Evil nvidia won't let me underclock my GPU to 1mhz
+T 1304020711 18<28loljack>	more like everything stops working with nvidia drivers
+T 1304020718 18<28loljack>	buttons look huge, mouse doesnt work, etc..
+T 1304020745 18<22str1ngs>	loljack: huge buttons or huge text?
+T 1304020745 18<26zeekill>	Install vmware
+T 1304020751 18<26zeekill>	install nvidia drivers on vmware
+T 1304020751 18<28loljack>	huge buttons. text is fine
+T 1304020754 18<28loljack>	but graphics are huge
+T 1304020755 18<26zeekill>	try to overclock
+T 1304020757 18<26zeekill>	????
+T 1304020759 18<26zeekill>	profit
+T 1304020768 18<22str1ngs>	loljack: so resolution then?
+T 1304020776 18<28loljack>	Its set to the highest one
+T 1304020830 18<25Montague>	RedRobot: my forum post is here: https://bbs.archlinux.org/viewtopic.php?id=117648
+T 1304020832 18<22phrik>	Title: Extlinux (Syslinux) will not boot anymore on Btrfs root filesystem (Page 1) / Installation / Arch Linux Forums (at bbs.archlinux.org)
+T 1304020848 18<22NoReflex>	anyone know why a minimal install of kde would require mysql server??
+T 1304020864 18<27mark_doe>	nepomuk need mysql
+T 1304020878 18<22str1ngs>	it needs mysql server? really?
+T 1304020880 18<27mark_doe>	ja
+T 1304020884 18<22str1ngs>	jesus
+T 1304020890 18<22NoReflex>	mark_doe, I'm new to KDE .. what does nepomuk do?
+T 1304020907 22*	batrick_ is now known as batrick
+T 1304020907 18<27mark_doe>	nepomuk is the "meta-indexing" service
+T 1304020922 18<28mscoolnerd>	it's nepomuk like an indexing service or something?
+T 1304020923 18*	20grawity sees neither nepomuk nor any mysql dependencies in $(pacman -Sgq kde) :\
+T 1304020926 18<27mark_doe>	the database is mysql to store all your meta data
+T 1304020930 18<22str1ngs>	loljack: check the archwiki for nvidia
+T 1304020942 18<27mark_doe>	its using iunternal mysql libs
+T 1304020942 18<28loljack>	I did, none of the info applies to me =/
+T 1304020951 18<28loljack>	also i have nvidia + intel integrated gpu i think
+T 1304020955 18<22NoReflex>	mark_doe, mysql seems like overkill to me (not to mention that postgres seems a much better choice IMHO)
+T 1304020970 18<22str1ngs>	NoReflex: naw sqlite :P
+T 1304020981 18<26shining>	loljack: 'better off writing my own drivers then using their bs' - you know, some people did exactly that :P
+T 1304020991 18<22NoReflex>	str1ngs, ftw :)
+T 1304020992 18<27mark_doe>	postgres is even bigger njust for a rdms that should store some meta data
+T 1304021004 18<27vlatkost>	anyone have experience with deluge?
+T 1304021007 18<22NoReflex>	giving kde a spin now brb
+T 1304021012 18<28loljack>	yea i know. their whole drivers are shitty
+T 1304021014 18<22str1ngs>	vlatkost: just ask
+T 1304021015 18<28loljack>	even on windows, its shitty
+T 1304021024 18<27mark_doe>	kde 4.6 is good, better than stable gnome
+T 1304021029 18<28loljack>	constant BSODs to it, and crashes
+T 1304021039 18<27vlatkost>	str1ngs, I can download, but it doesnt upload at all
+T 1304021044 18<27vlatkost>	ports are forwarded
+T 1304021045 18<27mark_doe>	but gnome 3 seems to rock again if it goes to stable
+T 1304021048 18<22str1ngs>	loljack: yes but it works for me. so you cant just say its shitty. thats not going to help your problem.
+T 1304021059 18<20heftig>	mark_doe: probably happens this weekend.
+T 1304021072 18<27mark_doe>	heftig: ja, hoffentlich
+T 1304021073 18<20heftig>	no promises.
+T 1304021077 18<27mark_doe>	:-)
+T 1304021080 18<28loljack>	how did you install it? through pacman or download it from their site and installed it that way?
+T 1304021093 18<27mark_doe>	makepkg
+T 1304021095 18<22str1ngs>	loljack: I use the archwiki nvidia page :P
+T 1304021098 18<28mscoolnerd>	heftig: what else needs to be done for gnome3 to be moved to stable
+T 1304021109 18<28loljack>	yea i know. so do I, and it says to use pacman
+T 1304021113 18<28loljack>	and that didn't work
+T 1304021116 18<19ststst>	str1ngs: you asked if xpcom a lib? no, not really...
+T 1304021118 18<26zeekill>	gnome is evilll
+T 1304021128 18<28loljack>	well it did, but like I said, graphics are huge, while the text is small
+T 1304021131 18<20heftig>	mscoolnerd: some rebuilds, as well as removes
+T 1304021138 18<22str1ngs>	ststst: hmm so is it a fatal error or a warning?
+T 1304021145 18<20heftig>	gnome-panel-bonobo got killed, which obsoletes some packages
+T 1304021152 18<28loljack>	and when I say graphics I mean like buttons. ex refresh button, browser tabs, file manager buttons, etc..
+T 1304021171 18<22str1ngs>	loljack: yes which to me says the resolution is all wrong.
+T 1304021172 18<19ststst>	str1ngs: fatal error, prevents firefox from running. Simply exits with: "Couldn't load XPCOM"
+T 1304021174 18<28mscoolnerd>	heftig: i've got nothing to do for the rest of the afternoon, anything i could do to help?
+T 1304021183 18<20heftig>	mscoolnerd: nothing, thanks
+T 1304021183 18<19ststst>	here's an strace of firefox: http://pastebin.com/raw.php?i=FCqDxESL
+T 1304021194 18<28loljack>	Yea i'd think so too, but I can't do anything about it. Its set to the maximum resolution
+T 1304021217 18<28mscoolnerd>	heftig: haha, ok
+T 1304021248 18<19ststst>	all relevant packages are in sync with the repos. After the drama from an hour ago we are quite sure of this ;)
+T 1304021250 18<22str1ngs>	ststst: see if I can replicate this
+T 1304021265 18<22str1ngs>	ststst: as far as I can see xpcom is a internal com interface of sorts
+T 1304021278 18<27mark_doe>	i like to setup my Websever as a NX-Free Server... is there a howto around?
+T 1304021296 18<28kbrosnan>	str1ngs: check /usr/lib/firefox-4.0/xulrunner/libxpcom.so for the file and permissions
+T 1304021321 18<22str1ngs>	ststst: /tmp/libxpcom.so
+T 1304021336 18<22str1ngs>	 /tmp seems odd
+T 1304021358 18<19ststst>	/usr/lib/firefox-4.0/xulrunner does not exist for me
+T 1304021369 18<20heftig>	/usr/lib/xulrunner-2.0
+T 1304021378 18<22str1ngs>	ststst: install xulrunner
+T 1304021391 18<22str1ngs>	nvm you probably have it
+T 1304021397 18<19ststst>	str1ngs: yep :)
+T 1304021414 18<22str1ngs>	hmm works here
+T 1304021429 18<26Ox1>	outdated or from AUR
+T 1304021434 18<19ststst>	also i've done this against multiple mirorrs: pacman -Syyu firefox xulrunner libevent sqlite3 lib32-sqlite3 libpng lib32-libpng libjpeg-turbo lib32-l
+T 1304021434 18<19ststst>	ibjpeg nss lib32-nss
+T 1304021477 18<19ststst>	and env is not a problem, i've run it in: bash --init-file /dev/null --rcfile /dev/null --noprofile --norc -i
+T 1304021517 18<19ststst>	I'm getting the same result on three different machines. Very odd!
+T 1304021524 18<22str1ngs>	ststst: /tmp/libxpcom.so seems all wrong
+T 1304021549 18<20heftig>	ststst: /etc/ld.so.conf.d/xulrunner.conf exists?
+T 1304021549 18<26Ox1>	!give str1ngs mirrorstatus
+T 1304021551 18<22phrik>	str1ngs: Check the status of the mirrors here: http://www.archlinux.org/mirrors/status/
+T 1304021565 18<22str1ngs>	ststst: are you using your same firefox profile?
+T 1304021574 18<26Ox1>	er, should be ststst
+T 1304021575 18<22str1ngs>	ststst: ie have you tried with another user?
+T 1304021609 18<19ststst>	str1ngs, i've tried this on three separate machines with different users
+T 1304021621 22*	admiral0_away is now known as admiral0
+T 1304021622 18<22str1ngs>	 /etc/ld.so.conf.d/xulrunner.conf seems like something that would cause this
+T 1304021626 18<20heftig>	those three machines must have something in common that causes this error
+T 1304021650 18<20heftig>	xulrunner.conf should contain /usr/lib/xulrunner-2.0
+T 1304021659 18<20heftig>	also, try running ldconfig
+T 1304021703 18<19ststst>	heftig, they have several things in common but I've been able to rule out everything i can think of
+T 1304021708 18<27vlatkost>	str1ngs, any ideas?
+T 1304021718 18<20heftig>	strace doesn't help?
+T 1304021730 18<19ststst>	heftig: http://pastebin.com/raw.php?i=FCqDxESL
+T 1304021737 18<22str1ngs>	vlatkost: off hand no. do you have a firewall?
+T 1304021762 18<27vlatkost>	only on the router
+T 1304021773 18<27vlatkost>	but ports are forwarded
+T 1304021785 18<27vlatkost>	and I can easily download
+T 1304021787 18<19ststst>	vlatkost: sometimes it's a tracker issue. do you have more than one tracker loaded?
+T 1304021788 18<22str1ngs>	vlatkost: I assume you verified that some how?
+T 1304021802 18<27vlatkost>	1 tracker
+T 1304021804 18<19ststst>	just for testing purposes
+T 1304021812 18<19ststst>	try a torrent with a different tracker
+T 1304021815 18<20heftig>	ststst: environment when running firefox?
+T 1304021819 18<27vlatkost>	and I verified by the test active ports
+T 1304021825 18<27vlatkost>	and the reacker announce is OK
+T 1304021838 18<20heftig>	also, ststst ldconfig -p | grep xpcom
+T 1304021863 18<22str1ngs>	heftig: ya I think its a ld issue to
+T 1304021895 18<20heftig>	aaah
+T 1304021899 18<19ststst>	wait! it's an env problem!
+T 1304021900 18<20heftig>	str1ngs: /etc/ld.so.conf?
+T 1304021906 18<20heftig>	err
+T 1304021907 18<20heftig>	ststst:
+T 1304021938 18<19ststst>	I was naive to think this would clear the env: bash --init-file /dev/null --rcfile /dev/null --noprofile --norc -i
+T 1304021958 18<19ststst>	because my existing shell was exporting stuff to it
+T 1304021959 18<20heftig>	env -i for great justice
+T 1304021974 18<29codingrobot>	something strange is going on with syslog-ng since my last restart. i get "Error opening control socket, bind() failed; socket='/var/run/syslog-ng.ctl', error='Permission denied (13)'"
+T 1304021981 18<27maciejjo>	Hi
+T 1304021987 18<27vlatkost>	str1ngs, same with another tracker
+T 1304022005 18<19ststst>	after running that from a bare xterm i got firefox running, so now i go trying to track down which envvar. thanks everyone for your patience. :)
+T 1304022006 18<20heftig>	codingrobot: try deleting that file, restart syslog.
+T 1304022007 18<27maciejjo>	anyone famillar with devilspie?
+T 1304022014 18<29codingrobot>	heftig: it doesn't exist
+T 1304022023 18<20heftig>	permissions of /var/run?
+T 1304022034 18<22str1ngs>	ststst: you dont have some LD_LIBRARY_PATH do you ?
+T 1304022035 18<27maciejjo>	the example from archwiki doesn't work here
+T 1304022054 18<29codingrobot>	heftig: omg.. http:http
+T 1304022055 18<20ethail>	Does anyone knows the name or url of an article in the archlinux wiki talking about kernel configurations to optimize performance? The article was extracted from an ubuntu forum, i think. I'm trying to search it but don't find anywhere >,>
+T 1304022067 18<20heftig>	codingrobot: should be root:root 755
+T 1304022088 18<20heftig>	codingrobot: something definitely went wrong on your computer :p
+T 1304022102 18<29codingrobot>	no idea how http got that...
+T 1304022122 18<22sledgehammer>	ethail, you'll find that kind of info all over the net, no need to confine yourself to the wiki
+T 1304022124 18<29codingrobot>	and it never came to my mind to check the permissions of exacly that folder...
+T 1304022207 18<29codingrobot>	anyway, thanks heftig
+T 1304022294 18<20ethail>	sledgehammer: it's what I'm going to do as that article seems to be impossible to find. Just asked because had some interesting info on it.
+T 1304022318 18<19ststst>	ok found the problem, for some reason i had set: "export GRE_HOME=/tmp"
+T 1304022323 18<19ststst>	removing that fixed it
+T 1304022345 18<19ststst>	i don't even know WHY that was set...
+T 1304022357 18<22str1ngs>	ststst: what is GRE_HOME?
+T 1304022361 18<19ststst>	and yes, that was set in all 3 computers!
+T 1304022378 18<19ststst>	str1ngs: i'm not even sure! i vaguely recall being told to do that to fix another bug ages ago
+T 1304022400 18<22str1ngs>	ststst: you set this in ~/ or /etc/ ?
+T 1304022416 18<19ststst>	str1ngs: in /etc
+T 1304022438 18<22str1ngs>	ststst: not sure if thats the best place unless you have alot of users?
+T 1304022495 18<19ststst>	ok, after searching google i found this link was visited in my browser: http://www.dataforte.net/blog/2010/03/03/eclipse-crashes-with-lucid/
+T 1304022498 18<19ststst>	except i don't use eclipse
+T 1304022513 18<19ststst>	nor ubuntu :P
+T 1304022515 22*	Reventlov is now known as Asimoff
+T 1304022554 18<22str1ngs>	ststst: if you only have one user ~/.bashrc might be better for this stuff. easier to test ENV issues like this.
+T 1304022556 22*	Asimoff is now known as Reventloff
+T 1304022562 18<22str1ngs>	ststst: but not a big deal, just me being anal
+T 1304022592 18<19ststst>	str1ngs: well, your talking me through the problems saved me hours of headaches so be as anal as you like ;)
+T 1304022618 18<19RedRobot>	ststst: so it was due to ENV
+T 1304022623 18<19RedRobot>	ststst: which I suggested
+T 1304022624 18<19RedRobot>	:p
+T 1304022632 18<19RedRobot>	:(
+T 1304022635 18<19RedRobot>	er.. :)
+T 1304022635 18<19ststst>	redrobot: yes
+T 1304022636 18<22str1ngs>	ststst: I try not to touch /etc/ of enviroment stuff only for system wide, which is very rare.
+T 1304022650 18<20grawity>	ststst: fyi, if you want a really clean environment, "env -i $SHELL"
+T 1304022681 18<19ststst>	i was naively trying to do this for a pure env: bash --init-file /dev/null --rcfile /dev/null --noprofile --norc -i
+T 1304022726 18<19ststst>	redrobot: turns out the culprit was an "export GRE_HOME=/tmp" which i'd added in response to some other bug in some bygone era!
+T 1304022729 18<19RedRobot>	str1ngs: it's a envvar that mozilla uses to do magic
+T 1304022761 18<28kbrosnan>	gecko runtime enviroment
+T 1304022762 18<19RedRobot>	str1ngs: for lib loading and some other things
+T 1304022797 18*	24nsf thinks that clyde works faster than pacman O_o
+T 1304022805 18<22str1ngs>	nsf: lol
+T 1304022811 18<29DigitalKiwi>	for what operation?
+T 1304022814 18<22str1ngs>	RedRobot: magic indeed :P
+T 1304022815 18<24nsf>	-Syu
+T 1304022823 18<22str1ngs>	nsf: how's it going?
+T 1304022834 18<24nsf>	str1ngs: fine :)
+T 1304022841 18<29DigitalKiwi>	the only one i know it is faster on is -Qo <multiple files>
+T 1304022853 18<24nsf>	str1ngs: making languages is hard, I'm busy with that
+T 1304022878 18<22str1ngs>	nsf: good good. I updated gcc-go-snapshot but my i686 machine is down right now. so no binaries :(
+T 1304022908 18<24nsf>	str1ngs: http://pastie.org/1844821 8th problem from projecteuler in crawl :)
+T 1304022910 18<22phrik>	Title: #1844821 - Pastie (at pastie.org)
+T 1304022946 18<24nsf>	so, as you can see compiler has some features already and works
+T 1304022948 18<24nsf>	:)
+T 1304022956 18<19RedRobot>	use python
+T 1304022961 18<24nsf>	no thanks
+T 1304022970 18<19RedRobot>	it's much better than Go
+T 1304022974 18<24nsf>	lol
+T 1304022978 18<22str1ngs>	nsf: looks pretty good. so you use malloc instead of make of course?
+T 1304022981 18<19RedRobot>	Go, which even stole the name from another app
+T 1304022984 18<24cgtdk>	<insert flamebait here>
+T 1304022989 18<19RedRobot>	s/app/language/
+T 1304022993 18<24nsf>	str1ngs: I don't have a standard library at the moment
+T 1304022999 18<24nsf>	the only stuff I can use is C's
+T 1304023001 18<22str1ngs>	RedRobot: its go language .no go
+T 1304023002 18<19RedRobot>	they couldn't even come up with a name on their own
+T 1304023005 22*	starcoder is now known as DocPenguin
+T 1304023019 18<22str1ngs>	nsf: ah but I like the syntax
+T 1304023035 18<22str1ngs>	RedRobot: have you used it?
+T 1304023041 18<19RedRobot>	str1ngs: so? take the name "windows" and ms will still sue you
+T 1304023043 18<19RedRobot>	:p
+T 1304023064 22*	DocPenguin is now known as starcoder
+T 1304023066 18<22str1ngs>	I dont like snakes but I dont bitch about python :P
+T 1304023078 18<29DigitalKiwi>	str1ngs: you should
+T 1304023091 18<22str1ngs>	DigitalKiwi: hehe, which like snakes?
+T 1304023097 18<29DigitalKiwi>	bitch about python
+T 1304023104 18<22str1ngs>	meh
+T 1304023111 18<19RedRobot>	anyway
+T 1304023113 18<19RedRobot>	http://www.h-online.com/security/features/Treacherous-metadata-in-company-documents-1233053.html
+T 1304023115 18<22phrik>	Title: Treacherous metadata in company documents - The H Security: News and Features (at www.h-online.com)
+T 1304023120 18<19RedRobot>	much lulz to be had
+T 1304023139 18<22str1ngs>	RedRobot: you did not answer if you had tried it.
+T 1304023151 18<19RedRobot>	str1ngs: go? I have
+T 1304023169 18<19RedRobot>	they really need to get a sane build enviroment
+T 1304023191 18<22str1ngs>	lol wtf?
+T 1304023199 18<19RedRobot>	as seen by all the problems people have with getting the compilers to install and work
+T 1304023209 18<19RedRobot>	:)
+T 1304023221 18<25Tucos>	survival of the fittest :p
+T 1304023221 18<22str1ngs>	go is easy to build
+T 1304023231 18<22str1ngs>	takes 40s at that
+T 1304023284 22*	Lucifero is now known as hac
+T 1304023294 18<22str1ngs>	sorry 37s to build go
+T 1304023315 18<20Judofyr>	is there something like Growl in OS X for Linux?
+T 1304023326 18<20Judofyr>	that works with e.g. irssi and pidgin?
+T 1304023333 18<29DigitalKiwi>	what is growl?
+T 1304023346 18<20Judofyr>	global notification-thingie
+T 1304023359 18<19RedRobot>	Judofyr: pidgin supports libnotify trough a plugin
+T 1304023365 18<19RedRobot>	Judofyr: irssi does the same trough scripts
+T 1304023372 18*	20Judofyr checks out libnotify
+T 1304023377 18<19RedRobot>	s/supports/works with/
+T 1304023387 18<22str1ngs>	Judofyr: libnotify is probably what you are looking for.
+T 1304023391 18<29vuLgAr>	growl for irssi O.o
+T 1304023397 18<19RedRobot>	community/pidgin-libnotify 0.14-4
+T 1304023399 18<19RedRobot>	    pidgin plugin that enables popups when someone logs in or messages you.
+T 1304023402 18<22str1ngs>	DigitalKiwi: is a mac notification server
+T 1304023413 18<22str1ngs>	DigitalKiwi: I would think you knew that
+T 1304023437 18<29DigitalKiwi>	i've used a mac for like 5 days...
+T 1304023452 18<29vuLgAr>	interesting read btw RedRobot
+T 1304023466 18<19RedRobot>	DigitalKiwi: shame on you
+T 1304023471 18<19RedRobot>	DigitalKiwi: that's 10 days too long
+T 1304023478 18<22str1ngs>	DigitalKiwi: really I though use used mac more then that for some reason.
+T 1304023484 22*	admiral0 is now known as admiral0_away
+T 1304023486 18<29vuLgAr>	:/ gah i use a mac all the time
+T 1304023486 22*	admiral0_away is now known as admiral0
+T 1304023491 18<29DigitalKiwi>	RedRobot: well tell apple to let me make iphone apps on a linux box
+T 1304023516 18<19RedRobot>	solution: don't buy SpyPhone
+T 1304023519 18<19gulafaran>	or just go android and problem solved?
+T 1304023520 18<19gulafaran>	:P
+T 1304023524 18<29DigitalKiwi>	I don't buy spyphone
+T 1304023528 18<29DigitalKiwi>	but customers do
+T 1304023539 18<29DigitalKiwi>	you guys are retards...
+T 1304023539 18<29vuLgAr>	if it helps i run arch on my mac mini :P
+T 1304023541 18<19Vuokko>	buy openmoco and know what you are running
+T 1304023541 18<20andevellicus>	Judofyr: Just be sure to install a notify daemon
+T 1304023551 18<29DigitalKiwi>	and yes I do have an android phone and already make apps for it
+T 1304023565 18<22Moridin>	do you make apps for spying?
+T 1304023567 18<19RedRobot>	Judofyr: are you using a de?
+T 1304023571 18<29jvogel>	How can I have dhclient update DNS as well?
+T 1304023574 18<20andevellicus>	Judofyr: I'm running Openbox so I used xfce4's notfiyd - your other choice is to use gnome's notify daemon
+T 1304023588 18<29DigitalKiwi>	http://www.inhanddeals.com/
+T 1304023594 18<22phrik>	Title: In Hand Deals (at www.inhanddeals.com)
+T 1304023607 18<20Judofyr>	RedRobot: trying bare Xmonad for a while
+T 1304023607 18<19RedRobot>	jvogel: it will update the dns server unless you tell it not to, or your dhcp server sucks
+T 1304023608 18<29jvogel>	What is the default command to request ip from dhcp server
+T 1304023623 18<19RedRobot>	Judofyr: use macopix then
+T 1304023624 18<19RedRobot>	:D
+T 1304023629 18<19Vuokko>	dhclient ethx
+T 1304023634 18<29jvogel>	So if I'm on wireless, and then I go home, plug in, run dhclient eth0, I get a connection but DNS is out of wack
+T 1304023635 18*	19RedRobot should finish his libnotify -> macopix gateway
+T 1304023636 18<19gulafaran>	or just run OSX in a virtual machine
+T 1304023637 18<19gulafaran>	xD
+T 1304023652 18<19RedRobot>	jvogel: why dhclient btw?
+T 1304023661 18<29jvogel>	RedRobot: that's what I'm used to, what do you recommend?
+T 1304023661 22*	Marach is now known as Marafk
+T 1304023662 18<19RedRobot>	jvogel: why not dhcpcd?
+T 1304023673 18<29jvogel>	cause i forgot the command
+T 1304023674 18<22str1ngs>	DigitalKiwi: see if this runs on honeycomb :P
+T 1304023677 18<29jvogel>	thx that one works on Arch
+T 1304023678 18<29Stalafin>	geee, my firefox is hanging itself up all the time since yesterday; any ideas what this could be?
+T 1304023682 18<19RedRobot>	you actually have to hack the arch network scripts to use dhclient
+T 1304023695 18<20andevellicus>	Judofyr: If you like, i have a script for making popus when I get a query or when my name is mentioned in a channel, I can send it to you if you like
+T 1304023703 18<29DigitalKiwi>	str1ngs: iirc it does and only one thing doesn't look right
+T 1304023708 18<19RedRobot>	Stalafin: try as a new uer
+T 1304023709 18<19RedRobot>	user*
+T 1304023711 18<22Sheath>	how do i fix errors like this: SimpleLabeler: error while loading shared libraries: libpng12.so.0: cannot open shared object file: No such file or directory
+T 1304023718 18<22str1ngs>	DigitalKiwi: checking it out now.
+T 1304023720 18<22Sheath>	i have installed libpng and lib32-libpng ovbiously but that didnt work
+T 1304023722 18<29Stalafin>	RedRobot: could you tell me how to do that quickly?
+T 1304023726 18<22str1ngs>	DigitalKiwi: do you use java ?
+T 1304023729 18<19RedRobot>	Sheath: closed source crap?
+T 1304023738 18<22Sheath>	yes
+T 1304023740 18<29DigitalKiwi>	str1ngs: yeah
+T 1304023752 18<29jvogel>	How can I pass a file on stdin to a C program and have it output and ECHO what was in to a new file?
+T 1304023763 18<19RedRobot>	Sheath: find a free software alternative (the best) or install (lib32-)libpng12 from aur
+T 1304023767 18<29DigitalKiwi>	str1ngs: i started with scala but it was just too big of a learning curve not knowing either scala or java and all the examples i found being in java
+T 1304023773 18<29jvogel>	like I got ./blah < in > out
+T 1304023778 18<29jvogel>	but echo?
+T 1304023785 18<22str1ngs>	DigitalKiwi: ya I can see that
+T 1304023787 18<22Sheath>	RedRobot, its lightscribe crap, i dont think theres an alternative
+T 1304023796 18<22str1ngs>	DigitalKiwi: this doesnt do landscape ?
+T 1304023803 18<19RedRobot>	Sheath: or tell upstream to stop building against outdated libs
+T 1304023804 18<29DigitalKiwi>	no
+T 1304023822 18<19RedRobot>	Sheath: actually, there is a free app for lightscribe, can't remember the name though
+T 1304023836 18<19RedRobot>	dunno if the project is still alive eitehr
+T 1304023838 18<19RedRobot>	either*
+T 1304023843 Tcl interface unloaded
+T 1304023843 Python interface unloaded

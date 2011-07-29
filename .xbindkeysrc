@@ -1,0 +1,100 @@
+###########################
+# xbindkeys configuration #
+###########################
+#
+# Version: 0.1.3
+#
+# If you edit this, do not forget to uncomment any lines that you change.
+# The pound(#) symbol may be used anywhere for comments.
+#
+# A list of keys is in /usr/include/X11/keysym.h and in
+# /usr/include/X11/keysymdef.h 
+# The XK_ is not needed. 
+#
+# List of modifier (on my keyboard): 
+#   Control, Shift, Mod1 (Alt), Mod2 (NumLock), 
+#   Mod3 (CapsLock), Mod4, Mod5 (Scroll). 
+#
+# Another way to specifie a key is to use 'xev' and set the 
+# keycode with c:nnn or the modifier with m:nnn where nnn is 
+# the keycode or the state returned by xev 
+#
+# This file is created by xbindkey_config 
+# The structure is : 
+# # Remark 
+# "command" 
+# m:xxx + c:xxx 
+# Shift+... 
+
+
+
+
+#keystate_numlock = enable
+#keystate_scrolllock = enable
+#keystate_capslock = enable
+
+
+
+# mute
+"amixer sset Master toggle"
+    m:0x0 + c:121
+    XF86AudioMute 
+
+# want to free ctrl <up>/<down> for gvim text bubbling, use alt there
+"amixer set Master 1.5dB- unmute"
+    m:0x0 + c:122
+    XF86AudioLowerVolume 
+
+"amixer set Master 2dB- unmute"
+    m:0x4 + c:116
+    Control + Down 
+
+# vol up
+"amixer set Master 1.5dB+ unmute"
+    m:0x0 + c:123
+    XF86AudioRaiseVolume 
+
+"amixer set Master 2dB+ unmute"
+    m:0x4 + c:111
+    Control + Up 
+
+# launch apps
+"gmrun"
+    m:0x4 + c:66
+    Control + Escape 
+
+#using unix epoch timestamps (since 1970-01-01 00:00:00 UTC)
+"scrot '%s_scrot.png' -q 85 -e 'mv $f ~/pics/screenshots'"
+    m:0x11 + c:107
+    Shift+Mod2 + Print 
+
+#"exe=$(dmenu_path | dmenu -i -nb DarkSlateGray4) && exec $exe"
+"exe=$(dmenu_path | dmenu -i -nb DarkSlateGray4 -fn "-*-fixed-*-*-*-*-20-*-*-*-*-*-*-*") && exec $exe"
+    m:0x8 + c:65
+    Alt + space 
+
+#lambda ()
+"Hello from Scheme!"
+    (run-command xdotool type "apanpapan")
+    (newline))) 
+
+"xterm"
+   ;; (remove-xbindkey '(control p))
+
+# paste with the escape button
+"xdotool key Shift+Insert"
+    #    m:0x10 + c:9
+    Mod2 + onesuperior 
+
+#Alt + dollar
+"exe2=$(dmenu_path | dmenu -i -nb DarkOliveGreen -fn "-*-fixed-*-*-*-*-20-*-*-*-*-*-*-*") && urxvt -pe tabbed -e $exe2"
+    #m:0x40 + c:51
+    #Mod4 + apostrophe 
+
+#dmenuclip
+"/home/occam/bin/packages/gitclown/clipbored/scripts/dmenuclip "
+    m:0x50 + c:52
+    Mod2+Mod4 + z 
+
+#
+# End of xbindkeys configuration
