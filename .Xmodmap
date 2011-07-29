@@ -1,0 +1,25 @@
+! add, remove MODIFIERNAME = KEYSYMNAME
+remove Lock = Caps_Lock
+!keysym Escape = Caps_Lock
+!keysym Caps_Lock = Escape
+!add Lock = Caps_Lock
+
+! don't want control on all of these:
+! Escape (0x9),  Escape (0x25),  Control_L (0x42),  Control_R (0x69)
+remove Control = Control_L
+
+keysym Caps_Lock = Control_L
+add Control = Control_L	
+keysym Control_L = Escape	
+keycode  30 = u U u U udiaeresis Udiaeresis downarrow uparrow u U downarrow uparrow u U downarrow uparrow
+keycode  34 = aring Aring aring Aring dead_diaeresis dead_abovering dead_diaeresis dead_abovering aring Aring dead_diaeresis dead_abovering aring Aring dead_diaeresis dead_abovering
+keycode  35 = asciitilde asciicircum diaeresis asciicircum udiaeresis Udiaeresis asciitilde caron diaeresis asciicircum asciitilde caron diaeresis asciicircum asciitilde caron
+keycode  47 = odiaeresis Odiaeresis odiaeresis Odiaeresis braceleft bracketleft oslash Oslash odiaeresis Odiaeresis oslash Oslash
+keycode  48 = adiaeresis Adiaeresis adiaeresis Adiaeresis braceright bracketright ae AE adiaeresis Adiaeresis ae AE
+keycode  49 = dollar asciitilde paragraph onehalf section threequarters paragraph threequarters section onehalf paragraph threequarters section onehalf paragraph threequarters
+keycode  51 = apostrophe asterisk apostrophe asterisk quotedbl multiply acute multiply apostrophe asterisk
+keycode  59 = comma semicolon comma semicolon bracketleft ogonek cedilla ogonek comma semicolon cedilla ogonek comma semicolon cedilla ogonek
+keycode  60 = period colon period colon bracketright abovedot periodcentered abovedot period colon periodcentered abovedot period colon periodcentered abovedot
+keycode  91 = colon period colon period periodcentered dead_abovedot
+keycode 135 = Multi_key Multi_key Multi_key Multi_key Multi_key Multi_key Multi_key Multi_key
+keycode 191 = KP_Delete KP_Separator KP_Delete KP_Separator

@@ -1,0 +1,21 @@
+# git
+.git/*
+
+# vim
+.*.swp
+
+# backup files
+*~
+
+# compiled
+*.o
+*.so
+*.class
+
+# compresed
+*.rar
+*.tar
+*.zip
+
+# log and db
+

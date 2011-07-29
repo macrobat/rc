@@ -1,0 +1,11 @@
+# Write your default config options here!
+
+[gnome-mplayer]
+
+# makes mplayer not play at all
+# To stop xscreensaver form popping up
+# heartbeat-cmd="xscreensaver-command -deactivate >&- 2>&- &"sglevel=all=5
+
+msglevel=all=5
+alang=English,eng,en
+slang=English,eng,en

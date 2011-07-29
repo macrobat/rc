@@ -1,0 +1,28 @@
+# Conky, a system monitor, based on torsmo
+
+alignment top_right
+#alignment bottom_right
+background no
+border_width 0
+default_color white
+default_outline_color black
+#default_shade_color green
+draw_borders no
+draw_outline yes
+use_xft yes
+#xftfont Steve:size=34
+#xftfont /usr/share/fonts/TTF/Domestic_Manners.ttf:size=34
+xftfont Swift:size=34
+no_buffers yes
+out_to_console no
+out_to_stderr no
+own_window no
+own_window_type override 
+own_window_class Conky
+stippled_borders 0
+update_interval 0.5
+uppercase no
+use_spacer none 
+
+TEXT
+${execi 1.0 wmctrl -d | awk '$2 ~ /\*/{print $NF}'}

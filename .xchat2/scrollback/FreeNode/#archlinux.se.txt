@@ -1,0 +1,51 @@
+T 1303935358 19*	19Now talking on #Archlinux.se
+T 1303935358 29*	29Topic for #Archlinux.se 29is: http://bbs.archlinux.org/viewtopic.php?pid=786357#p786357 logga in för att läsa | Då var archlinux.se vid liv igen med annan regi!! Välkommen in!
+T 1303935358 29*	29Topic for #Archlinux.se 29set by virus84|!mekk@ds-174.ds.karen.hj.se 29at Wed Apr 13 20:32:07 2011
+T 1303964761 18<26woldrich>	http://w.japh.se/wollebg.jpg
+T 1303964784 18<26woldrich>	någon som kör Windows just i detta nu? Vore skoj att få igång detta spelet igen
+T 1303974435 18<24xintron>	woldrich, naaw, en kissekatt!
+T 1303974474 18<26woldrich>	troll fucker :p
+T 1303974491 18<26woldrich>	xintron, releaseade nu. https://github.com/trapd00r/vim-xclipboard
+T 1303975754 18<29cHarNe2>	skönt ska börja jobba mest från nrk om nån vecka :)
+T 1303975808 18<25kodein>	norsk rundkringkastning?
+T 1303975819 18<25kodein>	riks*
+T 1303975882 18<29cHarNe2>	norrköping
+T 1303975911 18<25kodein>	ah, peking ja
+T 1303975920 18<29cHarNe2>	yeap :
+T 1303975924 18<25kodein>	det har jag alltid förkortat nkpg :)
+T 1303976297 18<29cHarNe2>	aha, så ska det nog vara :)
+T 1303976776 18<26woldrich>	charne2, nice, då bjussar du på kebap?
+T 1303976826 18<29cHarNe2>	woldrich: i norrköping sen? absolut
+T 1303976843 18<26woldrich>	nice, då kan jag lära dig git över en kebap eller två :-)
+T 1303976858 18<29cHarNe2>	jo det låter nice som fan :D
+T 1303976873 18<26woldrich>	var skall du jobba?
+T 1303976933 18<29cHarNe2>	samma ställe som nu, fast från npkg istället
+T 1303976947 18<26woldrich>	jo, men vad är det då?
+T 1303976975 18<29cHarNe2>	woldrich: jag är sys-admin/ansvarig på ett telefoniföretag
+T 1303976991 18<26woldrich>	nice. behöver ni folk?
+T 1303977001 18<26woldrich>	jag hackar Perl snabbt som satana
+T 1303977020 18<29cHarNe2>	snart kommer vi nog behöva nån mer på teknik, men inte än
+T 1303979929 18<24xintron>	woldrich, har du testat söka lite jobb?
+T 1303979941 18*	24xintron har tidigare varit lat och låtit folk kontakta honom angående jobb
+T 1303979968 18<24xintron>	Men i förgår sökte jag tre jobb (två som tagit kontakt med mig iofs men det tredje var efter att jag sett en annons)
+T 1303979987 18<24xintron>	Två intervjuver bokade (det sista har inte hört av sig)
+T 1303979993 18<26woldrich>	xintron, ja? är ju därför jag skall till stockholm
+T 1303980000 18<24xintron>	ah
+T 1303980020 18<24xintron>	woldrich, jag kan ta över ditt jobb? :D
+T 1303980029 18<24xintron>	behöver motion (det är psykel va?)
+T 1303980111 18<26woldrich>	xintron, nej lastbil
+T 1303980142 18<24xintron>	ah :(
+T 1303980153 18*	24xintron går och lagar psykeln
+T 1303980172 18*	26woldrich => jobb &
+T 1303980297 18<25kodein>	fg
+T 1303981761 18<26woldrich>	:(
+T 1303989479 18<27dark8>	såja 2 dagar med att bygga lite nya hagar åt kalvar å får. 2.5 km tråd å en hink med fästen :-)
+T 1303990298 18<25trifler>	Skulle nästan kunna tro att du är bonde.
+T 1303990539 18<25kodein>	det är han ju
+T 1303991749 18<27dark8>	så får 4 till kalvar senare i dag. det är nån som skulle testa med kor men kom på att det inte var passa eller nått sånt.
+T 1303991876 18<27dark8>	men nu ska jag ta det lungt i nån dag. bara fiska å sånt..
+T 1303995564 22*	smisken is now known as xintron
+T 1303995647 18<27dark8>	såja nu har jag 4 st kalvar till. lite skrämmande att man ska låta en djur svälta. men inte så illa så man lär avliva dom i alla fall.
+T 1303995687 18<27dark8>	så det blir lite stöd fodring och sånt så ska det fixa till sig på några veckor
+T 1304014675 18<27dark8>	såja då har man gilla lite å några öl med
+T 1304014687 18<27dark8>	grilla
