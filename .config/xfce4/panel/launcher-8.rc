@@ -1,0 +1,22 @@
+[Entry 1]
+Name=emacs
+Comment=even makes coffee
+Icon=applications-other
+Exec=emacs -geometry 80x36
+Path=/home/occam/doku
+Terminal=false
+StartupNotify=true
+
+[Global]
+MoveFirst=false
+ArrowPosition=0
+
+[Entry 0]
+Name=Editor
+Comment=Edit text files
+Icon=gvim
+Exec=gvim -geometry 70x40
+Path=/home/occam/doku
+Terminal=false
+StartupNotify=true
+

@@ -1,0 +1,5 @@
+Xft.antialias: 1
+Xft.hinting: -1
+Xft.rgba: vbgr
+Xft.hintstyle: hintmedium
+Xft.dpi: 96

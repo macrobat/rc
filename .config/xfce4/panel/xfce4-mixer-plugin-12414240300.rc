@@ -1,0 +1,4 @@
+card=IntelICH6Alsamixer
+track=Master
+command=xfce4-mixer
+

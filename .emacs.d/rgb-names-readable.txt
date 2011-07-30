@@ -1,0 +1,753 @@
+#fffafa         "snow"                          255 250 250
+#f8f8ff         "ghost white"                   248 248 255
+#f8f8ff         "GhostWhite"                    248 248 255
+#f5f5f5         "white smoke"                   245 245 245
+#f5f5f5         "WhiteSmoke"                    245 245 245
+#dcdcdc         "gainsboro"                     220 220 220
+#fffaf0         "floral white"                  255 250 240
+#fffaf0         "FloralWhite"                   255 250 240
+#fdf5e6         "old lace"                      253 245 230
+#fdf5e6         "OldLace"                       253 245 230
+#faf0e6         "linen"                         250 240 230
+#faebd7         "antique white"                 250 235 215
+#faebd7         "AntiqueWhite"                  250 235 215
+#ffefd5         "papaya whip"                   255 239 213
+#ffefd5         "PapayaWhip"                    255 239 213
+#ffebcd         "blanched almond"               255 235 205
+#ffebcd         "BlanchedAlmond"                255 235 205
+#ffe4c4         "bisque"                        255 228 196
+#ffdab9         "peach puff"                    255 218 185
+#ffdab9         "PeachPuff"                     255 218 185
+#ffdead         "navajo white"                  255 222 173
+#ffdead         "NavajoWhite"                   255 222 173
+#ffe4b5         "moccasin"                      255 228 181
+#fff8dc         "cornsilk"                      255 248 220
+#fffff0         "ivory"                         255 255 240
+#fffacd         "lemon chiffon"                 255 250 205
+#fffacd         "LemonChiffon"                  255 250 205
+#fff5ee         "seashell"                      255 245 238
+#f0fff0         "honeydew"                      240 255 240
+#f5fffa         "mint cream"                    245 255 250
+#f5fffa         "MintCream"                     245 255 250
+#f0ffff         "azure"                         240 255 255
+#f0f8ff         "alice blue"                    240 248 255
+#f0f8ff         "AliceBlue"                     240 248 255
+#e6e6fa         "lavender"                      230 230 250
+#fff0f5         "lavender blush"                255 240 245
+#fff0f5         "LavenderBlush"                 255 240 245
+#ffe4e1         "misty rose"                    255 228 225
+#ffe4e1         "MistyRose"                     255 228 225
+#ffffff         "white"                         255 255 255
+#000            "black"                         0 0 0
+#2f4f4f         "dark slate gray"               47 79 79
+#2f4f4f         "DarkSlateGray"                 47 79 79
+#2f4f4f         "dark slate grey"               47 79 79
+#2f4f4f         "DarkSlateGrey"                 47 79 79
+#696969         "dim gray"                      105 105 105
+#696969         "DimGray"                       105 105 105
+#696969         "dim grey"                      105 105 105
+#696969         "DimGrey"                       105 105 105
+#708090         "slate gray"                    112 128 144
+#708090         "SlateGray"                     112 128 144
+#708090         "slate grey"                    112 128 144
+#708090         "SlateGrey"                     112 128 144
+#778899         "light slate gray"              119 136 153
+#778899         "LightSlateGray"                119 136 153
+#778899         "light slate grey"              119 136 153
+#778899         "LightSlateGrey"                119 136 153
+#bebebe         "gray"                          190 190 190
+#bebebe         "grey"                          190 190 190
+#d3d3d3         "light grey"                    211 211 211
+#d3d3d3         "LightGrey"                     211 211 211
+#d3d3d3         "light gray"                    211 211 211
+#d3d3d3         "LightGray"                     211 211 211
+#191970         "midnight blue"                 25 25 112
+#191970         "MidnightBlue"                  25 25 112
+#0080           "navy"                          0 0 128
+#0080           "navy blue"                     0 0 128
+#0080           "NavyBlue"                      0 0 128
+#6495ed         "cornflower blue"               100 149 237
+#6495ed         "CornflowerBlue"                100 149 237
+#483d8b         "dark slate blue"               72 61 139
+#483d8b         "DarkSlateBlue"                 72 61 139
+#6a5acd         "slate blue"                    106 90 205
+#6a5acd         "SlateBlue"                     106 90 205
+#7b68ee         "medium slate blue"             123 104 238
+#7b68ee         "MediumSlateBlue"               123 104 238
+#8470ff         "light slate blue"              132 112 255
+#8470ff         "LightSlateBlue"                132 112 255
+#00cd           "medium blue"                   0 0 205
+#00cd           "MediumBlue"                    0 0 205
+#4169e1         "royal blue"                    65 105 225
+#4169e1         "RoyalBlue"                     65 105 225
+#00ff           "blue"                          0 0 255
+#1e90ff         "dodger blue"                   30 144 255
+#1e90ff         "DodgerBlue"                    30 144 255
+#0bfff          "deep sky blue"                 0 191 255
+#0bfff          "DeepSkyBlue"                   0 191 255
+#87ceeb         "sky blue"                      135 206 235
+#87ceeb         "SkyBlue"                       135 206 235
+#87cefa         "light sky blue"                135 206 250
+#87cefa         "LightSkyBlue"                  135 206 250
+#4682b4         "steel blue"                    70 130 180
+#4682b4         "SteelBlue"                     70 130 180
+#b0c4de         "light steel blue"              176 196 222
+#b0c4de         "LightSteelBlue"                176 196 222
+#add8e6         "light blue"                    173 216 230
+#add8e6         "LightBlue"                     173 216 230
+#b0e0e6         "powder blue"                   176 224 230
+#b0e0e6         "PowderBlue"                    176 224 230
+#afeeee         "pale turquoise"                175 238 238
+#afeeee         "PaleTurquoise"                 175 238 238
+#0ced1          "dark turquoise"                0 206 209
+#0ced1          "DarkTurquoise"                 0 206 209
+#48d1cc         "medium turquoise"              72 209 204
+#48d1cc         "MediumTurquoise"               72 209 204
+#40e0d0         "turquoise"                     64 224 208
+#0ffff          "cyan"                          0 255 255
+#e0ffff         "light cyan"                    224 255 255
+#e0ffff         "LightCyan"                     224 255 255
+#5f9ea0         "cadet blue"                    95 158 160
+#5f9ea0         "CadetBlue"                     95 158 160
+#66cdaa         "medium aquamarine"             102 205 170
+#66cdaa         "MediumAquamarine"              102 205 170
+#7fffd4         "aquamarine"                    127 255 212
+#0640           "dark green"                    0 100 0
+#0640           "DarkGreen"                     0 100 0
+#556b2f         "dark olive green"              85 107 47
+#556b2f         "DarkOliveGreen"                85 107 47
+#8fbc8f         "dark sea green"                143 188 143
+#8fbc8f         "DarkSeaGreen"                  143 188 143
+#2e8b57         "sea green"                     46 139 87
+#2e8b57         "SeaGreen"                      46 139 87
+#3cb371         "medium sea green"              60 179 113
+#3cb371         "MediumSeaGreen"                60 179 113
+#20b2aa         "light sea green"               32 178 170
+#20b2aa         "LightSeaGreen"                 32 178 170
+#98fb98         "pale green"                    152 251 152
+#98fb98         "PaleGreen"                     152 251 152
+#0ff7f          "spring green"                  0 255 127
+#0ff7f          "SpringGreen"                   0 255 127
+#7cfc0          "lawn green"                    124 252 0
+#7cfc0          "LawnGreen"                     124 252 0
+#0ff0           "green"                         0 255 0
+#7fff0          "chartreuse"                    127 255 0
+#0fa9a          "medium spring green"           0 250 154
+#0fa9a          "MediumSpringGreen"             0 250 154
+#adff2f         "green yellow"                  173 255 47
+#adff2f         "GreenYellow"                   173 255 47
+#32cd32         "lime green"                    50 205 50
+#32cd32         "LimeGreen"                     50 205 50
+#9acd32         "yellow green"                  154 205 50
+#9acd32         "YellowGreen"                   154 205 50
+#228b22         "forest green"                  34 139 34
+#228b22         "ForestGreen"                   34 139 34
+#6b8e23         "olive drab"                    107 142 35
+#6b8e23         "OliveDrab"                     107 142 35
+#bdb76b         "dark khaki"                    189 183 107
+#bdb76b         "DarkKhaki"                     189 183 107
+#f0e68c         "khaki"                         240 230 140
+#eee8aa         "pale goldenrod"                238 232 170
+#eee8aa         "PaleGoldenrod"                 238 232 170
+#fafad2         "light goldenrod yellow"        250 250 210
+#fafad2         "LightGoldenrodYellow"          250 250 210
+#ffffe0         "light yellow"                  255 255 224
+#ffffe0         "LightYellow"                   255 255 224
+#ffff0          "yellow"                        255 255 0
+#ffd70          "gold"                          255 215 0
+#eedd82         "light goldenrod"               238 221 130
+#eedd82         "LightGoldenrod"                238 221 130
+#daa520         "goldenrod"                     218 165 32
+#b886b          "dark goldenrod"                184 134 11
+#b886b          "DarkGoldenrod"                 184 134 11
+#bc8f8f         "rosy brown"                    188 143 143
+#bc8f8f         "RosyBrown"                     188 143 143
+#cd5c5c         "indian red"                    205 92 92
+#cd5c5c         "IndianRed"                     205 92 92
+#8b4513         "saddle brown"                  139 69 19
+#8b4513         "SaddleBrown"                   139 69 19
+#a0522d         "sienna"                        160 82 45
+#cd853f         "peru"                          205 133 63
+#deb887         "burlywood"                     222 184 135
+#f5f5dc         "beige"                         245 245 220
+#f5deb3         "wheat"                         245 222 179
+#f4a460         "sandy brown"                   244 164 96
+#f4a460         "SandyBrown"                    244 164 96
+#d2b48c         "tan"                           210 180 140
+#d2691e         "chocolate"                     210 105 30
+#b22222         "firebrick"                     178 34 34
+#a52a2a         "brown"                         165 42 42
+#e9967a         "dark salmon"                   233 150 122
+#e9967a         "DarkSalmon"                    233 150 122
+#fa8072         "salmon"                        250 128 114
+#ffa07a         "light salmon"                  255 160 122
+#ffa07a         "LightSalmon"                   255 160 122
+#ffa50          "orange"                        255 165 0
+#ff8c0          "dark orange"                   255 140 0
+#ff8c0          "DarkOrange"                    255 140 0
+#ff7f50         "coral"                         255 127 80
+#f08080         "light coral"                   240 128 128
+#f08080         "LightCoral"                    240 128 128
+#ff6347         "tomato"                        255 99 71
+#ff450          "orange red"                    255 69 0
+#ff450          "OrangeRed"                     255 69 0
+#ff00           "red"                           255 0 0
+#ff69b4         "hot pink"                      255 105 180
+#ff69b4         "HotPink"                       255 105 180
+#ff1493         "deep pink"                     255 20 147
+#ff1493         "DeepPink"                      255 20 147
+#ffc0cb         "pink"                          255 192 203
+#ffb6c1         "light pink"                    255 182 193
+#ffb6c1         "LightPink"                     255 182 193
+#db7093         "pale violet red"               219 112 147
+#db7093         "PaleVioletRed"                 219 112 147
+#b03060         "maroon"                        176 48 96
+#c71585         "medium violet red"             199 21 133
+#c71585         "MediumVioletRed"               199 21 133
+#d02090         "violet red"                    208 32 144
+#d02090         "VioletRed"                     208 32 144
+#ff0ff          "magenta"                       255 0 255
+#ee82ee         "violet"                        238 130 238
+#dda0dd         "plum"                          221 160 221
+#da70d6         "orchid"                        218 112 214
+#ba55d3         "medium orchid"                 186 85 211
+#ba55d3         "MediumOrchid"                  186 85 211
+#9932cc         "dark orchid"                   153 50 204
+#9932cc         "DarkOrchid"                    153 50 204
+#940d3          "dark violet"                   148 0 211
+#940d3          "DarkViolet"                    148 0 211
+#8a2be2         "blue violet"                   138 43 226
+#8a2be2         "BlueViolet"                    138 43 226
+#a020f0         "purple"                        160 32 240
+#9370db         "medium purple"                 147 112 219
+#9370db         "MediumPurple"                  147 112 219
+#d8bfd8         "thistle"                       216 191 216
+#fffafa         "snow1"                         255 250 250
+#eee9e9         "snow2"                         238 233 233
+#cdc9c9         "snow3"                         205 201 201
+#8b8989         "snow4"                         139 137 137
+#fff5ee         "seashell1"                     255 245 238
+#eee5de         "seashell2"                     238 229 222
+#cdc5bf         "seashell3"                     205 197 191
+#8b8682         "seashell4"                     139 134 130
+#ffefdb         "AntiqueWhite1"                 255 239 219
+#eedfcc         "AntiqueWhite2"                 238 223 204
+#cdc0b0         "AntiqueWhite3"                 205 192 176
+#8b8378         "AntiqueWhite4"                 139 131 120
+#ffe4c4         "bisque1"                       255 228 196
+#eed5b7         "bisque2"                       238 213 183
+#cdb79e         "bisque3"                       205 183 158
+#8b7d6b         "bisque4"                       139 125 107
+#ffdab9         "PeachPuff1"                    255 218 185
+#eecbad         "PeachPuff2"                    238 203 173
+#cdaf95         "PeachPuff3"                    205 175 149
+#8b7765         "PeachPuff4"                    139 119 101
+#ffdead         "NavajoWhite1"                  255 222 173
+#eecfa1         "NavajoWhite2"                  238 207 161
+#cdb38b         "NavajoWhite3"                  205 179 139
+#8b795e         "NavajoWhite4"                  139 121 94
+#fffacd         "LemonChiffon1"                 255 250 205
+#eee9bf         "LemonChiffon2"                 238 233 191
+#cdc9a5         "LemonChiffon3"                 205 201 165
+#8b8970         "LemonChiffon4"                 139 137 112
+#fff8dc         "cornsilk1"                     255 248 220
+#eee8cd         "cornsilk2"                     238 232 205
+#cdc8b1         "cornsilk3"                     205 200 177
+#8b8878         "cornsilk4"                     139 136 120
+#fffff0         "ivory1"                        255 255 240
+#eeeee0         "ivory2"                        238 238 224
+#cdcdc1         "ivory3"                        205 205 193
+#8b8b83         "ivory4"                        139 139 131
+#f0fff0         "honeydew1"                     240 255 240
+#e0eee0         "honeydew2"                     224 238 224
+#c1cdc1         "honeydew3"                     193 205 193
+#838b83         "honeydew4"                     131 139 131
+#fff0f5         "LavenderBlush1"                255 240 245
+#eee0e5         "LavenderBlush2"                238 224 229
+#cdc1c5         "LavenderBlush3"                205 193 197
+#8b8386         "LavenderBlush4"                139 131 134
+#ffe4e1         "MistyRose1"                    255 228 225
+#eed5d2         "MistyRose2"                    238 213 210
+#cdb7b5         "MistyRose3"                    205 183 181
+#8b7d7b         "MistyRose4"                    139 125 123
+#f0ffff         "azure1"                        240 255 255
+#e0eeee         "azure2"                        224 238 238
+#c1cdcd         "azure3"                        193 205 205
+#838b8b         "azure4"                        131 139 139
+#836fff         "SlateBlue1"                    131 111 255
+#7a67ee         "SlateBlue2"                    122 103 238
+#6959cd         "SlateBlue3"                    105 89 205
+#473c8b         "SlateBlue4"                    71 60 139
+#4876ff         "RoyalBlue1"                    72 118 255
+#436eee         "RoyalBlue2"                    67 110 238
+#3a5fcd         "RoyalBlue3"                    58 95 205
+#27408b         "RoyalBlue4"                    39 64 139
+#00ff           "blue1"                         0 0 255
+#00ee           "blue2"                         0 0 238
+#00cd           "blue3"                         0 0 205
+#008b           "blue4"                         0 0 139
+#1e90ff         "DodgerBlue1"                   30 144 255
+#1c86ee         "DodgerBlue2"                   28 134 238
+#1874cd         "DodgerBlue3"                   24 116 205
+#104e8b         "DodgerBlue4"                   16 78 139
+#63b8ff         "SteelBlue1"                    99 184 255
+#5cacee         "SteelBlue2"                    92 172 238
+#4f94cd         "SteelBlue3"                    79 148 205
+#36648b         "SteelBlue4"                    54 100 139
+#0bfff          "DeepSkyBlue1"                  0 191 255
+#0b2ee          "DeepSkyBlue2"                  0 178 238
+#09acd          "DeepSkyBlue3"                  0 154 205
+#0688b          "DeepSkyBlue4"                  0 104 139
+#87ceff         "SkyBlue1"                      135 206 255
+#7ec0ee         "SkyBlue2"                      126 192 238
+#6ca6cd         "SkyBlue3"                      108 166 205
+#4a708b         "SkyBlue4"                      74 112 139
+#b0e2ff         "LightSkyBlue1"                 176 226 255
+#a4d3ee         "LightSkyBlue2"                 164 211 238
+#8db6cd         "LightSkyBlue3"                 141 182 205
+#607b8b         "LightSkyBlue4"                 96 123 139
+#c6e2ff         "SlateGray1"                    198 226 255
+#b9d3ee         "SlateGray2"                    185 211 238
+#9fb6cd         "SlateGray3"                    159 182 205
+#6c7b8b         "SlateGray4"                    108 123 139
+#cae1ff         "LightSteelBlue1"               202 225 255
+#bcd2ee         "LightSteelBlue2"               188 210 238
+#a2b5cd         "LightSteelBlue3"               162 181 205
+#6e7b8b         "LightSteelBlue4"               110 123 139
+#bfefff         "LightBlue1"                    191 239 255
+#b2dfee         "LightBlue2"                    178 223 238
+#9ac0cd         "LightBlue3"                    154 192 205
+#68838b         "LightBlue4"                    104 131 139
+#e0ffff         "LightCyan1"                    224 255 255
+#d1eeee         "LightCyan2"                    209 238 238
+#b4cdcd         "LightCyan3"                    180 205 205
+#7a8b8b         "LightCyan4"                    122 139 139
+#bbffff         "PaleTurquoise1"                187 255 255
+#aeeeee         "PaleTurquoise2"                174 238 238
+#96cdcd         "PaleTurquoise3"                150 205 205
+#668b8b         "PaleTurquoise4"                102 139 139
+#98f5ff         "CadetBlue1"                    152 245 255
+#8ee5ee         "CadetBlue2"                    142 229 238
+#7ac5cd         "CadetBlue3"                    122 197 205
+#53868b         "CadetBlue4"                    83 134 139
+#0f5ff          "turquoise1"                    0 245 255
+#0e5ee          "turquoise2"                    0 229 238
+#0c5cd          "turquoise3"                    0 197 205
+#0868b          "turquoise4"                    0 134 139
+#0ffff          "cyan1"                         0 255 255
+#0eeee          "cyan2"                         0 238 238
+#0cdcd          "cyan3"                         0 205 205
+#08b8b          "cyan4"                         0 139 139
+#97ffff         "DarkSlateGray1"                151 255 255
+#8deeee         "DarkSlateGray2"                141 238 238
+#79cdcd         "DarkSlateGray3"                121 205 205
+#528b8b         "DarkSlateGray4"                82 139 139
+#7fffd4         "aquamarine1"                   127 255 212
+#76eec6         "aquamarine2"                   118 238 198
+#66cdaa         "aquamarine3"                   102 205 170
+#458b74         "aquamarine4"                   69 139 116
+#c1ffc1         "DarkSeaGreen1"                 193 255 193
+#b4eeb4         "DarkSeaGreen2"                 180 238 180
+#9bcd9b         "DarkSeaGreen3"                 155 205 155
+#698b69         "DarkSeaGreen4"                 105 139 105
+#54ff9f         "SeaGreen1"                     84 255 159
+#4eee94         "SeaGreen2"                     78 238 148
+#43cd80         "SeaGreen3"                     67 205 128
+#2e8b57         "SeaGreen4"                     46 139 87
+#9aff9a         "PaleGreen1"                    154 255 154
+#90ee90         "PaleGreen2"                    144 238 144
+#7ccd7c         "PaleGreen3"                    124 205 124
+#548b54         "PaleGreen4"                    84 139 84
+#0ff7f          "SpringGreen1"                  0 255 127
+#0ee76          "SpringGreen2"                  0 238 118
+#0cd66          "SpringGreen3"                  0 205 102
+#08b45          "SpringGreen4"                  0 139 69
+#0ff0           "green1"                        0 255 0
+#0ee0           "green2"                        0 238 0
+#0cd0           "green3"                        0 205 0
+#08b0           "green4"                        0 139 0
+#7fff0          "chartreuse1"                   127 255 0
+#76ee0          "chartreuse2"                   118 238 0
+#66cd0          "chartreuse3"                   102 205 0
+#458b0          "chartreuse4"                   69 139 0
+#c0ff3e         "OliveDrab1"                    192 255 62
+#b3ee3a         "OliveDrab2"                    179 238 58
+#9acd32         "OliveDrab3"                    154 205 50
+#698b22         "OliveDrab4"                    105 139 34
+#caff70         "DarkOliveGreen1"               202 255 112
+#bcee68         "DarkOliveGreen2"               188 238 104
+#a2cd5a         "DarkOliveGreen3"               162 205 90
+#6e8b3d         "DarkOliveGreen4"               110 139 61
+#fff68f         "khaki1"                        255 246 143
+#eee685         "khaki2"                        238 230 133
+#cdc673         "khaki3"                        205 198 115
+#8b864e         "khaki4"                        139 134 78
+#ffec8b         "LightGoldenrod1"               255 236 139
+#eedc82         "LightGoldenrod2"               238 220 130
+#cdbe70         "LightGoldenrod3"               205 190 112
+#8b814c         "LightGoldenrod4"               139 129 76
+#ffffe0         "LightYellow1"                  255 255 224
+#eeeed1         "LightYellow2"                  238 238 209
+#cdcdb4         "LightYellow3"                  205 205 180
+#8b8b7a         "LightYellow4"                  139 139 122
+#ffff0          "yellow1"                       255 255 0
+#eeee0          "yellow2"                       238 238 0
+#cdcd0          "yellow3"                       205 205 0
+#8b8b0          "yellow4"                       139 139 0
+#ffd70          "gold1"                         255 215 0
+#eec90          "gold2"                         238 201 0
+#cdad0          "gold3"                         205 173 0
+#8b750          "gold4"                         139 117 0
+#ffc125         "goldenrod1"                    255 193 37
+#eeb422         "goldenrod2"                    238 180 34
+#cd9b1d         "goldenrod3"                    205 155 29
+#8b6914         "goldenrod4"                    139 105 20
+#ffb9f          "DarkGoldenrod1"                255 185 15
+#eeade          "DarkGoldenrod2"                238 173 14
+#cd95c          "DarkGoldenrod3"                205 149 12
+#8b658          "DarkGoldenrod4"                139 101 8
+#ffc1c1         "RosyBrown1"                    255 193 193
+#eeb4b4         "RosyBrown2"                    238 180 180
+#cd9b9b         "RosyBrown3"                    205 155 155
+#8b6969         "RosyBrown4"                    139 105 105
+#ff6a6a         "IndianRed1"                    255 106 106
+#ee6363         "IndianRed2"                    238 99 99
+#cd5555         "IndianRed3"                    205 85 85
+#8b3a3a         "IndianRed4"                    139 58 58
+#ff8247         "sienna1"                       255 130 71
+#ee7942         "sienna2"                       238 121 66
+#cd6839         "sienna3"                       205 104 57
+#8b4726         "sienna4"                       139 71 38
+#ffd39b         "burlywood1"                    255 211 155
+#eec591         "burlywood2"                    238 197 145
+#cdaa7d         "burlywood3"                    205 170 125
+#8b7355         "burlywood4"                    139 115 85
+#ffe7ba         "wheat1"                        255 231 186
+#eed8ae         "wheat2"                        238 216 174
+#cdba96         "wheat3"                        205 186 150
+#8b7e66         "wheat4"                        139 126 102
+#ffa54f         "tan1"                          255 165 79
+#ee9a49         "tan2"                          238 154 73
+#cd853f         "tan3"                          205 133 63
+#8b5a2b         "tan4"                          139 90 43
+#ff7f24         "chocolate1"                    255 127 36
+#ee7621         "chocolate2"                    238 118 33
+#cd661d         "chocolate3"                    205 102 29
+#8b4513         "chocolate4"                    139 69 19
+#ff3030         "firebrick1"                    255 48 48
+#ee2c2c         "firebrick2"                    238 44 44
+#cd2626         "firebrick3"                    205 38 38
+#8b1a1a         "firebrick4"                    139 26 26
+#ff4040         "brown1"                        255 64 64
+#ee3b3b         "brown2"                        238 59 59
+#cd3333         "brown3"                        205 51 51
+#8b2323         "brown4"                        139 35 35
+#ff8c69         "salmon1"                       255 140 105
+#ee8262         "salmon2"                       238 130 98
+#cd7054         "salmon3"                       205 112 84
+#8b4c39         "salmon4"                       139 76 57
+#ffa07a         "LightSalmon1"                  255 160 122
+#ee9572         "LightSalmon2"                  238 149 114
+#cd8162         "LightSalmon3"                  205 129 98
+#8b5742         "LightSalmon4"                  139 87 66
+#ffa50          "orange1"                       255 165 0
+#ee9a0          "orange2"                       238 154 0
+#cd850          "orange3"                       205 133 0
+#8b5a0          "orange4"                       139 90 0
+#ff7f0          "DarkOrange1"                   255 127 0
+#ee760          "DarkOrange2"                   238 118 0
+#cd660          "DarkOrange3"                   205 102 0
+#8b450          "DarkOrange4"                   139 69 0
+#ff7256         "coral1"                        255 114 86
+#ee6a50         "coral2"                        238 106 80
+#cd5b45         "coral3"                        205 91 69
+#8b3e2f         "coral4"                        139 62 47
+#ff6347         "tomato1"                       255 99 71
+#ee5c42         "tomato2"                       238 92 66
+#cd4f39         "tomato3"                       205 79 57
+#8b3626         "tomato4"                       139 54 38
+#ff450          "OrangeRed1"                    255 69 0
+#ee400          "OrangeRed2"                    238 64 0
+#cd370          "OrangeRed3"                    205 55 0
+#8b250          "OrangeRed4"                    139 37 0
+#ff00           "red1"                          255 0 0
+#ee00           "red2"                          238 0 0
+#cd00           "red3"                          205 0 0
+#8b00           "red4"                          139 0 0
+#ff1493         "DeepPink1"                     255 20 147
+#ee1289         "DeepPink2"                     238 18 137
+#cd1076         "DeepPink3"                     205 16 118
+#8ba50          "DeepPink4"                     139 10 80
+#ff6eb4         "HotPink1"                      255 110 180
+#ee6aa7         "HotPink2"                      238 106 167
+#cd6090         "HotPink3"                      205 96 144
+#8b3a62         "HotPink4"                      139 58 98
+#ffb5c5         "pink1"                         255 181 197
+#eea9b8         "pink2"                         238 169 184
+#cd919e         "pink3"                         205 145 158
+#8b636c         "pink4"                         139 99 108
+#ffaeb9         "LightPink1"                    255 174 185
+#eea2ad         "LightPink2"                    238 162 173
+#cd8c95         "LightPink3"                    205 140 149
+#8b5f65         "LightPink4"                    139 95 101
+#ff82ab         "PaleVioletRed1"                255 130 171
+#ee799f         "PaleVioletRed2"                238 121 159
+#cd6889         "PaleVioletRed3"                205 104 137
+#8b475d         "PaleVioletRed4"                139 71 93
+#ff34b3         "maroon1"                       255 52 179
+#ee30a7         "maroon2"                       238 48 167
+#cd2990         "maroon3"                       205 41 144
+#8b1c62         "maroon4"                       139 28 98
+#ff3e96         "VioletRed1"                    255 62 150
+#ee3a8c         "VioletRed2"                    238 58 140
+#cd3278         "VioletRed3"                    205 50 120
+#8b2252         "VioletRed4"                    139 34 82
+#ff0ff          "magenta1"                      255 0 255
+#ee0ee          "magenta2"                      238 0 238
+#cd0cd          "magenta3"                      205 0 205
+#8b08b          "magenta4"                      139 0 139
+#ff83fa         "orchid1"                       255 131 250
+#ee7ae9         "orchid2"                       238 122 233
+#cd69c9         "orchid3"                       205 105 201
+#8b4789         "orchid4"                       139 71 137
+#ffbbff         "plum1"                         255 187 255
+#eeaeee         "plum2"                         238 174 238
+#cd96cd         "plum3"                         205 150 205
+#8b668b         "plum4"                         139 102 139
+#e066ff         "MediumOrchid1"                 224 102 255
+#d15fee         "MediumOrchid2"                 209 95 238
+#b452cd         "MediumOrchid3"                 180 82 205
+#7a378b         "MediumOrchid4"                 122 55 139
+#bf3eff         "DarkOrchid1"                   191 62 255
+#b23aee         "DarkOrchid2"                   178 58 238
+#9a32cd         "DarkOrchid3"                   154 50 205
+#68228b         "DarkOrchid4"                   104 34 139
+#9b30ff         "purple1"                       155 48 255
+#912cee         "purple2"                       145 44 238
+#7d26cd         "purple3"                       125 38 205
+#551a8b         "purple4"                       85 26 139
+#ab82ff         "MediumPurple1"                 171 130 255
+#9f79ee         "MediumPurple2"                 159 121 238
+#8968cd         "MediumPurple3"                 137 104 205
+#5d478b         "MediumPurple4"                 93 71 139
+#ffe1ff         "thistle1"                      255 225 255
+#eed2ee         "thistle2"                      238 210 238
+#cdb5cd         "thistle3"                      205 181 205
+#8b7b8b         "thistle4"                      139 123 139
+#000            "gray0"                         0 0 0
+#000            "grey0"                         0 0 0
+#333            "gray1"                         3 3 3
+#333            "grey1"                         3 3 3
+#555            "gray2"                         5 5 5
+#555            "grey2"                         5 5 5
+#888            "gray3"                         8 8 8
+#888            "grey3"                         8 8 8
+#aaa            "gray4"                         10 10 10
+#aaa            "grey4"                         10 10 10
+#ddd            "gray5"                         13 13 13
+#ddd            "grey5"                         13 13 13
+#fff            "gray6"                         15 15 15
+#fff            "grey6"                         15 15 15
+#121212         "gray7"                         18 18 18
+#121212         "grey7"                         18 18 18
+#141414         "gray8"                         20 20 20
+#141414         "grey8"                         20 20 20
+#171717         "gray9"                         23 23 23
+#171717         "grey9"                         23 23 23
+#1a1a1a         "gray10"                        26 26 26
+#1a1a1a         "grey10"                        26 26 26
+#1c1c1c         "gray11"                        28 28 28
+#1c1c1c         "grey11"                        28 28 28
+#1f1f1f         "gray12"                        31 31 31
+#1f1f1f         "grey12"                        31 31 31
+#212121         "gray13"                        33 33 33
+#212121         "grey13"                        33 33 33
+#242424         "gray14"                        36 36 36
+#242424         "grey14"                        36 36 36
+#262626         "gray15"                        38 38 38
+#262626         "grey15"                        38 38 38
+#292929         "gray16"                        41 41 41
+#292929         "grey16"                        41 41 41
+#2b2b2b         "gray17"                        43 43 43
+#2b2b2b         "grey17"                        43 43 43
+#2e2e2e         "gray18"                        46 46 46
+#2e2e2e         "grey18"                        46 46 46
+#303030         "gray19"                        48 48 48
+#303030         "grey19"                        48 48 48
+#333333         "gray20"                        51 51 51
+#333333         "grey20"                        51 51 51
+#363636         "gray21"                        54 54 54
+#363636         "grey21"                        54 54 54
+#383838         "gray22"                        56 56 56
+#383838         "grey22"                        56 56 56
+#3b3b3b         "gray23"                        59 59 59
+#3b3b3b         "grey23"                        59 59 59
+#3d3d3d         "gray24"                        61 61 61
+#3d3d3d         "grey24"                        61 61 61
+#404040         "gray25"                        64 64 64
+#404040         "grey25"                        64 64 64
+#424242         "gray26"                        66 66 66
+#424242         "grey26"                        66 66 66
+#454545         "gray27"                        69 69 69
+#454545         "grey27"                        69 69 69
+#474747         "gray28"                        71 71 71
+#474747         "grey28"                        71 71 71
+#4a4a4a         "gray29"                        74 74 74
+#4a4a4a         "grey29"                        74 74 74
+#4d4d4d         "gray30"                        77 77 77
+#4d4d4d         "grey30"                        77 77 77
+#4f4f4f         "gray31"                        79 79 79
+#4f4f4f         "grey31"                        79 79 79
+#525252         "gray32"                        82 82 82
+#525252         "grey32"                        82 82 82
+#545454         "gray33"                        84 84 84
+#545454         "grey33"                        84 84 84
+#575757         "gray34"                        87 87 87
+#575757         "grey34"                        87 87 87
+#595959         "gray35"                        89 89 89
+#595959         "grey35"                        89 89 89
+#5c5c5c         "gray36"                        92 92 92
+#5c5c5c         "grey36"                        92 92 92
+#5e5e5e         "gray37"                        94 94 94
+#5e5e5e         "grey37"                        94 94 94
+#616161         "gray38"                        97 97 97
+#616161         "grey38"                        97 97 97
+#636363         "gray39"                        99 99 99
+#636363         "grey39"                        99 99 99
+#666666         "gray40"                        102 102 102
+#666666         "grey40"                        102 102 102
+#696969         "gray41"                        105 105 105
+#696969         "grey41"                        105 105 105
+#6b6b6b         "gray42"                        107 107 107
+#6b6b6b         "grey42"                        107 107 107
+#6e6e6e         "gray43"                        110 110 110
+#6e6e6e         "grey43"                        110 110 110
+#707070         "gray44"                        112 112 112
+#707070         "grey44"                        112 112 112
+#737373         "gray45"                        115 115 115
+#737373         "grey45"                        115 115 115
+#757575         "gray46"                        117 117 117
+#757575         "grey46"                        117 117 117
+#787878         "gray47"                        120 120 120
+#787878         "grey47"                        120 120 120
+#7a7a7a         "gray48"                        122 122 122
+#7a7a7a         "grey48"                        122 122 122
+#7d7d7d         "gray49"                        125 125 125
+#7d7d7d         "grey49"                        125 125 125
+#7f7f7f         "gray50"                        127 127 127
+#7f7f7f         "grey50"                        127 127 127
+#828282         "gray51"                        130 130 130
+#828282         "grey51"                        130 130 130
+#858585         "gray52"                        133 133 133
+#858585         "grey52"                        133 133 133
+#878787         "gray53"                        135 135 135
+#878787         "grey53"                        135 135 135
+#8a8a8a         "gray54"                        138 138 138
+#8a8a8a         "grey54"                        138 138 138
+#8c8c8c         "gray55"                        140 140 140
+#8c8c8c         "grey55"                        140 140 140
+#8f8f8f         "gray56"                        143 143 143
+#8f8f8f         "grey56"                        143 143 143
+#919191         "gray57"                        145 145 145
+#919191         "grey57"                        145 145 145
+#949494         "gray58"                        148 148 148
+#949494         "grey58"                        148 148 148
+#969696         "gray59"                        150 150 150
+#969696         "grey59"                        150 150 150
+#999999         "gray60"                        153 153 153
+#999999         "grey60"                        153 153 153
+#9c9c9c         "gray61"                        156 156 156
+#9c9c9c         "grey61"                        156 156 156
+#9e9e9e         "gray62"                        158 158 158
+#9e9e9e         "grey62"                        158 158 158
+#a1a1a1         "gray63"                        161 161 161
+#a1a1a1         "grey63"                        161 161 161
+#a3a3a3         "gray64"                        163 163 163
+#a3a3a3         "grey64"                        163 163 163
+#a6a6a6         "gray65"                        166 166 166
+#a6a6a6         "grey65"                        166 166 166
+#a8a8a8         "gray66"                        168 168 168
+#a8a8a8         "grey66"                        168 168 168
+#ababab         "gray67"                        171 171 171
+#ababab         "grey67"                        171 171 171
+#adadad         "gray68"                        173 173 173
+#adadad         "grey68"                        173 173 173
+#b0b0b0         "gray69"                        176 176 176
+#b0b0b0         "grey69"                        176 176 176
+#b3b3b3         "gray70"                        179 179 179
+#b3b3b3         "grey70"                        179 179 179
+#b5b5b5         "gray71"                        181 181 181
+#b5b5b5         "grey71"                        181 181 181
+#b8b8b8         "gray72"                        184 184 184
+#b8b8b8         "grey72"                        184 184 184
+#bababa         "gray73"                        186 186 186
+#bababa         "grey73"                        186 186 186
+#bdbdbd         "gray74"                        189 189 189
+#bdbdbd         "grey74"                        189 189 189
+#bfbfbf         "gray75"                        191 191 191
+#bfbfbf         "grey75"                        191 191 191
+#c2c2c2         "gray76"                        194 194 194
+#c2c2c2         "grey76"                        194 194 194
+#c4c4c4         "gray77"                        196 196 196
+#c4c4c4         "grey77"                        196 196 196
+#c7c7c7         "gray78"                        199 199 199
+#c7c7c7         "grey78"                        199 199 199
+#c9c9c9         "gray79"                        201 201 201
+#c9c9c9         "grey79"                        201 201 201
+#cccccc         "gray80"                        204 204 204
+#cccccc         "grey80"                        204 204 204
+#cfcfcf         "gray81"                        207 207 207
+#cfcfcf         "grey81"                        207 207 207
+#d1d1d1         "gray82"                        209 209 209
+#d1d1d1         "grey82"                        209 209 209
+#d4d4d4         "gray83"                        212 212 212
+#d4d4d4         "grey83"                        212 212 212
+#d6d6d6         "gray84"                        214 214 214
+#d6d6d6         "grey84"                        214 214 214
+#d9d9d9         "gray85"                        217 217 217
+#d9d9d9         "grey85"                        217 217 217
+#dbdbdb         "gray86"                        219 219 219
+#dbdbdb         "grey86"                        219 219 219
+#dedede         "gray87"                        222 222 222
+#dedede         "grey87"                        222 222 222
+#e0e0e0         "gray88"                        224 224 224
+#e0e0e0         "grey88"                        224 224 224
+#e3e3e3         "gray89"                        227 227 227
+#e3e3e3         "grey89"                        227 227 227
+#e5e5e5         "gray90"                        229 229 229
+#e5e5e5         "grey90"                        229 229 229
+#e8e8e8         "gray91"                        232 232 232
+#e8e8e8         "grey91"                        232 232 232
+#ebebeb         "gray92"                        235 235 235
+#ebebeb         "grey92"                        235 235 235
+#ededed         "gray93"                        237 237 237
+#ededed         "grey93"                        237 237 237
+#f0f0f0         "gray94"                        240 240 240
+#f0f0f0         "grey94"                        240 240 240
+#f2f2f2         "gray95"                        242 242 242
+#f2f2f2         "grey95"                        242 242 242
+#f5f5f5         "gray96"                        245 245 245
+#f5f5f5         "grey96"                        245 245 245
+#f7f7f7         "gray97"                        247 247 247
+#f7f7f7         "grey97"                        247 247 247
+#fafafa         "gray98"                        250 250 250
+#fafafa         "grey98"                        250 250 250
+#fcfcfc         "gray99"                        252 252 252
+#fcfcfc         "grey99"                        252 252 252
+#ffffff         "gray100"                       255 255 255
+#ffffff         "grey100"                       255 255 255
+#a9a9a9         "dark grey"                     169 169 169
+#a9a9a9         "DarkGrey"                      169 169 169
+#a9a9a9         "dark gray"                     169 169 169
+#a9a9a9         "DarkGray"                      169 169 169
+#008b           "dark blue"                     0 0 139
+#008b           "DarkBlue"                      0 0 139
+#08b8b          "dark cyan"                     0 139 139
+#08b8b          "DarkCyan"                      0 139 139
+#8b08b          "dark magenta"                  139 0 139
+#8b08b          "DarkMagenta"                   139 0 139
+#8b00           "dark red"                      139 0 0
+#8b00           "DarkRed"                       139 0 0
+#90ee90         "light green"                   144 238 144
+#90ee90         "LightGreen"                    144 238 144
+

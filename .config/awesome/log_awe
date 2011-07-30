@@ -1,0 +1,861 @@
+================================================================================
+todo:
+
+DONE   	få ned "statusraden" eller vafaan den heter, smäck upp dmenu (-b för bottom)
+DONE   	exe=$(dmenu_path | dmenu) && exec $exe
+
+awful.key({ modkey, "Shift", "Control"}, "t", function () myLayoutTogglingFunction() end)
+
+autostart apps: parcellite, xmodmap, gvim session, terminal
+sätt tag åxå. awful.rules
+If you want to put Firefox on a specific tag at startup, you can add: 
+{ rule = { instance = "firefox" } properties = { tag = mytagobject } }
+
+-- vad menas med .. i run_once?  konka strängar
+-- hur kombinerar jag detta? 
+-- varför skulle man vilja starta flera instanser när man startar om awesome?
+-- Autorun programs
+autorun = true
+autorunApps = 
+{ 
+   "swiftfox",
+   "mutt",
+   "consonance",
+   "linux-fetion",
+   "weechat-curses",
+}
+if autorun then
+   for app = 1, #autorunApps do
+       awful.util.spawn(autorunApps[app])
+   end
+end
+
+--FUNKAR!!!!!
+--To execute an application only once, e.g. for restarting awesome, 
+--use this function (from the awesome wiki):
+function run_once(prg)
+	if not prg then
+		do return nil end
+	end
+	os.execute("x=" .. prg .. "; pgrep -u $USERNAME -x " .. prg .. " || (" .. prg .. " &)")
+end
+-- AUTORUN APPS!
+run_once("parcellite")
+
+-- Autorun programs (compsoc.tardis.ed.ac.uk lr arch wiki?)
+--
+   autorun = true
+   autorunApps = 
+   { 
+      "terminal",
+      "gvim -S /home/trazan/doku/awe_confs",
+      "xchat",
+    --"",
+    --"",
+   }
+
+vill ha menu!
+
+vill ha alt-tab som mod4-j. mod4+tab gör det nu
+Det tar inte; vad kallas tangenterna?
+
+önskewidgets med vicious. bara dra igång, top. bestäm placering senare
+kanske toggle visa/dölj med en knapptryckning
+wifi signal, battery, cpu load, 
+
+ska installera gcolor2, samma gui som terminal :)
+p vill ha update igen
+ska cp allt awesome till occam, och köra därifrån åxå/ist
+confa lm-sensors, hur göra med acpi?
+lättare med allt systemjox jag har där, som aurprylar
+
+kopiera över .gvimrc
+
+"vimperator + buftabs is awesome ^_^ 	"
+================================================================================
+bash crashes when pacman -Syu
+har gecko-mediaplayer ist
+Remove (1): mplayer-plugin-3.55-1
+
+parcellite, verkar inte starta, testa i xfce4
+jo, den går, är bara jevvligt diskret. C-M-h. finns i systray åxå
+vill jag synca med C-c buffern?. nej
+
+Uzbl-browser is a complete, "working out of the box" browser
+fel i libwebkit, recompile enchant with "--disable-zemberek" 
+updatera abs med "abs" först, byt prefix till /usr/local
+hur sätter man en högre version på ett pkg? kolla PKGBUILD i wiki
+pkgver högre än 1.5.0 kolla enchant hemsida för nån version
+./configure --prefix=/usr/local --disable-static --disable-zemberek || return 1
+
+kan ju tabba två ggr när jag vill ha .bashrc som i irc!!!!!!!!1
+
+http://blog.cyberborean.org/2008/01/06/compose-key-magic
+xorg compose sequence. funkar om man inte har nodeadkeys, är menutangenten t hö
+Option "XkbOptions"  "compose:rwin" # byt ut, jag vill ha mod4 ifred
+kan göra egna i .Xcompose
+xmodmap
+
+har jag nerd-commenter? jo, funkar inte om jag kommer från insert mode
+finns iaf om jag startar ny gvim
+gör ~/bin/pd. vill såsa åt andra hållet
+
+zenburn med ljusare focus border
+kört lxappearance
+tenebrific är som aud-default. mörka teman:
+Tenebrific Clearlooks-DarkLime clearlooks-DarkOrange Darkilouche HighContrastInverse LowContrast NOX
+Black-Diamond 
+http://awesome.naquadah.org/wiki/Customizing_GTK_Apps
+
+http://compsoc.tardis.ed.ac.uk/wiki/AwesomeWM_guide
+teardrop är dropdown till clients. ung. som tilda
+
+Awesome has support for (2D) transparency through xcompmgr. Note that you'll probably want the git version of xcompmgr, which is available in AUR.
+
+opera can't be shown side-by-side to another client on a tag in archlinux, uses all space (in debian it'ss fine). I haven't set any rule for opera
+cant resize clients in archlinux
+
+på statusbar har jag: 
+menu med icon, tags, lua & run prompt, taskbar, systray, klocka, layout switcher
+
+esc är en bra key i chromium, focus på locationbar
+
+gvim är konstigt, x är backspace??????
+awesome fel m autorun och freedesktop
+-- klipper ut originalet, funkar inte, fel path?
+
+terminal is dumb; that is, lacks some important capability, such  as
+the  ability  to clear the screen or scroll backward.
+
+#############kommer jag ihåg gmail eller är det för dyndns?
+
+vim:
+]p	Just like p, but it automatically adjusts the indent level of the pasted code to match that of the code you paste into. Try it!
+>>	Indent the highlighted code. (See the earlier section about efficient text selection. If no text is selected, the current line is indented.)
+<<	Like >>, but un-indents.
+gd	Go to the definition (or declaration) of the function or variable under the cursor.
+K	Go to the man page for the word currently under the cursor. (For instance, if your cursor is currently over the word sleep, you will see the man page for sleep displayed.)
+är fult, TERMCAP färger går inte i vim
+kör >> << i normal mode!
+
+an arborescence of sub-menus.
+
+less: man kan sätta options direkt i less, som -I
+kan pipea en bit text till externt cmd eller söka genom flera filer samtidigt
+
+	--gör att jag inte kan tabba
+    awful.key({ "Alt",           }, "Tab",
+        function ()
+            awful.client.focus.byidx( 1)
+            if client.focus then client.focus:raise() end
+        end),
+använd mod4-tab ist
+
+kanske kan ta opera.desktop från debian, gvimdiff med firefox.desktop
+
+(｡◕‿◕｡)
+
+-- för desktop icons enl. freedesktop README
+$ lua 
+> require('freedesktop.desktop')
+./freedesktop/desktop.lua:8: module 'awful' not found:
+	no field package.preload['awful']
+	no file './awful.lua'
+	no file '/usr/share/lua/5.1/awful.lua'
+	no file '/usr/share/lua/5.1/awful/init.lua'
+	no file '/usr/lib/lua/5.1/awful.lua'
+	no file '/usr/lib/lua/5.1/awful/init.lua'
+	no file './awful.so'
+	no file '/usr/lib/lua/5.1/awful.so'
+	no file '/usr/lib/lua/5.1/loadall.so'
+stack traceback:
+	[C]: in function 'require'
+	./freedesktop/desktop.lua:8: in main chunk
+	[C]: in function 'require'
+	stdin:1: in main chunk
+	[C]: ?
+Varför en sån path? awful ligger ju på annat ställe
+fel inuti desktop.lua ingen awful 
+kanske kan fixa den?
+
+funkar inte även om jag gör nedanstående, awful hittas, men har errors
+cp -r /usr/share/awesome/lib/  /usr/share/lua/5.1/
+hur ska jag köra/testa .lua scripts?
+
+pcmanfm
+får upp usb, men kan inte mounta. JO! se nedan 
+Rejected send message, 1 matched rules; type="method_call", sender=":1.14" (uid=1001 pid=3871 comm="pcmanfm) interface="org.freedesktop.Hal.Device.Volume" member="Mount" error name="(unset)" requested_reply=0 destination="org.freedesktop.Hal" (uid=0 pid=1634 comm="/usr/sbin/hald))
+kanske vill ha pmount? thunar-volman?
+vad måste köras för att thunar-volman ska automounta?
+exec ck-launch-session awesome      förståss!!!
+
+råkade ha trafon i klädbyltet, den blev VARM
+
+-- {{{ -- }}} är fold markers i vim, inget med lua att göra
+--[[ opening long comment  
+]] closing
+
+uzbl!
+
+man colors
+la |dmenu -i -nb DarkSlateGray4 -fn -adobe-utopia-*-*-*-*-17-*-*-*-*-*-*-*
+item=$(ls |dmenu -i -nb DarkOrange3 -fn -adobe-utopia-*-*-*-*-17-*-*-*-*-*-*-*) ; cd $item
+satt upp .xbindkeysrc
+"exe=$(dmenu_path | dmenu -i -nb DarkOrange3 -fn -adobe-utopia-*-*-*-*-17-*-*-*-*-*-*-*) && exec $exe"
+
+kan sätta och kolla fonter i emacs
+
+till autostart:
+terminal --tab --tab --working-directory ~/doku/
+
+menu kommer aldrig att funka. testar att kommentera ut prylar i desktop.lua
+
+cli emacs: emacs -nw
+
+inget att ha: archlinux-menus
+kör xdg-open, iofs en ide
+
+testar HARDWARECLOCK="UTC", #kanske slipper "mounted in the future"
+eller åxå blir det värre
+
+sätt rätt permissions på ext2-usb'n. lägg över saker från fat-diton
+om xfce4 startas i en annan X session, får jag inte den xfce4-sessionen jag sparat?
+
+git clone git://github.com/blynn/gitmagic.git
+den ville ha asciidoc xmlto, men funka inte ändå!
+
+wowowowowow  sshfs!
+behöver jag inte ha och va med i gruppen fuse?
+gpasswd -d occam fuse ; groupdel fuse
+mkdir ~/bin/sshfsmnt; sshfs occam@192.168.1.103:/home/occam ~/bin/sshfsmnt
+fusermount -u ~/bin/sshfsmnt
+bara rsync, keys till ssh och konto på dyndns.com kvar, om jag vill hitta min desktop från laptop
+verkar som datorerna får olika ip när man bootar, wired / wireless?
+
+ssh duke@besk.dyndns.org !!!!
+hitta andra datorn: nmap -sP 192.168.1.1/24
+
+finns dyndns och mac address filter till routern
+dnsutils (debian) om jag ska ha dyndns. kan sätta dyndns på routern
+http://serverfault.com/questions/46645/shell-command-for-getting-ip-address
+ez-ipupdate isf ddclient
+accounts containing only Dynamic DNS Free hosts expire if they are not updated within a 30-day period
+klicka på uppdateringsmejlet tormodem slö nesji ikta. arslig amris server
+div0 kör dyndns för nexuiz. känner igen "endoftheinternet"
+Dynamic DNS hostname to keep updated: 
+Current IP Address: 81.170.150.127
+besk.dyndns.org
+You will need to configure your client to use port 8245 for external IP detection from our CheckIP site
+besk.dyndns.org	Host 	81.170.150.127	Nov. 12, 2009 10:56 PM
+ferlorat lösen till kanonmatswe x:( bytt till kkumars låt
+till dyndns account använder jag danielelm... 
+den går som daemon
+kan ssh:a in från lappyn över dyndns, men frågas inte efter passphrase, bara lösen.
+================================================================================
+(define (fakkultet n)
+  (if (= 0 n)
+      1
+      (* n (fakkultet (- n 1)))))
+================================================================================
+en extern monitor:
+skaffat lxrandr
+har ingen videobild med bägge monitorerna.
+koppla in och kolla vad jag har med xrandr -q
+xrandr --output LVDS1 --mode 1400x1050 --output VGA1 --mode 1024x768 --right-of LVDS1    
+tebax:
+xrandr --output VGA1 --mode 1024x768 --output LVDS1 --mode 1400x1050 --left-of VGA1
+
+xrandr --output VGA1 --off
+inget händer om man bara "xrandr --output VGA1 --mode 1024x768"
+fixa tebax med 
+xrandr --mode 1400x1050
+xrandr -s 1400x1050
+
+pmount /dev/sr0
+den hamnar på /media/cdrom/
+mplayer /media/cdrom/Haxan.1922.SWEDISH.DVDRip.x264.CD1-OeT.avi -cdda speed=14
+om man kunde undvika att den varvar så jevvligt
+större cache?
+mplayer  -cache 8000 -cache-min 15 -cdda speed=15
+finns cache-seek-min sätt den på 60
+allow framedrop med "d"?
+pumount /dev/sr0
+================================================================================
+hade redan gitcloned vicious
+kan man ha flera git i samma folder?
+
+tac /proc/acpi/battery/C177/state
+
+  vicious.register(widget, type, format, interval, warg)
+vicious.widgets.bat
+  - provides state, charge, and remaining time for a requested battery
+  - takes battery ID as an argument, i.e. "BAT0"
+  - returns 1st value as state of requested battery, 2nd as charge
+    level in percent and 3rd as remaining (charging or discharging)
+    time
+
+finns batteri-exempel i vicious/init.lua
+
+-- Initialize widget
+batwidget = widget({ type = "textbox" })
+-- Register widget
+vicious.register(batwidget, vicious.widgets.bat, $2 $1 19, 'BAT1')
+
+kan inte köra vicious. kanske är för ny version jämfört med awesome?
+vad är timer för typ? (only values have types, vars don't have)
+~/.config/awesome/vicious/init.lua:136: attempt to compare number with string
+"if reg.timer > 0 then"
+can't add 0 for coersion
+attempt to perform arithmetic on field 'timer' (a string value)
+	-- test adding 0 to reg.timer for coersion, doesn't work
+
+    -- Create a vicious battery widget
+    -- Initialize widget
+    batwidget = widget({ type = "textbox" })
+    -- Register widget
+    vicious.register(batwidget, vicious.widgets.bat, '$2', '$1', 19, 'BAT0')
+    Create the wibox
+    batwibox[s] = awful.wibox({ position = "top", screen = s })
+    batwibox[s].widgets = { {
+    	batwidget },
+	layout = awful.widget.layout.horizontal.rightleft 
+    }	
+
+	wibox
+Wibox object. Fields
+screen: Screen number.
+client: The client attached to (titlebar only).
+border_width: Border width.
+border_color: Border color.
+align: The alignment (titlebar only).
+fg: Foreground color.
+bg: Background color.
+bg_image: Background image.
+position: The position (titlebar only).
+ontop: On top of other windows.
+cursor: The mouse cursor.
+visible: Visibility.
+orientation: The drawing orientation: east, north or south.
+widgets: A table with all widgets drawn on this wibox.
+opacity: The opacity of the wibox, between 0 and 1.
+x: The x coordinates.
+y: The y coordinates.
+width: The width of the wibox.
+height: The height of the wibox.
+shape_bounding: Image describing the window's border shape.
+shape_clip: Image describing the window's content shape.
+
+en chunk kåd från anrx
+widgetname:buttons(awful.util.table.join(
+  awful.button({ }, 1, function () awfu.util.spawn("urxvt -T Alpine -e alpine") end)
+))
+
+function arggh { for i in {1..21} ; do echo arggh $i ; done }
+================================================================================  
+grep "Categories" /usr/share/applications/* | awk -F "=" '{print $2}' | tr ";" "\n" | sort | uniq -c
+
+menyn funkar nu. 
+================================================================================
+network programming
+http://beej.us/guide/bgnet/output/html/multipage/theory.html
+================================================================================
+debian:
+bts in devscripts
+bts show <number>
+bts --mbox show  is awesome
+================================================================================
+LVM
+<pioto> macrobat: the metadata area would be where metadata about the logical volumes and such are kept, presumably.
+<pioto> why there're more than one... i don't know. but, it caused my above problem.
+»» Romster reads backlog
+<Romster> you can remove the metadata area at end of disk let me see if i can dig up how.
+<Romster> actaully i think the only way is to vgcfgbackup edit /etc/lvm/backup/VG_NAME then use vgcfgrestore -f /etc/lvm/backup/VG_NAME
+ INTE GÖRA     <Romster> dd if=/dev/sdX1 of=/dev/sdY1 bs=446 count=1  <----INTE
+<Romster> will copy the MBR without destroying the partition table.
+<Romster> i can't see why pvchange hasn't got a option to remove second metadata area for pvresize operations. or even move the end copy to new end of disk.
+<Romster> macrobat, you still needing help?
+<Romster> pvck -d -v /dev/sdX will dump the metadata locations.
+================================================================================
+
+Debug rc.lua using Xephyr
+This is my prefered way to debug rc.lua, without breaking my current desktop. I first copy my rc.lua into a new file, rc.lua.new, and modify it as needed. Then, I run new instance of awesome in Xephyr (allows you to run X nested in another X's client windows), supplying rc.lua.new as a config file like this:
+
+Xephyr -ac -br -noreset -screen 1152x720 :2 &
+DISPLAY=:2.0 awesome -c ~/.config/awesome/rc.lua.new &
+
+restart with:
+pgrep awesome
+kill -s SIGHUP <pid_of_awesome_in_xephyr>
+
+Big advantage of this approach is that if I break rc.lua.new, 
+I don't break my current awesome desktop (and possibly crash all my X apps, 
+lose all unsaved things and so on...). Once I'm happy with my new settings, 
+I move rc.lua.new to rc.lua and restart awesome. And I can be sure it 
+will work and restarting with new config won't mess up things.
+
+Xephyr, stort X, är del av xorg-server
+
+================================================================================
+
+lua:
+and är konstigt
+
+'='shorthand
+> = 7
+7
+
+do <block> end
+
+ipairs() iterates only over the indices in a table
+
+The string concatenation operator in Lua is denoted by two dots ('..')
+
+kan läsa fil i lua, kan inte cd path. kan jag bara göra EN sak?
+
+Lua is a dynamically typed language. This means that variables do not have types; only values do. There are no type definitions in the language. All values carry their own type.
+================================================================================
+
+hostnames: loach, plaice, albacore, halibut, 
+hal9000, nutmeg, 
+zeratul, artanis, kerrigan, overmind, hive, cerebrat, aiur, protoss, 
+
+skaffat eminent. uppdaterar rednotebook. kanske bättre att skriva en del där, eg.
+
+alt-tab är inte lika viktigt i ett tiling wm. 
+open ports: netstat -atu 
+gentoo   gcc: “Stop staring at my output; you have no life!”
+deluge går inte igång, kör rtorrent. toad
+
+Mon Feb  1 22:48:00 CET 2010
+kör awesome som occam nu.
+
+awesome tasklist rmb client list enl anrx:
+awful.key({ altkey }, "Escape", function () mouse.coords({x=525, y=330}, true)
+        awful.menu.menu_keys.down = { "Down", "Alt_L" }
+        local cmenu = awful.menu.clients({ width = 230 }, true)
+    end),
+
+sätta större font i naughty
+notify-send "your message here"
+
+inte "git://" inte trailing slash
+git clone http://git.sysphere.org/awesome-configs
+teardrop finns i scratch.drop nu
+git pull i katalogen jag fått (den med .gitignore)
+
+ska ha fixat lite floating rules nu. se FAQ:
+WM_CLASS(STRING) = "smplayer", "Smplayer"
+                     |             |-- class
+                     |-- instance
+                     
+WM_NAME(STRING) = "SMPlayer"
+                    |-- name
+
+How can I add a keyboard layout switcher ?
+You can use the xxkb utility. It has a tray icon and supports settings layouts per client. As an alternative you can use an awesome widget, you can even find some examples on the wiki Change keyboard maps. 
+
+mod4-C-space    toggle floating client
+mod4-C-ret      swap the client c with the master
+
+teardrop/scratchpad
+drop("appname", nil, nil, 1, 1)
+
+xephyr can grab the keyboard
+mod4+ctrl+shift
+ctrl+shift to escape again
+if your mouse pointer cant leave the Xephyr window, it worked
+One single command for copying a complete keymap from one server to another.
+setxkbmap -print | xkbcomp - :1.0
+
+put that code in your manage hook ,or use zenity: 
+xpop='xprop | grep --color=none "WM_CLASS\|^WM_NAME" | xmessage -file -'
+
+gjorde fel och skrev över vicious/init.lua 
+!kommentera ut require
+
+Sat May  8 05:21:15 CEST 2010
+ändrat lite från faq, alt-tab
+http://awesome.naquadah.org/wiki/FAQ
+modkey left/right är upptaget, anv mod4+ctrl
+råkade ta bort en client med mod4 Next, den lämnar spår över alla tags
+hjälpte inte att starta om
+
+har 3.4.5-1 nu, kolla changelog!
+råkade ta bort rc.lua. hade massa ändringar från wikin, som alt-tab och mod4-b toggle statusbar, move/resize
+tror jag hade ngt om toggle menu åxå
+gör om! http://awesome.naquadah.org/wiki/FAQ
+If you want to execute a shell command or need to execute a command that uses redirection, pipes and so on, do not use the awful.util.spawn  function but awful.util.spawn_with_shell. Here is an example:
+ awful.key({ modkey }, "F10", function () awful.util.spawn_with_shell("cal -m | xmessage -timeout 10 -file -") end)
+använd detta till spwn startups. om man lägger startup apps i .xinitrc, blir det samma för alla WM
+
+add to your globalkeys:
+ awful.key({ "Mod1" }, "Tab", function ()
+     -- If you want to always position the menu on the same place set coordinates
+     awful.menu.menu_keys.down = { "Down", "Alt_L" }   -- alternativ eller samtidigt?
+     awful.menu.menu_keys.up = { "Up", "Alt_L" }
+     local cmenu = awful.menu.clients({width=250}, { keygrabber=true, coords={x=0, y=0} })
+ end),
+
+Add the following key binding to your globalkeys:
+ awful.key({ modkey }, "b", function ()
+     mywibox[mouse.screen].visible = not mywibox[mouse.screen].visible
+ end),
+
+How to move and resize floaters with the keyboard?
+You can use the awful.client.moveresize function. The following clientkeys example will move floaters with "Mod4 + Arrow keys" and resize them with "Mod4 + PgUP/DN" keys: har dubblat! lägg till ctrl åxå.
+   awful.key({ modkey }, "Next",  function () awful.client.moveresize( 40,  40, -80, -80) end),
+   awful.key({ modkey }, "Prior", function () awful.client.moveresize(-40, -40,  80,  80) end),
+   awful.key({ modkey }, "Down",  function () awful.client.moveresize(  0,  40,   0,   0) end),
+   awful.key({ modkey }, "Up",    function () awful.client.moveresize(  0, -40,   0,   0) end),
+   awful.key({ modkey }, "Left",  function () awful.client.moveresize(-40,   0,   0,   0) end),
+   awful.key({ modkey }, "Right", function () awful.client.moveresize( 40,   0,   0,   0) end),
+
+================================================================================
+
+man kan binda shift_r. "shift is not a modifier" (därav nil)  awful.key({nil, "Shift_R" }, "d"  
+shift + mod4 + <num> moves the client to that tag
++ ctrl will toggle the tag on a client
+there's a bug in 3.4.5 awsetbg which never selects the wp setter it finds
+so, if you do have feh you still need to change your wallpaper_cmd to awsetbg -u feh
+vill ha C-A-arrows move client to next tag + goto next tag
+awful.client.movetotag(target, c) 
+c: Optional client to move, otherwise the focused one is used
+kanske (target -1) (target +1)
+vilken tag har jag?
+nej:
+awful.tag.viewidx (i, screen)
+    View a tag by its taglist index.
+    Parameters
+        * i: The relative index to see.
+        * screen: Optional screen number.
+kanske getdata (tag)?
+awful.tag.viewprev(screen) This is the same a tag.viewidx(-1).  s?
+
+I don't want the widget between the prompt and the tasklist! 
+The tasklist uses the flex layout internally, which has to come last always,
+as it uses the place left over by the other widgets. This memwidget is a table
+of widgets (with just one element, but a few functions and such), so it needs
+its own layout, though that is kind of sucky. Try: 
+memwidget.layout = awful.widget.layout.horizontal.rightleft
+
+--http://awesome.naquadah.org/wiki/Naughty
+--funkar inte
+--naughty.config.timeout          = 5
+--naughty.config.screen           = 1
+--naughty.config.position         = "top_left"
+--naughty.config.margin           = 4
+--naughty.config.height           = 16
+--naughty.config.width            = 300
+--naughty.config.gap              = 1
+--naughty.config.ontop            = true
+--naughty.config.font             = "Domestic Manners 28" --beautiful.font or 
+--naughty.config.icon             = nil
+--naughty.config.icon_size        = 16
+--naughty.config.fg               = beautiful.fg_focus or '#ffffff'
+--naughty.config.bg               = beautiful.bg_focus or '#535d6c'
+--naughty.config.presets.normal.border_color     = beautiful.border_focus or '#535d6c'
+--naughty.config.border_width     = 1
+--naughty.config.hover_timeout    = nil
+
+revelation är gött mos!
+råkade ha sönder X-sessionen, tog inte emot keypresses, bara mus. magic sysrq
+
+This is a modified run command that accepts an intial ":" keyword to indicate launching commands in a terminal.
+For instance, ":mc" would open a terminal and run mc.
+Or my favorite ":aptitude".  
+This is all done in the ~/.config/awesome/rc.lua 
+This is the key definition that you would add to your globalkeys: 
+ 
+awful.key({ modkey,           }, "r", 
+              function () awful.prompt.run({prompt="Run:"},
+                                           mypromptbox[mouse.screen].widget,
+                                           check_for_terminal,
+                                           clean_for_completion,
+                                           awful.util.getdir("cache") .. "/history") end)
+
+These are the functions it needs. I just added them to the bottom of my rc.lua and that seems to work just fine:
+
+-- {{{ functions to help launch run commands in a terminal using ":" keyword 
+function check_for_terminal (command)
+   if command:sub(1,1) == ":" then
+      command = terminal .. ' -e ' .. command:sub(2)
+   end
+   awful.util.spawn(command)
+end
+   
+function clean_for_completion (command, cur_pos, ncomp, shell)
+   local term = false
+   if command:sub(1,1) == ":" then
+      term = true
+      command = command:sub(2)
+      cur_pos = cur_pos - 1
+   end
+   command, cur_pos =  awful.completion.shell(command, cur_pos,ncomp,shell)
+   if term == true then
+      command = ':' .. command
+      cur_pos = cur_pos + 1
+   end
+   return command, cur_pos
+end
+-- }}}
+
+
+can't use "~" for $HOME in spwn?
+
+
+====================================================================
+-- testing Elv13 stuff
+mylayoutmenu[s] = layoutmenu(s,layouts_all)
+layoutmenu.lua
+
+====================================================================
+awesome vicious widgets http://www.desktopevolution.org/archives/44
+http://awesome.naquadah.org/doc/api/modules/awful.tag.html#selected
+http://awesome.naquadah.org/doc/api/modules/awful.client.html#movetotag
+
+awesome#awful.tag.selected()
+awesome#return awful.tag.selected()
+   string "tag: 0xea6e88"
+i don't know how to use that
+it's a tag object
+i wish it was as simple as awful.client.moveto(awful.tag.selected() + 1)
+...think of a table, that tag object has fields, properties, like name
+but that does nothing and has no output
+because you are not comparing (and advancing by 1) to anything
+now you have a tab object,
+now you can get a list of tag objects associated with a screen
+local tags = screen[1]:tags()
+now you have a table, through which you can recurse, and compare your tag object with objects stored in the table tags
+pretty complex
+maybe there should be a movetonext() like there is a viewnext()
+ok, then I won't tell you how to recurse
+but instead find on that api page function getidx
+it will compare a tag object to the tag list, automatically do what I explained
+and there is, almost, you only need to call movetotag with two arguments, tag and client
+you get the idea now after reading getidx explanation?
+there is no getidx() documented on awful.client.html nor awful.tag.html
+ah, shit, I run 3.4 but with a few new commits
+would be as simple  as movetotag(screen[1]:tags()[getidx(selected()) + 1], c)  :)
+yup
+you can get the same thing, with 2 or 3 lines in your rc.lua
+maybe best is a small function to be used in a keybinding later, that does all this
+how?
+by doing what I explained
+by locating getidx in the awesome repository and copying the code if you don't know how
+what's wrong here:
+awful.key({ modkey }, "e", function (c) awful.client.movetotag(screen[1]:tags()[getidx(selected()) + 1], c)    end),
+in clientkeys
+it, well, does nothing
+ok fixed that, now i need capi, for getidx
+apparently i don't have that module
+
+====================================================================
+You pressed the keybinding to increase/decrease the number of clients in the master area or the slave area
+the tile layout is made such that one section is for the "big" master window and the other part is for the smaller windows
+however, the tile layout is made very versatile by the fact that you can change how many windows exist in either section
+so if you have 3 windows and you subtract the number of windows in the master section to 0, then all 3 are in the slave area
+and thus all stretched across. in short, checkout mod-shift-h/l and mod-control-h/l (see man awesome)
+====================================================================
+
+writing rules for clients.
+i'm running urxvt with "urxvt -name vimp" and want to mattch all clients with the class URxvt and the name vimp
+don't use -name, use -title
+then match class URxvt, name vimp
+short for title is -T
+
+awful.tag.incmwfact     - increase master width factor
+awful.client.incwfact   - increase width factor 
+
+hur funkar detta?
+0 tags the window for all tags (sticky)
+
+WM_TRANSIENT_FOR(WINDOW): window id # 0xe00007 <- looks g
+that line means "I am a popup window for window 0xe00007"
+awful/tag.lua does sth like: if c.transient_for then c.screen = c.transient_for.screen  (..., it does the same with the tags
+and the "sticky" property)
+
+also i find a mouse-wheel(4/5) is good to use for awful.tag.incmwfact() .. it's the quickest way to resize
+beats the default mod+right-click easy. var placera detta?  clientbuttons!
+    --alt like other window managers and resize with scrollwheel
+    awful.button({ "Mod1" }, 1, awful.mouse.client.move),
+    awful.button({ "Mod1" }, 3, awful.mouse.client.resize),
+    awful.button({ modkey }, 5, function () awful.tag.incmwfact( 0.04)   end),
+    awful.button({ modkey }, 4, function () awful.tag.incmwfact(-0.04)   end),
+    awful.button({ "Mod1" }, 5, function () awful.tag.incmwfact( 0.04)   end),
+    awful.button({ "Mod1" }, 4, function () awful.tag.incmwfact(-0.04)   end))
+gjorde fel, funkade utan att jag tryckte på pingvinknappen/alt. kunde inte skrålla 
+exempel: modkey,                Mod1            "4"
+
+Tue Jul 27 20:08:57 CEST 2010
+fixa modkey+b att toggla wibox bottom hidden left. kräver lua-kunskap :)
+
+jag har visst inte datum och klockslag?
+har visst ingen border runt urxvt
+dags att fixa batwidget!
+
+only works if some compositing manager is running (e.g. xcompmgr)
+in focus, add: c.opacity = 1
+in unfocus: c.opacity = 0.5
+
+      |\      _,,,--,,_  ,)
+     /,`.-'`'   -,  ;-;;'
+___ |,4-  ) )-,_ ) /\_______ 
+   '----'(_/--' (_/-' 
+
+
+
+                    ,%,_
+                   %%%/,\
+                _.-"%%|//%
+             _.' _.-"  /%%%
+         _.-'_.-" O)    \%%%
+        /.\.'            \%%%
+        \ /        _,     |%%%
+         `"-----"~`\   _,*'\%%'   _,--""""-,%%,
+                    )*^     `""~~`          \%%%,
+                  _/                         \%%%
+              _.-`/                           |%%,___
+          _.-"   /      ,           ,        ,|%%   .`\
+         /\     /      /             `\       \%'   \ /
+         \ \ _,/      /`~-._         _,`\      \`""~~`
+          `"` /-.,_ /'      `~"----"~    `\     \
+              \___,'                       \.-"`/
+                                            `--'
+
+
+
+awesome försvinner fr arch
+klipper bort gammalt skit från rc.lua:
+finns mkt kommentarer att ta bort
+
+    mywibox[s].widgets = {
+        {
+            mylauncher,
+            mytaglist[s],
+            mypromptbox[s],
+            layout = awful.widget.layout.horizontal.leftright
+        },
+        --exchanging these 2 lines
+	--batwidget,	
+        mylayoutbox[s],
+        mytextclock,
+        s == 1 and mysystray or nil,
+        mytasklist[s],
+        layout = awful.widget.layout.horizontal.rightleft
+    }
+end
+
+--
+        --ovanför "-- Create the wibox ":
+        -- Initialize widget
+	--batwidget = widget({ type = "textbox" }) -- i want text, not bar
+	-- Register widget
+	--vicious.register(batwidget, vicious.widgets.bat, '$2' '$1', 61, 'BAT1')
+	--vicious.register(batwidget, vicious.widgets.bat, '$2' '$1', 61, 'C177')
+        --new vicious 10-05-18, there is a widget now
+        
+        --stänger av, har bytt laptop
+    --batwidget = awful.widget.progressbar()
+    --batwidget:set_width(12)
+    --batwidget:set_height(24)
+    --batwidget:set_vertical(true)
+    --batwidget:set_background_color("#494B4F")
+    --batwidget:set_border_color(nil)
+    --batwidget:set_color("#AECF96")
+    --batwidget:set_gradient_colors({ "#AECF96", "#FBDF00", "#FB0000" })
+    --vicious.register(batwidget, vicious.widgets.bat, "$2", 61, "C177")
+
+---
+    -- Add widgets to the wibox - order matters
+    mywibox[s].widgets = {
+	mylauncher,
+        mytaglist[s],
+        mypromptbox[s],
+        right_aligned,
+        mytasklist[s],
+	-- trying to put these 3 in:
+        s == 1 and mysystray or nil,
+        mytextclock,
+        mylayoutbox[s],
+	
+        layout = awful.widget.layout.horizontal.leftright,
+        height = mywibox[s].height
+    }
+end
+---
+awsetbg -f feh nånting
+
+jag får inte mytasklist, mysystray, mytextclock, mylayoutbox
+cp en rc.breakme.lua
+
+====================================================================
+Sun Dec  5 23:08:30 CET 2010
+
+awesome startar inte, bytte tillfälligt till 3.4.8 och rc.lua passar inte
+kan inte kompilera lua-oocairo-git då pod2man inte hittas, 
+den perlmodulen finns, men inte i $PATH, fixar tillfälligt. behöver visst inte CPAN just nu
+jag la till själva perlscriptet till PATH isf mappen där det bor, skulle gjort:
+export PATH="/home/duke/bin:/usr/local/bin:/usr/bin:/bin:/usr/games:/home/duke/bin/scripts:/usr/lib/perl5/core_perl/bin/"
+nu gjorde jag ist:  ln -s /usr/lib/perl5/core_perl/bin/pod2man /usr/local/bin/pod2man
+
+	varken git eller 3.4.8 funkar med rc.lua även om awesome -k säger ok. behöver två rc.luas nu
+funkar nu!
+
+echo 'naughty.notify({text = awful.util.pread("cal") })' | awesome-client
+echo 'naughty.notify({text = "hejkomåhjälpme" })' | awesome-client
+
+
+============================================================
+-- Logitech G15 tag keybindings created by organdonor 12/01/2010
+-- Switch tag for screen 1: G1 - G6 | Switch tag for screen 2: G7 - G12
+for screen = 1, 2 do
+	for i = 1, 6 do
+		if screen == 1 then
+			keycode = 174 + i
+		else
+			keycode = 180 + i
+		end
+		globalkeys = awful.util.table.join(globalkeys,
+			awful.key({  }, "#" .. keycode,
+				function ()
+					if tags[screen][i] then
+						awful.tag.viewonly(tags[screen][i])
+					end
+				end),
+			awful.key({ "Control" }, "#" .. keycode,
+				function ()
+					if tags[screen][i] then
+						awful.tag.viewtoggle(tags[screen][i])
+					end
+				end),
+			awful.key({ modkey, }, "#" .. keycode,
+				function ()
+					if client.focus and tags[client.focus.screen][i] then
+						awful.client.movetotag(tags[screen][i])
+					end
+				end),
+			awful.key({ "Shift" }, "#" .. keycode,
+				function ()
+					if client.focus and tags[client.focus.screen][i] then
+						awful.client.toggletag(tags[screen][i])
+					end
+			end))
+	end
+-- Switch tags for both screens: G13 - G18
+	for i = 1, 6 do
+		keycode = 186 + i
+		globalkeys = awful.util.table.join(globalkeys,
+			awful.key({  }, "#" .. keycode,
+				function ()
+					if tags[screen][i] then
+						awful.tag.viewonly(tags[screen][i])
+					end
+				end))
+	end
+end
+
+============================================================
+awful.widget.launcher uses awful.widget.button for that button
+
+
+

@@ -1,0 +1,40 @@
+[Entry 2]
+Name=google chrome
+Comment=browse fast
+Icon=chromium-browser
+Exec=chromium-browser %U
+Path=/home/occam/Desktop
+Terminal=false
+StartupNotify=true
+
+[Global]
+MoveFirst=false
+ArrowPosition=0
+
+[Entry 0]
+Name=Web Browser
+Comment=Surf the internet
+Icon=/home/occam/pics/icons/opera.png
+Exec=exo-open --launch WebBrowser
+Path=/home/occam/Desktop
+Terminal=false
+StartupNotify=true
+
+[Entry 1]
+Name=conkeror
+Comment=browse with emacs keybinds
+Icon=applications-other
+Exec=conkeror
+Path=/home/occam/Desktop
+Terminal=false
+StartupNotify=true
+
+[Entry 3]
+Name=firefox
+Comment=std browse
+Icon=applications-other
+Exec=firefox-bin
+Path=/home/occam/Desktop
+Terminal=false
+StartupNotify=true
+
