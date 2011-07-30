@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<channel name="xfce4-panel" version="1.0">
+  <property name="plugins" type="empty">
+    <property name="clipman" type="empty">
+      <property name="settings" type="empty">
+        <property name="max-images-in-history" type="uint" value="0"/>
+        <property name="add-primary-clipboard" type="bool" value="true"/>
+        <property name="max-texts-in-history" type="uint" value="15"/>
+      </property>
+    </property>
+  </property>
+</channel>

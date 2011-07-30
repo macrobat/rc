@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<channel name="displays" version="1.0">
+  <property name="Default" type="empty">
+    <property name="Layout" type="string" value="Screens"/>
+    <property name="NumScreens" type="int" value="1"/>
+    <property name="Screen_0" type="empty">
+      <property name="Resolution" type="string" value="49x0"/>
+      <property name="RefreshRate" type="int" value="0"/>
+      <property name="Rotation" type="int" value="0"/>
+    </property>
+  </property>
+  <property name="Schemes" type="empty">
+    <property name="Apply" type="string" value="Default"/>
+  </property>
+</channel>

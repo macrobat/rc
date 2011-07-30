@@ -1,0 +1,18 @@
+[Global]
+ShowFrame=false
+Rows=1
+
+[Applications]
+xfce4-power-manager=false
+opera=false
+shaman=false
+gxine=false
+xchat=false
+wicd-client.py=false
+deluge=false
+vlc=false
+pidgin=false
+osmo (handy personal organizer)=false
+rednotebook=false
+parcellite=false
+

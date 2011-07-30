@@ -1,0 +1,29 @@
+!#/bin/bash
+#xephawe. tests awesome with rc.lua.new in Xephyr (upper case)
+#  (a nested X)
+#edit rc.lua.new, then restart awesome with:
+#pgrep awesome
+#kill -s SIGHUP <pid_of_awesome_in_Xephyr>
+#getting hal errors
+#how do i shutdown Xephyr and remove lockfile?
+#xephyr can grab the keyboard
+#mod4+ctrl+shift
+#ctrl+shift to escape again
+#if your mouse pointer cant leave the Xephyr window, it worked
+
+VC=1
+if [ $# -eq 1 ] ; then
+	VC=$1
+fi
+Xephyr -ac -br -noreset -screen 800x600 :$VC &
+#DISPLAY=:$VC.0 awesome -c ~/.config/awesome/rc.lua.new &
+DISPLAY=:$VC.0 awesome -c ~/.config/awesome/rc.new.lua &
+
+#add apps to start here ^^
+
+#Xephyr -ac -br -noreset -screen 1152x720 :2 &
+#Xephyr -ac -br -noreset -screen 800x600 :2 &
+#DISPLAY=:2.0 awesome -c ~/.config/awesome/rc.lua.new &
+#Xephyr -ac -br -noreset -screen 800x600 :1 &
+#DISPLAY=:1.0 awesome -c ~/.config/awesome/rc.lua.new &
+
