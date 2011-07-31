@@ -35,6 +35,9 @@ set mousehide
 "see gvim.desktop in ~/.local/share/applications
 tab all
 
+" :Man whatever
+:so /usr/share/vim/vim73/ftplugin/man.vim
+
 " first, enable status line always
 set laststatus=2
 

@@ -268,6 +268,9 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Return", function () awful.util.spawn_with_shell(terminal) end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
+	-- FIXME dollar Dollar $ wontwork, xbindkeys also fails
+    --awful.key({ modkey,           }, "Dollar", awful.util.spawn("/usr/bin/site_perl/dmenuclip")),
+    awful.key({         "Control" }, "Escape", awful.util.spawn("/usr/bin/site_perl/dmenuclip")),
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
     awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
