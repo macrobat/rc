@@ -15,8 +15,9 @@ pick and choose:
 		warsow
 		openarena
 
-	emacs
+	~/.emacs.d/
 
 	~/.config/
-
+		awesome
+		openbox
 
