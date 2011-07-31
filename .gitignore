@@ -17,5 +17,9 @@
 *.tar
 *.zip
 
-# log and db
+# log, db and history
+.bash_history
+.zsh_history
+.lesshst
+.viminfo
 

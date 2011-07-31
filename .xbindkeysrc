@@ -55,8 +55,8 @@
 
 # launch apps
 "gmrun"
-    m:0x4 + c:66
-    Control + Escape 
+    m:0x18 + c:68
+    Alt+Mod2 + F2
 
 # using unix epoch timestamps (seconds since 1970-01-01 00:00:00 UTC)
 "scrot '%s_scrot.png' -q 85 -e 'mv $f ~/pics/screenshots'"
@@ -88,13 +88,17 @@
     #m:0x40 + c:51
     #Mod4 + apostrophe 
 
+# use the global path
+#"/home/occam/bin/packages/gitclown/clipbored/scripts/dmenuclip"
 # dmenuclip
-"/home/occam/bin/packages/gitclown/clipbored/scripts/dmenuclip"
-    #m:0x50 + c:52
+"/usr/bin/site_perl/dmenuclip"
+    m:0x4 + c:66
+    Control + Escape 
+# keys won't work:
+	#m:0x50 + c:52
     #Mod2+Mod4 + z 
-	m:0x50 + c:49
-	Mod2+Mod4 + dollar
-
+	#m:0x50 + c:49
+	#Mod2+Mod4 + dollar
 
 #
 # End of xbindkeys configuration
