@@ -8,7 +8,7 @@ set nocompatible
 " colorscheme desert
 
 " open all files in tabs. (use the -p --remote-tab-silent options too)
-tab all
+"tab all
 
 " slipp :vert före diffsplit
 " (for horizontal splits "-o" as cmdline arg)
@@ -105,6 +105,9 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "place new stuff below:
+
+" change dir to wherever you are (will break stuff?)
+se autochdir
 
 " http://sjl.bitbucket.org/gundo.vim/
 " p on a state to show diff between current and selected state
@@ -387,8 +390,6 @@ noremap <silent> ,J <C-W>J
 
 " some addons aren't managed. 
 " notice that line break \ is on _first_ non-whitespace
-set runtimepath+=~/.vim/Gundo
-set runtimepath+=~/.vim/FuzzyFinder
 function! SetupVAM()
     set runtimepath+=~/.vim/vim-addon-manager
     " commenting try .. endtry because trace is lost if you use it.
@@ -410,6 +411,9 @@ call SetupVAM()
 " experimental: run after gui has been started (gvim) [3]
 " option1: au VimEnter * call SetupVAM()
 " option2: au GUIEnter * call SetupVAM()
+
+" vam doesn't add these. I want the commands and the help
+set runtimepath+=~/.vim/The_NERD_Commenter,~/.vim/unimpaired,~/.vim/FuzzyFinder,~/.vim/Gundo,~/.vim/Insertlessly,~/.vim/CSApprox,~/.vim/L9,~/.vim/The_NERD_tree,~/.vim/YankRing,~/.vim/surround
 
 " maybe <silent> 
 noremap <F2> :call ToggleLineNumbering()<CR>

@@ -20,6 +20,7 @@
 # log, db and history
 .bash_history
 .zsh_history
+*history
 .lesshst
 .viminfo
 

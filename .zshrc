@@ -250,8 +250,8 @@ if [ "$TERM" != "dumb" ]; then
 fi
 
 #export BROWSER="opera -w"
-#export BROWSER="firefox"
-export BROWSER="conkeror"
+export BROWSER="firefox"
+#export BROWSER="conkeror"
 export PAGER="less -M -e"
 export EDITOR="vim"
 # for conkeror, may take precedence over EDITOR
@@ -297,70 +297,83 @@ rationalise-dot() {
 zle -N rationalise-dot
 bindkey . rationalise-dot
 
-# alias l='ls -CF' vill inte mus-copy-paste farliga extratecken som '*'
+# alias l='ls -CF' vill inte ha mus-copy-paste farligt '*' extratecken
 # har ju redan färgkodning
+# -F, --classify
+#        append indicator (one of */=>@|) to entries
+# --file-type
+#        likewise, except do not append `*'
+ 
 alias l='ls -C'
 alias ll='ls -lAh'
 alias la='ls -Ah'
 alias lu='l ..'
 alias l..='l ..'
-alias lg='ls -CF --group-directories-first'
+alias lg='ls -C --group-directories-first'
 alias lsl='l | less -e'
 alias lll='ll | less -e'
+alias l,='ls -m' # comma-separated
+alias l_='ls -x' # horizontal order
 
 alias lsg='less -M +G'
 alias lm='less -M -e'
 alias lhc='hexdump -C | less -M -e'
-alias t60='tail -n 60'
-alias t30='tail -n 30'
 
 alias grepc='grep -c'
 alias grepi='grep -i'
 alias grepn='grep -n'
 alias grepv='grep -v'
 
+alias t60='tail -n 60'
+alias t30='tail -n 30'
 alias sudo='sudo '
-#alias pp='pgrep -l'
-#alias pp='ps u | grep [U]SER; ps aux | grep -i'
-#function pp() { ps u | grep [U]SER; ps aux | grep -v "grep --color=auto" | grep -i "$@" ; }
+# alias pp='pgrep -l'
+# alias pp='ps u | grep [U]SER; ps aux | grep -i'
+# function pp() { ps u | grep [U]SER; ps aux | grep -v "grep --color=auto" | grep -i "$@" ; }
 # lite fult, tar bort       pp: no matches found: [U]SER
 # en process per pipe, ju :)
 function pp() { ps u | grep USER; ps aux | grep -v "grep --color=auto" | grep -i "$@" ; }
 # vill inte ferga "USER", kan se till att inte visa pid-numret #en process per pipe, ju :)
 
-# test for -x of pacman and aptitude
-# /usr/bin/aptitude is a 2nd degree symlink, 
-# just test for existance
 #alias p='pacman-color'
-alias ss='p -Ss'	# search
-alias si='p -Si'	# show
-alias qs='p -Qs' 	# search installed
-alias qi='p -Qi' 	# show installed
-alias qo='p -Qo' 	# show pkg owning file
-alias ql='p -Ql' 	# list files belonging to
-alias qdt='p -Qdt' 	# see orphans
-alias qm='p -Qm' 	# list foreign ( AUR / my own pkgs )
-alias qc='p -Qc' 	# read changelog
+if [[ -e /usr/bin/pacman ]]
+then
+	alias ss='p -Ss'	# search
+	alias si='p -Si'	# show
+	alias qs='p -Qs' 	# search installed
+	alias qi='p -Qi' 	# show installed
+	alias qo='p -Qo' 	# show pkg owning file
+	alias ql='p -Ql' 	# list files belonging to
+	alias qdt='p -Qdt' 	# see orphans
+	alias qm='p -Qm' 	# list foreign ( AUR / my own pkgs )
+	alias qc='p -Qc' 	# read changelog
+fi
 
-# debian stuffs
-#alias a='aptitude'
-#alias au='sudo aptitude update'
-#alias adg='sudo aptitude update && sudo aptitude full-upgrade'
-#alias ai='sudo aptitude install'
-#alias ah='apt-cache search' # snabbare, local db
-#alias s='aptitude search'
+## debian stuffs
+if [[ -e /usr/bin/aptitude ]]
+then
+	alias a='aptitude'
+	alias au='sudo aptitude update'
+	alias adg='sudo aptitude update && sudo aptitude full-upgrade'
+	alias ai='sudo aptitude install'
+	alias ah='apt-cache search' # snabbare, local db
+	alias s='aptitude search'
+	# apt-cache show visar inte status installerat eller ej
+	alias aw='aptitude show'  # "as" is the gnu assembler
+	alias acw='apt-cache show'  # snabbare, local db
+	alias ach='apt-cache showpkg'
+	alias ac='apt-cache'
+	alias acp='apt-cache policy'
+	alias dpl='dpkg -l | grep "ii " |  grep -i'
+	dpkg --get-selections | grep -i  #bara namn, inte vers/descr
+	#alias rel='ept-cache related' #stopped working. axi-cache
+fi
 
-## apt-cache show visar inte status installerat eller ej
-#alias aw='aptitude show'  # "as" is the gnu assembler
-#alias acw='apt-cache show'  # snabbare, local db
-#alias ach='apt-cache showpkg'
-#alias ac='apt-cache'
-#alias acp='apt-cache policy'
-#alias dpl='dpkg -l | grep "ii " |  grep -i'
-#dpkg --get-selections | grep -i  #bara namn, inte vers/descr
-#alias rel='ept-cache related' #stopped working. axi-cache
+if [[ -e /usr/bin/colordiff ]]
+then
+	alias diff="colordiff"
+fi
 
-alias km='killall mc'
 alias killal='killall'
 alias kilall='killall'
 

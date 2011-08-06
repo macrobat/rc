@@ -35,8 +35,14 @@
 (require 'desktop-menu)
 (desktop-save-mode 1)
 
+;; old crap. want unique buffer names
+;;(require 'uniquify) (setq uniquify-buffer-name-style 'forward)
+(toggle-uniquify-buffer-names) ; how does this work?
+
 ;; emacsclient - tells a running Emacs to visit a file
-;; For emacsclient to work, you need an already running Emacs with a server
+;; you need an already running Emacs server
+;; ec() { emacsclient --create-frame --alternate-editor="" -nw "$@"; }
+;; # alias em='emacsclient'
 (server-start)
 
 ;; DONOTWANT!! (glasses-mode) sätter visst in _ här och var
