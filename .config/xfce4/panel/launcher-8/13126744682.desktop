@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=google chrome
+Comment=browse fast
+Icon=chromium-browser
+Exec=chromium-browser %U
+Path=/home/occam/Desktop
+Terminal=false
+StartupNotify=true
+

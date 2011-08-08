@@ -47,16 +47,20 @@ colors
 
 # http://grml.org/zsh/zsh-lovers.html
 
-#PROMPT='%n%B[%~]%b%% '
-#PROMPT=$'%{\e[1;32m%}%zsh%{\e[1;00m%}|%n%B[%~]%b%% '
-PROMPT=$'%{\e[1;32m%}%n%{\e[1;00m%}@%m%B[%~]%b%% '
-#PROMPT='zsh|%n%B[%~]%b%% ' #setting it again, further down
-#PROMPT=$'%{\e[1;32m%}zsh%{\e[1;00m%}|%n%B[%~]%b%% '
 # Wrap characters, that do *not* consume space in %{…%}. Repeat ten times! 
 # Escape sequences for colors are such characters.
 # moved color prompt into the color test
 # this will be a change from the .bashrc
 # maybe a 2-line prompt for narrow terminals?
+#PROMPT='%n%B[%~]%b%% '
+#PROMPT=$'%{\e[1;32m%}%zsh%{\e[1;00m%}|%n%B[%~]%b%% '
+PROMPT=$'%{\e[1;32m%}%n%{\e[1;00m%}@%m%B[%~]%b%% '
+#PROMPT='zsh|%n%B[%~]%b%% ' #setting it again, further down
+#PROMPT=$'%{\e[1;32m%}zsh%{\e[1;00m%}|%n%B[%~]%b%% '
+if [[ $TERM = "dumb" ]]
+then
+	PROMPT="%n@%m%B[%~]%b%% "
+fi
 
 # revise these! man zshcompsys
 #zstyle ':completion:*' completer _expand _complete _correct _approximate
@@ -270,7 +274,8 @@ c() { (($#)) && pushd "$@" || popd; ls -C; } # golfing
 cx() { (($#)) && pushd "$@" || popd; }
 
 function bak() { cp $1{,.bak} ; }
-function swp() { find ${1:=.} -name "*.swp" -exec rm -i {} \; ; }
+# made vim use ~/.vim/swapfiles as a swapdir
+#function swp() { find ${1:=.} -name "*.swp" -exec rm -i {} \; ; }
 # put the rest of the argument list at the end. $@:something 2
 function drop() { find -L ${2:=.} -iname "*$1*" ; }
 function ec() { emacsclient --create-frame --alternate-editor="" -nw "$@" ; }

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Editor
+Comment=Edit text files
+Icon=gvim
+Exec=gvim -geometry 70x40
+Path=/home/occam/doku
+Terminal=false
+StartupNotify=true
+

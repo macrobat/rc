@@ -46,7 +46,8 @@ define_key(content_buffer_normal_keymap, "back_space", "back");
 define_key(content_buffer_normal_keymap, "S-back_space", "forward");
 define_key(content_buffer_normal_keymap, "S-space", "caret-backward-page");
 define_key(content_buffer_normal_keymap, "C-w", "kill-current-buffer");
-//define_key(caret_keymap, "S-space","caret-forward-page");
+define_key(content_buffer_normal_keymap, "p", "paste-url");
+//define_key(caret_keymap, "S-space","caret-backward-page"); // already bound
 
 // ":" better than "g". open new tab without C-u first
 define_key(content_buffer_normal_keymap, ":", "find-url-new-buffer");
@@ -78,7 +79,14 @@ define_key(content_buffer_normal_keymap, "+", "zoom-in-full");
 define_key(content_buffer_normal_keymap, "=", "zoom-reset-full");
 define_key(content_buffer_normal_keymap, "-", "zoom-out-full");
 
+// wontwork, putting narrower tabs in a separate file
+// "data:text/css,"+escape(".tab2 { min-width: 80px; max-width: 160px; }")
+let (sheet = get_home_directory()) {
+	sheet.appendRelativePath(".config/conkeror/tab-bar.css");
+	register_agent_stylesheet(make_uri(sheet));
+}
 // M-w doesn't seem to work well. Use c 0 to copy adress to clipboard
+
 // make y do the same as c 0 do
 //define_key(content_buffer_normal_keymap, "c", "copy"); 
 // how select 0 / simulate it? ** c 0 works too. 
