@@ -1,0 +1,6 @@
+// ~/.config/conkeror/tab-bar.css
+
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+.tab2 { min-width: 100px; max-width: 160px; }
+

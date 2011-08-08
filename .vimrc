@@ -106,6 +106,9 @@ endif
 
 "place new stuff below:
 
+" swap directory, uniquified names where % is /
+set directory=$HOME/.vim/swapfiles//,.,~/tmp,/var/tmp,/tmp
+
 " change dir to wherever you are (will break stuff?)
 se autochdir
 
@@ -319,7 +322,7 @@ set softtabstop=4 "0
 " DONOTWANT!!!
 set tabstop=4 "8
 " needs autocommand?
-set textwidth=79
+set textwidth=80
 
 " using :YAIFAMagic (plugin) to detect settings
 " this is not what i want :(

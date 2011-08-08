@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=firefox
+Comment=std browse
+Icon=applications-other
+Exec=firefox-bin
+Path=/home/occam/Desktop
+Terminal=false
+StartupNotify=true
+

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=conkeror
+Comment=browse with emacs keybinds
+Icon=applications-other
+Exec=conkeror
+Path=/home/occam/Desktop
+Terminal=false
+StartupNotify=true
+
