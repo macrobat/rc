@@ -65,6 +65,7 @@
 ;; (rainbow-delimiters-mode)
 ;; maybe like this? (setq rainbow-delimiters-mode 1)
 
+;; You don't add a hook; you hang a function on a hook.
 ;; using elpa now (load-file "~/.emacs.d/rainbow/rainbow-mode.el")
 (require 'rainbow-mode)
 (add-hook 'css-mode-hook (rainbow-mode))

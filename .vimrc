@@ -48,7 +48,10 @@ if &t_Co > 2 || has("gui_running")
 endif
 
 set autoindent
-set smartindent
+
+" Use 'filetype indent on' and be happy.
+"set smartindent "XXX don't use
+
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
 

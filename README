@@ -3,21 +3,24 @@ Different machines can branch.
 ln -sb file_in_rc default_name
 
 leave some things out:
-	~/.ssh/
-	~/.macromedia/
-
+~/.ssh/
+~/.macromedia/
+~/.cache
+~/.ccache
+	
 
 pick and choose:
-	games
-		xonotic
-		nexuiz
-		quake
-		warsow
-		openarena
+games
+	~/.xonotic
+	~/.nexuiz
+	~/.darkplaces
+	~/.warsow
+	~/.openarena
 
-	~/.emacs.d/
+~/.emacs.d/
 
-	~/.config/
-		awesome
-		openbox
+~/.config/
+	awesome
+	openbox
+	geeqie
 

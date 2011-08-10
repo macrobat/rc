@@ -1,6 +1,0 @@
-T 1303931958 19*	19Now talking on #xchat
-T 1303931958 29*	29Topic for #xchat 29is: Welcome to #xchat - Featuring the lowest collective IQ of the entire ChatJunkies network | U R are no real words
-T 1303931958 29*	29Topic for #xchat 29set by andabata 29at Sat Feb  5 14:07:44 2011
-T 1303931958 28-29ChanServ28-	[#xchat] ***Welcome To The World Of IRC*** | If You Wish To Speak With A User In Private Please Ask Permission First | Have Fun***
-T 1303931973 23*	23Chrille has quit (23Connection closed23)
-T 1303931984 19*	19Chrille (Chrille@CJ-r4uo55.cust.bredbandsbolaget.se) has joined #xchat
