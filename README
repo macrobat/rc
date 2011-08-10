@@ -3,8 +3,8 @@ Different machines can branch.
 ln -sb file_in_rc default_name
 
 leave some things out:
-~/.ssh/
-~/.macromedia/
+~/.ssh
+~/.macromedia
 ~/.cache
 ~/.ccache
 	
@@ -17,7 +17,8 @@ games
 	~/.warsow
 	~/.openarena
 
-~/.emacs.d/
+~/.emacs.d
+~/.moc
 
 ~/.config/
 	awesome
