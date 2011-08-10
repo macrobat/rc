@@ -18,9 +18,16 @@
 *.zip
 
 # log, db and history
+*.log
+.xchat2/scrollback/*/*
+.dmenu_cache
 .bash_history
 .zsh_history
 *history
 .lesshst
 .viminfo
+.pulse-cookie
+*cache.db
+.cache/*
+.ccache/*
 

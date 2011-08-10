@@ -8,3 +8,5 @@ export PATH
 # to see if we are in a login shell
 # streng="profile login"
 
+# [[ -o login ]] && echo yes || echo no
+
