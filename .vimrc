@@ -150,18 +150,17 @@ let g:is_bash = 1
 " move selected lines <C-Up> or <C-Down>
 " not working in terminal, needs other binds
 " downloaded tpopes unimpaired.vim http://www.vim.org/scripts/script.php?script_id=1590
-" Bubble single lines
-nmap <C-Up> [e
-nmap <C-Down> ]e
-" Bubble multiple lines
-vmap <C-Up> [egv
-vmap <C-Down> ]egv
-" works!
+" <C-Up> or <C-Down> wontwork. using M-k, M-j
+" Bubble single lines in normal
 nmap <A-Up> [e
 nmap <A-Down> ]e
-" Bubble multiple lines
+nmap k [e
+nmap j ]e
+" Bubble multiple lines in visual
 vmap <A-Up> [egv
 vmap <A-Down> ]egv
+vmap k [egv
+vmap j ]egv
 " Visually select the text that was last edited/pasted
 nmap gV `[v`]
 
@@ -235,7 +234,8 @@ command! -bang -nargs=? -complete=help H tab help<bang> <args>
 nnoremap Y y$
 
 " like emacs M-x (why is it an ø?)
-nnoremap ø :
+" nnoremap ø : " specific for my setup?
+nnoremap x :
 
 " move in visual lines, (nice if line is wrapped)
 " currently not working. because of "text bubbling"?
@@ -243,6 +243,9 @@ nnoremap k gk
 nnoremap j gj
 nnoremap <Up> gk
 nnoremap <Down> gj
+
+nnoremap <S-h> gT
+nnoremap <S-l> gt
 
 " maps ',b' to display the buffer list and invoke the ':buffer' command. 
 " You can enter the desired buffer number and hit <Enter> to edit the buffer.
@@ -258,6 +261,7 @@ nmap <leader>l :set list!<CR>
 map ,cd :cd %:p:h<CR>
 " vimtip2, use %% to expand path for current buf
 cabbr <expr> %% expand('%:p:h')
+cabbr t tabe
 "http://vimcasts.org/episodes/the-edit-command/
 "cnoremap %% <C-R>=expand('%:h').'/'<cr>
 "map <leader>ew :e %%

@@ -182,16 +182,17 @@ alias -s txt=$EDITOR
 # example it is still possible to  create an alias for the command 
 # ps) and the two sets are never listed together.
 
-#alias -g gets expanded invisibly (and may interfere with stuff?)
-alias -g Il=" | less -M -e "
-alias -g Ix=" | xargs "
-alias -g Ig=" | grep -i "
-alias -g Im=" | column -t "
-# \n jumps to a new line that has: pipe pipe quote> ' ' '
-alias -g It=" | tr '\n' ' ' "
-alias -g Ic=" | cut -d ' ' -f "
-alias -g Ii=" | xclip -in "
-alias -g Io=" xclip -out "
+# alias -g gets expanded invisibly (and may interfere with stuff?)
+# use something more exotic than I
+#alias -g Il=" | less -M -e "
+#alias -g Ix=" | xargs "
+#alias -g Ig=" | grep -i "
+#alias -g Im=" | column -t "
+## \n jumps to a new line that has: pipe pipe quote> ' ' '
+#alias -g It=" | tr '\n' ' ' "
+#alias -g Ic=" | cut -d ' ' -f "
+#alias -g Ii=" | xclip -in "
+#alias -g Io=" xclip -out "
 
 # from now on, you can't even paste these symbols, instantly expanded. man zshzle.
 #                                       alt_gr + key
@@ -213,7 +214,8 @@ bindkey -s đ " find -iname '**' "	#f  #see drop()
 ####################################################
 # should be almost like .bashrc below:
 #PATH=/home/occam/bin:/usr/local/bin:/usr/bin:/bin:/usr/games:/home/occam/bin/scripts
-PATH_BAK="$PATH"
+test "$PATH_BAK" || PATH_BAK="$PATH"
+
 PATH=/usr/local/bin:/usr/bin:/bin:/usr/games:/sbin:/usr/sbin
 export PATH
 
