@@ -3,7 +3,8 @@
 ;; mapc is for side-effects only, it doesn't return a list like mapcar does
 (mapc '(lambda (dir) (add-to-list 'load-path dir)) '("~/.emacs.d/"))
 ;; removed these, use packages and elpa
-;; "~/.emacs.d/workgroups.el/" "~/.emacs.d/slime/" "~/.emacs./rainbow" "emacs-color-theme-solarized"
+;; "~/.emacs.d/workgroups.el/" "~/.emacs.d/slime/" "~/.emacs./rainbow"
+;; "emacs-color-theme-solarized"
 ;; no need for special slime. works with clisp now
 ;; "/usr/share/emacs/site-lisp/slime/contrib/"
 ;; have added slime to default Info dir
@@ -11,10 +12,11 @@
 
 ;; lägg allt i ~/emacs.d inbegriper .emacs .emacs-places .emms-cache .ido.last
 ;; You can use ~/.emacs.d/init.el instead of ~/.emacs with no links required
-;; and you can customize the variable ido-save-directory-list-file. the same with emms-directory
-;; emms-directory specifies where emms puts other things. there is also, emms-cache-file.
+;; and you can customize the variable ido-save-directory-list-file.
+;; the same with emms-directory emms-directory specifies where emms
+;; puts other things. there is also, emms-cache-file.
 
-;; package.el comes with emacs24
+;; package.el is put in the elpa dir or comes with emacs24
 (require 'package)
 (add-to-list 'package-archives
 	     '("marmalade" . "http://marmalade-repo.org/packages/"))
@@ -563,3 +565,14 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  )
+
+
+;;; This was installed by package-install.el.
+;;; This provides support for the package system and
+;;; interfacing with ELPA, the package archive.
+;;; Move this code earlier if you want to reference
+;;; packages in your .emacs.
+(when
+    (load
+     (expand-file-name "~/.emacs.d/elpa/package.el"))
+  (package-initialize))
