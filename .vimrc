@@ -110,7 +110,15 @@ endif
 "place new stuff below:
 
 " swap directory, uniquified names where % is /
-set directory=$HOME/.vim/swapfiles//,.,~/tmp,/var/tmp,/tmp
+" set directory=$HOME/.vim/swapfiles//,.,~/tmp,/var/tmp,/tmp
+if ! isdirectory(expand('~/.vim/swapfiles'))
+   call mkdir(expand('~/.vim/swapfiles'))
+endif
+if isdirectory(expand('~/.vim/swapfiles'))
+   set directory=~/.vim/swapfiles//
+else
+   set directory=.,/var/tmp,/tmp
+endif
 
 " change dir to wherever you are (will break stuff?)
 se autochdir
@@ -150,7 +158,7 @@ let g:is_bash = 1
 " move selected lines <C-Up> or <C-Down>
 " not working in terminal, needs other binds
 " downloaded tpopes unimpaired.vim http://www.vim.org/scripts/script.php?script_id=1590
-" <C-Up> or <C-Down> wontwork. using M-k, M-j
+" <C-Up> or <C-Down> wontwork. using M-k, M-j. stopped working?!
 " Bubble single lines in normal
 nmap <A-Up> [e
 nmap <A-Down> ]e
