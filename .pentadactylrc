@@ -12,6 +12,10 @@ nmap - :zoom! -18<CR>
 nmap <C-+> :zoom +16<CR>
 nmap <C--> :zoom -16<CR>
 
+" to reset the caret (for a search) when you gg to top of page
+" so that you don't start a new search where the old one left of
+nmap -b gg igg<Esc>
+
 cabbreviate H sidebar History
 
 " Enable passthrough mode on some Google sites:
