@@ -1,15 +1,15 @@
-[2011-08-16 20:39:54] weechat 0.3.5 (compiled on May 25 2011 17:58:29)
-[2011-08-16 20:39:54] Reading configuration file weechat.conf
-[2011-08-16 20:39:54] Reading configuration file plugins.conf
-[2011-08-16 20:39:54] Reading configuration file irc.conf
-[2011-08-16 20:39:54] irc: connecting to server chat.freenode.net/6667...
-[2011-08-16 20:39:54] irc: connecting to server irc.oftc.net/6667...
-[2011-08-16 20:39:54] irc: connecting to server irc.quakenet.org/6667...
-[2011-08-16 20:39:54] Reading configuration file charset.conf
-[2011-08-16 20:39:54] Reading configuration file aspell.conf
-[2011-08-16 20:39:54] Reading configuration file rmodifier.conf
-[2011-08-16 20:39:54] Reading configuration file wg.conf
-[2011-08-16 20:39:54] Reading configuration file logger.conf
-[2011-08-16 20:39:54] Reading configuration file relay.conf
-[2011-08-16 20:39:54] Reading configuration file xfer.conf
-[2011-08-16 20:39:54] Reading configuration file alias.conf
+[2011-08-17 01:51:26] weechat 0.3.5 (compiled on May 25 2011 17:58:29)
+[2011-08-17 01:51:26] Reading configuration file weechat.conf
+[2011-08-17 01:51:26] Reading configuration file plugins.conf
+[2011-08-17 01:51:26] Reading configuration file irc.conf
+[2011-08-17 01:51:26] irc: connecting to server chat.freenode.net/6667...
+[2011-08-17 01:51:26] irc: connecting to server irc.oftc.net/6667...
+[2011-08-17 01:51:26] irc: connecting to server irc.quakenet.org/6667...
+[2011-08-17 01:51:26] Reading configuration file charset.conf
+[2011-08-17 01:51:26] Reading configuration file aspell.conf
+[2011-08-17 01:51:26] Reading configuration file rmodifier.conf
+[2011-08-17 01:51:27] Reading configuration file wg.conf
+[2011-08-17 01:51:27] Reading configuration file logger.conf
+[2011-08-17 01:51:27] Reading configuration file relay.conf
+[2011-08-17 01:51:27] Reading configuration file xfer.conf
+[2011-08-17 01:51:27] Reading configuration file alias.conf
