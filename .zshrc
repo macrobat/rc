@@ -62,6 +62,8 @@ then
 	PROMPT="%n@%m%B[%~]%b%% "
 fi
 
+PROMPT_BAK="$PROMPT"
+
 # revise these! man zshcompsys
 #zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' completions 1
@@ -141,6 +143,19 @@ bindkey '^i'    expand-or-complete-prefix
 bindkey '^]'    vi-match-bracket    # C-5 (under %)
 bindkey '^[k'   kill-region         # mark with C-<Space>
 
+# bind meta f meta b for solaris
+
+### #zsh Mikachu
+function _self_insert() {
+  # Don't OOM if you accidentally press some big numeric without watching.
+  if (( NUMERIC > 1000 )) || (( NUMERIC < -1000)); then
+    zle -M "Unsetting NUMERIC"
+    unset NUMERIC
+  fi
+  zle .self-insert
+}
+
+
 # http://bbs.archlinux.org/viewtopic.php?id=64607
 # Set up auto extension stuff
 # läs i mailcap?
@@ -216,7 +231,8 @@ bindkey -s đ " find -iname '**' "	#f  #see drop()
 #PATH=/home/occam/bin:/usr/local/bin:/usr/bin:/bin:/usr/games:/home/occam/bin/scripts
 test "$PATH_BAK" || PATH_BAK="$PATH"
 
-PATH=/usr/local/bin:/usr/bin:/bin:/usr/games:/sbin:/usr/sbin
+# franz allegro lisp
+PATH=/usr/local/bin:/usr/bin:/bin:/usr/games:/sbin:/usr/sbin:/home/occam/bin/packages/franz/acl82express
 export PATH
 
 # (some folders i dont have), i might want /opt/qt/bin . mtr is in /usr/sbin
