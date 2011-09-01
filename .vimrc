@@ -110,7 +110,7 @@ endif
 "place new stuff below:
 
 " swap directory, uniquified names where % is /
-" set directory=$HOME/.vim/swapfiles//,.,~/tmp,/var/tmp,/tmp
+" set directory=~/.vim/swapfiles//,.,~/tmp,/var/tmp,/tmp
 if ! isdirectory(expand('~/.vim/swapfiles'))
    call mkdir(expand('~/.vim/swapfiles'))
 endif
@@ -158,10 +158,12 @@ let g:is_bash = 1
 " move selected lines <C-Up> or <C-Down>
 " not working in terminal, needs other binds
 " downloaded tpopes unimpaired.vim http://www.vim.org/scripts/script.php?script_id=1590
-" <C-Up> or <C-Down> wontwork. using M-k, M-j. stopped working?!
+" <C-Up> or <C-Down> wontwork. 
+" using M-k and M-j for 
 " Bubble single lines in normal
 nmap <A-Up> [e
 nmap <A-Down> ]e
+" terminal:
 nmap k [e
 nmap j ]e
 " Bubble multiple lines in visual
@@ -270,6 +272,8 @@ map ,cd :cd %:p:h<CR>
 " vimtip2, use %% to expand path for current buf
 cabbr <expr> %% expand('%:p:h')
 cabbr t tabe
+imap jj <esc>
+
 "http://vimcasts.org/episodes/the-edit-command/
 "cnoremap %% <C-R>=expand('%:h').'/'<cr>
 "map <leader>ew :e %%

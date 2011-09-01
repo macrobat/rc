@@ -1,7 +1,7 @@
 ;; cons onto load-path list before we can load/require libs
 ;;(add-to-list 'load-path "~/.emacs.d/")
 ;; mapc is for side-effects only, it doesn't return a list like mapcar does
-(mapc '(lambda (dir) (add-to-list 'load-path dir)) '("~/.emacs.d/"))
+(mapc '(lambda (dir) (add-to-list 'load-path dir)) '("~/.emacs.d/" "~/.emacs.d/elpa"))
 ;; removed these, use packages and elpa
 ;; "~/.emacs.d/workgroups.el/" "~/.emacs.d/slime/" "~/.emacs./rainbow"
 ;; "emacs-color-theme-solarized"
@@ -17,7 +17,8 @@
 ;; puts other things. there is also, emms-cache-file.
 
 ;; package.el is put in the elpa dir or comes with emacs24
-(require 'package)
+;; (require 'package)
+(load "package_23_github.el")
 (add-to-list 'package-archives
 	     '("marmalade" . "http://marmalade-repo.org/packages/"))
 ;; Each element in this list should be a list (NAME VERSION)
@@ -241,6 +242,10 @@
 (global-set-key (kbd "C-x f") 'ido-find-file)
 ;; gör ingenting, returnera ingenting, kbd macro is C-x (
 (global-set-key (kbd "C-x C-k RET") 'ignore)
+
+;; C-x { runs the command shrink-window-horizontally
+;; C-x } runs the command enlarge-window-horizontally
+;; C-x ^ runs the command enlarge-window
 
 ;; XXX wontwork
 ;; (global-set-key (kbd "C-x {") (lambda () (interactive) '(shrink-window-horizontally (5)))
