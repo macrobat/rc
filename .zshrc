@@ -350,6 +350,8 @@ alias grepv='grep -v'
 alias t60='tail -n 60'
 alias t30='tail -n 30'
 alias sudo='sudo '
+alias x='chmod u+x'
+
 # alias pp='pgrep -l'
 # alias pp='ps u | grep [U]SER; ps aux | grep -i'
 # function pp() { ps u | grep [U]SER; ps aux | grep -v "grep --color=auto" | grep -i "$@" ; }

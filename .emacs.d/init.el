@@ -1,7 +1,16 @@
 ;; cons onto load-path list before we can load/require libs
 ;;(add-to-list 'load-path "~/.emacs.d/")
 ;; mapc is for side-effects only, it doesn't return a list like mapcar does
-(mapc '(lambda (dir) (add-to-list 'load-path dir)) '("~/.emacs.d/" "~/.emacs.d/elpa"))
+(mapc '(lambda (dir) (add-to-list 'load-path dir)) '("~/.emacs.d/" "~/.emacs.d/elpa" "~/.emacs.d/elpa/paredit-22"))
+;; do I neeed all dirs in elpa too?
+
+;; set up unicode
+(prefer-coding-system       'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(setq default-buffer-file-coding-system 'utf-8)
+
 ;; removed these, use packages and elpa
 ;; "~/.emacs.d/workgroups.el/" "~/.emacs.d/slime/" "~/.emacs./rainbow"
 ;; "emacs-color-theme-solarized"
@@ -24,9 +33,16 @@
 ;; Each element in this list should be a list (NAME VERSION)
 (setq package-load-list
       '((bm "1.53") (browse-kill-ring "1.3.1") (buffer-move "0.4")
-	(rainbow-mode "0.1") (workgroups "0.2.0")))
+	(rainbow-mode "0.1") (workgroups "0.2.0") (paredit "22")))
 ;; pkgs installed by elpa will be requireable
-(package-initialize)
+;; (package-initialize)
+;; This was installed by package-install.el. This provides support for the package system and
+;; interfacing with ELPA, the package archive. Move this code earlier if you want to reference
+;; packages in this file:
+(when
+    (load
+     (expand-file-name "~/.emacs.d/elpa/package_23_github.el"))
+  (package-initialize))
 
 ;; http://www.emacswiki.org/cgi-bin/wiki.pl?SessionManagement
 ;; need desktop-save-mode, and desktop-change-dir?
@@ -58,15 +74,19 @@
 ;; http://www.emacswiki.org/emacs/PareditCheatsheet
 ;; stupid straightjacket, masks many useful keybinds. (M-q)
 ;; paredit is a minor mode
-;; (require 'paredit)
+;; (require 'paredit) ; don't need to enable it for rain-delim
+;; require it with elpa
 ;; (autoload 'paredit-mode "paredit"
 ;;   "Minor mode for pseudo-structurally editing Lisp code." t)
-;;    ;; (add-hook 'emacs-lisp-mode-hook       (lambda () (paredit-mode +1)))
+;; (add-hook 'emacs-lisp-mode-hook       (lambda () (paredit-mode +1)))
 ;; (add-hook 'lisp-mode-hook             (lambda () (paredit-mode +1)))
 ;; (add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode +1)))
-;; (require 'rainbow-delimiters)
-;; (rainbow-delimiters-mode)
-;; maybe like this? (setq rainbow-delimiters-mode 1)
+(require 'rainbow-delimiters)
+;; (rainbow-delimiters-mode) ; buffer-local?
+;; maybe like this?
+;; (setq rainbow-delimiters-mode 1)
+(add-hook 'lisp-mode-hook             (lambda () (rainbow-delimiters-mode)))
+(add-hook 'lisp-interaction-mode-hook (lambda () (rainbow-delimiters-mode)))
 
 ;; You don't add a hook; you hang a function on a hook.
 ;; using elpa now (load-file "~/.emacs.d/rainbow/rainbow-mode.el")
@@ -79,6 +99,7 @@
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.hpp\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.hh\\'" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.cl\\'" . common-lisp-mode))
 (add-hook 'c-mode-hook (lambda () (setq tab-width 4)))
 (add-hook 'c++-mode-hook (lambda () (setq tab-width 4)))
 ;; File mode specification error: (invalid-function (setq tab-width 4)
@@ -246,8 +267,9 @@
 ;; C-x { runs the command shrink-window-horizontally
 ;; C-x } runs the command enlarge-window-horizontally
 ;; C-x ^ runs the command enlarge-window
-
-;; XXX wontwork
+;; XXX wontwork, use a loop?
+;; (dotimes (i 6) '(shrink-window-horizontally))
+;; (dotimes (i 6) (progn (lambda () (interactive) '(shrink-window-horizontally))))
 ;; (global-set-key (kbd "C-x {") (lambda () (interactive) '(shrink-window-horizontally (5)))
 ;; (global-set-key (kbd "C-x }") '(digit-argument 4 (enlarge-window-horizontally))
 
@@ -281,9 +303,10 @@
 (defalias 'bb  'bury-buffer)
 (defalias 'hr  'highlight-regexp)
 (defalias 'yes-or-no-p 'y-or-n-p)
-;; wontwork
-;; (defalias 'ans 'ansi-term (getenv "SHELL"))
+;; wontwork?
+(defalias 'ans 'ansi-term "/usr/bin/zsh")
 ;; (defalias 'ans '(funcall 'ansi-term (getenv "SHELL")))
+;; (ansi-term zsh)
 
 ;; http://stackoverflow.com
 (defun copy-full-path-to-kill-ring ()
@@ -352,7 +375,8 @@
 ;; måste skapa och spara workgroup C-z c name C-z C-s,
 ;; resten av buffern evalueras inte annars
 
-(blink-cursor-mode)
+;; is a toggle
+(blink-cursor-mode 1)
 
 ;; if case is important when searching:
 ;;(setq case-fold-search 'nil)
@@ -392,9 +416,9 @@
 (add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-trucation)
 
 ;; XXX ido-hacks wont work with emacs24
-;; (require 'ido-hacks) ; M-x completion? (execute-extended-command)
+(require 'ido-hacks) ; M-x completion? (execute-extended-command)
 ;; use it with "ido-hacks-mode" how conf it? :D
-;; (ido-hacks-mode t)
+(ido-hacks-mode t)
 ;; wontwork: (unload 'ido-hacks)
 
 ;; how do i put all #files# and files~ in ~/.emacs.d/ ?
@@ -490,7 +514,48 @@
 (slime)
 
 ;;; ---------------------------------------------------
+;; Allegro
 
+;; inferior common lisp
+;; defun insert-res .. interactive .. (insert ":res")) (bind...)
+
+
+;;; ---------------------------------------------------
+;; erc, rcirc, lyskom
+
+(setq erc-hide-list '("JOIN" "PART" "QUIT"))
+(add-hook 'window-configuration-change-hook 
+	  '(lambda ()
+	     (setq erc-fill-column (- (window-width) 2))))
+
+(setq rcirc-default-nick "macrobat_")
+(setq rcirc-default-user-name "macrobat")
+(setq rcirc-server-alist
+      '(("irc.freenode.net" :channels ("#emacs" "#lisp" "##C" "#archlinux"))))
+
+
+;;;(require lyskom)
+;; (autoload 'lyskom "lyskom.elc" "Köra LysKom" t)
+;; ;; Use environment variables KOMNAME and KOMSERVER
+;; (add-hook 'lyskom-mode-hook 
+;;   (lambda () 
+;;     (set-language-environment "Latin-1")
+;;     ;; changed order:
+;;     (setq kom-preferred-charsets '(utf-8 latin-1 iso-8859-1))))
+;; (setq kom-emacs-knows-iso-8859-1 t)
+;; ;; "M-x kom" startar lyskom
+;; (defun kom ()
+;;   (interactive)
+;;   (lyskom "kom.lysator.liu.se" "ditt namn i lyskom"))
+
+;; (autoload 'lyskom "lyskom" "Start LysKOM" t)
+
+;; (defvar kom-server-aliases
+;;  '(("kom.lysator.liu.se" . "LysKOM")))
+
+;; (setq-default kom-default-language 'sv)
+;; (setq kom-default-server "kom.lysator.liu.se")
+;; (setq kom-default-user-name "Ditt Användarnamn Här")
 
 ;;; ---------------------------------------------------
 ;; musik. setup local buffer keybinds
@@ -572,12 +637,3 @@
  )
 
 
-;;; This was installed by package-install.el.
-;;; This provides support for the package system and
-;;; interfacing with ELPA, the package archive.
-;;; Move this code earlier if you want to reference
-;;; packages in your .emacs.
-(when
-    (load
-     (expand-file-name "~/.emacs.d/elpa/package.el"))
-  (package-initialize))
