@@ -1,3 +1,5 @@
+;; in case of error, use (when nil ) to bisect this file
+
 ;; cons onto load-path list before we can load/require libs
 ;;(add-to-list 'load-path "~/.emacs.d/")
 ;; mapc is for side-effects only, it doesn't return a list like mapcar does
@@ -29,11 +31,11 @@
 ;; (require 'package)
 (load "package_23_github.el")
 (add-to-list 'package-archives
-	     '("marmalade" . "http://marmalade-repo.org/packages/"))
+             '("marmalade" . "http://marmalade-repo.org/packages/"))
 ;; Each element in this list should be a list (NAME VERSION)
 (setq package-load-list
       '((bm "1.53") (browse-kill-ring "1.3.1") (buffer-move "0.4")
-	(rainbow-mode "0.1") (workgroups "0.2.0") (paredit "22")))
+        (rainbow-mode "0.1") (workgroups "0.2.0") (paredit "22")))
 ;; pkgs installed by elpa will be requireable
 ;; (package-initialize)
 ;; This was installed by package-install.el. This provides support for the package system and
@@ -114,7 +116,7 @@
    ;; "-unknown-DejaVu Sans Mono-normal-normal-normal-*-12-*-*-*-m-0-iso10646-1") ; lappy
    "-unknown-DejaVu Sans Mono-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1") ; desktop
   (set-scroll-bar-mode 'right)
-  
+
   ;;(color-theme-initialize) ; old way, not in new emacs
   ;; har lagt "color-theme" och temata i ~/.emacs.d
   ;; themes that suck less: zenburn arjen goldenrod billw
@@ -134,13 +136,13 @@
   ;; vill öppna länkar i conkeror/firefox
   ;; browse-url       browse-url-at-point    browse-url-at-mouse
   (setq browse-url-generic-program (executable-find "firefox")
-	browse-url-browser-function 'browse-url-generic)
-					;(setq tabbar-mode t) ; lägg alla *buffers* i en grupp.
+        browse-url-browser-function 'browse-url-generic)
+                                        ;(setq tabbar-mode t) ; lägg alla *buffers* i en grupp.
   ;; är skit, dålig dålig sortering
   ;; tabbar.el är fr 2005 och är ~2000 rader. vilken tabbar är i emacs24?
   ;; finns snippets på http://www.emacswiki.org/emacs/TabBarMode
-					;(require 'tabbar)
-					;(tabbar-mode t)
+                                        ;(require 'tabbar)
+                                        ;(tabbar-mode t)
   (tool-bar-mode -1)
   (menu-bar-mode -1)
   (winner-mode 1) ;; undo window changes
@@ -156,8 +158,8 @@
   ;; this variable.
   ;; protips: one-window-p & (length (window-list))
   ;; Defined in `/usr/share/emacs/23.1/lisp/window.elc'.
-  
-  ) ; end of "when window-system"
+
+) ; end of "when window-system"
 
 ;;; ---------------------------------------------------
 ;; keys, utseende och sånt
@@ -217,7 +219,7 @@
 ;; (global-set-key (kbd "C-'") 'dabbrev-expand) is on M-7 M-/
 ;; (global-set-key (kbd "C-*") 'hippie-expand)
 (global-set-key (kbd "<C-tab>") 'hippie-expand) ; next-buffer?
-;; vimmy normal mode m and ' 
+;; vimmy normal mode m and '
 (global-set-key (kbd "C-'") 'point-to-register)
 (global-set-key (kbd "C-*") 'register-to-point)
 
@@ -225,7 +227,7 @@
 ;;(add-hook 'lisp-mode-hook (lambda ()
 ;;(local-set-key (kbd "M-n") 'dabbrev-expand)))
 ;;(add-hook 'lisp-mode-hook (lambda () (local-set-key (kbd "M-p") 'hippie-expand)))
-	  
+
 ;; has nothing to do with minibuffer M-x cycling
 (global-set-key (kbd "C-x C-b") 'buffer-menu) ; nor buffer-list nor ibuffer
 (global-set-key (kbd "C-h a") 'apropos)
@@ -245,11 +247,11 @@
 
 ;; local-set-key changes the major mode, not the minor paredit-mode
 ;;(if (or (featurep emacs-lisp-mode) (featurep lisp-interaction-mode))
-;; 	(local-set-key (kbd "<C-j>") 'eval-print-last-sexp)
+;;      (local-set-key (kbd "<C-j>") 'eval-print-last-sexp)
 ;;   (global-set-key (kbd "<C-j>") 'newline))
 ;; bind delete to backward-delete-char in paredit-mode
 ;;(with-current-buffer "*scratch*" (local-set-key
-;;				  (kbd "<C-j>") 'eval-print-last-sexp))
+;;                                (kbd "<C-j>") 'eval-print-last-sexp))
 
 (when (featurep 'paredit)
   (define-key paredit-mode-map (kbd "C-j") 'eval-print-last-sexp)
@@ -273,6 +275,8 @@
 ;; (global-set-key (kbd "C-x {") (lambda () (interactive) '(shrink-window-horizontally (5)))
 ;; (global-set-key (kbd "C-x }") '(digit-argument 4 (enlarge-window-horizontally))
 
+
+
 ;; backward-kill-word är både <C-backspace> <M-backspace>
 (global-set-key (kbd "<C-backspace>") 'backward-kill-sexp)
 (global-set-key (kbd "M-t") 'transpose-sexps)
@@ -295,7 +299,7 @@
 ;; Define aliases ; use C-q C-j to /re/place a return
 ;; fmakunbound to unbound an alias
 (defalias 'qrr 'query-replace-regexp)
-(defalias 'qr  'query-replace)		; M-%     M-5
+(defalias 'qr  'query-replace)          ; M-%     M-5
 (defalias 'rr  'replace-regexp)
 (defalias 'rs  'replace-string)
 (defalias 'sb  'isearch-backward-regexp) ; C-M r
@@ -323,7 +327,7 @@
 (setq column-number-mode t) ; see column in mode-line
 ;; not "gnu" style. c-set-style is C-c .
 (setq c-default-style "linux"
-	  c-basic-offset 4)
+          c-basic-offset 4)
 (setq echo-keystrokes '0.0625)
 
 ;; Now, (add-hook ... '(lambda () ...)) will work, but you shouldn't use it.
@@ -347,11 +351,11 @@
 (require 'bm)
 ;; toggle bookmarks by clicking in the fringe:
 (global-set-key (kbd "<left-fringe> <mouse-1>")
-				#'(lambda(event)
-					(interactive "e")
-					(save-excursion
-					  (mouse-set-point event)
-					  (bm-toggle))))
+                #'(lambda(event)
+                    (interactive "e")
+                    (save-excursion
+                      (mouse-set-point event)
+                      (bm-toggle))))
 ;; there is also Bookmark+
 
 ;; lower mouse scroll from 5. also use with C and S
@@ -378,13 +382,14 @@
 ;; is a toggle
 (blink-cursor-mode 1)
 
+;; tabs are evil. C-x h M-x {un,}tabify
+(setq-default indent-tabs-mode nil)
+
 ;; if case is important when searching:
 ;;(setq case-fold-search 'nil)
 
 ;;; ^keys^  ^utseende^
 ;;; ---------------------------------------------------
-
-;;; 
 
 (defun eshell/clear ()
   "http://www.khngai.com/emacs/eshell.php, to clear the eshell buffer."
@@ -437,7 +442,7 @@
 (setq auto-save-file-name-transforms
 ;; match from beginning. don't try symlinks
 ;;         (REGEXP REPLACEMENT UNIQUIFY)
-	  `(("^.*/" "~/.emacs.d/autosaves/" t)))
+          `(("^.*/" "~/.emacs.d/autosaves/" t)))
 (savehist-mode 1)
 
 ;;; org mode
@@ -478,8 +483,8 @@
 
 ;; see info slime 2.5.2 Multiple Lisps
 ;;(setq slime-lisp-implementations
-;;	  '((cmucl ("/usr/bin/cmucl" "-quiet") :init slime-init-command)
-;;		(clisp ("/usr/bin/clisp" "-I") :init slime-init-command)))
+;;        '((cmucl ("/usr/bin/cmucl" "-quiet") :init slime-init-command)
+;;              (clisp ("/usr/bin/clisp" "-I") :init slime-init-command)))
 
 ;; har visst en ~/.slime/``
 ;; git cloned slime into .emacs.d/
@@ -516,6 +521,9 @@
 ;;; ---------------------------------------------------
 ;; Allegro
 
+;; You have to choose: either use Allegro's REPL or Slime's REPL.
+;; If you load slime contribs, be prepared for bugs.
+
 ;; inferior common lisp
 ;; defun insert-res .. interactive .. (insert ":res")) (bind...)
 
@@ -523,10 +531,19 @@
 ;;; ---------------------------------------------------
 ;; erc, rcirc, lyskom
 
+;; ErcScrollToBottom
+;; M-x customize-variable RET <erc-module>
+
 (setq erc-hide-list '("JOIN" "PART" "QUIT"))
 (add-hook 'window-configuration-change-hook 
-	  '(lambda ()
-	     (setq erc-fill-column (- (window-width) 2))))
+          '(lambda ()
+             (setq erc-fill-column (- (window-width) 2))))
+
+;;(defun my-erc-tls (nick pass) (interactive "Mnick: \nMpassword: ")
+;;  (erc-tls :server "irc.freenode.net" :port 6697 :nick nick :password pass))
+
+;; wontwork
+;; (defun my-erc (erc :server "irc.freenode.net" :port 6667 :nick macrobat_))
 
 (setq rcirc-default-nick "macrobat_")
 (setq rcirc-default-user-name "macrobat")
@@ -546,7 +563,7 @@
 ;; ;; "M-x kom" startar lyskom
 ;; (defun kom ()
 ;;   (interactive)
-;;   (lyskom "kom.lysator.liu.se" "ditt namn i lyskom"))
+;;   (lyskom "kom.lysator.liu.se" "duke"))
 
 ;; (autoload 'lyskom "lyskom" "Start LysKOM" t)
 
@@ -555,71 +572,8 @@
 
 ;; (setq-default kom-default-language 'sv)
 ;; (setq kom-default-server "kom.lysator.liu.se")
-;; (setq kom-default-user-name "Ditt Användarnamn Här")
+;; (setq kom-default-user-name "duke")
 
-;;; ---------------------------------------------------
-;; musik. setup local buffer keybinds
-;; http://www.gnu.org/software/emms
-;; (add-to-list 'load-path "~/.emacs.d/emms/")
-;; (require 'emms-setup)
-;; (emms-standard)
-;; (emms-default-players) ; a list?
-;; ;; Show the current track each time EMMS
-;; ;; starts to play a track with "NP : "
-;; (add-hook 'emms-player-started-hook 'emms-show)
-;; (setq emms-show-format "NP: %s")
-;; ;; When asked for emms-play-directory,
-;; ;; always start from this one
-;; (setq emms-source-file-default-directory "~/musik/")
-;; ;; Want to use alsa with mpg321 ?
-;; (setq emms-player-mpg321-parameters '("-o" "alsa"))
-;; (setq emms-cache-file "~/.emacs.d/emms-cache")
-;; ---------------------------------------------------
-
-;; ---------------------------------------------------
-;; ido ska va smartare än ibuffer?
-;; ibuffer kan filtrera buffrar i grupper
-;; Use Ibuffer for Buffer List
-;; have set (global-set-key (kbd "C-x C-b") 'buffer-menu)
-;;(global-set-key (kbd "C-x C-b") 'ibuffer)
-;; use C-x C-b C-b or something to get the plain buffer list?
-;; want to switch to buffer list window when evoking it
-;; Switching to ibuffer puts the cursor on the most recent buffer:
-
-;; (require 'ibuffer)
-;; (setq ibuffer-expert t) ; delete buffer without questions
-;; (defadvice ibuffer (around ibuffer-point-to-most-recent) ()
-;;   "Open ibuffer with cursor pointed to most recent buffer name"
-;;   (let ((recent-buffer-name (buffer-name)))
-;;     ad-do-it
-;;     (ibuffer-jump-to-buffer recent-buffer-name)))
-;; (ad-activate 'ibuffer)
-;; (require 'ibuf-ext)
-;;     (add-to-list 'ibuffer-never-show-predicates "^\\*")
-
-;; (defadvice ibuffer-update-title-and-summary (after remove-column-titles)
-;;   (save-excursion
-;;     (set-buffer "*Ibuffer*")
-;;     (toggle-read-only 0)
-;;     (goto-char 1)
-;;     (search-forward "-\n" nil t)
-;;     (delete-region 1 (point))
-;;     (let ((window-min-height 1))
-;;       ;; save a little screen estate
-;;       (shrink-window-if-larger-than-buffer))
-;;     (toggle-read-only))) 
-;; (ad-activate 'ibuffer-update-title-and-summary)
-;;; ---------------------------------------------------
-
-;;; ---------------------------------------------------
-;; dedicated-window -- Dedicated mode tries to prevent a window from being used (in emacs-goodies-el) see
-;; set-window-dedicated-p
-;; set-window-dedicated-p is a built-in function in `window.c'.
-;; (set-window-dedicated-p WINDOW FLAG)
-;; Mark WINDOW as dedicated according to FLAG.
-;; WINDOW defaults to the selected window.  FLAG non-nil means mark WINDOW
-;; as dedicated to its buffer.  FLAG nil means mark WINDOW as non-dedicated.
-; Can i let all windows in this frame be dedicated, and have an undedicated frame?
 ;;; ---------------------------------------------------
 
 (custom-set-variables
@@ -635,5 +589,4 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  )
-
 
