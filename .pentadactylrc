@@ -16,15 +16,17 @@ nmap <C--> :zoom -16<CR>
 " so that you don't start a new search where the old one left of
 nmap -b gg igg<Esc>
 
+"funkar inte
 cabbreviate H sidebar History
 
+"funkar inte
 " Enable passthrough mode on some Google sites:
-:autocmd LocationChange ^https?://(spreadsheets|mail)\.google\.com/ :normal! <C-z>
+":autocmd LocationChange ^https?://(spreadsheets|mail)\.google\.com/ :normal! <C-z>
 " Set the filetype to mail when editing email at Gmail:
 " don't know what this does...
-:autocmd LocationChange !mail.google.com,* :set editor&
+":autocmd LocationChange !mail.google.com,* :set editor&
 
-" E518 unknown option -f     Do i eveb want an external editor?
+" E518 unknown option -f     Do i even want an external editor?
 ":autocmd LocationChange mail.google.com :set editor=gvim -f -c 'set ft=mail'
 "+<line>"
 
