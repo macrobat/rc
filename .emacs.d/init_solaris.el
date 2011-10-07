@@ -1,11 +1,12 @@
-;; in case of error, use (when nil ) to bisect this file
+;; for debugging with binary search:
+;; (when nil  );
+(toggle-debug-on-error)
 
 ;; cons onto load-path list before we can load/require libs
 ;;(add-to-list 'load-path "~/.emacs.d/")
 ;; mapc is for side-effects only, it doesn't return a list like mapcar does
 (mapc '(lambda (dir) (add-to-list 'load-path dir)) '("~/.emacs.d/" "~/.emacs.d/elpa"))
-;; "~/.emacs.d/elpa/paredit-22"
-;; do I neeed all dirs in elpa too?
+;; do i neeed all dirs in elpa too?
 
 ;; set up unicode
 (prefer-coding-system       'utf-8)
@@ -22,38 +23,41 @@
 ;; have added slime to default Info dir
 ;; (add-to-list 'Info-default-directory-list "~/.emacs.d/slime/doc/")
 
-;; lÃ¤gg allt i ~/emacs.d inbegriper .emacs .emacs-places .emms-cache .ido.last
+;; lägg allt i ~/emacs.d inbegriper .emacs .emacs-places .emms-cache .ido.last
 ;; You can use ~/.emacs.d/init.el instead of ~/.emacs with no links required
 ;; and you can customize the variable ido-save-directory-list-file.
 ;; the same with emms-directory emms-directory specifies where emms
 ;; puts other things. there is also, emms-cache-file.
 
 ;; package.el is put in the elpa dir or comes with emacs24
-;; (require 'package)
-(load "package_23_github.el")
+(require 'package)
 (add-to-list 'package-archives
-         '("marmalade" . "http://marmalade-repo.org/packages/"))
+	     '("marmalade" . "http://marmalade-repo.org/packages/"))
 ;; Each element in this list should be a list (NAME VERSION)
+;; (setq package-load-list 'all) ?
 (setq package-load-list
       '((bm "1.53") (browse-kill-ring "1.3.1") (buffer-move "0.4")
-        (rainbow-mode "0.1") (workgroups "0.2.0") (paredit "22")))
-;; pkgs installed by elpa will be requireable
-;; (package-initialize)
+	(rainbow-mode "0.1") (workgroups "0.2.0") (paredit "22")))
+;;  outdated: (slime "20100404.1")
+
 ;; This was installed by package-install.el. This provides support for the package system and
 ;; interfacing with ELPA, the package archive. Move this code earlier if you want to reference
 ;; packages in this file:
 (when
     (load
-     (expand-file-name "~/.emacs.d/elpa/package_23_github.el"))
+     (expand-file-name "~/.emacs.d/elpa/package.el"))
   (package-initialize))
 
 ;; http://www.emacswiki.org/cgi-bin/wiki.pl?SessionManagement
 ;; need desktop-save-mode, and desktop-change-dir?
 ;; (info "(emacs)Saving Emacs Sessions")
-;; session sparar inte vilka filer jag kÃ¶r med. lÃ¶st vÃ¤rde
-;; (require 'session) ; se om det hjÃ¤lper
+;; session sparar inte vilka filer jag kör med. löst värde
+;; (require 'session) ; se om det hjälper
 ;; (setq session-save-file "~/.emacs.d/session")
 ;; (add-hook 'after-init-hook 'session-initialize)
+
+;; problem med desktop. tdoe och eval
+;; får inga fel
 (require 'desktop-menu)
 (desktop-save-mode 1)
 ;; (desktop-read) ;gives error ;needed? the desktop wasn't read before
@@ -68,7 +72,7 @@
 ;; # alias em='emacsclient'
 (server-start)
 
-;; DONOTWANT!! (glasses-mode) sÃ¤tter visst in _ hÃ¤r och var
+;; DONOTWANT!! (glasses-mode) sätter visst in _ här och var
 (setq inhibit-startup-message t)
 (show-paren-mode 1)
 (setq show-paren-style 'parenthesis) ; highlight just parens
@@ -78,19 +82,15 @@
 ;; http://www.emacswiki.org/emacs/PareditCheatsheet
 ;; stupid straightjacket, masks many useful keybinds. (M-q)
 ;; paredit is a minor mode
-;; (require 'paredit) ; don't need to enable it for rain-delim
-;; require it with elpa
+;; (require 'paredit)
 ;; (autoload 'paredit-mode "paredit"
 ;;   "Minor mode for pseudo-structurally editing Lisp code." t)
-;; (add-hook 'emacs-lisp-mode-hook       (lambda () (paredit-mode +1)))
+;;    ;; (add-hook 'emacs-lisp-mode-hook       (lambda () (paredit-mode +1)))
 ;; (add-hook 'lisp-mode-hook             (lambda () (paredit-mode +1)))
 ;; (add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode +1)))
 (require 'rainbow-delimiters)
-;; (rainbow-delimiters-mode) ; buffer-local?
-;; maybe like this?
-;; (setq rainbow-delimiters-mode 1)
-(add-hook 'lisp-mode-hook             (lambda () (rainbow-delimiters-mode)))
-(add-hook 'lisp-interaction-mode-hook (lambda () (rainbow-delimiters-mode)))
+;; (rainbow-delimiters-mode)
+;; maybe like this? (setq rainbow-delimiters-mode 1)
 
 ;; You don't add a hook; you hang a function on a hook.
 ;; using elpa now (load-file "~/.emacs.d/rainbow/rainbow-mode.el")
@@ -108,17 +108,18 @@
 (add-hook 'c++-mode-hook (lambda () (setq tab-width 4)))
 ;; File mode specification error: (invalid-function (setq tab-width 4)
 
-;; glÃ¶mt vad "autoload" Ã¤r
+;; glömt vad "autoload" är
 ;; M-x unload-feature to un-require
 
 ;; "when" has an implicit progn,  so it's just:
 ;; (when (condition) (do 1) (do 2) (do n))
 (when window-system
-  (set-default-font
+  ;;(set-default-font
+   ;; what fonts are there?
    ;; "-unknown-DejaVu Sans Mono-normal-normal-normal-*-12-*-*-*-m-0-iso10646-1") ; lappy
-   "-unknown-DejaVu Sans Mono-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1") ; desktop
+   ;; "-unknown-DejaVu Sans Mono-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1") ; desktop
   (set-scroll-bar-mode 'right)
-
+  
   ;;(color-theme-initialize) ; old way, not in new emacs
   ;; har lagt "color-theme" och temata i ~/.emacs.d
   ;; themes that suck less: zenburn arjen goldenrod billw
@@ -129,28 +130,28 @@
   (color-theme-arjen)
   ;;(color-theme-zenburn)
   ;; (color-theme-gnome2)
-  ;; region Ã¤r lite trÃ¥kig, fÃ¶rsÃ¶ker Ã¤ndra runt rad 100
+  ;; region är lite tråkig, försöker ändra runt rad 100
 
-  ;; om jag stÃ¤nger av, funkar inte S-Ins. om det Ã¤r pÃ¥ Ã¤ndras i clipboard
+  ;; om jag stänger av, funkar inte S-Ins. om det är på ändras i clipboard
   (setq x-select-enable-clipboard t)
   (setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
 
-  ;; vill Ã¶ppna lÃ¤nkar i conkeror/firefox
+  ;; vill öppna länkar i conkeror/firefox
   ;; browse-url       browse-url-at-point    browse-url-at-mouse
   (setq browse-url-generic-program (executable-find "firefox")
-        browse-url-browser-function 'browse-url-generic)
-                                        ;(setq tabbar-mode t) ; lÃ¤gg alla *buffers* i en grupp.
-  ;; Ã¤r skit, dÃ¥lig dÃ¥lig sortering
-  ;; tabbar.el Ã¤r fr 2005 och Ã¤r ~2000 rader. vilken tabbar Ã¤r i emacs24?
-  ;; finns snippets pÃ¥ http://www.emacswiki.org/emacs/TabBarMode
-                                        ;(require 'tabbar)
-                                        ;(tabbar-mode t)
+	browse-url-browser-function 'browse-url-generic)
+					;(setq tabbar-mode t) ; lägg alla *buffers* i en grupp.
+  ;; är skit, dålig dålig sortering
+  ;; tabbar.el är fr 2005 och är ~2000 rader. vilken tabbar är i emacs24?
+  ;; finns snippets på http://www.emacswiki.org/emacs/TabBarMode
+					;(require 'tabbar)
+					;(tabbar-mode t)
   (tool-bar-mode -1)
   (menu-bar-mode -1)
   (winner-mode 1) ; undo window changes
   ;;(speedbar t) ;; i want it in buffer mode < and narrower in awesome >
 
-  ;; (setq pop-up-windows nil) ; skit, ersÃ¤tter bef. buffer med popup
+  ;; (setq pop-up-windows nil) ; skit, ersätter bef. buffer med popup
   (setq pop-up-windows t)
   ;; how do i know/control in what window a buffer will pop up in?
   ;; (info "(emacs) Force Same Window") might be useful
@@ -165,7 +166,7 @@
 ;; end of "when window-system"
 
 ;;; ---------------------------------------------------
-;; keys, utseende och sÃ¥nt
+;; keys, utseende och sånt
 ;; the angle brackets are only used for things such as <C-backspace>
 ;; "The binding goes in the current buffer's local map, which in most cases is shared with all other buffers in the same major mode."
 ;; vector syntax: (global-set-key [(meta left)] #'previous-buffer)
@@ -226,7 +227,7 @@
 (global-set-key (kbd "C-'") 'point-to-register)
 (global-set-key (kbd "C-*") 'register-to-point)
 
-;; isf (slime-next-note) ; gÃ¥ till kompileringsfel
+;; isf (slime-next-note) ; gå till kompileringsfel
 ;;(add-hook 'lisp-mode-hook (lambda ()
 ;;(local-set-key (kbd "M-n") 'dabbrev-expand)))
 ;;(add-hook 'lisp-mode-hook (lambda () (local-set-key (kbd "M-p") 'hippie-expand)))
@@ -250,11 +251,11 @@
 
 ;; local-set-key changes the major mode, not the minor paredit-mode
 ;;(if (or (featurep emacs-lisp-mode) (featurep lisp-interaction-mode))
-;;      (local-set-key (kbd "<C-j>") 'eval-print-last-sexp)
+;; 	(local-set-key (kbd "<C-j>") 'eval-print-last-sexp)
 ;;   (global-set-key (kbd "<C-j>") 'newline))
 ;; bind delete to backward-delete-char in paredit-mode
 ;;(with-current-buffer "*scratch*" (local-set-key
-;;                                (kbd "<C-j>") 'eval-print-last-sexp))
+;;				  (kbd "<C-j>") 'eval-print-last-sexp))
 
 (when (featurep 'paredit)
   (define-key paredit-mode-map (kbd "C-j") 'eval-print-last-sexp)
@@ -266,23 +267,17 @@
 ;; C-x f runs the command set-fill-column
 ;; wrap in (if ( bla ido-mode) )
 (global-set-key (kbd "C-x f") 'ido-find-file)
-;; gÃ¶r ingenting, returnera ingenting, kbd macro is C-x (
+;; gör ingenting, returnera ingenting, kbd macro is C-x (
 (global-set-key (kbd "C-x C-k RET") 'ignore)
 
 ;; C-x { runs the command shrink-window-horizontally
 ;; C-x } runs the command enlarge-window-horizontally
 ;; C-x ^ runs the command enlarge-window
 ;; XXX wontwork, use a loop?
-;; (dotimes (i 6) '(shrink-window-horizontally))
-;; (dotimes (i 6) (progn (lambda () (interactive) '(shrink-window-horizontally))))
 ;; (global-set-key (kbd "C-x {") (lambda () (interactive) '(shrink-window-horizontally (5)))
 ;; (global-set-key (kbd "C-x }") '(digit-argument 4 (enlarge-window-horizontally))
-(global-set-key (kbd "C-x {") '(shrink-window-horizontally 6))
-(global-set-key (kbd "C-x }") '(enlarge-window-horizontally 6))
 
-
-
-;; backward-kill-word Ã¤r bÃ¥de <C-backspace> <M-backspace>
+;; backward-kill-word är både <C-backspace> <M-backspace>
 (global-set-key (kbd "<C-backspace>") 'backward-kill-sexp)
 (global-set-key (kbd "M-t") 'transpose-sexps)
 (global-set-key (kbd "C-M-t") 'transpose-words)
@@ -296,11 +291,11 @@
 (with-current-buffer "*Messages*" (local-set-key (kbd "q") 'bury-buffer))
 ;(with-current-buffer "*Warnings*" (local-set-key (kbd "q") 'bury-buffer)) ; "no such buffer"
 
-;; C-x C-j jump to dired. behÃ¶ver inte spara pÃ¥ en massa dired-buffrar?
+;; C-x C-j jump to dired. behöver inte spara på en massa dired-buffrar?
 (require 'dired-x)
 
 ;; what to bind for browse-kill-ring ?
-;; M-w Ã¤r kill-ring-save, funkar bra
+;; M-w är kill-ring-save, funkar bra
 ;; Define aliases ; use C-q C-j to /re/place a return
 ;; fmakunbound to unbound an alias
 (defalias 'qrr 'query-replace-regexp)
@@ -338,9 +333,9 @@
 ;; Now, (add-hook ... '(lambda () ...)) will work, but you shouldn't use it.
 ;; For various obscure reasons related to byte-compilation, (lambda () ...) will work better.
 
-;; lambda finns inte i utskrift med M-x ps-print-buffer-with-faces
 (require 'pretty-lambdada)
-(pretty-lambda-for-modes)
+;; lambda finns inte i utskrift med M-x ps-print-buffer-with-faces
+;;(pretty-lambda-for-modes)
 
 ;; wtf does this one do? useless!
 ;(require 'visible-mark)
@@ -348,7 +343,7 @@
 
 ;; bm is better http://www.nongnu.org/bm/ can't jump across buffers, though
 ;; (require 'bm) ; no? (file-error "Cannot open load file" "bm")
-;; var Ã¤r filen dÃ¤r allt sparas?  ~/.emacs.bmk Ã¤r vanliga bookmarks
+;; var är filen där allt sparas?  ~/.emacs.bmk är vanliga bookmarks
 ;; f10 is menu-bar-open
 ;;(define-key global-map [f9] 'bookmark-jump)
 ;;(define-key global-map [f10] 'bookmark-set)
@@ -372,7 +367,7 @@
  ((control)) ))
 (setq mouse-wheel-progressive-speed nil)
 
-(put 'dired-find-alternate-file 'disabled nil) ; Ã¤r 'a
+(put 'dired-find-alternate-file 'disabled nil) ; är 'a
 
 ;; https://github.com/tlh/workgroups.el       spara windows, har kill ring
 ;; could Byte-compile workgroups.el. This isn't required, but it'll speed some things up
@@ -382,25 +377,21 @@
 (workgroups-mode 1)
 (setq wg-morph-on nil)
 (wg-load "~/.emacs.d/workgroups") ; holds multiple wg:s
-;; mÃ¥ste skapa och spara workgroup C-z c name C-z C-s,
+;; måste skapa och spara workgroup C-z c name C-z C-s,
 ;; resten av buffern evalueras inte annars
 
 ;; is a toggle
 (blink-cursor-mode 1)
 
-;; tabs are evil. C-x h M-x {un,}tabify
-(setq-default indent-tabs-mode nil)
-
 ;; if case is important when searching:
 ;;(setq case-fold-search 'nil)
 
-;; shells. repl Ã¥xÃ¥?
-;; ser t ex bara fÃ¶rsta raden filer vid ls
-;; (setq comint-scroll-to-bottom-on-input t)
 (setq whitespace-style '(face trailing lines-tail tabs) whitespace-line-column 80)
 
 ;;; ^keys^  ^utseende^
 ;;; ---------------------------------------------------
+
+;;; 
 
 (defun eshell/clear ()
   "http://www.khngai.com/emacs/eshell.php, to clear the eshell buffer."
@@ -453,7 +444,7 @@
 (setq auto-save-file-name-transforms
 ;; match from beginning. don't try symlinks
 ;;         (REGEXP REPLACEMENT UNIQUIFY)
-          `(("^.*/" "~/.emacs.d/autosaves/" t)))
+	  `(("^.*/" "~/.emacs.d/autosaves/" t)))
 (savehist-mode 1)
 
 ;;; org mode
@@ -485,10 +476,10 @@
 ;; set a mark, move the point with keystrokes and press delete, only one char disappears.
 ;; (delete-selection-mode 1) ; won't be put in kill-ring
 
-;; /etc/emacs/ har lite skrÃ¤p Ã¥xÃ¥
+;; /etc/emacs/ har lite skräp åxå
 
 ;;; ---------------------------------------------------
-;; slime fÃ¶r hemmabruk
+;; slime för hemmabruk
 
 ;; (define-key slime-mode-map [(return)] 'paredit-newline)
 ;; (define-key slime-mode-map [(bla ( )] (lambda () (interactive) (insert "(")))
@@ -496,8 +487,8 @@
 
 ;; see info slime 2.5.2 Multiple Lisps
 ;;(setq slime-lisp-implementations
-;;        '((cmucl ("/usr/bin/cmucl" "-quiet") :init slime-init-command)
-;;              (clisp ("/usr/bin/clisp" "-I") :init slime-init-command)))
+;;	  '((cmucl ("/usr/bin/cmucl" "-quiet") :init slime-init-command)
+;;		(clisp ("/usr/bin/clisp" "-I") :init slime-init-command)))
 
 ;; har visst en ~/.slime/``
 ;; git cloned slime into .emacs.d/
@@ -515,88 +506,96 @@
 ;; opens up in conkeror
 ;(setq common-lisp-hyperspec-root "http://www.lispworks.com/reference/HyperSpec/")
 
-(add-to-list 'load-path "/usr/share/emacs/site-lisp/slime")
-(require 'slime)
-(global-set-key (kbd "<f12>") 'slime-selector)
-;; Versions differ: 2011-03-13 (slime) vs. 2011-08-31 (swank)
-(setq slime-protocol-version 'ignore)
-;; wontwork:
-;;(slime-set-default-directory "/home/occam/bin/projects/lisp")
-(setq common-lisp-hyperspec-root "file:/usr/share/doc/HyperSpec/")
-;;(require 'slime-autoloads) ; what does this one do?
-(slime-setup '(slime-fancy)) ; should be everything
-;; (slime-setup '(slime-repl)) ; repl only
-;; (slime-setup '(slime-repl slime-scratch slime-editing-commands slime-fancy))
-(setq inferior-lisp-program "sbcl")
-;; (setq inferior-lisp-program "clisp") ; for lol, why no slime-repl?
-;; (setq inferior-lisp-program "/usr/bin/clisp")
 
-(slime)
+;; (add-to-list 'load-path "/usr/share/emacs/site-lisp/slime")
+;; (require 'slime)
+;; (global-set-key (kbd "<f12>") 'slime-selector)
+;; ;; wontwork:
+;; ;;(slime-set-default-directory "/home/occam/bin/projects/lisp")
+;; (setq common-lisp-hyperspec-root "file:/usr/share/doc/HyperSpec/")
+;; ;;(require 'slime-autoloads) ; what does this one do?
+;; (slime-setup '(slime-fancy)) ; should be everything
+;; ;; (slime-setup '(slime-repl)) ; repl only
+;; ;; (slime-setup '(slime-repl slime-scratch slime-editing-commands slime-fancy))
+;; ;; (setq inferior-lisp-program "sbcl")
+;; (setq inferior-lisp-program "clisp") ; for lol, why no slime-repl?
+;; ;; (setq inferior-lisp-program "/usr/bin/clisp")
+
+;; (slime)
 
 ;;; ---------------------------------------------------
 ;; Allegro
 
-;; You have to choose: either use Allegro's REPL or Slime's REPL.
-;; If you load slime contribs, be prepared for bugs.
-
 ;; inferior common lisp
 ;; defun insert-res .. interactive .. (insert ":res")) (bind...)
 
-;; skiten slutar funka. testar att kÃ¶ra allegro med slime ist
+;; skiten slutar funka. testar att köra allegro med slime ist
 ;; http://www.franz.com/emacs/slime.lhtml
 
-;; kÃ¶r manuellt. /sw/allegro-8.2/emacs-allegro-cl funkar inte.
-;; (load "/sw/allegro-8.2/local/allegro.el")
+;; kör manuellt. /sw/allegro-8.2/emacs-allegro-cl funkar inte.
+(load "/sw/allegro-8.2/local/allegro.el")
+(allegro-setup-emacs-cl)
 
-;; ladda ngt i /home/occam/bin/acl82express/ ?
-;; (load "/sw/allegro-8.2/local/allegro.el")
-;; (allegro-setup-emacs-cl)
+
+;; in keymap (hade exempel i init.el på lappyn)
+;; fi:inferior-common-lisp-mode-map
+;; bind    A-p  fi:pop-input
+
+
+;; ------
+
+;; slime (atleast *inferior-lisp*) has no nice trace
+;; slime from elpa is old?
+
+;; (add-to-list 'load-path "~/sauce/lisp/slime")
+;; (require 'slime)
+;; ;; does this exist?
+;; (require 'slime-autoloads) ; what does this button do?
+
+;; ;; (global-set-key (kbd "<f12>") 'slime-selector) ; <SunF37>
+;; (global-set-key (kbd "<SunF37>") 'slime-selector)
+;; ;; (setq common-lisp-hyperspec-root "http://www.lispworks.com/reference/HyperSpec/")
+;; ;; no fancy?
+;; (slime-setup '(slime-repl slime-scratch slime-editing-commands slime-fancy))
+;; ;;(slime-setup '(slime-fancy))
+;; (setq inferior-lisp-program "alisp")
+;; ;; (setq inferior-lisp-program "allegro-express")
+
+;; ;; (slime)
+
+;; (eval-after-load "slime"
+;;   '(progn
+;;      ;; (add-to-list 'load-path "~/.emacs.d/elpa/slime-20100404.1") ; already added?
+;;      ;; use the cvs slime, it is newer and has contrib
+;;      (add-to-list 'load-path "~/sauce/lisp/slime/contrib")
+;;      (slime-setup '(slime-fancy slime-banner))
+;;      (setq slime-complete-symbol*-fancy t)
+;;      (setq slime-complete-symbol-function 'slime-fuzzy-complete-symbol)))
+
+
+;; detta löste sig
+;; error: (void-function slime-setup-contribs)
+;; hittar inget slime-contribs
+
+
 
 ;;; ---------------------------------------------------
-;; erc, rcirc, lyskom
-
-;; ErcScrollToBottom
-;; M-x customize-variable RET <erc-module>
+;; erc, rcirc
 
 (setq erc-hide-list '("JOIN" "PART" "QUIT"))
-(add-hook 'window-configuration-change-hook 
-          '(lambda ()
-             (setq erc-fill-column (- (window-width) 2))))
+(add-hook 'window-configuration-change-hook
+	  '(lambda ()
+	     (setq erc-fill-column (- (window-width) 2))))
 
-;;(defun my-erc-tls (nick pass) (interactive "Mnick: \nMpassword: ")
-;;  (erc-tls :server "irc.freenode.net" :port 6697 :nick nick :password pass))
+;; colorize nicks
+;; timestamps (just minutes)
+;; keep input line on last line
+;; ; varför? (require 'rcirc)
+;; finns denna funktion? :
+;; får Lisp error: (wrong-type-argument number-or-marker-p nil)
+;; (rcirc-omit-mode) ; för att nedanstående ska ta effekt
+(setq rcirc-omit-responses '( "JOIN" "PART" "QUIT" "NICK" "AWAY"))
 
-;; wontwork
-;; (defun my-erc (erc :server "irc.freenode.net" :port 6667 :nick macrobat_))
-
-(setq rcirc-default-nick "macrobat_")
-(setq rcirc-default-user-name "macrobat")
-(setq rcirc-server-alist
-      '(("irc.freenode.net" :channels ("#emacs" "#lisp" "##C" "#archlinux"))))
-
-
-;;;(require lyskom)
-;; (autoload 'lyskom "lyskom.elc" "KÃ¶ra LysKom" t)
-;; ;; Use environment variables KOMNAME and KOMSERVER
-;; (add-hook 'lyskom-mode-hook 
-;;   (lambda () 
-;;     (set-language-environment "Latin-1")
-;;     ;; changed order:
-;;     (setq kom-preferred-charsets '(utf-8 latin-1 iso-8859-1))))
-;; (setq kom-emacs-knows-iso-8859-1 t)
-;; ;; "M-x kom" startar lyskom
-;; (defun kom ()
-;;   (interactive)
-;;   (lyskom "kom.lysator.liu.se" "duke"))
-
-;; (autoload 'lyskom "lyskom" "Start LysKOM" t)
-
-;; (defvar kom-server-aliases
-;;  '(("kom.lysator.liu.se" . "LysKOM")))
-
-;; (setq-default kom-default-language 'sv)
-;; (setq kom-default-server "kom.lysator.liu.se")
-;; (setq kom-default-user-name "duke")
 
 ;;; ---------------------------------------------------
 
@@ -613,6 +612,10 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  )
-(set-frame-size (selected-frame) 110 77)
-;; (set-frame-size (selected-frame) 110 72) ; fÃ¶r tool-br och menu-bar
+
+;; vill ha störrre fönsterrr, sätt den överst till vä åxå
+;; funkar ju faan inte. lägger sist!
+;; (append default-frame-alist '((width . 110) (height . 70)))
+(set-frame-size (selected-frame) 110 77) ; om ovan vägrar
+;; (set-frame-size (selected-frame) 110 72) ; för tool-br och menu-bar
 

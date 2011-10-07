@@ -107,11 +107,12 @@
   ;;       (((((((((((((())))))))))))))
 
   `[
+    ,(rainbow-delimiters-face-from-colour "#FFEFDF")
     ,(rainbow-delimiters-face-from-colour "#33CF55")
     ,(rainbow-delimiters-face-from-colour "#C030E0")
     ,(rainbow-delimiters-face-from-colour "#0F9FF3")
     ,(rainbow-delimiters-face-from-colour "#EEEC00")
-    ,(rainbow-delimiters-face-from-colour "#0030AF")
+    ,(rainbow-delimiters-face-from-colour "#3030cF")
     ,(rainbow-delimiters-face-from-colour "#DF2020")
     ,(rainbow-delimiters-face-from-colour "#8CD0D3")
     ,(rainbow-delimiters-face-from-colour "#CCCC00")

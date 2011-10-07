@@ -46,6 +46,9 @@ xinput --set-prop --type=float $RAZERID 245 4.000000
 # disable emulate3buttons
 xinput --set-prop --type=int $RAZERID 254 0
 
+# borde ju va automagiskt
+xrdb ~/.Xresources
+
 # måste va efter setxkbmap
 # funkar inte. inte ~/.Xprofile heller
 #sleep 3 && xmodmap ~/.Xmodmap
