@@ -508,28 +508,36 @@
 ;; (add-hook 'inferior-lisp-mode-hook (lambda () (inferior-slime-mode t)))
 
 ;; Optionally, specify the lisp program you are using. Default is "lisp"
-;; do i have to run this? (slime-setup)
-;; finns ej: (setq inferior-lisp-program "clojure")
 ;; i just get *inferior-lisp* no xtra repl
 
 ;; opens up in conkeror
 ;(setq common-lisp-hyperspec-root "http://www.lispworks.com/reference/HyperSpec/")
 
+
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/slime")
 (require 'slime)
+(require 'slime-autoloads)
+
+(setq inferior-lisp-program "sbcl")
+;; (setq inferior-lisp-program "clisp") ; for lol, why no slime-repl?
+;; (setq inferior-lisp-program "/usr/bin/clisp")
+;; (setq inferior-lisp-program "clojure")
+
 (global-set-key (kbd "<f12>") 'slime-selector)
 ;; Versions differ: 2011-03-13 (slime) vs. 2011-08-31 (swank)
 (setq slime-protocol-version 'ignore)
+
+(setq slime-complete-symbol*-fancy t)
+(setq slime-complete-symbol-function 'slime-fuzzy-complete-symbol)
 ;; wontwork:
 ;;(slime-set-default-directory "/home/occam/bin/projects/lisp")
 (setq common-lisp-hyperspec-root "file:/usr/share/doc/HyperSpec/")
 ;;(require 'slime-autoloads) ; what does this one do?
-(slime-setup '(slime-fancy)) ; should be everything
+(slime-setup '(slime-repl slime-scratch slime-editing-commands slime-fancy))
+;; fancy should be everything
 ;; (slime-setup '(slime-repl)) ; repl only
-;; (slime-setup '(slime-repl slime-scratch slime-editing-commands slime-fancy))
-(setq inferior-lisp-program "sbcl")
-;; (setq inferior-lisp-program "clisp") ; for lol, why no slime-repl?
-;; (setq inferior-lisp-program "/usr/bin/clisp")
+;; (slime-setup '(slime-repl slime-scratch
+;;                slime-editing-commands slime-fancy))
 
 (slime)
 
@@ -549,8 +557,11 @@
 ;; (load "/sw/allegro-8.2/local/allegro.el")
 
 ;; ladda ngt i /home/occam/bin/acl82express/ ?
-;; (load "/sw/allegro-8.2/local/allegro.el")
+;; ;; (load "/sw/allegro-8.2/local/allegro.el")
 ;; (allegro-setup-emacs-cl)
+;; (setq inferior-lisp-program "alisp")
+;; (setq inferior-lisp-program "/home/occam/bin/acl82express/alisp")
+;; inte detta (setq inferior-lisp-program "allegro-express")
 
 ;;; ---------------------------------------------------
 ;; erc, rcirc, lyskom
@@ -572,7 +583,8 @@
 (setq rcirc-default-nick "macrobat_")
 (setq rcirc-default-user-name "macrobat")
 (setq rcirc-server-alist
-      '(("irc.freenode.net" :channels ("#emacs" "#lisp" "##C" "#archlinux"))))
+      '(("irc.freenode.net" :channels
+         ("#emacs" "#lisp" "##C" "#archlinux"))))
 
 
 ;;;(require lyskom)
