@@ -516,7 +516,8 @@
 
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/slime")
 (require 'slime)
-(require 'slime-autoloads)
+;; only run slime related things on demand. M-x slime
+;; (require 'slime-autoloads)
 
 (setq inferior-lisp-program "sbcl")
 ;; (setq inferior-lisp-program "clisp") ; for lol, why no slime-repl?
