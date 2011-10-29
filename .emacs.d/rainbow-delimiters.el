@@ -104,7 +104,7 @@
   ;; First item is outermost parentheses color.
   ;; Make them contrast their neighbours: light|dark|light?
 
-  ;;       (((((((((((((())))))))))))))
+         (((((((((((((())))))))))))))
 
   `[
     ,(rainbow-delimiters-face-from-colour "#FFEFDF")
@@ -112,17 +112,17 @@
     ,(rainbow-delimiters-face-from-colour "#C030E0")
     ,(rainbow-delimiters-face-from-colour "#0F9FF3")
     ,(rainbow-delimiters-face-from-colour "#EEEC00")
-    ,(rainbow-delimiters-face-from-colour "#4030dF")
+    ,(rainbow-delimiters-face-from-colour "#1020E0")
     ,(rainbow-delimiters-face-from-colour "#DF2020")
     ,(rainbow-delimiters-face-from-colour "#8CD0D3")
     ,(rainbow-delimiters-face-from-colour "#CCCC00")
     ,(rainbow-delimiters-face-from-colour "#A00030")
     ,(rainbow-delimiters-face-from-colour "#0CA300")
     ,(rainbow-delimiters-face-from-colour "#D0B000")
-    ,(rainbow-delimiters-face-from-colour "#CD5710")
     ,(rainbow-delimiters-face-from-colour "#00A3A0")
-    ,(rainbow-delimiters-face-from-colour "#FFB030")
+    ,(rainbow-delimiters-face-from-colour "#CD5710")
     ,(rainbow-delimiters-face-from-colour "#194F3F")
+    ,(rainbow-delimiters-face-from-colour "#FFB030")
     ]
    
   "Faces to use in coloring parentheses, brackets, and braces. Begins with the outermost color.

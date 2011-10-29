@@ -469,6 +469,7 @@ function run_once(prg)
 	if not prg then
 		do return nil end
 	end
+	--             x=$prg; pgrep -u $USER -x $prg || ($prg &)
 	os.execute("x=" .. prg .. "; pgrep -u $USER -x " .. prg .. " || (" .. prg .. " &)")
 end
 
@@ -476,10 +477,10 @@ end
 run_once("parcellite")
 --run_once("xmodmap ~/.Xmodmap") -- script  i bin från .xinitrc ist
 run_once("wicd-client")
---run_once("terminal")
+run_once("terminal")
 --run_once("urxvt -pe tabbed")
 --run_once("gvim /home/occam/doku/laplacelog")
---run_once("gvim -S ~/doku/vimse")
+run_once("gvim -S ~/doku/vimse")
 ---- lägg på andra tags
 --run_once("chromium-browser")
 --run_once("")

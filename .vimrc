@@ -435,7 +435,7 @@ call SetupVAM()
 " option2: au GUIEnter * call SetupVAM()
 
 " vam doesn't add these. I want the commands and the help
-set runtimepath+=~/.vim/The_NERD_Commenter,~/.vim/unimpaired,~/.vim/FuzzyFinder,~/.vim/Gundo,~/.vim/Insertlessly,~/.vim/CSApprox,~/.vim/L9,~/.vim/The_NERD_tree,~/.vim/YankRing,~/.vim/surround
+set runtimepath+=~/.vim/The_NERD_Commenter,~/.vim/unimpaired,~/.vim/FuzzyFinder,~/.vim/Gundo,~/.vim/Insertlessly,~/.vim/CSApprox,~/.vim/L9,~/.vim/The_NERD_tree,~/.vim/YankRing,~/.vim/surround,~/.vim/transwrd
 
 " maybe <silent> 
 noremap <F2> :call ToggleLineNumbering()<CR>
@@ -482,3 +482,4 @@ vmap  ,c$           <Plug>NERDCommenterToEOL
 nmap  ,cA           <Plug>NERDCommenterAppend
 vmap  ,cA           <Plug>NERDCommenterAppend
 nmap  ,ca           <Plug>NERDCommenterAltDelims
+
