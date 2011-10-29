@@ -9,11 +9,11 @@
 ;; do i neeed all dirs in elpa too?
 
 ;; set up unicode
-(prefer-coding-system       'utf-8)
-(set-default-coding-systems 'utf-8)
-(set-terminal-coding-system 'utf-8)
-(set-keyboard-coding-system 'utf-8)
-(setq default-buffer-file-coding-system 'utf-8)
+;; (prefer-coding-system       'utf-8)
+;; (set-default-coding-systems 'utf-8)
+;; (set-terminal-coding-system 'utf-8)
+;; (set-keyboard-coding-system 'utf-8)
+;; (setq default-buffer-file-coding-system 'utf-8)
 
 ;; removed these, use packages and elpa
 ;; "~/.emacs.d/workgroups.el/" "~/.emacs.d/slime/" "~/.emacs./rainbow"
@@ -580,12 +580,55 @@
 
 
 ;;; ---------------------------------------------------
-;; erc, rcirc
+;; erc, rcirc, lys
 
 (setq erc-hide-list '("JOIN" "PART" "QUIT"))
 (add-hook 'window-configuration-change-hook
 	  '(lambda ()
 	     (setq erc-fill-column (- (window-width) 2))))
+
+(defun chat ()
+  (interactive)
+  (erc :server "irc.freenode.net" :port 6667 :nick "McRibbit"))
+
+
+;; Pool of colors to use when coloring IRC nicks.
+(setq erc-colors-list '("green" "blue" "red"
+			"dark gray" "dark orange"
+			"dark magenta" "maroon"
+			"indian red" "black" "forest green"
+			"midnight blue" "dark violet"))
+;; special colors for some people
+(setq erc-nick-color-alist '(("macrobat" ."pink")
+			     ("McRibbit" . "yellow")
+			     ;; ("John" . "blue")
+ 			     ;; ("Bob" . "red")
+			     ))
+
+(defun erc-get-color-for-nick (nick)
+  "Gets a color for NICK. If NICK is in erc-nick-color-alist, use that color, else hash the nick and use a random color from the pool"
+  (or (cdr (assoc nick erc-nick-color-alist))
+      (nth
+       (mod (string-to-number
+	     (substring (md5 (downcase nick)) 0 6) 16)
+	    (length erc-colors-list))
+       erc-colors-list)))
+
+(defun erc-put-color-on-nick ()
+  "Modifies the color of nicks according to erc-get-color-for-nick"
+  (save-excursion
+    (goto-char (point-min))
+    (if (looking-at "<\\([^>]*\\)>")
+	(let ((nick (match-string 1)))
+	  (put-text-property (match-beginning 1) (match-end 1) 'face
+			     (cons 'foreground-color
+				   (erc-get-color-for-nick nick)))))))
+
+(add-hook 'erc-insert-modify-hook 'erc-put-color-on-nick)
+
+(setq erc-autojoin-channels-alist
+          '(("freenode.net" "##C" "#lisp" "#debian" "#emacs")))
+
 
 ;; colorize nicks
 ;; timestamps (just minutes)

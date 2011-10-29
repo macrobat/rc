@@ -1,7 +1,7 @@
 ! ----------------------------------------------------------------------------
-! file:     ~/.Xdefaults
-! author:   daniel
-! modified: Jan 2010
+! file:     ~/.Xresources same as old ~/.Xdefaults
+! author: macrobat
+! modified: Okt 2011
 ! vim:ai:si:et:ts=4:sw=4:ft=xdefaults:
 ! name.Class.resource: value
 ! ----------------------------------------------------------------------------
@@ -37,8 +37,6 @@ XTerm*foreground:       white
 XTerm*cursorColor:      yellow
 
 ! urxvt ----------------------------------------------------------------------
-! nånting gör att jag inte får borders. färger?
-! varför får jag ~/doku isf ~/ ?
 ! no borders with 32 bit depth color
 !urxvt.depth                 : 32
 urxvt.depth                 : 24
@@ -76,7 +74,7 @@ urxvt*boldFont:         xft:DejaVu Sans Mono:pixelsize=16:bold
 urxvt*italicFont:       xft:DejaVu Sans Mono:pixelsize=16:italic
 urxvt*boldItalicFont:   xft:DejaVu Sans Mono:pixelsize=16:bold:italic
 
-!true för weechat hilight med beep.pl plugin
+!true for weechat hilite with beep.pl plugin
 urxvt*urgentOnBell		    : false
 !ingen genomsikt i denna
 urxvt.transparent		    : false
@@ -107,7 +105,7 @@ urxvt*cursorBlink		    : false
 !urxvt.*.tab-fg              : 0
 !urxvt.*.tab-bg              : 1
 !-----------------------------
-!lauch it with urxvt -name URxvt
+!lauch with urxvt -name URxvt
 !set a percentage transparency? make alias URT
 !fade text n% upon unfocus
 !URxvt*fading:             20
@@ -121,44 +119,14 @@ urxvt*cursorBlink		    : false
 !URxvt*transparent		    : true 
 !URxvt*tintColor			    : olivedrab2
 !URxvt*shading               : 30
-!URxvt*saveLines			    : 7000 !har mer scrollback än så :)
-!URxvt*title			        : URxvt
-!URxvt*font:                 xft:DejaVu Sans Mono:pixelsize=14 !:autohint=true
-!URxvt*boldFont:             xft:DejaVu Sans Mono:pixelsize=14:bold !:autohint=true
-!URxvt*italicFont:           xft:DejaVu Sans Mono:pixelsize=14:italic !:autohint=true
-!URxvt*boldItalicFont:       xft:DejaVu Sans Mono:pixelsize=14:bold:italic !:autohint=true
-!URxvt*background		    : black
-!URxvt*foreground		    : white
-!!true för weechat hilight med beep.pl plugin
-!URxvt*urgentOnBell		    : false
-!
-!To enable url-select place the following in ~/.Xdefaults
-!(change to whatever suits your needs)
-!URxvt.perl-ext-common:  default,url-select
-!URxvt.keysym.M-u:       perl:url-select:select_next
-!URxvt.urlLauncher:      firefox
-!URxvt.underlineURLs:    true
-!
-!URxvt*perl-ext-common	    : default,matcher
-!URxvt*matcher.button	    : 1
-!URxvt*matcher.pattern.1	    : \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
-!URxvt*secondaryScroll	    : true
-!URxvt*jumpScroll		    : true
-!URxvt*pastableTabs		    : true
-!URxvt.scrollBar  		    : true
-!URxvt.scrollBar_right	    : true
-!URxvt*cursorBlink		    : false
-!funkar så här långt, när går det sönder?
-!URxvt*inheritPixmap		    : false
 
 !rxvt, plain, next or xterm style
 !URxvt.scrollstyle:        rxvt
-!test tmp
+!!test tmp
 !URxvt.fading:             50
 !URxvt.fading:             0
 !URxvt.blurRadius:         12
 !URxvt.perl-ext-common:    default,tabbed
-
 
 !urxvt -pixmap pics/bakgrund/fjäder.jpg
 !-----------------------------
@@ -198,9 +166,8 @@ urxvt*pointerColor:    rgb:ff/ff/2f
 !*color7:     rgb:be/be/be
 !*color15:    rgb:ff/ff/ff
 
-!ta ned saturation lite
-!
-!!Theme Three
+!tune down saturation
+!!!Theme Three
 *background: rgb:00/00/00
 *foreground: rgb:cf/cf/cf
 !!black
@@ -230,3 +197,4 @@ urxvt*pointerColor:    rgb:ff/ff/2f
 !!white
 *color7:     rgb:fe/fe/fe
 *color15:    rgb:ff/ff/ff
+

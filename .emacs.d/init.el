@@ -115,6 +115,7 @@
 ;; (when (condition) (do 1) (do 2) (do n))
 (when window-system
   (set-default-font
+   ;; M-x set-frame-font
    ;; "-unknown-DejaVu Sans Mono-normal-normal-normal-*-12-*-*-*-m-0-iso10646-1") ; lappy
    "-unknown-DejaVu Sans Mono-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1") ; desktop
   (set-scroll-bar-mode 'right)
@@ -258,7 +259,11 @@
 
 (when (featurep 'paredit)
   (define-key paredit-mode-map (kbd "C-j") 'eval-print-last-sexp)
-  (define-key paredit-mode-map (kbd "S-<backspace>") 'backward-delete-char))
+  (define-key paredit-mode-map (kbd "S-<backspace>") 'backward-delete-char)
+;; ,paredit-nonlisp is
+;; (set (make-local-variable 'paredit-space-for-delimiter-predicates)
+;;  '((lambda (endp delimiter nil)))
+  )
 
 ;; You add functions to the hook, not function calls, lambda doesn't need '
 (global-set-key (kbd "C-S-j") (lambda () (interactive) (join-line t))) ; vimmy
@@ -541,6 +546,7 @@
 ;;                slime-editing-commands slime-fancy))
 
 (slime)
+(slime-scratch)
 
 ;;; ---------------------------------------------------
 ;; Allegro
@@ -570,6 +576,7 @@
 ;; ErcScrollToBottom
 ;; M-x customize-variable RET <erc-module>
 
+(load "~/.emacs.d/erc-conf.el")
 (setq erc-hide-list '("JOIN" "PART" "QUIT"))
 (add-hook 'window-configuration-change-hook 
           '(lambda ()
@@ -613,19 +620,19 @@
 
 ;;; ---------------------------------------------------
 
+
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
- '(comment-style (quote multi-line)))
+
  ; end of custom-set-variables
-(custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+)
+ (custom-set-faces
  )
-(set-frame-size (selected-frame) 110 77)
+
+(when window-system
+  (set-frame-size (selected-frame) 110 77))
 ;; (set-frame-size (selected-frame) 110 72) ; för tool-br och menu-bar
 
