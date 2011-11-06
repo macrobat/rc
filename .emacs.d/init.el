@@ -185,21 +185,6 @@
   (global-set-key (kbd "M-7") 'dabbrev-expand)
   (global-set-key (kbd "M-0") 'count-lines-region))
 
-;; {} <> don't work, the sexp definitions depend on mode
-;; and are awfully useless
-;; matching-paren doesn't highlight {} <> (unless defined in the mode?)
-(defun goto-match-paren (arg)
-  "Go to matching if on ()[], similar to vi %"
-  (interactive "p")
-  ;; first, check for "outside of bracket" positions expected by forward-sexp, etc.
-  (cond ((looking-at "[\[\(\{\<]") (forward-sexp))
-        ((looking-back "[\]\)\}\>]" 1) (backward-sexp))
-        ;; now, try to succeed from inside of a bracket
-        ((looking-at "[\]\)\}\<]") (forward-char) (backward-sexp))
-        ((looking-back "[\[\(\{\>]" 1) (backward-char) (forward-sexp))
-        (t nil)))
-(global-set-key (kbd "C-%") 'goto-match-paren)
-
 ;; http://www.opensubscriber.com/message/emacs-devel@gnu.org/10971693.html
 (defun comment-dwim-line (&optional arg)
   "Replacement comment-dwim. If no region is selected and current
@@ -285,8 +270,12 @@
 (global-set-key (kbd "C-x {") '(shrink-window-horizontally 6))
 (global-set-key (kbd "C-x }") '(enlarge-window-horizontally 6))
 
+;; for bubbling
+;; (beginning-of-line)(kill-line)(up)(yank)
+;; (exchange-point-and-mark
 
 
+(global-set-key (kbd "<C-S-backspace>") 'kill-line)
 ;; backward-kill-word är både <C-backspace> <M-backspace>
 (global-set-key (kbd "<C-backspace>") 'backward-kill-sexp)
 (global-set-key (kbd "M-t") 'transpose-sexps)

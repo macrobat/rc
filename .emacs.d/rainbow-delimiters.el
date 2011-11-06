@@ -104,7 +104,7 @@
   ;; First item is outermost parentheses color.
   ;; Make them contrast their neighbours: light|dark|light?
 
-         (((((((((((((())))))))))))))
+  ;; (((((((((((((())))))))))))))
 
   `[
     ,(rainbow-delimiters-face-from-colour "#FFEFDF")
@@ -240,9 +240,6 @@ The number of colors listed is variable and more colors may be added to support 
          (rainbow-delimiters-unfontify (point-min) (point-max)))
         (t (jit-lock-register 'rainbow-delimiters-fontify))))
 
-
-(provide 'rainbow-delimiters)
-
 ;;; Other possible delimiter colors to use: (wide-gamut)
 ;; ,(rainbow-delimiters-face-from-colour "#7f7f7f")
 ;; ,(rainbow-delimiters-face-from-colour "#7f7f91")
@@ -275,5 +272,8 @@ The number of colors listed is variable and more colors may be added to support 
    ;;  ,(rainbow-delimiters-face-from-colour "#919991")
    ;;  ,(rainbow-delimiters-face-from-colour "#949194")
    ;;  ,(rainbow-delimiters-face-from-colour "#949494")]
+
+
+(provide 'rainbow-delimiters)
 
 ;;; rainbow-delimiters.el ends here
