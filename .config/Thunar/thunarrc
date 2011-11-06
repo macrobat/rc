@@ -2,7 +2,7 @@
 DefaultView=ThunarDetailsView
 LastCompactViewZoomLevel=THUNAR_ZOOM_LEVEL_SMALLEST
 LastDetailsViewColumnOrder=THUNAR_COLUMN_NAME,THUNAR_COLUMN_SIZE,THUNAR_COLUMN_TYPE,THUNAR_COLUMN_DATE_MODIFIED
-LastDetailsViewColumnWidths=50,158,50,50,328,50,50,81,312
+LastDetailsViewColumnWidths=50,151,50,50,398,50,50,81,312
 LastDetailsViewFixedColumns=FALSE
 LastDetailsViewVisibleColumns=THUNAR_COLUMN_DATE_MODIFIED,THUNAR_COLUMN_NAME,THUNAR_COLUMN_SIZE,THUNAR_COLUMN_TYPE
 LastDetailsViewZoomLevel=THUNAR_ZOOM_LEVEL_SMALLER
@@ -16,7 +16,7 @@ LastSortOrder=GTK_SORT_ASCENDING
 LastStatusbarVisible=TRUE
 LastView=ThunarDetailsView
 LastWindowHeight=1168
-LastWindowWidth=1043
+LastWindowWidth=680
 MiscVolumeManagement=TRUE
 MiscCaseSensitive=FALSE
 MiscDateStyle=THUNAR_DATE_STYLE_ISO

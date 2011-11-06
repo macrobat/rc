@@ -1,0 +1,64 @@
+#!/bin/bash
+
+# put everything in its place
+# not using make yet
+
+### testing!
+## what happens if there already is a link?
+# mkdir foo; cd foo; touch mytralala
+# foolin="$(readlink -nm mytralala)"; echo $foolin
+# ln -sb "$foolin" "${foolin/my/your}"; ls
+# ln -sb "$foolin" "${foolin/my/your}"; ls
+## unnecessary # ln -sb "${foolin/my/your}" "${foolin/my/our}"; ls
+## the older link name is renamed by appending it with ~
+## it does the right thing!
+
+# oneliner for manual labor
+# lollink() { naeme="$(readlink -nm "$1")"; ln -sb "$naeme" "${naeme/rc\/}"; }
+
+lollink() {
+    naeme="$(readlink -nm "$1")"
+    ln -sb "$naeme" "${naeme/rc\/}"
+}
+
+## list of all dirs to be linked
+# stupid cmd:
+# find . -maxdepth 1 -type d -name ".*"
+# rem dirs that shouldn't be linked
+# look inside .config
+TEH_DIRS=".newsbeuter .weechat .gtk-2.0 .xchat2 .warsow-0.6 .pekwm .hydrogen .fluxbox \
+.lgames .nexuiz .darkplaces .xonotic .git .cmus .emacs.d .openarena .config .moc \
+.wmii .mplayer .ncmpcpp"
+
+
+## list of files in ~ to be linked 
+# find . -maxdepth 1 -type f -name ".*"
+
+TEH_FILES=".conkerorrc .galculator .xscreensaver .fbtermrc .gvimrc .Xresources \
+.xinitrc .fonts.conf .gmrun_history .inputrc .Xmodmap .conkyrc .fehrc .bashrc \
+.gitignore .gitconfig .Xmodmap_vanilla .screenrc .fehbg_bak .pentadactylrc \
+.xbindkeysrc .vimrc .gtkrc-2.0 .zshrc .nvidia-settings-rc .bash_profile \
+.conkyrc_wrkspc .profile .fehbg .jackdrc .gtk-bookmarks .zshrc.zni .mzschemerc \
+.rgb.txt .htoprc .tmux.conf"
+
+
+## list of individual files inside dirs to be linked 
+
+# pick and choose:
+# games
+	# ~/.xonotic
+	# ~/.nexuiz
+	# ~/.darkplaces
+	# ~/.warsow
+	# ~/.openarena
+
+# ~/.emacs.d
+# ~/.moc
+
+# ~/.config/
+	# awesome
+	# openbox
+	# geeqie
+
+
+

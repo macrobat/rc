@@ -301,7 +301,7 @@ function rot13() { tr '[a-m][n-z][A-M][N-Z]' '[n-z][a-m][N-Z][A-M]'; }
 
 #alias vl='c /var/log'
 alias ca='c ~/.config/awesome'
-alias go='c ~/bin/projects/C'    #temp
+alias go='c ~/bin/projects/lisp/kurs'    #temp
 alias cd-='cd -'
 alias cd..='cd ..'
 # alias ..='cd ..'
