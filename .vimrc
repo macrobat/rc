@@ -213,7 +213,8 @@ endif
 
 " comment and see if tabs get redrawn when switched to.
 " Don't update the display while executing macros
-set lazyredraw
+"set lazyredraw
+set nolazyredraw
 
 " vim känner av number of colors själv. $TERM
 " don't do set t_Co=88 "isf 256
