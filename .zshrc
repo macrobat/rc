@@ -302,6 +302,7 @@ function rot13() { tr '[a-m][n-z][A-M][N-Z]' '[n-z][a-m][N-Z][A-M]'; }
 #alias vl='c /var/log'
 alias ca='c ~/.config/awesome'
 alias go='c ~/bin/projects/lisp/kurs'    #temp
+alias proj='c ~/bin/projects/lisp/kurs/lisp-nonogram-solver'
 alias cd-='cd -'
 alias cd..='cd ..'
 # alias ..='cd ..'

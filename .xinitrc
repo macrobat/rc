@@ -24,10 +24,10 @@ urxvtd -q -o -f
 
 # clipbored daemon, see if it's running first? 
 # crap, only gives one word, stdout-puts previous choice
-if [[ -x /usr/bin/site_perl/clipbored ]]
-then
-	/usr/bin/site_perl/clipbored &
-fi
+#if [[ -x /usr/bin/site_perl/clipbored ]]
+#then
+	#/usr/bin/site_perl/clipbored &
+#fi
 
 # run this with xbindkeys:
 # /usr/bin/site_perl/dmenuclip

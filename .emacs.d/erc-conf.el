@@ -9,7 +9,7 @@
 (setq erc-colors-list '("green" "blue" "red"
 			"dark gray" "dark orange"
 			"dark magenta" "maroon"
-			"indian red" "black" "forest green"
+			"indian red" "forest green"
 			"midnight blue" "dark violet"))
 ;; special colors for some people
 (setq erc-nick-color-alist '(("macrobat" ."pink")
