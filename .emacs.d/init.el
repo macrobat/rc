@@ -36,7 +36,8 @@
 ;; Each element in this list should be a list (NAME VERSION)
 (setq package-load-list
       '((bm "1.53") (browse-kill-ring "1.3.1") (buffer-move "0.4")
-        (rainbow-mode "0.1") (workgroups "0.2.0") (paredit "22")))
+        (rainbow-mode "0.1") (workgroups "0.2.0") (paredit "22")
+        (goto-last-change "1.2")))
 ;; pkgs installed by elpa will be requireable
 ;; (package-initialize)
 ;; This was installed by package-install.el. This provides support for the package system and
@@ -106,6 +107,7 @@
 (add-to-list 'auto-mode-alist '("\\.cl\\'" . common-lisp-mode))
 (add-hook 'c-mode-hook (lambda () (setq tab-width 4)))
 (add-hook 'c++-mode-hook (lambda () (setq tab-width 4)))
+(add-hook 'makefile-mode-hook 'setq indent-tabs-mode t)
 ;; File mode specification error: (invalid-function (setq tab-width 4)
 
 ;; glömt vad "autoload" är
@@ -297,6 +299,7 @@
 ;; M-w är kill-ring-save, funkar bra
 ;; Define aliases ; use C-q C-j to /re/place a return
 ;; fmakunbound to unbound an alias
+(defalias 'yes-or-no-p 'y-or-n-p)
 (defalias 'qrr 'query-replace-regexp)
 (defalias 'qr  'query-replace)           ; M-%     M-5
 (defalias 'rr  'replace-regexp)
@@ -304,8 +307,11 @@
 (defalias 'sb  'isearch-backward-regexp) ; C-M r
 (defalias 'ss  'isearch-forward-regexp)  ; C-M s
 (defalias 'bb  'bury-buffer)
+(defalias '\0  'bury-buffer)
 (defalias 'hr  'highlight-regexp)
-(defalias 'yes-or-no-p 'y-or-n-p)
+(defalias 'rb  'revert-buffer)
+(defalias 'pm  'paredit-mode)
+
 ;; wontwork?
 (defalias 'ans 'ansi-term "/usr/bin/zsh")
 ;; (defalias 'ans '(funcall 'ansi-term (getenv "SHELL")))
