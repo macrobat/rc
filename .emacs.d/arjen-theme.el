@@ -129,7 +129,8 @@
      (gnus-cite-face-9 ((t (:foreground "violet"))))
      (gnus-emphasis-bold ((t (:bold nil))))
      (gnus-emphasis-bold-italic ((t (:bold nil))))
-     (gnus-emphasis-highlight-words ((t (:background "black" :foreground "yellow"))))
+     (gnus-emphasis-highlight-words
+      ((t (:background "black" :foreground "yellow"))))
      (gnus-emphasis-italic ((t (nil))))
      (gnus-emphasis-underline ((t (:underline t))))
      (gnus-emphasis-underline-bold ((t (:underline t :bold nil))))
@@ -156,7 +157,8 @@
      (gnus-group-news-6-empty-face ((t (nil))))
      (gnus-group-news-6-face ((t (:bold nil))))
      (gnus-group-news-low-empty-face ((t (:foreground "DarkTurquoise"))))
-     (gnus-group-news-low-face ((t (:bold nil :foreground "DarkTurquoise"))))
+     (gnus-group-news-low-face
+      ((t (:bold nil :foreground "DarkTurquoise"))))
      (gnus-header-content-face ((t (:foreground "forest green"))))
      (gnus-header-from-face ((t (:bold nil :foreground "spring green"))))
      (gnus-header-name-face ((t (:foreground "deep sky blue"))))
@@ -164,8 +166,10 @@
      (gnus-header-subject-face ((t (:bold nil :foreground "orange"))))
      (gnus-signature-face ((t (:bold nil :foreground "khaki"))))
      (gnus-splash-face ((t (:foreground "Brown"))))
-     (gnus-summary-cancelled-face ((t (:background "black" :foreground "yellow"))))
-     (gnus-summary-high-ancient-face ((t (:bold nil :foreground "SkyBlue"))))
+     (gnus-summary-cancelled-face
+      ((t (:background "black" :foreground "yellow"))))
+     (gnus-summary-high-ancient-face
+      ((t (:bold nil :foreground "SkyBlue"))))
      (gnus-summary-high-read-face ((t (:bold nil :foreground "PaleGreen"))))
      (gnus-summary-high-ticked-face ((t (:bold nil :foreground "pink"))))
      (gnus-summary-high-unread-face ((t (:bold nil))))
@@ -191,7 +195,8 @@
      (isearch-secondary ((t (:foreground "red3"))))
      (italic ((t (nil))))
      (left-margin ((t (nil))))
-     (list-mode-item-selected ((t (:background "gray68" :foreground "white"))))
+     (list-mode-item-selected
+      ((t (:background "gray68" :foreground "white"))))
      (message-cited-text-face ((t (:bold t :foreground "green"))))
      (message-header-cc-face ((t (:bold t :foreground "green4"))))
      (message-header-name-face ((t (:bold t :foreground "orange"))))
@@ -202,10 +207,14 @@
      (message-header-xheader-face ((t (:bold t :foreground "light blue"))))
      (message-mml-face ((t (:bold t :foreground "Green3"))))
      (message-separator-face ((t (:foreground "blue3"))))
-     (modeline ((t (:background "DarkRed" :foreground "white" :box (:line-width 1 :style released-button)))))
+     (modeline
+      ((t (:background "DarkRed"
+                       :foreground "white"
+                       :box (:line-width 1 :style released-button)))))
      (modeline-buffer-id ((t (:background "DarkRed" :foreground "white"))))
      (modeline-mousable ((t (:background "DarkRed" :foreground "white"))))
-     (modeline-mousable-minor-mode ((t (:background "DarkRed" :foreground "white"))))
+     (modeline-mousable-minor-mode
+      ((t (:background "DarkRed" :foreground "white"))))
      (p4-depot-added-face ((t (:foreground "blue"))))
      (p4-depot-deleted-face ((t (:foreground "red"))))
      (p4-depot-unmapped-face ((t (:foreground "grey30"))))
@@ -220,8 +229,10 @@
      (region ((t (:background "blue"))))
      (right-margin ((t (nil))))
      (secondary-selection ((t (:background "darkslateblue"))))
-     (show-paren-match-face ((t (:background "Aquamarine" :foreground "SlateBlue"))))
-     (show-paren-mismatch-face ((t (:background "Red" :foreground "White"))))
+     (show-paren-match-face
+      ((t (:background "Aquamarine" :foreground "SlateBlue"))))
+     (show-paren-mismatch-face
+      ((t (:background "Red" :foreground "White"))))
      (text-cursor ((t (:background "yellow" :foreground "black"))))
      (toolbar ((t (nil))))
      (underline ((nil (:underline nil))))
@@ -238,3 +249,4 @@
      (woman-unknown-face ((t (:foreground "LightSalmon"))))
      (yellow ((t (:foreground "yellow"))))
      (zmacs-region ((t (:background "snow" :foreground "blue")))))))
+
