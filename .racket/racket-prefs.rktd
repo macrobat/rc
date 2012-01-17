@@ -55,7 +55,9 @@
   ))
  (readline-input-history
   (
+   #"(exit)"
    #",bt"
+   #"ls"
    #"(getf '(:a 1 :b 2 :c 3) :b))"
    #"y"
    #",install!"

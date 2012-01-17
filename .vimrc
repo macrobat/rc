@@ -107,7 +107,32 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"place new stuff below:
+" place new stuff below:
+
+" To use gc to transpose the current character with the next, without changing
+" the cursor position:
+:nnoremap <silent> gc xph
+
+" To use gw to transpose the current word with the next, without changing cursor
+" position: (See note.)
+" :nnoremap <silent> gw "_yiw:s/\(\%#\w\+\)\(\W\+\)\(\w\+\)/\3\2\1/<CR><c-o><c-l>
+" This version will work across newlines:
+:nnoremap <silent> gw "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o><c-l>
+
+" To use gl to transpose the current word with the previous, keeping cursor on
+" current word: (This feels like "pushing" the word to the left.)
+:nnoremap <silent> gl "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o><c-l>
+
+" To use gr to transpose the current word with the next, keeping cursor on
+" current word: (This feels like "pushing" the word to the right.)
+:nnoremap <silent> gr "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>/\w\+\_W\+<CR><c-l>
+
+" To use g} to transpose the current paragraph with the next:
+:nnoremap g} {dap}P
+
+" To use g{ to transpose the current paragraph with the prev:
+:nnoremap g{ {dap{P}
+
 
 " swap directory, uniquified names where % is /
 " set directory=~/.vim/swapfiles//,.,~/tmp,/var/tmp,/tmp
@@ -240,6 +265,7 @@ nmap <silent> ,w :set invwrap<CR>:set wrap?<CR>
 command! -bang -nargs=? -complete=help Help tab help<bang> <args>
 command! -bang -nargs=? -complete=help H tab help<bang> <args>
 
+" does yankring break this?
 " http://vim.wikia.com/wiki/Mapping_keys_in_Vim_-_Tutorial_(Part_1)
 " If you would prefer Y to be consistent with C and D: (don't change S)
 nnoremap Y y$

@@ -215,6 +215,11 @@
      (modeline-mousable ((t (:background "DarkRed" :foreground "white"))))
      (modeline-mousable-minor-mode
       ((t (:background "DarkRed" :foreground "white"))))
+     ;; FIXME tar från zenburn.el , verkar inte användas i arjen
+     ;; '(mode-line-inactive
+     ;;   ((t (:background "#366147" :foreground "#88b090"
+     ;;                    :box (:color "#2e3330" :line-width 2)))))
+
      (p4-depot-added-face ((t (:foreground "blue"))))
      (p4-depot-deleted-face ((t (:foreground "red"))))
      (p4-depot-unmapped-face ((t (:foreground "grey30"))))

@@ -9,24 +9,13 @@
         <property name="max-texts-in-history" type="uint" value="15"/>
       </property>
     </property>
-    <property name="plugin-1" type="string" value="applicationsmenu">
-      <property name="show-menu-icons" type="bool" value="true"/>
-      <property name="show-button-title" type="bool" value="true"/>
-      <property name="custom-menu-file" type="string" value="/home/occam/.config/menus/xfce-applications.menu"/>
-      <property name="button-icon" type="string" value="/usr/share/pixmaps/xfce4_xicon1.png"/>
-      <property name="button-title" type="string" value="Xfce Menu"/>
-      <property name="custom-menu" type="bool" value="false"/>
-    </property>
     <property name="plugin-2" type="string" value="applicationsmenu">
       <property name="show-menu-icons" type="bool" value="true"/>
       <property name="show-button-title" type="bool" value="false"/>
       <property name="custom-menu-file" type="string" value=""/>
-      <property name="button-icon" type="string" value="/usr/share/pixmaps/application-x-shaman-package.png"/>
+      <property name="button-icon" type="string" value="xfce4-panel-menu"/>
       <property name="button-title" type="string" value="Xfce Menu"/>
       <property name="custom-menu" type="bool" value="false"/>
-    </property>
-    <property name="plugin-3" type="string" value="separator">
-      <property name="style" type="uint" value="1"/>
     </property>
     <property name="plugin-4" type="string" value="separator">
       <property name="style" type="uint" value="1"/>
@@ -35,6 +24,7 @@
       <property name="move-first" type="bool" value="false"/>
       <property name="arrow-position" type="bool" value="false"/>
       <property name="items" type="array">
+        <value type="string" value="13252340181.desktop"/>
         <value type="string" value="13126744680.desktop"/>
       </property>
     </property>
@@ -57,10 +47,10 @@
       <property name="move-first" type="bool" value="false"/>
       <property name="arrow-position" type="bool" value="false"/>
       <property name="items" type="array">
-        <value type="string" value="13126744680.desktop"/>
         <value type="string" value="13126744681.desktop"/>
         <value type="string" value="13126744682.desktop"/>
         <value type="string" value="13126744683.desktop"/>
+        <value type="string" value="13252404492.desktop"/>
       </property>
     </property>
     <property name="plugin-9" type="string" value="tasklist">
@@ -72,6 +62,14 @@
     <property name="plugin-10" type="string" value="systray">
       <property name="show-frame" type="bool" value="false"/>
       <property name="rows" type="uint" value="1"/>
+      <property name="names-visible" type="array">
+        <value type="string" value="vlc"/>
+        <value type="string" value="dropbox"/>
+        <value type="string" value="xchat"/>
+        <value type="string" value="clementine"/>
+        <value type="string" value="opera"/>
+        <value type="string" value="parcellite"/>
+      </property>
     </property>
     <property name="plugin-11" type="string" value="separator">
       <property name="style" type="uint" value="3"/>
@@ -95,9 +93,6 @@
       <property name="flash-separators" type="bool" value="false"/>
       <property name="true-binary" type="bool" value="false"/>
     </property>
-    <property name="plugin-15" type="string" value="separator">
-      <property name="style" type="uint" value="1"/>
-    </property>
     <property name="plugin-16" type="string" value="showdesktop"/>
     <property name="plugin-17" type="string" value="windowmenu">
       <property name="urgentcy-notification" type="bool" value="false"/>
@@ -115,14 +110,12 @@
   </property>
   <property name="panels" type="uint" value="2">
     <property name="panel-0" type="empty">
-      <property name="size" type="uint" value="28"/>
+      <property name="size" type="uint" value="32"/>
       <property name="length" type="uint" value="100"/>
       <property name="locked" type="bool" value="true"/>
       <property name="autohide" type="bool" value="false"/>
       <property name="plugin-ids" type="array">
-        <value type="int" value="1"/>
         <value type="int" value="2"/>
-        <value type="int" value="3"/>
         <value type="int" value="4"/>
         <value type="int" value="5"/>
         <value type="int" value="6"/>
@@ -134,7 +127,6 @@
         <value type="int" value="12"/>
         <value type="int" value="13"/>
         <value type="int" value="14"/>
-        <value type="int" value="15"/>
       </property>
       <property name="horizontal" type="bool" value="true"/>
       <property name="position" type="string" value="p=10;x=0;y=771"/>

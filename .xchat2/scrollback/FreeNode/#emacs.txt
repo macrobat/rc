@@ -1,1 +1,1185 @@
-
+T 1326610852 18<26tali713>	s/agter/after/
+T 1326610891 18<19justinweiss>	cool! that worked great
+T 1326610902 18<19justinweiss>	thanks again
+T 1326610910 18<26tali713>	np.
+T 1326610938 18<26tali713>	justinweiss: installing slime is easy, but there are a lot of examples of the wrong way to do it. :)
+T 1326610961 18<19justinweiss>	it feels kind of fragile :-)
+T 1326610977 18<22dtw>	justinweiss, end there is #lisp channel for Common Lisp talk.
+T 1326610990 18<27nunag>	I screwed slime up so many times I gave up
+T 1326611010 18<19Frozenlock>	Don't update it if it ain't broken :P
+T 1326611083 18<26tali713>	it works great, but since the requirement is that swank work well with /your/ lisp implemntation, and that slime version needs to match swank, the solution is best handled from the lisp side.  the exception being clojure, which is all sorts of weird.
+T 1326611115 18<27nunag>	I wanted slime for scheme
+T 1326611179 18<26tali713>	nunag: yeah, i don't even know what schemes provide a swank sever.  but the stuff that comes with mit/gnu scheme is solid, and there's some other package for other schems.
+T 1326611181 18<26tali713>	,scheme
+T 1326611182 18<22fsbot>	hmm, Scheme is at http://www.emacswiki.org/cgi-bin/wiki.pl?Scheme
+T 1326611187 18<19justinweiss>	makes sense, and it's probably pretty hard to keep everything in sync if you're always using pulling from source control
+T 1326611197 18<26tali713>	justinweiss: indeed.
+T 1326611294 18<26tali713>	,quackmode
+T 1326611295 18<22fsbot>	I heard QuackMode is [0] at http://www.emacswiki.org/cgi-bin/wiki.pl?QuackMode
+T 1326611295 18<22fsbot>	[1] at http://www.neilvandyke.org/quack/,
+T 1326611295 18<22fsbot>	[2] at http://www.emacswiki.org/cgi-bin/wiki.pl?QuackPackage
+T 1326611312 18<26tali713>	nunag: this is supposed to be a solid choice for scheme ^^
+T 1326611346 18<27nunag>	thanks tali713
+T 1326611353 18<26tali713>	np
+T 1326611619 18<29brx>	nunag: check out geiser, maybe.
+T 1326611621 18<29brx>	,geiser
+T 1326611622 18<22fsbot>	hmm, geiser is [0] another major mode for Scheme
+T 1326611622 18<22fsbot>	[1] http://www.nongnu.org/geiser/,
+T 1326611622 18<22fsbot>	[2] only for racket and guile at the moment
+T 1326611640 18<26tali713>	another excellent choice
+T 1326611892 18<19Cosman246>	I wonder what GLS is in the Church of Emacs
+T 1326612334 18<20sword>	Saint Quux, the rock of the command set?
+T 1326612371 18<19Cosman246>	Ah
+T 1326612373 18<19Cosman246>	,gls
+T 1326612373 18<22fsbot>	[->] GuySteele -- [0] at http://www.emacswiki.org/cgi-bin/wiki.pl?GuySteele
+T 1326612373 18<22fsbot>	[1] supposed to be a mega christian
+T 1326612398 18<20sword>	How is 1 relevant?
+T 1326612402 18<19Cosman246>	Where did they get 1?
+T 1326612403 18<20sword>	,forget gls 1
+T 1326612403 18<22fsbot>	whoops,  Number should be "all" or lie between 0 and 0
+T 1326612405 18<19Cosman246>	I want a source
+T 1326612414 18<19Cosman246>	,forget gls all
+T 1326612414 18<22fsbot>	Forgot the single entry in "gls"
+T 1326612417 18<20sword>	,gls
+T 1326612418 18<19Cosman246>	,gls
+T 1326612418 18<22fsbot>	sword, Emacs is [0] an extensible, customizable, self-documenting real-time display editor <http://www.gnu.org/software/emacs/>
+T 1326612418 18<22fsbot>	[1] not a number of eMacs <http://www.apple.com/emac/>, ..[Type ,more]
+T 1326612419 18<22fsbot>	Cosman246: Emacs is [0] an extensible, customizable, self-documenting real-time display editor <http://www.gnu.org/software/emacs/>
+T 1326612419 18<22fsbot>	[1] not a number of eMacs <http://www.apple.com/emac/>, ..[Type ,more]
+T 1326612424 18<20sword>	eh
+T 1326612444 18<19Cosman246>	How do I add a definition in fsbot?
+T 1326612467 18<20sword>	,gls is http://www.emacswiki.org/cgi-bin/wiki.pl?GuySteele
+T 1326612468 18<22fsbot>	created.
+T 1326612479 18<20sword>	like that
+T 1326612541 18<19Cosman246>	,gls is the creator of Scheme and Chairman of X3J13, which standardized Common Lisp
+T 1326612542 18<22fsbot>	BEEEP: gls is already something else.. Use 'is also'.. 
+T 1326612542 18<22fsbot>	 Currently: http://www.emacswiki.org/cgi-bin/wiki.pl?GuySteele
+T 1326612552 18<19Cosman246>	,gls is also the creator of Scheme and Chairman of X3J13, which standardized Common Lisp
+T 1326612553 18<22fsbot>	Added entry to the term "gls"
+T 1326612561 18<19Cosman246>	,gls is also Saint Quux
+T 1326612562 18<22fsbot>	Added entry to the term "gls"
+T 1326612583 18<19Cosman246>	,quux
+T 1326612583 18<22fsbot>	I think quux is quuux
+T 1326612587 18<19Cosman246>	eheheh
+T 1326612591 18<19Cosman246>	,great-quux
+T 1326612591 18<22fsbot>	What makes you believe how do you reconcile any hobbies you have? 
+T 1326612680 18<26jrm>	,sausages is http://youtu.be/v5EMiHs5JbM
+T 1326612681 18<22fsbot>	created.
+T 1326612748 18<20sword>	Cosman246: you can also /query fsbot
+T 1326613014 18<25ashii>	someone happend to know how to use google to search for this exact term "tf-mode" ? i think its treat it like tfmode
+T 1326613234 18<25ashii>	nm i worked around my problem :)
+T 1326614579 22*	SndChaser is now known as SndAsleep
+T 1326615484 22*	insomnia1alt is now known as insomniaSalt
+T 1326616723 18<22derekv>	I wonder if I've fucked myself by neglecting to do anything creative the last 18 months
+T 1326621666 22*	kilon_alios is now known as kilon
+T 1326623871 31<macrobat>30	rudybot: Can you afford to see your surroundings, not as behaviour potentials, but as objects?
+T 1326623871 21<rudybot>21	macrobat: They can't be THAT expensive if lower-middle-class whiteboy students can afford them
+T 1326623909 31<macrobat>30	rudybot: I got beard discount
+T 1326623909 21<rudybot>21	macrobat: you got the beard?  I got the payus
+T 1326626926 18<20Blkt>	good day everyone
+T 1326628947 22*	wunki_off is now known as wunki
+T 1326629422 22*	wunki is now known as wunki_off
+T 1326631085 18<25Aiwass>	is there a good mode for C++ programming with Qt ?
+T 1326631168 18<24galdor>	I use the font Envy Code R:size=12 in emacs; the rendered characters have the same size than any other application with Envy Code R:size=10, but with less space between each character
+T 1326631195 18<24galdor>	is there a way to force emacs to increase character spacing ?
+T 1326631205 18<24galdor>	it's really bad for some characters
+T 1326631271 18<19bremner>	err?
+T 1326631300 18<19bremner>	the font sounds monospaced...
+T 1326631351 18<24galdor>	it is
+T 1326631385 18<19bremner>	what kind of font is it? what OS?
+T 1326631389 18<27chromati`>	what is a good font package to use, debian|ubuntu, to display π correctly on gui emacs?
+T 1326631398 18<27chromati`>	s/π/λ/
+T 1326631402 18<19bremner>	chromati`: Deja Vu works
+T 1326631447 18<24galdor>	it's a TTF font, on Linux
+T 1326631480 18<24galdor>	ok I just saw that using size=11 means having the height and spacing than size=12 on all other applications
+T 1326631488 18<24galdor>	it fixes the spacing issue
+T 1326631509 18<24galdor>	but I have no idea why there's a difference between emacs and other applications
+T 1326631514 18<26daveo>	,next
+T 1326631515 18<22fsbot>	Another satisfied customer.
+T 1326631515 18<22fsbot>	NEXT!
+T 1326631597 18<27chromati`>	when I do m-x set-frame-font <tab> the deja vu fonts are not displayed.
+T 1326631604 18<27chromati`>	they are installed.
+T 1326631644 18<19bremner>	chromati`: I use Xresources Emacs.Font: DejaVu Sans Mono-13
+T 1326631788 18<19bremner>	if I look at M-x customize-face default, I see "DejaVu Sans Mono"
+T 1326632100 18<27chromati`>	I'm not seeing it.
+T 1326632122 18<27chromati`>	font family: fixed
+T 1326632129 18<27chromati`>	font foundry: misc
+T 1326632148 18<27chromati`>	that
+T 1326632152 18<27chromati`>	that's all I see
+T 1326632175 18<19bremner>	what if you type DejaVu Sans Mono into the customization box?
+T 1326632226 18<27chromati`>	which customization box?
+T 1326632265 18<19bremner>	M-x customize-face <return> default <return>
+T 1326632293 18<27chromati`>	I did that, now what? which box can I edit?
+T 1326632321 18<19bremner>	the one that says "Font Family"
+T 1326632334 18<27chromati`>	shit I got it.
+T 1326632360 18<27chromati`>	just edit it, ok. I was trying to press return on the box but you are supposed to just directly edit it.
+T 1326632422 18<27chromati`>	I typed DejaVu Sans Mono into the font family box, but it's not working.
+T 1326632446 18<19bremner>	you see all the buttons just above that? press one.
+T 1326632463 18<27chromati`>	I did. :)
+T 1326632463 18<19bremner>	I'd go with "Set for current session"
+T 1326632466 18<27chromati`>	I did that.
+T 1326632488 18<19bremner>	hmph. Well, like I say, I use .Xresources...
+T 1326632504 18<27chromati`>	ok
+T 1326632519 18<19bremner>	but it works here for me using customize
+T 1326632529 18<27chromati`>	how can I display the current font?
+T 1326632751 18<20pjb>	(frame-font (selected-frame)) --> "-bitstream-Bitstream Vera Sans Mono-normal-normal-normal-*-14-*-*-*-m-0-iso10646-1"
+T 1326632829 18<20pjb>	frame-font is in https://gitorious.org/com-informatimago/emacs/blobs/master/pjb-xresources.el
+T 1326632833 18<24rudybot>	http://tinyurl.com/6wvh9qb
+T 1326633423 18<25quotemstr>	The ribosome is a giant hack: https://en.wikipedia.org/wiki/Frameshift#Controlling_mechanisms
+T 1326633453 18<19bremner>	is that an argument for "intelligent design"?
+T 1326633467 18<25quotemstr>	So if a protein is synthesized too rapidly, the reader can skip one of the base pairs and start synthesizing junk until it happens to see a stop codon.
+T 1326633486 18<25quotemstr>	The "solution"? Insert dummy translations to slow things down.
+T 1326633489 18<25quotemstr>	bremner: Not at all.
+T 1326633565 18<19bremner>	rudybot: don't people know it's sunday?
+T 1326633565 18<24rudybot>	bremner: "The second season of Game of Thrones will kick off Sunday, April 1."
+T 1326633753 18<19Han>	yay
+T 1326635128 18<27chromati`>	pjb: I get void-function frame-font
+T 1326635145 18<27chromati`>	I'm using GNU Emacs 24.0.92.1 (i686-pc-linux-gnu, X toolkit) of 2012-01-02 on linux
+T 1326635206 18<20pjb>	chromati`: frame-font is in https://gitorious.org/com-informatimago/emacs/blobs/master/pjb-xresources.el
+T 1326635206 18<24rudybot>	http://tinyurl.com/7jrjghr
+T 1326635220 18<27chromati`>	oh ok :)
+T 1326636068 22*	wunki_off is now known as wunki
+T 1326636213 18<24jpalecek>	Hi all
+T 1326636228 18<22fledermaus>	a likely story
+T 1326636270 18<24jpalecek>	I have a question about cperl-mode. Particularly, what is cperl-electric-lbrace-space good for?
+T 1326636304 18<24jpalecek>	I can imagine Perl source where "${" makes perfect sense
+T 1326636324 18<24jpalecek>	However, I can't think of anything for "$ {"
+T 1326636425 18<22fledermaus>	jpalecek: some people may have house styles that require that 
+T 1326636499 18<24jpalecek>	fledermaus: that means they write eg. "$ { $a->{b} }"?
+T 1326636563 18<24jpalecek>	However, it doesn't apply to "@{", right?
+T 1326636627 18<29maxigas>	i am running emacs-nox in xterm in wmii and after upgrading from squeeze to wheezy i get this error when i try to launch libreoffice (or other X applications) from the emacs shell: http://pad.telecomix.org/emacsx
+T 1326636630 18<29maxigas>	any ideas?
+T 1326636638 18<22fledermaus>	jpalecek: I don't know, I didn't even know the option existed, and I would certainly never use it myself.
+T 1326636716 18<29maxigas>	ah, solved. :)
+T 1326636745 18<29maxigas>	 mxs@pad: sudo  xhost local:mxs
+T 1326636758 18<19bremner>	blargh
+T 1326636764 18<29maxigas>	^^^ solution.  lesson: there is access control for reaching X server now.
+T 1326636790 18<19bremner>	why sudo?
+T 1326636949 18<24jpalecek>	Ok, another problem with cperl-mode: cperl-electric-keywords doesn't seem to work for me.
+T 1326636967 18<24jpalecek>	I set it on, type "foreachmy " and nothing happens
+T 1326637024 18<24jpalecek>	I also tried M-: (cperl-electric-keyword) with point after "foreachmy" and still, nothing happened
+T 1326637033 18<24jpalecek>	What could be the problem?
+T 1326637186 18<24jpalecek>	I have abbrev-mode on and M-x list-abbrevs shows foreachmy has been expanded
+T 1326637532 18<22fledermaus>	jpalecek: dunno, sorry. afk for a while.
+T 1326637629 18<24jpalecek>	fledermaus: so do I have to study the code?
+T 1326637660 18<24jpalecek>	I mean, isn't there something simple I missed?
+T 1326638655 18<25ww>	hi all. anyone familiar with using muse?
+T 1326638685 18<25ww>	having some trouble getting it to output links properly.
+T 1326638707 18<25ww>	thinks like [[http://example.org/foo][Foo]] get just inserted verbatim into the output...
+T 1326638728 18<25ww>	s/thinks/things/
+T 1326639883 18<29cicatristeza>	sorry i got disconnected, did anyone answer my question?
+T 1326639949 18<20chromaticwt>	NO!
+T 1326639963 18<25DragonSlay>	ouch!
+T 1326640034 18<29cicatristeza>	why so harsh chromaticwt?
+T 1326640127 22*	paroneay` is now known as paroneayea
+T 1326640174 18<25DragonSlay>	he is just kidding..
+T 1326640610 18<20chromaticwt>	:)
+T 1326641062 18<20jlf>	,,...
+T 1326641062 18<22fsbot>	[In the distance, you hear a dog bark]
+T 1326641081 18<29cicatristeza>	oh is it really early in america or what
+T 1326641099 18<20jlf>	07:24 here in california
+T 1326641105 18<29__yhvh__>	whats's that master? Kill my pretty blonde neighbour?
+T 1326641119 18<20chromaticwt>	Sun Jan 15 08:25:12 MST 2012 in new mexico
+T 1326641120 18<20chromaticwt>	 
+T 1326641140 18<26sinners>	help  (setq erc-nickserv-passwords '(freenode (("nick-one" . "password"))))  this doesn't work
+T 1326641152 18<20jlf>	let's tunnel ntp over irc
+T 1326641193 18<26sinners>	23:26 here in china
+T 1326641208 18<22dtw>	In Finland: 2012-01-15T17:26:48+02:00
+T 1326641280 18<29JordiGH>	Milk in bags is a marvel of engineering and part of Canada's gift to the world.
+T 1326641304 18<25kodein>	milk in bags?
+T 1326641349 18<20chromaticwt>	milk sounds good, I'm going to make a glass of milk. moo.
+T 1326641377 18<20jlf>	surely you mean "prepare"
+T 1326641386 18<20chromaticwt>	YES, of course.
+T 1326641389 18<20chromaticwt>	:)
+T 1326641421 18<29JordiGH>	kodein: A marvel of engineering, like I said: http://en.wikipedia.org/wiki/Milk_bag
+T 1326641453 18<29JordiGH>	We may be destroying our world, censoring the internet, but damn do we have our milk distribution problem solved.
+T 1326641464 18<25kodein>	I like cartons
+T 1326641474 18<25kodein>	tetrapak is a swedish invention after all
+T 1326641478 18<29JordiGH>	You just haven't experienced the joys of bags.
+T 1326641517 18<26sinners>	 help  (setq erc-nickserv-passwords '(freenode (("nick-one" .
+T 1326641517 18<26sinners>			 "password"))))  this doesn't work 
+T 1326641523 18<20jlf>	sounds like a good way to get your daily allowance of xenoestrogens
+T 1326641555 18<19ruediger>	kodein: +1 for cartons
+T 1326641573 18<29JordiGH>	Sam I am, would you like milk in a bag?
+T 1326641605 18<20jlf>	sinners: try (setq erc-nickserv-passwords '((freenode (("sinners" . "trustno1")))))
+T 1326641680 18<20jlf>	sinners: try (setq erc-nickserv-passwords '((freenode (("sinners" . "trustno1")))))
+T 1326641768 18<26sinners>	jlf: what is the different from mime
+T 1326641800 18<20jlf>	'( vs. '(( etc.
+T 1326641855 18<22dtw>	,dv erc-nickserv-passwords
+T 1326641856 18<22fsbot>	Passwords used when identifying to NickServ automatically.
+T 1326641856 18<22fsbot>	Example of use:
+T 1326641856 18<22fsbot>	  (setq erc-nickserv-passwords
+T 1326641856 18<22fsbot>	        '((freenode (("nick-one" . "password")
+T 1326641856 18<22fsbot>	                     ("nick-two" . "password"))) ..[Type ,more]
+T 1326641872 18<22dtw>	,more
+T 1326641872 18<22fsbot>	          (DALnet (("nick" . "password")))))
+T 1326641872 18<22fsbot>	You can customize this variable.
+T 1326641872 18<22fsbot>	Defined in `/usr/share/emacs/23.1/lisp/erc/erc-services.elc'.
+T 1326641950 18<26sinners>	i just write this
+T 1326641963 18<26sinners>	i see it from the emacswiki
+T 1326642040 22*	rainrider|away is now known as rainrider
+T 1326642184 18<29JordiGH>	The Turing test. A love story: http://codepad.org/dnIjxI2X
+T 1326642347 18<20jlf>	JordiGH: you've found the love that dare not speak the sum of two and two
+T 1326642363 18<20chromaticwt>	it was just one of those things.
+T 1326642382 18<29JordiGH>	These modern trying times.
+T 1326642423 18<19bremner>	rudybot: add 2 and 2!
+T 1326642423 18<24rudybot>	bremner: And I'm about to write, "sorry, new stable release, can't accept new developments right now, will go into next stable release".
+T 1326642439 18<29JordiGH>	Interesting how they wired it with protestations of bothood every time you ask.
+T 1326642444 18<20chromaticwt>	,(+ 2 2)
+T 1326642444 18<22fsbot>	4  ..(integer)
+T 1326642447 18<19bremner>	well, you did quote JordiGH, and he works on octave, so that is kindof right
+T 1326642488 18<19bremner>	rudybot: are you a bot?
+T 1326642488 18<24rudybot>	bremner: Are those scheme syntax magic words?
+T 1326642539 18<19bremner>	JordiGH: anyway, why are you so prejudiced against bots? I bet you call them "oilbacks" when no-one is listening.
+T 1326642556 18*	20jlf thinks the bot doth protest too much
+T 1326642629 18<20chromaticwt>	octave looks interesting
+T 1326642651 18<29JordiGH>	chromaticwt: How interesting? http://www.octave.org/wiki/index.php?title=OctConf_2012
+T 1326644739 18<24axrfnu>	i am sharing my emacs configs via git across multiple machines. as it happens, i got a mac computer in between. how can i check in .emacs if the current OS is macos?
+T 1326644785 18<20pjb>	axrfnu: for macos, I don't know.  Can't you upgrade to MacOSX?
+T 1326644799 18<22dtw>	,dv system-type
+T 1326644801 18<22fsbot>	Value is symbol indicating type of operating system you are using.
+T 1326644801 18<22fsbot>	Special values:
+T 1326644801 18<22fsbot>	  `gnu'         compiled for a GNU Hurd system.
+T 1326644801 18<22fsbot>	  `gnu/linux'   compiled for a GNU/Linux system. ..[Type ,more]
+T 1326644803 18<24axrfnu>	pjb: well, it is macosx ;)
+T 1326644807 18<22dtw>	,more
+T 1326644807 18<22fsbot>	  `darwin'      compiled for Darwin (GNU-Darwin, Mac OS X, ...).
+T 1326644808 18<22fsbot>	  `ms-dos'      compiled as an MS-DOS application.
+T 1326644808 18<22fsbot>	  `windows-nt'  compiled as a native W32 application.
+T 1326644810 18<22fsbot>	  `cygwin'      compiled using the Cygwin library. ..[Type ,more]
+T 1326644820 18<20pjb>	axrfnu: then it's just like on linux. MacOSX is a unix system!
+T 1326644902 18<24axrfnu>	pjb: well, than i'll put it like that: i'd like to apply special configuration snippets if the os is macosx. but you answered already ;)
+T 1326644909 18<24axrfnu>	i was unaware of system-type variable
+T 1326644962 18<24axrfnu>	pjb: thank you :)
+T 1326644965 18<22dtw>	Maybe system-name is useful too for personal.
+T 1326644987 18<22dtw>	for personal use.
+T 1326644995 18<24axrfnu>	dtw: sounds reasonable, too
+T 1326645095 18<29JordiGH>	I need more Japanese friends.
+T 1326645166 18<29JordiGH>	legumbre: Do you think this is worth translating into English? If you tl;dr, just read the <blockquote>
+T 1326645168 18<29JordiGH>	http://gallir.wordpress.com/2011/10/29/un-viaje-con-richard-stallman-esa-persona/
+T 1326645169 18<24rudybot>	http://tinyurl.com/78gfwh5
+T 1326645667 18<29JordiGH>	How can I figure out what this says? http://jordi.platinum.linux.pl/piccies/Screenshot.png
+T 1326645672 18<29JordiGH>	I imagine this shit is bananas.
+T 1326645785 18<28Egbert9s5>	JordiGH: so that's a proof against all the slander thrown at him all these years?
+T 1326645802 18<28Egbert9s5>	evidence?
+T 1326645804 18<29JordiGH>	Egbert9s5: Against Gwen Stefani?
+T 1326645847 18<27khaije|minder>	i'm trying to find info on e/lisp coding styles... any recommendations or references I should review?
+T 1326645847 18<28Egbert9s5>	against the non-shampooing rms hypothesis
+T 1326645858 18<20jlf>	,elispstyle
+T 1326645858 18<22fsbot>	elispstyle -- try M-: (info "(elisp)Tips")
+T 1326645870 18<27khaije|minder>	nice thanks jlf
+T 1326645877 18<20jlf>	n.b. "elisp" :) 
+T 1326645893 18<29JordiGH>	Egbert9s5: Oh, because he does shampoo?
+T 1326645919 18<29JordiGH>	I don't know, he didn't smell bad at all. His hair is long and his belly is fat, but he doesn't have hygiene problems.
+T 1326645920 18<27khaije|minder>	jlf:  oh, is it very different when compared with CL (for example)?
+T 1326645941 18<20jlf>	khaije|minder: no, i was referring to "e/lisp"
+T 1326645941 18<24jpalecek>	hi all, how can I debug an elisp function that is called by expanding abbrevs
+T 1326645974 18<28Egbert9s5>	JordiGH: even if i could meet him, i wouldn't be able to smell him due to being anosmic :(
+T 1326645979 18<24jpalecek>	I tried M-: (debug-on-entry 'cperl-electric-keyword) but nothing happened
+T 1326645995 18<29JordiGH>	Egbert9s5: Wait, does this mean you can't taste food either?
+T 1326646012 18<24jpalecek>	when I called it through M-: or invoked the abbrev
+T 1326646015 18<20jlf>	khaije|minder: iirc, norvig and riastradh have also both written nice style guides which are largely applicable to elisp
+T 1326646029 18<28Egbert9s5>	JordiGH: i sense the four flavors and that's that
+T 1326646042 18<28Egbert9s5>	JordiGH: maybe umami, but i don't know
+T 1326646054 18<27khaije|minder>	jlf: oh i know, i was trying to be lisp-inclusive since I'm concious of a desire to pick another dialect to learn next to elisp
+T 1326646072 18*	20jlf nods
+T 1326646098 18<28Egbert9s5>	so what do people use to learn elisp?
+T 1326646108 18<28Egbert9s5>	wait, that's a google question
+T 1326646124 18<20jlf>	Egbert9s5: M-: (info "(eintr)Top")
+T 1326646180 18<22dtw>	Egbert9s5, I read some parts from the beginning of "Emacs Lisp intro" and then started writing my own stuff with Emacs Lisp reference manual.
+T 1326646195 18<22dtw>	(Emacs Lisp was my first Lisp.)
+T 1326646250 18<28Egbert9s5>	thanks
+T 1326646320 18<29JordiGH>	Egbert9s5: Interesting.
+T 1326646328 18<28Egbert9s5>	what other systems are self editable? emacs, squeak, ...?
+T 1326646383 18<29JordiGH>	Sigh, gnuplot has a dumb name...
+T 1326646386 18<29JordiGH>	GNU/plot
+T 1326646388 18<29JordiGH>	GNU-plot
+T 1326646393 18<29JordiGH>	mfw >.<
+T 1326646425 18<27mnemonikk>	Egbert9s5: oberon, ...
+T 1326646427 18<19bremner>	GNU/conspiracy
+T 1326646586 18<20aidalgol>	s/conspiracy/pedantry/
+T 1326646596 18<28aurelien>	hum ... if there is a place where there is no conspiracy, it's in the GNU, the GNU is not a matter of money but Freedom
+T 1326646622 18<28aurelien>	so you know already what the GNU think, "Free Software, Free Society!" ;-D
+T 1326646637 18<19bremner>	Hmm. I thought a conspiracy sounded more democratic than a crazed dictator.
+T 1326646640 18*	19bremner hides
+T 1326646649 18<29JordiGH>	aidalgol: Pedantry?
+T 1326646666 18<29JordiGH>	aidalgol: gnuplot has got nothing to do with GNU.
+T 1326646675 18<20aidalgol>	JordiGH: I know.
+T 1326646677 18<28aurelien>	democratic ... there is no country with true democracy on this planet, whre are you coming from? x-D
+T 1326646682 18<28Egbert9s5>	it's an open conspiracy, which is an oxymoron, because conspiracies are done secretly
+T 1326646693 18<20aidalgol>	I was just joining in with bremner's silliness.
+T 1326646712 18<19bremner>	ssh, don't hilight me, I'm hiding.
+T 1326646718 18*	28aurelien looks to Benjamin Franklin and the other -_-'
+T 1326646726 18<20mje>	hi; I have problems getting this http://pastebin.com/7fRdWu4e to return a list where the items are prepended with \\
+T 1326646727 18<28Egbert9s5>	it's like "THE GAY AGENDA" which is not secret at all
+T 1326646742 18<20jlf>	aurelien: you are the only one to mention countries
+T 1326646761 18<28aurelien>	ah
+T 1326646783 18<28aurelien>	jlf you are right, this world have just one true border at this time, space ;-D
+T 1326646803 18<20jlf>	mje: what's your desired output? ("\\foo" "\\bar") etc?
+T 1326646815 18<20mje>	jlf: foo
+T 1326646817 18<20mje>	yes :-)
+T 1326646859 18<20jlf>	, (mapcar (lambda (str) (concat "\\\\" str)) '("foo" "bar" "baz")) 
+T 1326646859 18<22fsbot>	("\\\\foo" "\\\\bar" "\\\\baz")  ..(cons)
+T 1326646927 18<20jlf>	mje: n.b. emacs escapes backslashes when it represents strings, so it looks like there are twice as many as there are internally
+T 1326647017 18<20mje>	jlf: perfect; so I shouldn't care that M-: has \\\\ instead of \\ ?
+T 1326647083 18<20jlf>	if you're entering my form from above, no (since they're doubled within strings due to the same escaping behavior)
+T 1326647139 18<24jpalecek>	How do I add abbrevs? I tried M-x edit-abbrevs, entered "foo" 0 "foobar" under (global-abbrev-table), pressed C-c C-c, but the abbrev didn't show up when I ran M-x list-abbrev (and didn't work, too)
+T 1326647185 18<24jpalecek>	s/list-abbrev/list-abbrevs/
+T 1326647328 22*	zifre is now known as erkin
+T 1326647579 18<24jpalecek>	ah, solved. You have to use tabs, not spaces, to separate the columns in *Abbrevs*
+T 1326647605 18<20chromaticwt>	bar soap
+T 1326647617 18<20jlf>	jpalecek: why not use one of ,,a add.*abbrev ?
+T 1326647617 18<22fsbot>	7 matches.  (add-abbrev add-global-abbrev add-mode-abbrev expand-add-abbrevs inverse-add-abbrev inverse-add-global-abbrev inverse-add-mode-abbrev)
+T 1326647849 18<20chromaticwt>	what is the emacs equivalent of cron?
+T 1326647865 18<20jlf>	,df run-at-time
+T 1326647866 18<22fsbot>	run-at-time is an interactive compiled Lisp function in `timer.el'.
+T 1326647866 18<22fsbot>	(run-at-time TIME REPEAT FUNCTION &rest ARGS)
+T 1326647866 18<22fsbot>	Perform an action at time TIME.
+T 1326647866 18<22fsbot>	Repeat the action every REPEAT seconds, if REPEAT is non-nil. ..[Type ,more]
+T 1326647875 18<20chromaticwt>	thnx
+T 1326647878 18<20jlf>	np
+T 1326648007 22*	alex_white is now known as alexzin
+T 1326648066 18<24jpalecek>	jlf: can you hook a lisp function to an abbrev with add-abbrev?
+T 1326648114 18<20jlf>	it sounds more like you want a keybinding to a function
+T 1326648462 18<29ijp>	Let's reject causality
+T 1326648492 18<28Egbert9s5>	yeah why not, screw the speed of light
+T 1326648620 18<19theom3ga>	hi
+T 1326648660 18<19theom3ga>	I'm using org mode to generate latex files. Is there a way of modifying the default headers it adds? Because it's automatically adding fontenc [t1] and I don't want it
+T 1326648739 18<20jlf>	theom3ga: have you checked M-x customize-group RET org-export and org-export-latex?
+T 1326648816 18<19theom3ga>	jlf: nothing seems to be related to that exact header
+T 1326648898 18<24jpalecek>	jlf: surely not. I'd like to have cperl's electric keywords working. It doesn't work now, so I'm trying to investigate how it works
+T 1326648925 18<20jlf>	theom3ga: looks like it's under org-export-latex-default-packages-alist
+T 1326648936 18<19theom3ga>	mmm looks like I'm out of luck: http://orgmode.org/worg/org-contrib/babel/examples/article-class.html#sec-2-5 it says "There is no facility to disable loading fontenc"
+T 1326648936 18<24rudybot>	http://tinyurl.com/7txc3c5
+T 1326649024 18<20jlf>	jpalecek: what are electric keywords?
+T 1326649081 18<22fledermaus>	JordiGH: http://en.wikipedia.org/wiki/Harajuku (原宿) 
+T 1326649091 18<24jpalecek>	AFAIU it means you write "do" and it will make the braces and newlines for you "do {\n}"
+T 1326649105 18<29JordiGH>	fledermaus: Yeah, I figured that out, but I don't get the banana connection.
+T 1326649123 18<24jpalecek>	should be implemented by function cperl-electric-keyword
+T 1326649135 18<20jlf>	jpalecek: oic.  you may wish to consider ,,yasnippet , which is actively developed, more powerful, and more general
+T 1326649135 18<22fsbot>	jlf: hmm, yasnippet is [0] http://code.google.com/p/yasnippet/
+T 1326649135 18<22fsbot>	[1] see also http://www.emacswiki.org/emacs/Yasnippet,
+T 1326649135 18<22fsbot>	[2] a great template system for Emacs., ..[Type ,more]
+T 1326649160 18<22fledermaus>	JordiGH: the "bananas" chant that is part of the song is apparently a standard chearleader practice thing.
+T 1326649161 18<20jlf>	theom3ga: did you find it?
+T 1326649169 18<24jpalecek>	cperl is not actively developped?
+T 1326649183 18<29JordiGH>	fledermaus: I mean, bananas and Harajuku?
+T 1326649193 18<22fledermaus>	JordiGH: nothing
+T 1326649200 18<19theom3ga>	jlf: nope, I don't know how to access that -alist you mentioned
+T 1326649241 18<20jlf>	theom3ga: M-x customize-group RET org-export-latex RET and expand the entry for "Org Export Latex Default Packages Alist"
+T 1326649267 18<20jlf>	which contains "INS DEL Choice: Value Menu options/package pair: options: T1 package: fontenc Snippet: Toggle  on (non-nil)" here
+T 1326649330 18<20siezer>	hello. I'm just starting on emacs and am trying to learn org-mode... following the docs, I get to "M-S-<left>", and I can't seem to figure out what the 'S' means. I've tried shift, shift+s, and just s to no effect. any clues?
+T 1326649399 18<22fledermaus>	jpalecek: works here
+T 1326649419 18<24jpalecek>	fledermaus: what works there?
+T 1326649441 18<22fledermaus>	set cperl-electric-keywords to t via customise, turned on abbrev-mode, typing forech inserts an indented () {} after it 
+T 1326649448 18<22fledermaus>	foreach 
+T 1326649463 18<24jpalecek>	siezer: should be shift, ie. Alt-Shift-Left
+T 1326649469 18<19theom3ga>	jlf: oh, thanks
+T 1326649483 18<20jlf>	siezer: it means shift
+T 1326649491 18<20siezer>	hrm
+T 1326649500 18<20jlf>	siezer: some key combinations don't work in a console
+T 1326649519 18<28elkng>	can emacs be used as console web browser ?
+T 1326649521 18<20jlf>	siezer: you can do C-h c <some key combo> to see what combo emacs sees
+T 1326649555 18<20mjago`>	siezer: or C-h k to see what the combo will do
+T 1326649567 18<29__yhvh__>	elkng: use w3m
+T 1326649615 18<20siezer>	interesting.. 'ESC <left> (translated from ESC M-O D) runs the command org-metaleft' 
+T 1326649618 18<20siezer>	I was expecting `org-table-delete-column'
+T 1326649627 18<24jpalecek>	fledermaus: Not here. I'm using GNU Emacs 24.0.92.1 (i486-pc-linux-gnu, GTK+ Version 3.2.3)
+T 1326649627 18<24jpalecek>	 of 2012-01-11 on zelenka, modified by Debian (from C-h C-a)
+T 1326649641 18<22fledermaus>	dunno about bleeding edge checkouts.
+T 1326649647 18<22fledermaus>	works in released versions.
+T 1326649676 18<24jpalecek>	I'll try stable
+T 1326649788 18<20mjago`>	siezer: works here on OSX
+T 1326649893 18<20siezer>	mjago carbon emacs? or console emacs?
+T 1326649896 18<24jpalecek>	fledermaus: it seems it only works in some places
+T 1326649902 18<20siezer>	I did a brew install from git head
+T 1326649957 18<24jpalecek>	fledermaus: eg. "1 && do " will not expand anything
+T 1326649964 18<20mjago`>	siezer: pure-built binary (emacsformacosx) v 24
+T 1326649971 18<24jpalecek>	(which is what I was trying)
+T 1326649993 18<20mjago`>	siezer: what version org-mode `M-x org-version'
+T 1326650132 18<20siezer>	Org-mode version 7.8.03
+T 1326650146 18<20siezer>	hold on lemme install the pure-built version
+T 1326650189 18<20mjago`>	siezer: you can get key conflicts if you use windmove as I do, but there are workarounds
+T 1326650215 18<20siezer>	I'm just using whatever homebrew popped out
+T 1326650219 18<22fledermaus>	jpalecek: must be how abbrevs work.
+T 1326650334 18<24jpalecek>	I rather think it's something in cperl-electric-keyword they do not to expand "A if " when you meant "A if B"
+T 1326650424 18<22fledermaus>	jpalecek: all they do is set the abbrevs table
+T 1326650496 18<24jpalecek>	fledermaus: but the abbrev reads as"do"           9    "do"                     cperl-electric-keyword
+T 1326650496 18<24jpalecek>	 
+T 1326650674 18<22fledermaus>	you can call expand abbrev explicitly in the non-working case and the abbrev is not expanded.
+T 1326650776 18<24jpalecek>	Yes, but this is done by the ,,cperl-electric-keyword function
+T 1326650778 18<22fsbot>	[google]    http://www.emacswiki.org/emacs-se/BruceDurlingDotEmacs
+T 1326650778 18<22fsbot>	http://www.emacswiki.org/emacs/IndentingC
+T 1326651162 18<20chromaticwt>	 
+T 1326651163 18<20chromaticwt>	 
+T 1326651163 18<20chromaticwt>	/join #music
+T 1326651166 18<20chromaticwt>	oops
+T 1326651378 18<29cluck>	:)
+T 1326651492 18<29ijp>	rudybot: quote
+T 1326651492 18<24rudybot>	ijp: I'll dual your band.
+T 1326651497 18<22fledermaus>	jpalecek: then I guess you need to figure out why cperl-electric-keyword doesn't insert after the && short circuit.
+T 1326651645 18<20chromaticwt>	how can I control my alsa volume from emacs?
+T 1326651650 18<20chromaticwt>	no emms or anything like that.
+T 1326651664 18<29__yhvh__>	anyone know how progn got it's name?
+T 1326651686 18<29__yhvh__>	goddamn its
+T 1326651697 18<20chromaticwt>	modern jazz quartet
+T 1326651750 18<22fledermaus>	chromaticwt: it evaluates n forms and gives you the result of the nth one
+T 1326651756 18<22fledermaus>	cf prog1 and prog2 
+T 1326651764 18<22fledermaus>	oh, sorry.
+T 1326651768 18<22fledermaus>	__yhvh__: ^
+T 1326651774 18<22fledermaus>	you all look alike to me.
+T 1326651788 18<29__yhvh__>	yeah thats what I thought
+T 1326651877 18<27geckos>	I'm trying ot add folding support to emacs, I follow this page http://www.emacswiki.org/emacs/FoldingMode but I got Symbol's function definition is void: folding-mode-add-find-file-hook when start emacs
+T 1326651990 18<20sword>	geckos: did you put folding.el where emacs can find it
+T 1326652009 18<27geckos>	sword: at ~/.emacs.d/
+T 1326652078 18<22fledermaus>	geckos: why do you think putting a mode's source in the tmpdir will help?
+T 1326652093 18<20sword>	Not quite what I asked... try M-x find-library RET folding
+T 1326652100 18<27jsnikeris>	Anyone using the emacs-snapshot package for Debian?
+T 1326652105 18<20sword>	Yes.
+T 1326652108 18<20sword>	,anyone
+T 1326652108 18<22fsbot>	Please do not ask if anyone uses, knows, is good with, can help you with <some program or library>. Instead, ask your real question and someone will answer if they can help.
+T 1326652121 18<29cluck>	~/.emacs.d/ isn't (and shouldn't be) in the load path
+T 1326652135 18<29cluck>	i suggest ~/.emacs.d/elisp/
+T 1326652138 18<27geckos>	sword: can't find library folding 
+T 1326652138 18<27jsnikeris>	sword: Noted
+T 1326652147 18<27geckos>	sword: you'r right.. 
+T 1326652162 18<27jsnikeris>	sword: How do you keep your info files up to date?
+T 1326652170 18<20sword>	The 'noerror hid it.  ,,next
+T 1326652170 18<22fsbot>	Another satisfied customer.
+T 1326652170 18<22fsbot>	NEXT!
+T 1326652243 18<20sword>	jsnikeris: Eh?  They come with the package.
+T 1326652368 18<27jsnikeris>	sword: bah, you're right! I was looking in the wrong package. Thanks
+T 1326652399 18<20sword>	,next
+T 1326652400 18<22fsbot>	Another satisfied customer.
+T 1326652400 18<22fsbot>	NEXT!
+T 1326652435 18<29doug>	how can i tell what type x is?
+T 1326652464 18<29doug>	hm, maybe type-of
+T 1326652465 18<27jsnikeris>	doug: type-of?
+T 1326652647 18<29__yhvh__>	just had a nice Baader-Meinhof experience, ~10mins apart, curtesy of Metafilter and eintr
+T 1326652672 18<22fledermaus>	a Baader-Meinhof experience?
+T 1326652730 18<20chromaticwt>	man amixer
+T 1326652759 22*	leo2007 has changed the topic to: It was the best of editors, it was the worst of editors, it was the editor of wisdom, it was the editor of foolishness | Emacs pretest 23.3.90: http://goo.gl/Yln3b | Emacs pretest 24.0.92: http://goo.gl/iwij1 (-> gmane.org) | http://emacswiki.org/EmacsChannelFaq | pastebot is http://paste.lisp.org/new/emacs | No public logging! | What happens in #emacs stays in #emacs
+T 1326652783 18*	29leo2007 starts building emacs-23.3.90
+T 1326652790 18<29doug>	i have an array of objects and 0's (integers).  how can i get rid of the integers?
+T 1326652801 18<29doug>	i was thinking a map function that doesn't map nils
+T 1326652816 18<29__yhvh__>	fledermaus: when you notice something you've just learned about
+T 1326652852 18<29__yhvh__>	In my case a mention of the book by Jared Diamond, "Guns, Germs, and Steel."
+T 1326652861 22*	ae is now known as Guest41360
+T 1326652863 18<27jsnikeris>	doug: reduce
+T 1326652904 18<20sword>	integerp
+T 1326652974 18<20sword>	doug: You should be a bit more precise with your words, nil != 0 in this context I assume
+T 1326653022 18<29doug>	nope, lisp nil.  i'm converting the integers that are 0 into nils.
+T 1326653047 18<22fledermaus>	why, ooi, is that a Baader-Meinhof experience?
+T 1326653068 18<29doug>	if there's a function that'll just get rid of integer 0's from a sequence, that's fine too.
+T 1326653073 18<29doug>	kinda figured that was less likely
+T 1326653391 18<19ruediger>	doug: delete-if
+T 1326653733 22*	Frozenlo` is now known as Frozenlock
+T 1326654042 18<29__yhvh__>	fledermaus: sorry Baader-Meinhof phenomenon, the wikipedia page is deleted
+T 1326654193 18<29doug>	ruediger++
+T 1326655962 18<29ijp>	rudybot: quote
+T 1326655962 18<24rudybot>	ijp: let's write a type-safe dissertation.
+T 1326656225 18<26katspaugh>	Hi! Is C-a C-Space C-e M-w how you copy a line in Emacs?
+T 1326656238 18<20damd>	yes
+T 1326656250 18<20damd>	what's awesome about emacs though is you can bind whatever you want to that
+T 1326656289 18<26katspaugh>	Is there some intelligent context-aware way to do the same?
+T 1326656295 18<20damd>	context aware?
+T 1326656304 18*	29ijp advises kill-ring-save to do that when there isn't a mark
+T 1326656307 18<20damd>	oh, well, i can write something like that for you
+T 1326656313 18<26katspaugh>	In JavaScript source file, for instance.
+T 1326656329 18<20damd>	if you can think of it, emacs can do it
+T 1326656338 18<20damd>	i still don't really understand what you're talking about
+T 1326656344 18<26katspaugh>	kill-ring-save? I'll look into that.
+T 1326656354 18<20damd>	kill-ring-save is the command you run with M-w
+T 1326656355 18<29ijp>	kill-ring-save is M-w
+T 1326656361 18<26katspaugh>	damd: I thought maybe someone already invented something clever.
+T 1326656466 18<26katspaugh>	Wait, no mark? Does it copy from the start to end of line?
+T 1326656492 18<20damd>	i think ijp meant "when there is no active region"
+T 1326656501 18<29ijp>	right
+T 1326656650 18<26katspaugh>	M-w copies random regions for me.
+T 1326656721 18<29ijp>	I said I advise it to do that, not that it does it by default
+T 1326656733 18<29ijp>	,advice
+T 1326656733 18<22fsbot>	try:  AdviceVsHooks defadviceorhooks
+T 1326656759 18<26katspaugh>	Ah, thanks, ijp.
+T 1326656770 18<20damd>	ijp: could you give us your code?
+T 1326656820 18<26katspaugh>	ijp: yes, please, show your advice.
+T 1326656828 18<27dsevilla>	hi
+T 1326656834 18<27dsevilla>	any org-mode hacker here?
+T 1326656849 18<27dsevilla>	well, I'll just ask anyway
+T 1326656849 18<20damd>	maybe it's proprietary and closed-source
+T 1326656881 18<29ijp>	according to a comment in my .emacs I nicked it from http://emacs-fu.blogspot.com/2009/11/copying-lines-without-selecting-them.html
+T 1326656882 18<24rudybot>	http://tinyurl.com/ykhzupd
+T 1326656912 18<20damd>	advice are so cool
+T 1326656958 18<27dsevilla>	with the org-mapping API I can access all the elements in an org-mode file
+T 1326656973 18<27dsevilla>	but I don't know how to access the initial properties of the file
+T 1326656980 18<27dsevilla>	such as #+AUTHOR: xxx
+T 1326656985 18<27dsevilla>	or #+DATE:
+T 1326657002 18<27dsevilla>	I know there should be a way, as the latex generators, for example, make use of those properties
+T 1326657028 18<28Expez_>	ijp: Get the whole-line-or-region.el instead perhaps
+T 1326657034 18<27dsevilla>	I can do (org-map-entries ...), but I only get hooks at the entries, not properties
+T 1326657051 22*	Expez_ is now known as Expez
+T 1326657058 18<26katspaugh>	ijp, damd: the advice works excellently, thank you!
+T 1326657068 18<20damd>	don't thank me! :) 
+T 1326657153 18<29ijp>	,praise
+T 1326657153 18<22fsbot>	We will  turn away  their hearts  and eyes from  the truth  since they
+T 1326657153 18<22fsbot>	refused to  believe in  it at  first.  We will  leave them  to blunder
+T 1326657153 18<22fsbot>	about in their wrongdoing.
+T 1326657384 18<26katspaugh>	Nice spacing.
+T 1326657460 18<20damd>	it's been M-q,d
+T 1326657463 18<20damd>	M-q'd
+T 1326657480 18<20damd>	(i guess)
+T 1326657661 18<29ijp>	Let's invite the neighbours round for drinks and mahjong
+T 1326657695 18<28djcb>	i'd like to have a dedicated little window in my emacs-frame; a bit like sr-speedbar, but horizontal
+T 1326657745 18<28djcb>	is there some recommended way to do this? sr-speedbar seems to use some hacks to do its thing
+T 1326657825 18<20damd>	there are no ways but hacks
+T 1326657829 18<20damd>	(really)
+T 1326657979 18<20chromaticwt>	gnext
+T 1326658021 18<29cluck>	the display code seriously sucks, including everything related to presentation
+T 1326658059 18<28djcb>	damd: too bad :/
+T 1326658116 18<28djcb>	basically, i'd want want the emacs equivalent of "Always on top" + "Show on every workspace"
+T 1326658170 18<28djcb>	sr-speedbar advises all kind of core functions to treat the sr-speedbar in some special way
+T 1326658185 18<29doug>	hm, which is better?  (length (number-to-string n))  or  (truncate (log10 n)) ?
+T 1326658214 18<29cluck>	emacs needs to be brought to the mvc era, some age signs are painfully obvious
+T 1326658220 18<29doug>	s/truncate/ceiling/
+T 1326658224 18<20damd>	doug: depends on whether you want others to understand your code or not
+T 1326658259 18*	29cluck should just stfu since he provides no patches
+T 1326658277 18<20damd>	emacs is in serious need of a rewrite
+T 1326658299 18<20bpalmer>	eclipse.
+T 1326658304 18<29ijp>	yes, and in a modern language, like C#
+T 1326658310 18<20damd>	ijp: ...
+T 1326658323 18<20damd>	are you serious?
+T 1326658335 18<26katspaugh>	With powerful VisualBasic macros.
+T 1326658344 18<26mitchty>	and activex controls!
+T 1326658349 18<29ijp>	damd: bear in mind I have previously suggested rewriting emacs in APL, and as sed scripts
+T 1326658355 18<20damd>	ah
+T 1326658395 18<26mitchty>	lets rewrite it in ada
+T 1326658457 18<29cluck>	damd: i'm gonna make some enemies here for saying this but climacs got a few things right and so does "xul"
+T 1326658465 18<29doug>	emacs in javascript
+T 1326658473 18<20damd>	xul has very little right in my opinion
+T 1326658479 18<29ijp>	Let's rewrite emacs in COBOL for teh lulz
+T 1326658509 18<26katspaugh>	With lexical scoping option in Emacs 24, is it easy to port Scheme code to Emacs Lisp?
+T 1326658511 18<29ijp>	rudybot: what would you write it in?
+T 1326658511 18<24rudybot>	ijp: In the specific case of Racket, you can create syntax objects directly without having to write a macro yourself, just use (syntax ...) or its shorthand, #'. But I'm not sure if that's permitted in all syntax-case implementations.
+T 1326658527 18<19Frozenlock>	cluck: what things? Any useful stuff for the common man (like me)? :P
+T 1326658544 18<29ijp>	katspaugh: well, you'll need to rewrite all tail recursive loops for a start ...
+T 1326658590 18<29cluck>	damd: well, when i say "xul" i'm talking about the mvc-ish separation of data and presentation
+T 1326658608 18<20damd>	cluck: so basically, MVC has it right :)
+T 1326658637 18<29cluck>	Frozenlock: i'll just put it like this.. multiple major modes per buffer are easy in climacs
+T 1326658734 18<29ijp>	,blasphemy
+T 1326658735 18<22fsbot>	[google]    http://www.emacswiki.org/alex/Comments_on_2008-06-22_Level_Adjustments
+T 1326658735 18<22fsbot>	http://www.emacswiki.org/alex/Comments_on_2006-03-10_Islam
+T 1326658847 18<29cluck>	damd: well... yeah. but most "kids" these days just understand it when you put it in "web 2.0" terms
+T 1326658872 18<20damd>	most "kids" don't really know what XUL is all about anyways
+T 1326658877 18<26jamshyd>	In emacs 23.3, I can't seem to use global-set-key to map Ctrl-z to suspend-emacs (it is currently bound to undo). Any idea how to remap Ctrl-z?
+T 1326658896 18<20damd>	jamshyd: what is the code?)
+T 1326658919 18<28Siphonblast>	lmao, I'm a super emacs noob and even I get the "Visual Basic macros and active x controls" joke xD
+T 1326658921 18<26jamshyd>	damd: (global-set-key "\C-z" 'suspend-emacs)
+T 1326658931 18<20damd>	(global-set-key (kbd "C-z") 'suspend-emacs)
+T 1326659000 18<26jamshyd>	damd: tried that; doesn't seem to have any effect.
+T 1326659008 18<20damd>	then you're doing something very wrong
+T 1326659012 18<20damd>	what happens when you hit C-z?
+T 1326659024 18<29__yhvh__>	I want to match Annnnnn where n is a number, using re-builder 
+T 1326659029 18<29__yhvh__>	"A\([0-9]\)\{6\}"
+T 1326659034 18<20bpalmer>	jamshyd : are you evaluating that as the very last step of your init (or doing it interactively) ?
+T 1326659038 18<26katspaugh>	jamshyd: are you in the CUA mode?
+T 1326659044 18<20damd>	__yhvh__: put {} inside the parentheses
+T 1326659054 18<20bpalmer>	ah, right, cua is a minor mode, right?
+T 1326659079 18<20damd>	__yhvh__: also, doesn't re-builder require you to double-escape?  \\( etc.?
+T 1326659097 18<29__yhvh__>	damd: there we go
+T 1326659109 18<26jamshyd>	damd: you're right - that's it. Thanks.
+T 1326659115 18<29__yhvh__>	cheers, forgot that
+T 1326659563 18*	19Frozenlock is loading climacs with quicklisp... hoping the whole thing doesn't blow in his face
+T 1326659620 18<19Frozenlock>	Will it explode if I activate it threw emacs slime?
+T 1326659621 18<29cluck>	it might
+T 1326659637 18<19Frozenlock>	threw... wow 
+T 1326659644 18<19Frozenlock>	Need coffee
+T 1326659713 18<20chromaticwt>	espresso
+T 1326659723 18<19Frozenlock>	cappuccino
+T 1326659727 18<29__yhvh__>	does emacs have a built in return matched string?
+T 1326659742 18<20damd>	__yhvh__: what?
+T 1326659768 18<29ijp>	,yow
+T 1326659768 18<22fsbot>	The LOGARITHM of an ISOSCELES TRIANGLE is TUESDAY WELD!!
+T 1326659769 18<20damd>	use string-match to "regexp search" and use match-string to get whatever matched
+T 1326659801 18<19Frozenlock>	yay, failed compilation -_-
+T 1326659820 18<29__yhvh__>	cool ta
+T 1326660020 18<20pjb>	__yhvh__: ,,dv match-string
+T 1326660020 18<22fsbot>	not documented as a variable.
+T 1326660020 18<22fsbot>	Defined in `/usr/share/emacs/23.1/lisp/subr.elc'.
+T 1326660026 18<20pjb>	__yhvh__: ,,df match-string
+T 1326660026 18<22fsbot>	match-string is a compiled Lisp function in `subr.el'.
+T 1326660026 18<22fsbot>	(match-string NUM &optional STRING)
+T 1326660026 18<22fsbot>	Return string of text matched by last search.
+T 1326660026 18<22fsbot>	NUM specifies which parenthesized expression in the last regexp. ..[Type ,more]
+T 1326660072 18<27dsevilla>	OK, I found out, just for the record
+T 1326660088 18<27dsevilla>	the function is org-infile-export-plist
+T 1326660171 18<19Frozenlock>	Hmm not sure if I want to spend the afternoon trying to start climacs... is this a simple fix? @293>: there is no character with name "DELETE"
+T 1326660962 18<19doublep>	let's hire coen brothers to direct next transformers movie
+T 1326661075 18<29ijp>	Let's make the next James Bond movie a chick flick
+T 1326661162 31<macrobat>30	don't james vehicles transform already?
+T 1326661314 31<macrobat>30	"baader-meinhof phenomenon" wtf is wrong with synchronicity? and people?
+T 1326661335 21*	21__yhvh__21 tickles macrobat 
+T 1326661345 22*	mrBliss- is now known as mrBliss
+T 1326661384 31<macrobat>30	you four-letter word, you
+T 1326661425 18<19doublep>	he is your god.  bow
+T 1326661459 18<29ijp>	rudybot: there is no editor but emacs, and rms is its prophet
+T 1326661459 18<24rudybot>	ijp: We should send jordanb to #apple (or whatever) as a prophet
+T 1326661464 18<29JordiGH>	We have a new Octave major release.
+T 1326661476 18*	29JordiGH sees white smoke from octave.org
+T 1326661488 31<macrobat>30	habemus papam?
+T 1326661493 18<29JordiGH>	Habemus releasum
+T 1326661543 18<29__yhvh__>	Octave should read mathmatica code right?
+T 1326661591 18<29__yhvh__>	I tried a random bit of code from http://oeis.org/A005117 but failed
+T 1326661592 18<29JordiGH>	Boy, you trollin'?
+T 1326661595 18<29__yhvh__>	no sir
+T 1326661613 18<29__yhvh__>	its a stated aim of the project is it not
+T 1326661623 18<29JordiGH>	Not at all.
+T 1326661628 18<29__yhvh__>	ah, my bad
+T 1326661629 18*	29ijp hands JordiGH his birch cane
+T 1326661645 18<29JordiGH>	Just like it's not a stated aim of Audacity to edit Photoshop files.
+T 1326661660 18<29JordiGH>	Just because they both do signal processing doesn't mean they are more similar than that.
+T 1326661673 18<29JordiGH>	__yhvh__: Matlab code should work in Octave, though.
+T 1326661725 18<20chromaticwt>	Battery 0: Discharging, 80%, 02:53:00 remaining
+T 1326661725 18<20chromaticwt>	 
+T 1326662094 18<29doug>	is there a c-like way to specify a float constant?  instead of, say, (float 10)
+T 1326662349 18<29doug>	i guess 10.0 does it
+T 1326662407 18<19doublep>	how did you guess?
+T 1326662420 18<25kodein>	a hunch
+T 1326663197 18<29JordiGH>	Hell yeah. Online music buying, no DRM, nerds are loved: http://jordi.platinum.linux.pl/piccies/Screenshot.png
+T 1326663284 18<29JordiGH>	No iTunes, no external software to install, FLAC and Ogg are loved.
+T 1326663313 18<20chromaticwt>	ubuntu one music store
+T 1326663336 18<20chromaticwt>	rhapsody
+T 1326663337 18<20chromaticwt>	amazon
+T 1326663347 18<20chromaticwt>	pandora
+T 1326663349 18<29ijp>	surely though, audiophiles _are_ nerds
+T 1326663375 18<29JordiGH>	ijp: Sure, but not all nerds are audiophiles.
+T 1326663545 18<19Frozenlock>	My respect for coeur de pirate somehow just increased
+T 1326663575 18<19cthuluh>	ewww
+T 1326663652 18<29cluck>	ijp: s/nerds/hipsters/
+T 1326663740 18<19Frozenlock>	because real hackers listen to this http://vip.aersia.net/vip.swf ? :p
+T 1326663754 18<29cluck>	gold tipped audio cables → lol ; gold tipped digital audio cables → rotflololololool
+T 1326663758 18<29JordiGH>	I like her music.
+T 1326663764 18<29JordiGH>	It's plain, simple, good music.
+T 1326663768 18<29JordiGH>	A girl with a piano.
+T 1326663770 18<29JordiGH>	C'est tout.
+T 1326663774 18<19Frozenlock>	JordiGH: agreed
+T 1326663806 18<29cluck>	ceci n'est pas une fame avec un piano
+T 1326663818 18<29JordiGH>	un femme
+T 1326663821 18<29JordiGH>	une femme
+T 1326663822 18<20chromaticwt>	http://www.youtube.com/watch?v=PukuQPUKfyU
+T 1326663836 18<20chromaticwt>	piano
+T 1326663842 18<25kodein>	well, gold doesn't oxidice, so it does have some use on contacts
+T 1326663860 18<29cluck>	JordiGH: stfu i'm watching a doc about anish kapour
+T 1326663928 18<29JordiGH>	chromaticwt: That's no longer simple.
+T 1326663934 18<29JordiGH>	Too many notes.
+T 1326664073 18<29cluck>	JordiGH: congrats for the octave release :)
+T 1326664079 18<29JordiGH>	\o/
+T 1326664166 18<29ijp>	rudybot: quote
+T 1326664166 18<24rudybot>	ijp: Let's make a free software project so we can sell out to apple.
+T 1326664191 18<29ijp>	rudybot: ah, so _that's_ why JordiGH is doing it
+T 1326664191 18<24rudybot>	ijp: you're already doing that: `execute-kbd-macro' is a lisp function
+T 1326664466 18<29JordiGH>	Ooh, it's a nice album too.
+T 1326664481 18<29JordiGH>	ijp: No, I'm doing it for the bling bling with which to buy sexy albums.
+T 1326664678 18<20sword>	Let's make a rap video starring JordiGH.
+T 1326664698 18<29JordiGH>	Wow, it sounds very different than the first album.
+T 1326664729 18<25kodein>	sword: will we get to carry large speakers on the subway in this video?
+T 1326664913 18<29ijp>	n.p. JordiGH -- Free Software Song (dubstep remix) feat. esr
+T 1326664927 18<29JordiGH>	,free-software-song
+T 1326664927 18<22fsbot>	From memory, free-software-song is [0] http://www.youtube.com/watch?v=S-xb1miTjoE
+T 1326664927 18<22fsbot>	[1] http://www.gnu.org/music/free-software-song.html
+T 1326664932 18<29JordiGH>	I like that one.
+T 1326664932 18<25kodein>	let's get that done
+T 1326665077 18<29ijp>	kodein: the hard part will be getting esr to collaborate
+T 1326665090 18<25kodein>	yeah. we would need to have some dirt on him
+T 1326665114 18<29ijp>	rudybot: and, unfortunately, we've decided to replace you with a vocaloid
+T 1326665114 18<24rudybot>	ijp: and learn about it. i can do that while i use other editors to get by
+T 1326665143 18<25kodein>	rudybot: come with us and share the software
+T 1326665143 18<24rudybot>	kodein: what settings should I change in order to change the email address and outgoing email server? Come to think about it, I have had some problems with sendmail on localhost before due to some blocking
+T 1326665583 18<20sword>	O_o blocking localhost?
+T 1326665603 18<20sword>	Damn hackers on 127.0.0.1 unsecured networkds
+T 1326665807 18<19doublep>	ipv4, not cool
+T 1326665823 18<24muhoo>	why is ipv4 not cool?
+T 1326665844 18<19doublep>	not hip
+T 1326665859 18<29ijp>	rudybot: ipv7 is the new hotness
+T 1326665860 18<24rudybot>	ijp: and frog eating is correlated to hotness?
+T 1326665860 18<19doublep>	too mainstream too
+T 1326665867 18<20sword>	There are so many colons in an ipv6 address you're bound to get cancer
+T 1326665872 18<29ijp>	rudybot: well, naturally
+T 1326665872 18<24rudybot>	ijp: and executed it using C-x C-e. It works quite well ! It does seem to save more stuff than I'd expected in config.el. For instance, I see (inhibit-startup-screen t) and (org-directory "/proj/orgmode").
+T 1326665900 18<29wgreenhouse>	ijp: the anime "Serial Experiments Lain" has an ipv7 as an important plot point
+T 1326665917 18<29wgreenhouse>	some engineer secretly uploaded his consciousness as part of the spec
+T 1326665927 18<29ijp>	it's been so long since I've seen that, I can't really remember much about it
+T 1326665948 18<24muhoo>	ijp: http://www.google.com/url?sa=t&rct=j&q=hipstergrammers&source=web&cd=1&ved=0CCkQFjAA&url=http%3A%2F%2Fhipstergrammers.tumblr.com%2F&ei=11ATT8vuJ-aaiQKOhvi8DQ&usg=AFQjCNEvMli76jah8RBjzS0vnZX-a7HTFg&cad=rja
+T 1326665948 18<24rudybot>	http://tinyurl.com/88pmw9s
+T 1326665958 18<24muhoo>	gogoogle hate
+T 1326665959 18<24muhoo>	hipstergrammers.tumblr.com/
+T 1326665980 18<29wgreenhouse>	ijp: ipv7 allowed the net to rez real objects, including sentient lifeforms.  as it turned out, the protagonist herself was one such
+T 1326666064 18<24muhoo>	hehheh  http://www.jonobacon.org/files/freesoftwaresong/jonobacon-freesoftwaresong2.ogg
+T 1326666064 18<24rudybot>	http://tinyurl.com/452e9ry
+T 1326666162 18<24muhoo>	ok, serious question: how can i stop emacs from turning on global-auto-revert-mode all the damn time?
+T 1326666163 18<29ijp>	muhoo: ahh, that's much better
+T 1326666197 22*	erkin is now known as \u0001f639
+T 1326666238 18<24muhoo>	it appears it's crept into my .emacs.desktop
+T 1326666248 18<24muhoo>	and every time i try to load that desktop, bAM, autorevert mode is on
+T 1326666308 18<29wgreenhouse>	muhoo: that's bizarre.  it doesn't happen if you load emacs from command line?
+T 1326666348 18<24muhoo>	wgreenhouse: it's in the .emacs.desktop i keep loading
+T 1326666357 18<29wgreenhouse>	what's an .emacs.desktop?
+T 1326666363 18<24muhoo>	i'ma try just replace-string ing it
+T 1326666367 18<29wgreenhouse>	that sounds like a shortcut for some desktop environment
+T 1326666454 18<24muhoo>	that did it
+T 1326666473 18<24muhoo>	wgreenhouse: no, check out desktop-read and desktop-save functions in emads
+T 1326666477 18<24muhoo>	in emacs even
+T 1326666534 18<29wgreenhouse>	oic.  I notice references to desktop automatically restoring minor modes
+T 1326666557 18<24muhoo>	and that it does
+T 1326666571 18<24muhoo>	i just search/replaced all the mentions of it, problem appears solved
+T 1326666677 18<24muhoo>	hmm is this correct: #-*- org -*-
+T 1326666694 18<24muhoo>	or this : _8_ mode: org ;  -*-
+T 1326666705 18<29JordiGH>	That second one is definitely wrong.
+T 1326666707 18<24muhoo>	soirry, this : _*_ mode: org ;  -*-
+T 1326666714 18<29wgreenhouse>	mode:org; with no spaces
+T 1326666725 18<20sword>	I don't think it matters
+T 1326666730 18<29wgreenhouse>	probably not
+T 1326666732 18<20sword>	Spaces, that is.
+T 1326666734 18<24muhoo>	hmm, this? : _*_ mode: org ;  -*-
+T 1326666740 18<24muhoo>	gah
+T 1326666740 18<20sword>	,filevariables
+T 1326666741 18<22fsbot>	I think FileVariables is [0] (info "(emacs)File Variables")
+T 1326666741 18<22fsbot>	[1] -*- mode:foo -*- for foo-mode,
+T 1326666741 18<22fsbot>	[2] ;; -*- mode: Lisp; coding: utf-8-unix;-*-, ..[Type ,more]
+T 1326666749 18<20chromaticwt>	can I modify a function parameter?
+T 1326666762 18<20chromaticwt>	(defun something (num) ...)
+T 1326666766 18<20chromaticwt>	can I modify num?
+T 1326666773 18<20chromaticwt>	(setq num 13)
+T 1326666773 18<20chromaticwt>	?
+T 1326666789 18<26tali713>	chromaticwt: yes, but that won't do what you think.
+T 1326666833 18<29wgreenhouse>	chromaticwt: if you want to make a convenient shorthand for calling function something with a num of 13, probably the easiest way would be to make a lambda that calls it that way
+T 1326666926 18<24muhoo>	lambda lambda lambda and... omega mu.
+T 1326666970 18<26tali713>	chromaticwt: (defun foo (bar) (setq bar 3) bar) will return 3, ((defun foo (bar) (setq bar 3)) (setq baz 2) (foo baz) baz) should yield 2.
+T 1326667022 18<26tali713>	chromaticwt: since i don't know what you want to do, i can't answer any better than that.
+T 1326667045 18<29JordiGH>	muhoo: Omega tau phi.
+T 1326667065 18<24muhoo>	can you call a function from that functions defun?
+T 1326667071 18<29JordiGH>	rudybot: lambda omicron lambda?
+T 1326667071 18<24rudybot>	JordiGH: eval (let* ((f (lambda (x) (vector x '#(2 3)))) (v (f 1))) (vector-set! (vector-ref v 1) 0 4) (vector v (f 1)))
+T 1326667081 18<29wgreenhouse>	muhoo: yes.
+T 1326667087 18<24muhoo>	that seems like it'd cause a rift in the space-time continuum.
+T 1326667106 18<29wgreenhouse>	actually, it's a very lispy thing to do.  the emacs source includes plenty of examples
+T 1326667108 18<24muhoo>	oh, ok, it' snot executing
+T 1326667111 18<24muhoo>	it's  not
+T 1326667113 18<24muhoo>	heh snot
+T 1326667117 18<20sword>	Only if you exceed 88 mph
+T 1326667138 18<24muhoo>	it doesn't execute the body of the function, so of course it can call itself from within itself
+T 1326667152 18<29wgreenhouse>	yup.
+T 1326667179 18<26tali713>	muhoo: that's often referred to as "recursion"
+T 1326667189 18<24muhoo>	so wait. that means nothing in the defun gets executed at the time it's defined?
+T 1326667196 18<26tali713>	yes.
+T 1326667204 18<24muhoo>	evaluated, perhaps more precisely said.
+T 1326667219 18<29wgreenhouse>	the defun just sets the function definition of a symbol to the body of the defun
+T 1326667223 18<26tali713>	well, the lambda get's evaluated and returns a function object.
+T 1326667232 18<26tali713>	s/get\'s/gets/
+T 1326667251 18<24muhoo>	right, but the contents of the lambda does not, right?
+T 1326667267 18<24muhoo>	oh, this is coming back to me now. lexical scoping.
+T 1326667284 18<26tali713>	muhoo: of course not, at least not in elisp, disregarding reader macros.
+T 1326667319 18<24muhoo>	i've been using non-lisp languages so long no, i've forgotten all about this stuff. damn. that's depressing.
+T 1326667327 18<26tali713>	if the defun is /compiled/ macros may(will) be expandaded, which /may/ end up evaluating code.
+T 1326667582 18<22Expez>	File mode specification error: (invalid-read-syntax ")") <- Can I get Emacs into debug mode or something so it tells me a bit more about where this problem is happening?
+T 1326667590 18<20sword>	,tdoe
+T 1326667591 18<22fsbot>	tdoe is [0] type M-x toggle-debug-on-error RET, reproduce the problem, then lisppaste the contents of the backtrace buffer. ..[Type ,more]
+T 1326667607 18<22Expez>	thanks
+T 1326667632 18<20sword>	Most likely you have a extra paren, M-x check-parens
+T 1326667633 18<29ijp>	Let's buy HD CRTs
+T 1326667652 18<20sword>	Let's make a shadow mask play.
+T 1326667684 18<20pjb>	ijp: where can you buy CRTs?
+T 1326667716 18<26tali713>	antique stores
+T 1326667739 18<24muhoo>	pjb: http://www.weirdstuff.com/
+T 1326667774 18<22Expez>	sword: Is check-parens supposed to give any feedback if everything is OK? Nothing happens when I run it in the suspect buffer.
+T 1326667812 18*	24muhoo plays the "Dragnet" theme for the suspect buffer.
+T 1326667861 18<20pjb>	Expez: No, it's the unix principle at work. When everything's ok, no output is issued.
+T 1326667894 18<24muhoo>	no news is good news.
+T 1326667898 18<22Expez>	:)
+T 1326667921 18<26tali713>	Expez: did tdoe not produce a backtrace?
+T 1326667957 18<22Expez>	It did, but was hoping to get the offending parenthesis highlighted or something.
+T 1326667972 18<26tali713>	Expez: was lisppaste broken?
+T 1326667976 18<26tali713>	,,lisppaste
+T 1326667977 18<22fsbot>	hmm, lisppaste is [0] an auto-announcing listing host (pastebin) <http://paste.lisp.org/new/emacs>, <http://emacswiki.org/wiki/lisppaste> ..[Type ,more]
+T 1326667978 18<24muhoo>	sir, those parentheses offend me!
+T 1326667985 18<24muhoo>	have them removed immediately!
+T 1326667990 18<20pjb>	Only the auto-announcing doesn't work anymore.
+T 1326668002 18<20pjb>	You have to go back to http://paste.lisp.org/ and copy and paste the link yourself.
+T 1326668075 18<22Expez>	Think you're all giving me too much credit; I suddenly have no idea what you're talking about :(
+T 1326668106 18<22Expez>	What would I use lisp paste for?
+T 1326668111 18<26tali713>	Expez: exactly that's why there is advice about what to do with your backtrace in ,,tdoe
+T 1326668112 18<22fsbot>	tdoe is, like, [0] type M-x toggle-debug-on-error RET, reproduce the problem, then lisppaste the contents of the backtrace buffer. ..[Type ,more]
+T 1326668126 18<20pjb>	Expez: To paste your code so that we can see what's wrong with your parentheses.
+T 1326668134 18<26tali713>	,tell Expez about lisppaste
+T 1326668134 18<22fsbot>	Expez: I heard lisppaste is [0] an auto-announcing listing host (pastebin) <http://paste.lisp.org/new/emacs>, <http://emacswiki.org/wiki/lisppaste> ..[Type ,more]
+T 1326668176 18<26tali713>	,s/auto/(probabably not) auto/ in lisppaste 0
+T 1326668178 18<22fsbot>	Replaced string "auto" with "(probabably not) auto".
+T 1326668194 18<20sword>	probabababababababably
+T 1326668210 18<26tali713>	,s/baba/ba/ in lisppaste 0
+T 1326668211 18<22fsbot>	Replaced string "baba" with "ba".
+T 1326668241 18<20sword>	Something about a black sheep and wool.
+T 1326668554 18<22Expez>	Not much happened when I submitted the paste, should it send a message to this channel?
+T 1326668587 18<26tali713>	should, yes. does, no.  just paste the link to your lisppaste manually.
+T 1326668606 18<22Expez>	just sent me to a blank page after I hit submit
+T 1326668647 18<26tali713>	i gotta run, but all new pastes are on the main page, so you can always hop back to it and grab the link from there.
+T 1326668688 18<22Expez>	http://paste.lisp.org/display/127082
+T 1326668724 18<22Expez>	Happens when I open a .java file
+T 1326668748 18<22Expez>	went to that buffer position, but couldn't find any problems with parens
+T 1326668832 18<26tali713>	check your jtags config, looks like you accidentally wrote the file name twice.  
+T 1326668850 22*	\u0001f639 is now known as erkin
+T 1326668892 18<26tali713>	cya
+T 1326668901 18<22Expez>	cya
+T 1326668968 18<20sword>	Expez: M-g M-g 73529 doesn't show anything funny?
+T 1326668990 18<20chromaticwt>	cool
+T 1326669000 18<20chromaticwt>	how can I start emacs without loading .emacs
+T 1326669001 18<20chromaticwt>	?
+T 1326669026 18<20chromaticwt>	nvmd
+T 1326669028 18<20chromaticwt>	man emacs- -q
+T 1326669081 18<22Expez>	sword: That takes me to line 73k, not buffer position 73k. So that would be the end of the file. I did check that buffer position though and couldn't find anything wrong.
+T 1326669101 18<22Expez>	Couldn't find a function to jump direction to a position, was a bit of a pain to find the exact spot
+T 1326669149 18<20sword>	Oh, dammit, I thought that was M-x goto-char
+T 1326669163 18<22Expez>	Guess I'll re-install the file, might've inadvertently altered it
+T 1326669274 18<20sword>	Can you paste the context around that buffer position?
+T 1326669292 18<22Expez>	re-installing jtags
+T 1326669480 18<22Expez>	sword: http://paste.lisp.org/display/127083 The bposition is on 3
+T 1326669496 18<22Expez>	position/line 3
+T 1326669644 18<20sword>	Shouldn't there be a \ before the , so the reader doesn't think this is a macro dereference?
+T 1326669686 18<20sword>	i.e., [(control \,)]
+T 1326669709 18<20sword>	But then again it would be far easier to use (kbd "C-,") instead of the crazy vector notation
+T 1326669714 18<20pjb>	It would be better to use (kbd "C-,")
+T 1326669724 18<20sword>	Ha!
+T 1326669806 18<26legumbre>	JordiGH: I enjoyed the post about rms. It also made me sad.
+T 1326669842 18<20pjb>	It was old.
+T 1326669845 18<22Expez>	I did not write this package, think the vector notation is the cause of the error?
+T 1326669908 18<19twb>	You can't dereference vector literals
+T 1326669930 18<19twb>	Expez: patch it and find out
+T 1326669939 18<22Expez>	indeed
+T 1326670018 18<29JordiGH>	legumbre: And then there's this: http://oreilly.com/openbook/freedom/ch14.html
+T 1326670038 18<29JordiGH>	"I really admired the way Richard built up an entire political movement to address an issue of profound personal concern," Sarah [then dating rms] said, explaining her attraction to Stallman.
+T 1326670038 18<29JordiGH>	My wife immediately threw back the question: "What was the issue?"
+T 1326670038 18<29JordiGH>	"Crushing loneliness." 
+T 1326670068 18<29JordiGH>	We have free software, the GPL, GNU, and the FSF because one dude got really lonely when he didn't have anyone to hack with anymore.
+T 1326670412 18<22Expez>	yeah, the vector stuff was at fault
+T 1326670431 18<22Expez>	Thanks for your help guys! :)
+T 1326670561 18<29lduros>	anybody knows of podcasts about emacs or that mention emacs a lot?
+T 1326670597 18<20sword>	LMGTFY
+T 1326670604 18<20sword>	,g "emacs podcast"
+T 1326670605 18<22fsbot>	[google]    http://www.youtube.com/watch%3Fv%3DDGEWmOFE0Qw
+T 1326670605 18<22fsbot>	http://lhspodcast.info/tag/emacs/
+T 1326670616 18<19Frozenlock>	I can see how a video about emacs could work, but a podcast?
+T 1326670641 18<19Frozenlock>	"and then you M-x this..."
+T 1326670864 18<20sword>	Have Emacsspeak read a crawl of Xah's webpages
+T 1326671373 18<27bob2>	hahaha
+T 1326671384 18<27bob2>	and Don Saklad's posts to gnu.emacs
+T 1326671687 18<19twb>	Is the post of a unicorn a real post?
+T 1326671714 18<20pjb>	twb: as real as unicorns, anyways.
+T 1326672230 18<27bob2>	anyone happen to know what the function is to 'save supposedly incorrectly spelled word at point'?
+T 1326672456 31<macrobat>30	ispell :( 'Error: No word lists can be found for the language "en_US".'
+T 1326672543 31<macrobat>30	do aspell or hunspell replace ispell in a good way or do I have to uninstall those?
+T 1326672577 18<25np_complete>	hi
+T 1326672589 18<25np_complete>	how to set a var, like "global-auto-revert-mode" in my .emacs?
+T 1326672645 31<macrobat>30	use setq
+T 1326672665 18<25np_complete>	var ans the 1?
+T 1326672782 18<20pjb>	np_complete: http://www.gnu.org/software/emacs/emacs-lisp-intro/http://www.gnu.org/software/emacs/emacs-lisp-intro/
+T 1326672783 18<24rudybot>	http://tinyurl.com/6oct6ov
+T 1326672787 18<20pjb>	np_complete: http://www.gnu.org/software/emacs/emacs-lisp-intro/
+T 1326672806 18<25np_complete>	thanks
+T 1326674824 18<20chromaticwt>	what alternative function to message, will display a string in a temp buffer? I can use q to quit that buffer.
+T 1326674971 18<29__yhvh__>	look at describe-function, it uses with-help-window, that might be a good place to start
+T 1326675462 18<29__yhvh__>	chromaticwt: (with-help-window (help-buffer) (print "some string")) 
+T 1326675529 18<20chromaticwt>	thnx
+T 1326675608 18<29__yhvh__>	you know you're tired when words like "help" start to look funny
+T 1326675709 18<28technomancy>	halp
+T 1326676297 18<27geckos>	I'm coming from vim, where I use folding. I see that emacs has more than one folding system, what is the best choice?
+T 1326676312 18<19twb>	,categoryfolding
+T 1326676312 18<22fsbot>	I think CategoryFolding is [0] <http://emacswiki.org/wiki/CategoryFolding>
+T 1326676312 18<22fsbot>	[1] See CategoryOutline and outline-mode,
+T 1326676313 18<22fsbot>	[2] in XEmacs' text-modes package
+T 1326676329 18<19twb>	Most I ever use is outline minor mode, and that hardly ever.
+T 1326676353 18<19twb>	IMO if your program is more than a page long, you have bigger problems
+T 1326676365 18<27bob2>	lol
+T 1326676386 18<27geckos>	twb: I think that too, but I read other ppl code that doesn't think like that
+T 1326676404 18<19twb>	BTDTBTTS
+T 1326676443 18<29__yhvh__>	last night I was looking at Drew Adams Info+ http://www.emacswiki.org/emacs/info%2b.el 
+T 1326676466 18<29__yhvh__>	thats waaay more than one page long and blows my mind how he wrote it
+T 1326676477 18<19twb>	__yhvh__: he's on crack
+T 1326676768 18<20chromaticwt>	what function enables all disabled functions?
+T 1326676783 18<19twb>	chromaticwt: there isn't one afaik
+T 1326677216 18<20pjb>	chromaticwt: (require 'cl) (lambda () (dosymbols (s) (when (commandp s) (enable-command s)))) is the cfuinction that enables all disabled commands.  Notice that functions ARE NOT enabled/disabled, only COMMANDS!
+T 1326677241 18<20pjb>	chromaticwt: If you don't know what you're talking about, you cannot M-x apropos RET enable command RET to find it...
+T 1326677257 18<19twb>	pjb: that's like snuffing an ant with a tomahawk
+T 1326677286 18<20pjb>	twb: a lot of silly questions lead to such a silly answer...
+T 1326677292 18<19twb>	:-)
+T 1326677384 18<19twb>	pool/main/f/firefox/firefox-locale-th_10.0~b4+build1-0ubuntu1_all.deb
+T 1326677393 18<19twb>	Bleh.  When is that i18n shit gonna hit dpkg
+T 1326677728 18<19bremner>	istr ubuntu had a falling out with mozilla, and was going to stop shipping firefox. was that my fevered imagination? If so, can I get better fever-dreams, please?
+T 1326677746 18<19twb>	I was referring to http://people.debian.org/~codehelp/tdeb/
+T 1326677770 18<19twb>	You're thinking about this:
+T 1326677770 18<19twb>	12:36 <dpkg> Due to Mozilla logos licensing, Mozilla software isn't DFSG-free, so Debian distributes Mozilla software with different logos.  One day Mozilla Corporation decided to revoke the agreement to let Debian use Mozilla trademarks, so Debian changed to non-trademarked product names.  See http://en.wikipedia.org/wiki/Mozilla_Corporation_software_rebranded_in_Debian for more information.  http://glandium.org/blo
+T 1326677770 18<19twb>	g/?p=933.  Ask me about <dfsg>.
+T 1326677771 18<24rudybot>	http://tinyurl.com/3yenco
+T 1326677792 18<19bremner>	twb: I'm pretty clear on dfsg and mozilla thanks ;)
+T 1326677804 18<19bremner>	but I thought the ubuntu exception had fallen through
+T 1326677806 18<19twb>	Whereas Ubuntu did a backroom deal with moco and continued shipping Firefox
+T 1326677825 18<19twb>	And *then* moco turned around and said "we've changed our minds, fuck you" (AIUI)
+T 1326677864 18<27nunag>	"as I understand it"?
+T 1326677870 18<19twb>	Yes
+T 1326677880 18<19bremner>	,wtf aiui
+T 1326677880 18<22fsbot>	As I Understand It
+T 1326677883 18<19bremner>	tada
+T 1326677901 18*	29ijp claps politely
+T 1326677918 18<19twb>	I don't pay much attention when canonical and moco decide to sniff each other's assholes
+T 1326677927 18<27nunag>	twb - I find it useful to have www.acronymfinder.com handy when reading your posts
+T 1326677936 18<19bremner>	,wtf nunag
+T 1326677936 18<22fsbot>	nil  ..(symbol)
+T 1326677940 18<19bremner>	:(
+T 1326677951 18<27nunag>	I'm not nil!
+T 1326677956 18<28Sketch>	firefox is in ubuntu 11.04 and 11.10
+T 1326677970 18<28Sketch>	those are the only versions i've used, so i dunno about before
+T 1326677973 18<19twb>	Note that ",wtf" is based on BSD wtf which has a very old, limited acronym database
+T 1326678028 18<26daveo>	with a nick like twb could you expect less than an acronym master?
+T 1326678039 18<27nunag>	aiui is not strictly an acronym, it's a contraction
+T 1326678045 18<19twb>	My nick is standard MIT style
+T 1326678059 18<19twb>	Just like RMS, ESR, GJS, etc.
+T 1326678073 18<26cluck`>	,aiui
+T 1326678073 18<22fsbot>	As I Understand It
+T 1326678075 18<19bremner>	rudybot: let's rant about the difference between acronyms and initialisms
+T 1326678075 18<24rudybot>	bremner: yeah, and politicians should look out for the people...
+T 1326678082 18<19twb>	nunag: intials sound like an acronym to me...
+T 1326678091 18<26cluck`>	fsbot has its own db
+T 1326678098 18<19bremner>	,cluck
+T 1326678098 18<22fsbot>	I heard cluck is [0] the new zippy
+T 1326678098 18<22fsbot>	[1] jelly
+T 1326678105 18<29ijp>	rudybot: awww, such naïveté
+T 1326678105 18<24rudybot>	ijp: awww.
+T 1326678123 18<19twb>	ijp: props on the diacritics
+T 1326678130 18<27nunag>	we'll be clean out of 3 letter contractions soon - there can only be about 1800 or so
+T 1326678144 18<19twb>	nunag: that's assuming ASCII
+T 1326678159 18<19twb>	And I make it 180,000
+T 1326678161 18<19twb>	Er, 18,000
+T 1326678172 18<26cluck`>	nunag: stfu before people start discussing acronym vs. initialism
+T 1326678174 18<29ijp>	if that isn't enough we could just start using hangul or something
+T 1326678191 18<19twb>	hangul has fewer letters than English
+T 1326678201 18<29ijp>	more sounds though, no?
+T 1326678214 18<28Sketch>	it's hard to have more sounds than you have letters
+T 1326678225 18<19twb>	Somewhere between 20 and 24 depending whether you count doubled, obsolete, aspirated letters as distinct or simply like diacritics
+T 1326678229 18<27nunag>	twb IMO FWIW IIRC an acronym is a word formed from the initials of a sequence of words YMMV
+T 1326678235 18<19twb>	Sketch: I don't think so
+T 1326678236 18<28Sketch>	it has more _vowels_ than english
+T 1326678246 18<19twb>	Sketch: most of those are just iotated
+T 1326678251 18<28Sketch>	but i think that's mostly due to them not being overloaded like ours are
+T 1326678256 18<29ijp>	"Hangul is a true alphabet of 24 consonant and vowel letters. However, instead of being written sequentially like the letters of the Latin alphabet, Hangul letters are grouped into blocks, such as 한 han; each of these blocks transcribes a syllable"
+T 1326678263 18<29ijp>	I see, I was thinking of the blocks
+T 1326678292 18<19twb>	Like there is a separate letter for [oi] but it's just the [o] and [i] letters in essentially a ligature.
+T 1326678330 18<26daveo>	oi vey!
+T 1326678350 18<19twb>	Hangul orthography is a really cool design, because it's both letters and syllabic blocks, AND the letters are morphophonetic -- i.e. similar shapes - similar sounds
+T 1326678351 18*	29ijp should have just said "chinese characters" so there wouldn't have been an argument
+T 1326678355 18<27nunag>	hangul is freaking awesome
+T 1326678370 18<19twb>	nunag: they're called hanja/hanzi/kanji
+T 1326678379 18<19twb>	*ijp: they're called hanja/hanzi/kanji
+T 1326678408 18<19twb>	ijp: and for the last ~50 years they've been basically optional in Korean schools, although the Japanese (and obviously the Chinese) still use them heavily
+T 1326678425 18<29ijp>	twb: I know, but people are more likely to understand "chinese characters" than if I had picked one
+T 1326678442 18<19twb>	han are blocks composed of morphological radicals
+T 1326678447 18<19twb>	ijp: granted
+T 1326678448 18<29ijp>	rudybot: will China make us learn them, when they take over the world
+T 1326678448 18<24rudybot>	ijp: Canada, US, and the UK would nicely cover all available YouTube videos too, for when they try to do region lockout.
+T 1326678463 18<19twb>	ijp: no, just pinyin
+T 1326678467 18*	29ijp wouldn't actually mind
+T 1326678496 18<19twb>	pinyin is isomorphic, like Hangul's Yale notation.
+T 1326678505 18<28Sketch>	i think hangul is cool because it tells you how to pronounce the word
+T 1326678522 18<19twb>	Because you can actually type hangul letters on a normal keyboard, they don't need a 1:1 so they switched to one that anglophones will pronounce more or less correctly
+T 1326678522 18<28Sketch>	since it's grouped by syllables
+T 1326678533 18<28Sketch>	(and there's only one way to pronounce each letter)
+T 1326678537 18<19twb>	Sketch: *and* unlike ja they have spaces between words
+T 1326678555 18<19twb>	Sketch: well, modulo dialectal differences ([si] vs. [shi] for example.)
+T 1326678603 18*	26daveo feeling like a nitwit again, i only speak a mangled version of english used by US americans
+T 1326678645 18*	26daveo tips his hat to the multilinguals in the house
+T 1326678648 18<28Sketch>	twb: yeah, that helps too.  there are often space in japanese as well, but not always
+T 1326678652 18<28Sketch>	+s
+T 1326678677 18<28Sketch>	daveo: i wish i knew enough korean to actually speak it ;)
+T 1326678692 18<27nunag>	"modulo dialectal differences" sounds a bit intimidating to me
+T 1326678696 18<19twb>	I know a couple of words
+T 1326678722 18<19twb>	I failed because I had no one to practice with except a couple of norwegians on IRC who were way ahead of me because they were studying it at uni
+T 1326678724 18<27nunag>	I can get by with the little I know
+T 1326678763 18<19twb>	nunag: "dialectal differences" means people out in whoop-whoop speak in a different accent
+T 1326678770 18<26daveo>	i asked a korean the word for rice, he looked at me blankly for the longest time before saying there's about 7 different words used for rice, depending upon state of rice at the time
+T 1326678785 18<27nunag>	and a also know a fair amount of baduk (Go) terminology
+T 1326678786 18<19twb>	Like osaka
+T 1326678820 18<29ijp>	,en kr rice
+T 1326678822 18<22fsbot>	[Too many DB matches] I like the way ONLY their mouths move..  They look like DYING OYSTERS
+T 1326678829 18<29ijp>	,t8 en kr rice
+T 1326678829 18<22fsbot>	oops,  Wrong type argument: characterp, "English -> kr: no matching translation services found.
+T 1326678829 18<22fsbot>	"
+T 1326678833 18<28Sketch>	or the southern US
+T 1326678843 18<19twb>	ijp: kr is the place, ko is the language
+T 1326678845 18<28Sketch>	or boston
+T 1326678845 18<26cluck`>	daveo: you should really learn a second human language well, it gives you new insight over the world
+T 1326678846 18*	29ijp googles the language code
+T 1326678855 18<29ijp>	twb: ah right
+T 1326678867 18<29ijp>	,t8 en ko rice
+T 1326678867 18<22fsbot>	쌀
+T 1326678869 18<19twb>	ijp: ISO 639 FYI
+T 1326678876 18<29ijp>	,t8 ko en 쌀
+T 1326678877 18<22fsbot>	Rice
+T 1326678879 18<27nunag>	pap 
+T 1326678894 18<29ijp>	fsbot: thank you
+T 1326678894 18<22fsbot>	you are welcome, ijp
+T 1326678918 18<28Sketch>	visiting other countries helps too
+T 1326678953 18<28Sketch>	or moving to one, like i did
+T 1326678963 18<19twb>	Or just hang out here and bask in my experience
+T 1326678988 18<28Sketch>	which reminds me, i've been here for 6+ months now, i should really look for a cantonese class...
+T 1326679023 18<26daveo>	Sketch: where is here?
+T 1326679060 18<27nunag>	the most important word in hanhul is, of course, "soju" - you can go quite a long way with that alone, and a tolerance for bending karaoke
+T 1326679068 18<28Sketch>	daveo: hong kong
+T 1326679069 18<29ijp>	r'lyeh
+T 1326679081 18<27nunag>	*hangul
+T 1326679100 18<27nunag>	*ear bending
+T 1326679106 18<28Sketch>	there aren't many other places where people speak cantonese (other than chinatowns)
+T 1326679198 18<29ijp>	rudybot: quote
+T 1326679199 18<24rudybot>	ijp: Let's make a literate lisp.
+T 1326679200 18<28Sketch>	nunag: my korean friend likes to sing YMCA...
+T 1326679247 18<26daveo>	is he gay?
+T 1326679269 18<29ijp>	rudybot: how can we put the philosophy of hume to use in the workplace?
+T 1326679269 18<24rudybot>	ijp: i thought we all preferred erc :P
+T 1326679271 18<27nunag>	ye Sketch - you just need to get a little drunk and participate - always appreciated
+T 1326679291 18<28Sketch>	daveo: nope
+T 1326679327 18<26daveo>	sorry, in old US that was the gay anthem for a long time
+T 1326679329 18<27nunag>	does he do the actions for the letters as cricket crowds do here?
+T 1326679368 18<27nunag>	maybe he does them in hangul?
+T 1326679377 18<28Sketch>	heh
+T 1326679410 18<28Sketch>	there's no Y by itself in hangul ;)
+T 1326679436 18<28Sketch>	no C either
+T 1326679443 18<28Sketch>	so that would be difficult ;)
+T 1326679647 18<27nunag>	no C? what do they write systems code in?
+T 1326679735 18<27geckos>	on regexs what \f matches?
+T 1326679788 18<27geckos>	formfeed, got it
+T 1326679973 18<27nunag>	good geckos - I never seen it before
+T 1326679979 18<19twb>	https://en.wikipedia.org/wiki/Initialism
+T 1326679990 18<19twb>	It seems there is no consensus about where acronym becomes initialism
+T 1326680078 18<27nunag>	apologies twb I did say IIRC (ie I might be talking crap)
+T 1326680094 18<19twb>	I'm not blaming you, I'm just fact checking
+T 1326680149 18<27nunag>	and a contraction is e.g. pycon ?
+T 1326680169 18<19twb>	``One representative example, from the U.S. Navy, is COMCRUDESPAC, which stands for commander, cruisers destroyers Pacific; it's also seen as "ComCruDesPac".''
+T 1326680227 18<27nunag>	COMCRUDESPAC sound like a vulgar term for scrotum
+T 1326680232 18<19twb>	The medical literature has been struggling to control the proliferation of acronyms as their use has evolved from aiding communication to hindering it. This has become such a problem that it is even evaluated at the level of medical academies such as the American Academy of Dermatology.
+T 1326680250 18<19twb>	"Averting the proliferation of acronymophilia in dermatology: effectively avoiding ADCOMSUBORDCOMPHIBSPAC"
+T 1326680299 18<26cluck`>	nunag: i warned you to stfu :(
+T 1326680351 18<27nunag>	cluck hehehe
+T 1326680382 18<19twb>	13:01 <ijp> rudybot: how can we put the philosophy of hume to use in the workplace?
+T 1326680385 18<19twb>	Oops
+T 1326680598 18<29__yhvh__>	ok so I want to use the third arg of re-search-forward, can I just pass nil as second or do I have to do point-max?
+T 1326680623 18<29__yhvh__>	second argument is a bound on the search
+T 1326680710 18<19twb>	Isn't that one of the functions you're not supposed to use non-interactively?
+T 1326680929 18<29__yhvh__>	no idea
+T 1326680986 18<26cluck`>	,rx
+T 1326680986 18<22fsbot>	rx is [0] a symbolic notation for regular expressions (C-h f rx RET).
+T 1326680986 18<22fsbot>	[1] not part of XEmacs.,
+T 1326680986 18<22fsbot>	[2] just what the doctor ordered
+T 1326681193 18<19twb>	Boney_: hey, are you at LCA?
+T 1326681204 18<20Boney_>	nope.
+T 1326681219 18<19twb>	Me neither!
+T 1326681224 18<20Boney_>	I'm presenting at DAMP next week so I go to the USA on thursday.
+T 1326681230 18<20Boney_>	LCA wouldn't fit.
+T 1326681237 18<19twb>	Rightyo
+T 1326681253 18<19twb>	Downrange Anti-missile Measurement Program ?
+T 1326681301 18<19twb>	Huh, Darwin includes non-free components.
+T 1326681319 18<19twb>	I had assumed Darwin was the free bits of OS X
+T 1326681326 22*	favadi|away is now known as favadi
+T 1326681329 18<20Boney_>	so did I.
+T 1326681337 18<20Boney_>	DAMP = Declarative Aspects of Multicore Programming.
+T 1326681338 18<19twb>	It has non-free drivers
+T 1326681368 18<20Boney_>	co-located with POPL, which means Principals Of Programming Languages.
+T 1326681374 18<20Boney_>	in Philadelphia.
+T 1326681387 18<19twb>	Haha, darwin's device driver API is object-oriented
+T 1326681399 18<20Boney_>	heh.
+T 1326681413 18<19twb>	Oh, and Darwin/ARM is not available as open source at all
+T 1326681417 18<20Boney_>	I can see some sense in that, but I'd prefer callback-oriented.
+T 1326681438 18<19twb>	OO is only useful for engineers
+T 1326681458 18<20Boney_>	I think that it works well for GUIs and that's about it.
+T 1326681464 18<19bremner>	there are several steps below engineer in the keyboard hammering crowd
+T 1326681502 18<19twb>	bremner: I mean as distinct from mathematician
+T 1326681522 18<19twb>	Boney_: eh, there is sexy FRP GUI stuff these days
+T 1326681531 18<19twb>	Boney_: until I look I can pretend that's better
+T 1326681549 18<20Boney_>	:-)
+T 1326681569 22*	Boney_ is now known as Boney
+T 1326681578 18<27nunag>	,wtf FRP
+T 1326681579 18<22fsbot>	nil  ..(symbol)
+T 1326681586 18<19twb>	What is FRP?
+T 1326681586 18<22fsbot>	frp -- Functional Reactive Programming. http://www.haskell.org/haskellwiki/Functional_Reactive_Programming
+T 1326681607 18<19twb>	12:39 <twb> Note that ",wtf" is based on BSD wtf which has a very old, limited acronym database
+T 1326681618 18<19bremner>	we all have you on ignore
+T 1326681629 18<19bremner>	on odd numbered minutes
+T 1326681629 18<19twb>	bremner: so IOW just like meatspace
+T 1326681991 18<19twb>	Hmm, and the original NeXT kernel used a *different* OO driver API -- the current OS X one is, strangely, in C++ rather than ObjC
+T 1326682211 18<28Sketch>	twb: might have something to do with the freebsd bits?
+T 1326682314 18<19twb>	FreeBSD is in C, surely
+T 1326682335 18<20chromaticwt>	beastie
+T 1326682341 18<20chromaticwt>	}:|
+T 1326682719 18<29ijp>	rudybot: quote
+T 1326682719 18<24rudybot>	ijp: Let's like our programs like we like our scotch.
+T 1326682764 18<19bremner>	rudybot: what would a peaty program be like?
+T 1326682764 18<24rudybot>	bremner: why would you want a non-lisp emas anyway? lispis pretty, and cuddly.
+T 1326682765 18<26Boney>	twb: I'm pretty sure FreeBSD is all c.
+T 1326682765 22*	dys` is now known as dys
+T 1326682838 18<19twb>	Exactly
+T 1326684030 18<28ietuu>	any way to make x-popup-menu ignore mouse position? with multihead it shows menu on whichever monitor the cursor is, even if emacs is on another one.
+T 1326684046 18<19twb>	ietuu: fix your WM
+T 1326684359 18<29__yhvh__>	lolz http://thread.gmane.org/gmane.emacs.devel/147660/focus=147675
+T 1326684753 18<29ijp>	well, at least its more useful than M-x butterfly
+T 1326684806 18*	28bpalmer` grumbles and hates.
+T 1326684974 18<29qDot_>	Oh emacs humor.
+T 1326684991 31<macrobat>30	rudybot: delight me in surprising ways
+T 1326684991 21<rudybot>21	macrobat: I met a girl who showed me some appreciation and I realized I didn't have to hang on to my "spite hobbies"...and I've downgraded my "women are pure evil" to "women are partly evil"
+T 1326685033 18<29ijp>	rudybot: do you think you'll ever get over Mrs Rudybot?
+T 1326685033 18<24rudybot>	ijp: i don't really ever use autocomplete
+T 1326685202 18<26legumbre>	you autocomplete me
+T 1326686882 18<29__yhvh__>	fsbot: make us some tea there duck
+T 1326686883 18<22fsbot>	__yhvh__: I think make is [0] GNU make, a package to automate dependecy handling and source code builds
+T 1326686883 18<22fsbot>	[1] available at http://www.gnu.org/software/make/,
+T 1326686883 18<22fsbot>	[2] http://www.gnu.org/software/make/manual/, ..[Type ,more]
+T 1326686898 18<29__yhvh__>	gah
+T 1326686992 18<29ijp>	,beer __yhvh__
+T 1326686992 18*	22fsbot delivers __yhvh__ a cool bucket of Lagunitas IPA!
+T 1326687284 18<24jlf_`>	lagunitas \o/
+T 1326687293 22*	nowhereman is now known as nowhere_man
+T 1326687525 18<20sword>	Ugh, IPA
+T 1326687549 18<20sword>	You hops people weird me out
+T 1326687558 18<20sword>	:)
+T 1326687747 18<27nunag>	I worked with hops for 2 years
+T 1326687783 18<27nunag>	36
+T 1326687793 18<27nunag>	*3
+T 1326687876 18<20sword>	A witch!  Can we burn nunag?
+T 1326687898 18<27nunag>	you get got at walking on 16 foot stilts
+T 1326687916 18<20sword>	Sounds like a tall order
+T 1326688200 18<29ijp>	sword: don't be uncouth. We need a trial first.
+T 1326688206 18<29ijp>	rudybot: get me my ducking stool
+T 1326688206 18<24rudybot>	ijp: i really get sick from looking at it
+T 1326688370 18*	20sword ducks.  Poor choice of words?
+T 1326688458 18<29__yhvh__>	is texinfo the best thing for prettying up results in a temp buffer?
+T 1326688532 18<29__yhvh__>	like 2 levels of headings + default text?
+T 1326688803 18<22derrida>	__yhvh__: can you elaborate on "prettying up results"
+T 1326688849 18<22derrida>	does that mean preview?
+T 1326688977 18<29__yhvh__>	I'm writing a function here that scrapes from the web, and it's divided into different sections that I would like larger faces for
+T 1326689093 18<28jlf`>	sword: the lagunitas brewery is a couple miles down the road from me
+T 1326689097 22*	jlf` is now known as jlf
+T 1326689134 18<20jlf>	they make several great beers
+T 1326689157 18<29__yhvh__>	Come to think of it, I'd like links aswell maybe
+T 1326689358 18<22derrida>	__yhvh__: and the connection texinfo?
+T 1326689363 18<22derrida>	*to
+T 1326689398 18<29__yhvh__>	I thought it might be the thing to use to format the results in a nice way
+T 1326689882 18<28localredhead>	there is this shortcut in intellij and eclipse where if you hold down ctrl and click on a method name it will drill down into that method.
+T 1326689906 18<27bob2>	jde
+T 1326689907 18<27bob2>	maybe
+T 1326689918 18<28localredhead>	is it possible to get something equivalent? in emacs for rails?
+T 1326689944 18<22derrida>	__yhvh__: seems like a lot of unnecessary complexity if you're just trying to spit some text into a temporary buffer, maybe i'm misunderstanding.
+T 1326689952 18<27bob2>	i don't really believe it's generally possible for rails
+T 1326689972 18<28localredhead>	ok.  its a 'nice to have' I suppose.
+T 1326689976 18<27bob2>	check out cedet
+T 1326689992 18<28localredhead>	i have cedet installed and woring with ecb
+T 1326690015 18<29__yhvh__>	derrida: It does seem complicated, but there's a lot of info, the pages I'm stripping for example http://oeis.org/A000041
+T 1326690188 18<29__yhvh__>	After I finish this I'm considering mirroring that site to provide an api, cause this has been shitty
+T 1326690231 18<22derrida>	__yhvh__: is the temporary buffer for screen display or print/distribution?
+T 1326690243 18<29__yhvh__>	just screen
+T 1326690306 18<22derrida>	font-lock won't suffice?
+T 1326690348 18<24dto>	lucy and ramonaaaaa. sunset saaaaam
+T 1326690467 18<29__yhvh__>	maybe, does font-lock do links (hypertext)?
+T 1326690600 Tcl interface unloaded
+T 1326690600 Python interface unloaded

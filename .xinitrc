@@ -73,5 +73,6 @@ if [[ WM = openbox ]] ; then
 	WM="openbox-session"
 fi
 #exec ck-launch-session openbox-session
-exec ck-launch-session dbus-launch ${WM:=awesome}
+# exec ck-launch-session dbus-launch ${WM:=awesome}
+exec ck-launch-session dbus-launch ${WM:=startxfce4}
 

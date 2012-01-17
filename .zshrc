@@ -66,6 +66,8 @@ PROMPT_BAK="$PROMPT"
 
 # revise these! man zshcompsys
 #zstyle ':completion:*' completer _expand _complete _correct _approximate
+# for example make zathura autocomplete pdf files
+# zstyle ':completion:*:zathura:*' file-patterns '*.pdf'
 zstyle ':completion:*' completions 1
 zstyle ':completion:*' file-sort name
 zstyle ':completion:*' glob 1
@@ -231,8 +233,8 @@ bindkey -s đ " find -iname '**' "	#f  #see drop()
 #PATH=/home/occam/bin:/usr/local/bin:/usr/bin:/bin:/usr/games:/home/occam/bin/scripts
 test "$PATH_BAK" || PATH_BAK="$PATH"
 
-# franz allegro lisp
-PATH=/usr/local/bin:/usr/bin:/bin:/usr/games:/sbin:/usr/sbin:/home/occam/bin/packages/franz/acl82express
+# franz allegro lisp /home/occam/bin/packages/franz/acl82express
+PATH=/usr/local/bin:/usr/bin:/bin:/usr/games:/sbin:/usr/sbin:/usr/bin/core_perl
 export PATH
 
 # (some folders i dont have), i might want /opt/qt/bin . mtr is in /usr/sbin
@@ -425,6 +427,8 @@ alias wxyc='mplayer http://audio-mp3.ibiblio.org:8000/wxyc.mp3'
 alias wknc='mplayer -cache 1500 http://wknc.sma.ncsu.edu:8000/wkncmq.ogg'  # ncsu
 #sätt cache i Kb och börja spela efter 3% fyllnad av den, varva lagom
 alias cpl='mplayer cdda:// -cache 3000 -cache-min 3 -cdda speed=7'
+
+alias acro='~/bin/acrobat/bin/acroread'
 
 # åxå lagt in som C-RET i .xbindkeysrc
 # connection refused even if daemon running? 

@@ -1,8 +1,9 @@
+
 [Desktop Entry]
 Type=Application
 Name=google chrome
 Comment=browse fast
-Icon=chromium-browser
+Icon=chromium
 Exec=chromium-browser %U
 Path=/home/occam/Desktop
 Terminal=false

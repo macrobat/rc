@@ -1,5 +1,7 @@
 ;; in case of error, use (when nil ) to bisect this file
 
+;; TODO: use autoloads
+
 ;; cons onto load-path list before we can load/require libs
 ;;(add-to-list 'load-path "~/.emacs.d/")
 ;; mapc is for side-effects only, it doesn't return a list like mapcar does
@@ -8,11 +10,11 @@
 ;; do I neeed all dirs in elpa too?
 
 ;; set up unicode
-(prefer-coding-system       'utf-8)
-(set-default-coding-systems 'utf-8)
-(set-terminal-coding-system 'utf-8)
-(set-keyboard-coding-system 'utf-8)
-(setq default-buffer-file-coding-system 'utf-8)
+;; (prefer-coding-system       'utf-8)
+;; (set-default-coding-systems 'utf-8)
+;; (set-terminal-coding-system 'utf-8)
+;; (set-keyboard-coding-system 'utf-8)
+;; (setq default-buffer-file-coding-system 'utf-8)
 
 ;; removed these, use packages and elpa
 ;; "~/.emacs.d/workgroups.el/" "~/.emacs.d/slime/" "~/.emacs./rainbow"
@@ -38,6 +40,7 @@
       '((bm "1.53") (browse-kill-ring "1.3.1") (buffer-move "0.4")
         (rainbow-mode "0.1") (workgroups "0.2.0") (paredit "22")
         (goto-last-change "1.2")))
+;; htmlize "1.39"
 ;; pkgs installed by elpa will be requireable
 ;; (package-initialize)
 ;; This was installed by package-install.el. This provides support for the package system and
@@ -174,12 +177,15 @@
 ;; vector syntax: (global-set-key [(meta left)] #'previous-buffer)
 ;; (kbd "<C-tab>") is just a macro that returns [C-tab]
 ;; typically you use `minor-mode-map-alist' to bind keys that you want to be active only in a certain minor mode.
+;; ([]) lands you in debugger
+;; [] don't work, use (kbd "C-bla") or keys spelled out [(control j)]
+;; local bindings shadow global ones
 
 ;; no need for shift
 (when window-system
   ;; use digit-argument when in terminal.
   ;; C-number doesn't work in term / may do other things
-  ;;wrong(mapcar (lambda (k) (interactive) (describe-key k)) '(M-! M-% M-& M-/ M-=))
+  ;; wrong(mapcar (lambda (k) (interactive) (describe-key k)) '(M-! M-% M-& M-/ M-=))
   (global-set-key (kbd "M-1") 'shell-command)
   (global-set-key (kbd "M-2") 'shell-command-on-region)
   (global-set-key (kbd "M-5") 'query-replace)
@@ -227,7 +233,7 @@
 (windmove-default-keybindings) ; S-arrowkey, move to window
 
 (require 'buffer-move)
-;; buffermove.el 4 ~ identical functions - good candidate for a rewrite
+;; buffermove.el 4 identical functions - good candidate for a rewrite
 (global-set-key (kbd "<C-S-up>")     'buf-move-up)
 (global-set-key (kbd "<C-S-down>")   'buf-move-down)
 (global-set-key (kbd "<C-S-left>")   'buf-move-left)
@@ -244,8 +250,12 @@
 ;;(with-current-buffer "*scratch*" (local-set-key
 ;;                                (kbd "<C-j>") 'eval-print-last-sexp))
 
+(add-hook 'emacs-lisp-mode-hook
+          (lambda () (local-set-key [(C-j)] 'eval-print-last-sexp)))
+
 (when (featurep 'paredit)
   (define-key paredit-mode-map (kbd "C-j") 'eval-print-last-sexp)
+  ;; stopped working in archlinux X
   (define-key paredit-mode-map (kbd "S-<backspace>") 'backward-delete-char)
 ;; ,paredit-nonlisp is
 ;; (set (make-local-variable 'paredit-space-for-delimiter-predicates)
@@ -261,23 +271,19 @@
 ;; gör ingenting, returnera ingenting, kbd macro is C-x (
 (global-set-key (kbd "C-x C-k RET") 'ignore)
 
-;; C-x { runs the command shrink-window-horizontally
-;; C-x } runs the command enlarge-window-horizontally
 ;; C-x ^ runs the command enlarge-window
-;; XXX wontwork, use a loop?
-;; (dotimes (i 6) '(shrink-window-horizontally))
-;; (dotimes (i 6) (progn (lambda () (interactive) '(shrink-window-horizontally))))
-;; (global-set-key (kbd "C-x {") (lambda () (interactive) '(shrink-window-horizontally (5)))
-;; (global-set-key (kbd "C-x }") '(digit-argument 4 (enlarge-window-horizontally))
-(global-set-key (kbd "C-x {") '(shrink-window-horizontally 6))
-(global-set-key (kbd "C-x }") '(enlarge-window-horizontally 6))
+(global-set-key (kbd "C-x }") (lambda () (interactive)
+                                (enlarge-window-horizontally 5)))
+(global-set-key (kbd "C-x {") (lambda () (interactive)
+                                (shrink-window-horizontally 5)))
 
-;; for bubbling
+;; for bubbling...
 ;; (beginning-of-line)(kill-line)(up)(yank)
 ;; (exchange-point-and-mark
 
 
 (global-set-key (kbd "<C-S-backspace>") 'kill-line)
+(global-set-key (kbd "<C-S-k>") 'kill-line)
 ;; backward-kill-word är både <C-backspace> <M-backspace>
 (global-set-key (kbd "<C-backspace>") 'backward-kill-sexp)
 (global-set-key (kbd "M-t") 'transpose-sexps)
@@ -288,9 +294,10 @@
 (global-set-key [C-S-g] 'exit-minibuffer)
 
 ;; bind q till bury-buffer i *Messages*
-;; (add-hook '      (lambda ()  (local-set-key (kbd "q") 'bury-buffer))
+;; (add-hook '    (lambda ()  (local-set-key (kbd "q") 'bury-buffer))
 (with-current-buffer "*Messages*" (local-set-key (kbd "q") 'bury-buffer))
-;(with-current-buffer "*Warnings*" (local-set-key (kbd "q") 'bury-buffer)) ; "no such buffer"
+;; (with-current-buffer "*Warnings*" (local-set-key (kbd "q") 'bury-buffer))
+                                        ; "no such buffer"
 
 ;; C-x C-j jump to dired. behöver inte spara på en massa dired-buffrar?
 (require 'dired-x)
@@ -312,10 +319,10 @@
 (defalias 'rb  'revert-buffer)
 (defalias 'pm  'paredit-mode)
 
-;; wontwork?
-(defalias 'ans 'ansi-term "/usr/bin/zsh")
+;; (defalias 'ans 'ansi-term "/usr/bin/zsh") ; stupid
 ;; (defalias 'ans '(funcall 'ansi-term (getenv "SHELL")))
-;; (ansi-term zsh)
+;; (ansi-term zsh) ; wontwork
+(defalias 'ans (save-window-excursion (ansi-term "/bin/zsh")))
 
 ;; http://stackoverflow.com
 (defun copy-full-path-to-kill-ring ()
@@ -414,9 +421,10 @@
 (setq reb-re-syntax 'string)
 (require 'browse-kill-ring)
 
-(require 'ido) ; already loaded? is part of emacs
+;; (require 'ido) ; already loaded? is part of emacs
 (ido-mode t)
 (setq ido-save-directory-list-file "~/.emacs.d/ido.last")
+(setq ido-enable-flex-matching t) ; fuzzy matching 
 ;; InteractivelyDoThings. ido (f ex find files, buffers)
 ;; http://www.emacswiki.org/emacs/InteractivelyDoThings
 ;; http://www0.fh-trier.de/~politza/emacs/ido-hacks.el.gz
@@ -441,16 +449,16 @@
 
 ;; how do i put all #files# and files~ in ~/.emacs.d/ ?
 ;; http://www.emacswiki.org/emacs/BackupDirectory
+;; Is there a downside to setting backup-by-copying to true?
+;; it subtly affects issues wrt race conditions, journalling, hard links
 (setq
- ;; Is there a downside to setting backup-by-copying to true?
- ;; it subtly affects issues wrt race conditions, journalling, hard links
- backup-by-copying t      ; don't clobber symlinks
+ backup-by-copying t              ; don't clobber symlinks
  backup-directory-alist
- '(("." . "~/.emacs.d/backups/"))    ; don't litter my fs tree
+ '(("." . "~/.emacs.d/backups/")) ; don't litter my fs tree
  delete-old-versions t
  kept-new-versions 3
  kept-old-versions 2
- version-control t)       ; use versioned backups
+ version-control t)               ; use versioned backups
 ;; This will all place all auto-saves and backups in the directory?
 (setq auto-save-file-name-transforms
 ;; match from beginning. don't try symlinks
@@ -512,10 +520,10 @@
 ;; Optionally, specify the lisp program you are using. Default is "lisp"
 ;; i just get *inferior-lisp* no xtra repl
 
-;; opens up in conkeror
+;; opens up in $BROWSER
 ;(setq common-lisp-hyperspec-root "http://www.lispworks.com/reference/HyperSpec/")
 
-
+;; where the OS keeps slime
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/slime")
 (require 'slime)
 ;; only run slime related things on demand. M-x slime
@@ -526,7 +534,17 @@
 ;; (setq inferior-lisp-program "/usr/bin/clisp")
 ;; (setq inferior-lisp-program "clojure")
 
-(global-set-key (kbd "<f12>") 'slime-selector)
+;; not global, set it in the keymap if slime is loaded
+;; (global-set-key (kbd "<f12>") 'slime-selector)
+;; (define-key lisp-mode-map [f12] 'slime-selector)
+(define-key lisp-mode-map [(C-j)] 'slime-eval-last-expression-in-repl)
+(add-hook 'lisp-mode-hook
+          (lambda () (local-set-key [(C-j)] 'slime-eval-last-expression-in-repl))
+          (lambda () (local-set-key (kbd "<f12>") 'slime-selector)))
+
+;; (global-set-key [(C-j)] 'slime-eval-last-expression-in-repl)
+;; (global-set-key (kbd "<C-j>") 'slime-eval-last-expression-in-repl)
+
 ;; Versions differ: 2011-03-13 (slime) vs. 2011-08-31 (swank)
 (setq slime-protocol-version 'ignore)
 
@@ -536,20 +554,31 @@
 ;;(slime-set-default-directory "/home/occam/bin/projects/lisp")
 (setq common-lisp-hyperspec-root "file:/usr/share/doc/HyperSpec/")
 ;;(require 'slime-autoloads) ; what does this one do?
-(slime-setup '(slime-repl slime-scratch slime-editing-commands slime-fancy))
-;; fancy should be everything
+(slime-setup '(slime-repl slime-scratch slime-editing-commands
+                          slime-asdf slime-fancy))
+;; fancy should be everything, but isn't
 ;; (slime-setup '(slime-repl)) ; repl only
 ;; (slime-setup '(slime-repl slime-scratch
 ;;                slime-editing-commands slime-fancy))
 
 (slime)
-(slime-scratch)
+;; (slime-scratch)
+
+;;; geiser for scheme interaction
+;; how do I give emacs the path to a scheme?
+;; (setq scheme-program-name "racket") ;"mit-scheme" "guile"
+;; (load-file "~/bin/packages/gitclown/geiser/elisp/geiser.el")
+;; (load "~/bin/packages/gitclown/geiser/build/elisp/geiser-load")
+;; (setq geiser-repl-use-other-window  nil)
+
+;; setup autoload
 
 ;;; ---------------------------------------------------
 ;; Allegro
 
-;; You have to choose: either use Allegro's REPL or Slime's REPL.
-;; If you load slime contribs, be prepared for bugs.
+;; "You have to choose: either use Allegro's REPL or Slime's REPL.
+;;  If you load slime contribs, be prepared for bugs."
+;; bah, på IDA använde jag quicklisp och slime-helper. funkar
 
 ;; inferior common lisp
 ;; defun insert-res .. interactive .. (insert ":res")) (bind...)
@@ -567,23 +596,11 @@
 ;; (setq inferior-lisp-program "/home/occam/bin/acl82express/alisp")
 ;; inte detta (setq inferior-lisp-program "allegro-express")
 
+
 ;;; ---------------------------------------------------
 ;; erc, rcirc, lyskom
+;; see erc-conf.el
 
-;; ErcScrollToBottom
-;; M-x customize-variable RET <erc-module>
-
-(load "~/.emacs.d/erc-conf.el")
-(setq erc-hide-list '("JOIN" "PART" "QUIT"))
-(add-hook 'window-configuration-change-hook 
-          '(lambda ()
-             (setq erc-fill-column (- (window-width) 2))))
-
-;;(defun my-erc-tls (nick pass) (interactive "Mnick: \nMpassword: ")
-;;  (erc-tls :server "irc.freenode.net" :port 6697 :nick nick :password pass))
-
-;; wontwork
-;; (defun my-erc (erc :server "irc.freenode.net" :port 6667 :nick macrobat_))
 
 (setq rcirc-default-nick "macrobat_")
 (setq rcirc-default-user-name "macrobat")
@@ -650,7 +667,7 @@
  (custom-set-faces
  )
 
-(when window-system
-  (set-frame-size (selected-frame) 110 77))
+;; (when window-system
+;;   (set-frame-size (selected-frame) 110 77))
 ;; (set-frame-size (selected-frame) 110 72) ; för tool-br och menu-bar
 

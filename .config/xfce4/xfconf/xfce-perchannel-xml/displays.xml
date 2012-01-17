@@ -10,7 +10,4 @@
       <property name="Rotation" type="int" value="0"/>
     </property>
   </property>
-  <property name="Schemes" type="empty">
-    <property name="Apply" type="string" value="Default"/>
-  </property>
 </channel>

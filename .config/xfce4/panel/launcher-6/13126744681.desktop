@@ -1,8 +1,9 @@
+
 [Desktop Entry]
 Type=Application
 Name=emacs
 Comment=even makes coffee
-Icon=applications-other
+Icon=emacs
 Exec=emacs -geometry 80x36
 Path=/home/occam/doku
 Terminal=false

@@ -19,8 +19,9 @@ nmap -b gg igg<Esc>
 "funkar inte
 cabbreviate H sidebar History
 
-"cabbreviate dta emenu Tools.DownThemAll! Tools.DownThemAll!...
+"cabbreviate Addons emenu Tools.Add-ons
 
+"cabbreviate dta emenu Tools.DownThemAll! Tools.DownThemAll!...
 "funkar inte
 " Enable passthrough mode on some Google sites:
 ":autocmd LocationChange ^https?://(spreadsheets|mail)\.google\.com/ :normal! <C-z>
