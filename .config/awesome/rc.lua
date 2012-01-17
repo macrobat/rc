@@ -16,6 +16,32 @@ require("vicious")
 --require("eminent")
 require("revelation")  -- mac exposé
 
+-- {{{ Error handling
+-- Check if awesome encountered an error during startup and fell back to
+-- another config (This code will only ever execute for the fallback config)
+if awesome.startup_errors then
+    naughty.notify({ preset = naughty.config.presets.critical,
+                     title = "Oops, there were errors during startup!",
+                     text = awesome.startup_errors })
+end
+
+-- Handle runtime errors after startup
+do
+    local in_error = false
+    awesome.add_signal("debug::error", function (err)
+        -- Make sure we don't go into an endless error loop
+        if in_error then return end
+        in_error = true
+
+        naughty.notify({ preset = naughty.config.presets.critical,
+                         title = "Oops, an error happened!",
+                         text = err })
+        in_error = false
+    end)
+end
+-- }}}
+
+
 -- applications menu
   require('freedesktop.utils')
 --  freedesktop.utils.terminal = terminal  -- default: "xterm"
@@ -96,7 +122,10 @@ end
 menu_items = freedesktop.menu.new()
 myawesomemenu = {
    { "manual", terminal .. " -e man awesome", freedesktop.utils.lookup_icon({ icon = 'help' }) },
-   { "edit config", editor_cmd .. " " .. awful.util.getdir("config") .. "/rc.lua", freedesktop.utils.lookup_icon({ icon = 'package_settings' }) },
+   --{ "edit config", editor_cmd .. " " .. awful.util.getdir("config") .. "/rc.lua", freedesktop.utils.lookup_icon({ icon = 'package_settings' }) },
+   --{ "edit config", editor_cmd .. " " .. awesome.conffile },
+   -- XXX new thing in 3.4.11, see if it works
+   { "edit config", editor_cmd .. " " .. awesome.conffile  .. "/rc.lua", freedesktop.utils.lookup_icon({ icon = 'package_settings' }) },
    { "restart", awesome.restart, freedesktop.utils.lookup_icon({ icon = 'gtk-refresh' }) },
    { "quit", awesome.quit, freedesktop.utils.lookup_icon({ icon = 'gtk-quit' }) }
   }
@@ -390,6 +419,7 @@ root.keys(globalkeys)
 --                       
 --   WM_NAME(STRING) = "SMPlayer"
 --                      |--- name
+--  xprop | egrep "^WM_CLASS|^WM_NAME"
 awful.rules.rules = {
     -- All clients will match this rule.
     { rule = { },

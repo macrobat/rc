@@ -1,9 +1,26 @@
-;;; 
+;;; setup and launch erc
+
+;; maybe use stuff from pjbs erc-yank.el to prevent pasting > 2 lines?
+
+;; ErcScrollToBottom
+;; M-x customize-variable RET <erc-module>
+
+;; (load "~/.emacs.d/erc-conf.el")
+
+;;(defun my-erc-tls (nick pass) (interactive "Mnick: \nMpassword: ")
+;;  (erc-tls :server "irc.freenode.net" :port 6697 :nick nick :password pass))
+
+;; wontwork
+;; (defun my-erc (erc :server "irc.freenode.net" :port 6667 :nick macrobat_))
 
 (defun chat ()
   (interactive)
   (erc :server "irc.freenode.net" :port 6667 :nick "McRibbit"))
 
+(setq erc-hide-list '("JOIN" "PART" "QUIT"))
+(add-hook 'window-configuration-change-hook 
+          '(lambda ()
+             (setq erc-fill-column (- (window-width) 2))))
 
 ;; Pool of colors to use when coloring IRC nicks.
 (setq erc-colors-list '("green" "blue" "red"
@@ -44,8 +61,6 @@
       erc-kill-queries-on-quit t
       erc-kill-server-buffer-on-quit t)
 
-(erc-scrolltobottom-mode t)
-
 ;; Truncate buffers to stop some sluggishness
 (setq erc-max-buffer-size 20000)
 (erc-truncate-mode t)
@@ -66,5 +81,15 @@
  '(erc-prompt-for-password nil)
  '(erc-try-new-nick-p t)
  '(comment-style (quote multi-line))
- '(erc-user-full-name nil))
+ '(erc-user-full-name nil)
+ '(erc-scrolltobottom-mode t))
 
+(erc-update-modules)
+
+;; how about this one?
+;; (erc-scrolltobottom-mode t)
+
+;; "If you set the value of this without using `customize' remember to call (erc-update-modules) after you change
+;; it."
+;; Use (add-to-list 'erc-modules 'scrolltobottom) followed by (erc-update-modules)
+;; add-to-list works fine.  but you have to manually call erc-update-modules

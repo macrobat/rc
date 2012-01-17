@@ -5,12 +5,6 @@ LastActiveRenamer=ThunarSbrRemoveRenamer
 [ThunarSbrCaseRenamer]
 Mode=THUNAR_SBR_CASE_RENAMER_MODE_LOWER
 
-[ThunarSbrReplaceRenamer]
-Regexp=FALSE
-Replacement=mandrillsvamp
-CaseSensitive=FALSE
-Pattern=IMG_131
-
 [ThunarSbrNumberRenamer]
 TextMode=THUNAR_SBR_TEXT_MODE_OTN
 Mode=THUNAR_SBR_NUMBER_MODE_010203
@@ -23,9 +17,15 @@ Mode=THUNAR_SBR_INSERT_MODE_INSERT
 OffsetMode=THUNAR_SBR_OFFSET_MODE_LEFT
 Text=god-man
 
+[ThunarSbrReplaceRenamer]
+Regexp=FALSE
+Replacement=-
+CaseSensitive=FALSE
+Pattern=.
+
 [ThunarSbrRemoveRenamer]
 EndOffsetMode=THUNAR_SBR_OFFSET_MODE_LEFT
-StartOffset=0
-EndOffset=5
+StartOffset=19
+EndOffset=55
 StartOffsetMode=THUNAR_SBR_OFFSET_MODE_LEFT
 
