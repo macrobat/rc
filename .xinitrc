@@ -37,12 +37,15 @@ urxvtd -q -o -f
 source ~/.fehbg
 # exmpl #feh --bg-scale 'pics/bakgrund/arch_headphones2.png'
 
-# fixa muspekare, blir det ngn skillnad?
+# change mouse pointer in awesome 
 xsetroot -cursor_name left_ptr
 # xinput --set-prop --type=float 8 245 4.000000
-# read, filter, assign, apply
+# read, filter, assign, apply. RAZERID is typically 8
+# properties have changed codes, to see them: xinput --list-props 8
 RAZERID=$(xinput --list | awk -F "=" '/Razer Razer 1600dpi Mouse/ {print $2}' | awk '{print $1}')
-xinput --set-prop --type=float $RAZERID 245 4.000000 
+# 0 is not negative enough
+xinput set-prop 'Razer Razer 1600dpi Mouse' 'Device Accel Profile' -1
+# xinput --set-prop --type=float $RAZERID 245 4.000000 
 # disable emulate3buttons
 xinput --set-prop --type=int $RAZERID 254 0
 

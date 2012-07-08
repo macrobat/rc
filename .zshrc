@@ -247,10 +247,10 @@ export PATH
 # enable color support of ls and also add handy aliases
 alias p='pacman'      #not in debian
 if [ "$TERM" != "dumb" ]; then
-    # arch:
-    if [ -x /bin/dircolors ]; then
+    # no longer in arch:
+    #if [ -x /bin/dircolors ]; then
     # debian:
-    #if [ -x /usr/bin/dircolors ]; then
+    if [ -x /usr/bin/dircolors ]; then
       eval "`dircolors -b`"
       alias ls='ls --color=auto'
     fi
@@ -304,6 +304,9 @@ function rot13() { tr '[a-m][n-z][A-M][N-Z]' '[n-z][a-m][N-Z][A-M]'; }
 #alias vl='c /var/log'
 alias ca='c ~/.config/awesome'
 alias go='c ~/bin/projects/lisp/kurs'    #temp
+#alias go='c ~/bin/projects/ada'
+alias gn_='for f in *.adb; do gnatclean "$f"; done'
+alias g--='g++ -std=c++98 -pedantic -Wall -Wextra'
 alias proj='c ~/bin/projects/lisp/kurs/lisp-nonogram-solver'
 alias cd-='cd -'
 alias cd..='cd ..'

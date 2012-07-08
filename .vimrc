@@ -23,7 +23,7 @@ set ch=2
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-set history=2500	" keep lines of command line history
+set history=5000	" keep lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
@@ -88,6 +88,8 @@ set hidden
     \ if line("'\"") > 1 && line("'\"") <= line("$") |
     \   exe "normal! g`\"" |
     \ endif
+
+  " autocmd FileType make setlocal noexpandtab " Makefile
 
   augroup END
 
@@ -233,7 +235,7 @@ if !exists("autocommands_loaded")
   let autocommands_loaded = 1
   au FileType * set iskeyword+=-,~,/,!,.,*
   au FileType * set iskeyword-=(,)
-  au FileType * set noet "what about yaifa
+  " au FileType * set noet " what about yaifa  " DONOTWANT! OR NEED!
 endif
 
 " comment and see if tabs get redrawn when switched to.
@@ -271,8 +273,11 @@ command! -bang -nargs=? -complete=help H tab help<bang> <args>
 nnoremap Y y$
 
 " like emacs M-x (why is it an ø?)
-" nnoremap ø : " specific for my setup?
-nnoremap x :
+nnoremap ø : " specific for my setup?
+" dont use, you have to press esc twice to get normal
+"nnoremap x :  " <esc><esc>
+"vnoremap x :
+"inoremap x : <esc>: " meh :(
 
 " move in visual lines, (nice if line is wrapped)
 " currently not working. because of "text bubbling"?
@@ -362,6 +367,10 @@ set nopaste "see softtabstop
 set expandtab
 " set noexpandtab "don't expand a tab to a number of spaces
 " spaces for each tab with normal >> == << and visual > = <
+
+" setting this earlier in the file, inside if (has autocmd)
+" autocmd FileType make setlocal noexpandtab " Makefile
+
 set shiftwidth=4 "8
 set softtabstop=4 "0
 " if ts=8 sts=4, vim converts 1 tab to 4 spaces and 8 spaces to 1 tab

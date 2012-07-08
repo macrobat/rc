@@ -1,23 +1,25 @@
 " vim:ft=vim
 
+" where is the error?
+
 " suggestions S search engines
 set complete=slSf
 nmap <C-Left> :bprevious<CR>
 nmap <C-Right> :bnext<CR>
 
 " text _and_ image zoom keys
-nmap + :zoom! +18<CR>
-nmap - :zoom! -18<CR>
+nmap + :zoom! +15<CR>
+nmap - :zoom! -15<CR>
 " text zoom keys
 nmap <C-+> :zoom +16<CR>
 nmap <C--> :zoom -16<CR>
 
 " to reset the caret (for a search) when you gg to top of page
 " so that you don't start a new search where the old one left of
-nmap -b gg igg<Esc>
+"nmap -b gg igg<Esc>
 
 "funkar inte
-cabbreviate H sidebar History
+"cabbreviate H sidebar History
 
 "cabbreviate Addons emenu Tools.Add-ons
 

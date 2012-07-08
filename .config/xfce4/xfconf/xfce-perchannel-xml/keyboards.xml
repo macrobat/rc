@@ -8,5 +8,6 @@
     <property name="KeyRepeat" type="empty">
       <property name="Rate" type="int" value="27"/>
     </property>
+    <property name="Numlock" type="bool" value="true"/>
   </property>
 </channel>
