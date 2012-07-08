@@ -1,42 +1,98 @@
-[eduroam-wpa-anon]
-row=12
-col=0
+[R-S_mk2.gif]
+row=4
+col=4
 
-[5199.pdf]
-row=10
-col=0
+[R-S_01.gif]
+row=3
+col=4
+
+[eduroam-wpa-anon]
+row=4
+col=1
 
 [bayesian-brain.pdf]
-row=8
-col=0
+row=2
+col=2
 
-[bostadstillägg-fylld.pdf]
-row=11
-col=0
+[TODO]
+row=3
+col=2
 
-[The_Buddha_Counsels_a_Theist.pdf]
-row=7
-col=0
-
-[Stadstrafik_Linkoping_3_110815_120616.pdf]
+[GnosticMedia_PC_143_GiladAtzmon_Zionism_md.mp3]
 row=6
 col=0
 
+[GnosticMedia_PC_142_GiladAtzmon_Zionism_md.mp3]
+row=5
+col=0
+
+[Stadstrafik_Linkoping_3_110815_120616.pdf]
+row=4
+col=0
+
+[robertmprice_review_atwill_flavian_sig]
+row=2
+col=1
+
+[Android-Security-Part-1_manage-permissions.pdf]
+row=2
+col=0
+
+[prejka_mix.mp3]
+row=1
+col=0
+
 [tmp]
+row=0
+col=1
+
+[inman-newton_symbolism.pdf]
 row=3
 col=0
 
 [downloads]
-row=5
-col=0
+row=0
+col=2
+
+[payne-knight_priapus_1786.pdf]
+row=1
+col=1
+
+[awe_errmsg]
+row=3
+col=1
+
+[Dropbox]
+row=0
+col=3
+
+[deb1]
+row=2
+col=3
+
+[boot]
+row=2
+col=4
+
+[back]
+row=1
+col=3
+
+[spare]
+row=3
+col=3
+
+[210 GB Filesystem]
+row=4
+col=2
 
 [Trash]
-row=2
-col=0
+row=0
+col=4
 
 [File System]
-row=1
-col=0
+row=4
+col=3
 
 [Home]
 row=0

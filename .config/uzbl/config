@@ -51,11 +51,11 @@ set download_handler    = sync_spawn @scripts_dir/download.sh
 
 #   What to do when a website wants to open a new window:
 # Open link in new window
-@on_event   NEW_WINDOW     sh 'uzbl-browser ${1:+-u "$1"}' %r
+#@on_event   NEW_WINDOW     sh 'uzbl-browser ${1:+-u "$1"}' %r
 # Open in current window (also see the REQ_NEW_WINDOW event handler below)
 #@on_event   NEW_WINDOW     uri %s
 # Open in new tab. Other options are NEW_TAB_NEXT, NEW_BG_TAB and NEW_BG_TAB_NEXT.
-#@on_event   NEW_WINDOW     event NEW_TAB %s
+@on_event   NEW_WINDOW     event NEW_TAB %s
 
 #   What to do when the user requests a new window:
 # If your the NEW_WINDOW handler opens the uri in the current window, you'll
@@ -231,6 +231,8 @@ set ebind     = @mode_bind global,-insert
 # Page movement binds
 @cbind  j            = scroll vertical 20
 @cbind  k            = scroll vertical -20
+@cbind  <Down>         = scroll vertical 24
+@cbind  <Up>           = scroll vertical -24
 @cbind  h            = scroll horizontal -20
 @cbind  l            = scroll horizontal 20
 @cbind  <Page_Up>    = scroll vertical -100%
@@ -243,11 +245,15 @@ set ebind     = @mode_bind global,-insert
 @cbind  <End>        = scroll vertical end
 @cbind  ^            = scroll horizontal begin
 @cbind  $            = scroll horizontal end
-@cbind  <Space>      = scroll vertical end
+# @cbind  <Space>      = scroll vertical end
+@cbind  <Space>        = scroll vertical 100%
+@cbind  <Shift-Space>  = scroll vertical -100%
 
 # Navigation binds
 @cbind  b   = back
 @cbind  m   = forward
+@cbind  <BackSpace>       = back
+@cbind  <Shift-BackSpace> = forward
 @cbind  S   = stop
 @cbind  r   = reload
 @cbind  R   = reload_ign_cache

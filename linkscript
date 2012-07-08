@@ -26,9 +26,10 @@ lollink() {
 # find . -maxdepth 1 -type d -name ".*"
 # rem dirs that shouldn't be linked
 # look inside .config
+# just the confs inside, not the whole dir, how handle awesome?
 TEH_DIRS=".newsbeuter .weechat .gtk-2.0 .xchat2 .warsow-0.6 .pekwm .hydrogen .fluxbox \
-.lgames .nexuiz .darkplaces .xonotic .git .cmus .emacs.d .openarena .config .moc \
-.wmii .mplayer .ncmpcpp"
+.lgames .nexuiz .darkplaces .xonotic .cmus .emacs.d .openarena .moc \
+.wmii .mplayer .ncmpcpp .config"
 
 
 ## list of files in ~ to be linked 

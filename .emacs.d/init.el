@@ -1,6 +1,9 @@
 ;; in case of error, use (when nil ) to bisect this file
 
 ;; TODO: use autoloads
+;; (autoload FUNCTION FILE &optional DOCSTRING INTERACTIVE TYPE)
+;; Define FUNCTION to autoload from FILE.
+;; FUNCTION is a symbol; FILE is a file name string to pass to `load'
 
 ;; cons onto load-path list before we can load/require libs
 ;;(add-to-list 'load-path "~/.emacs.d/")
@@ -303,6 +306,8 @@
 (require 'dired-x)
 
 ;; what to bind for browse-kill-ring ?
+(browse-kill-ring-default-keybindings)
+(global-set-key (kbd "C-c k") 'browse-kill-ring)
 ;; M-w är kill-ring-save, funkar bra
 ;; Define aliases ; use C-q C-j to /re/place a return
 ;; fmakunbound to unbound an alias
@@ -523,6 +528,7 @@
 ;; opens up in $BROWSER
 ;(setq common-lisp-hyperspec-root "http://www.lispworks.com/reference/HyperSpec/")
 
+;; you can use slime-space instead of eldoc-mode
 ;; where the OS keeps slime
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/slime")
 (require 'slime)
@@ -610,6 +616,7 @@
 
 
 ;;;(require lyskom)
+;; (load-file "/usr/share/emacs/site-lisp/lyskom.elc")
 ;; (autoload 'lyskom "lyskom.elc" "Köra LysKom" t)
 ;; ;; Use environment variables KOMNAME and KOMSERVER
 ;; (add-hook 'lyskom-mode-hook 
