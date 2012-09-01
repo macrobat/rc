@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <channel name="xfce4-mixer" version="1.0">
-  <property name="sound-card" type="string" value="IntelICH6Alsamixer"/>
+  <property name="sound-card" type="string" value="HDAATISBAlsamixer"/>
   <property name="sound-cards" type="empty">
     <property name="IntelICH6Alsamixer" type="array">
       <value type="string" value="Master"/>
@@ -10,5 +10,5 @@
     </property>
   </property>
   <property name="window-height" type="int" value="448"/>
-  <property name="window-width" type="int" value="455"/>
+  <property name="window-width" type="int" value="583"/>
 </channel>

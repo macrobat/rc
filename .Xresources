@@ -68,6 +68,7 @@ urxvt*title			        : urxvt
 !urxvt*boldFont:         xft:Terminus:pixelsize=14:bold
 !urxvt*italicFont:       xft:Terminus:pixelsize=14:italic
 !urxvt*boldItalicFont:   xft:Terminus:pixelsize=14:bold:italic
+!urxvt*letterSpace: -2
 ! större font för desktop
 urxvt*font:             xft:DejaVu Sans Mono:pixelsize=16
 urxvt*boldFont:         xft:DejaVu Sans Mono:pixelsize=16:bold
