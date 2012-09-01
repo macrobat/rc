@@ -234,7 +234,7 @@ bindkey -s đ " find -iname '**' "	#f  #see drop()
 test "$PATH_BAK" || PATH_BAK="$PATH"
 
 # franz allegro lisp /home/occam/bin/packages/franz/acl82express
-PATH=/usr/local/bin:/usr/bin:/bin:/usr/games:/sbin:/usr/sbin:/usr/bin/core_perl
+PATH=/usr/local/bin:/usr/bin:/bin:/usr/games:/sbin:/usr/sbin:/usr/bin/core_perl:/opt/java/bin
 export PATH
 
 # (some folders i dont have), i might want /opt/qt/bin . mtr is in /usr/sbin
@@ -302,9 +302,10 @@ function ec() { emacsclient --create-frame --alternate-editor="" -nw "$@" ; }
 function rot13() { tr '[a-m][n-z][A-M][N-Z]' '[n-z][a-m][N-Z][A-M]'; }
 
 #alias vl='c /var/log'
-alias ca='c ~/.config/awesome'
-alias go='c ~/bin/projects/lisp/kurs'    #temp
+#alias ca='c ~/.config/awesome'
+#alias go='c ~/bin/projects/lisp/kurs'    #temp
 #alias go='c ~/bin/projects/ada'
+alias go='c ~/bin/projects/java/tddc69'    #temp
 alias gn_='for f in *.adb; do gnatclean "$f"; done'
 alias g--='g++ -std=c++98 -pedantic -Wall -Wextra'
 alias proj='c ~/bin/projects/lisp/kurs/lisp-nonogram-solver'

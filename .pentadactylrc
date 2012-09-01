@@ -9,7 +9,9 @@ nmap <C-Right> :bnext<CR>
 
 " text _and_ image zoom keys
 nmap + :zoom! +15<CR>
-nmap - :zoom! -15<CR>
+" invalid option -
+" nmap - :zoom! -15<CR>
+nmap ´ :zoom! -15<CR>
 " text zoom keys
 nmap <C-+> :zoom +16<CR>
 nmap <C--> :zoom -16<CR>
@@ -34,4 +36,6 @@ nmap <C--> :zoom -16<CR>
 " E518 unknown option -f     Do i even want an external editor?
 ":autocmd LocationChange mail.google.com :set editor=gvim -f -c 'set ft=mail'
 "+<line>"
+
+" ;<tab> to see the extended hint modes. ;y for yanking
 

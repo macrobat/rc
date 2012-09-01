@@ -5,19 +5,19 @@
 ;; Define FUNCTION to autoload from FILE.
 ;; FUNCTION is a symbol; FILE is a file name string to pass to `load'
 
-;; cons onto load-path list before we can load/require libs
-;;(add-to-list 'load-path "~/.emacs.d/")
-;; mapc is for side-effects only, it doesn't return a list like mapcar does
-(mapc '(lambda (dir) (add-to-list 'load-path dir)) '("~/.emacs.d/" "~/.emacs.d/elpa"))
-;; "~/.emacs.d/elpa/paredit-22"
-;; do I neeed all dirs in elpa too?
-
 ;; set up unicode
 ;; (prefer-coding-system       'utf-8)
 ;; (set-default-coding-systems 'utf-8)
 ;; (set-terminal-coding-system 'utf-8)
 ;; (set-keyboard-coding-system 'utf-8)
 ;; (setq default-buffer-file-coding-system 'utf-8)
+
+;; cons onto load-path list before we can load/require libs
+;;(add-to-list 'load-path "~/.emacs.d/")
+;; mapc is for side-effects only, it doesn't return a list like mapcar does
+(mapc '(lambda (dir) (add-to-list 'load-path dir)) '("~/.emacs.d/" "~/.emacs.d/elpa"))
+;; "~/.emacs.d/elpa/paredit-22"
+;; do I neeed all dirs in elpa too?
 
 ;; removed these, use packages and elpa
 ;; "~/.emacs.d/workgroups.el/" "~/.emacs.d/slime/" "~/.emacs./rainbow"
@@ -33,9 +33,41 @@
 ;; the same with emms-directory emms-directory specifies where emms
 ;; puts other things. there is also, emms-cache-file.
 
+;;; ---------------------------------------------------
+
+;; FIXME
+;; you must not be initializing properly?
+;; the variable is not autoloaded
+;; if you do M-x list-packages  then you'll see it
+;; and of course any customization or seting of that variable before the package is loaded will persist over the package
+;; load.
+;; so, (package-initialize) is done before add-list?
+;; macrobat: no, you shouldn't do that
+;; initializing how?
+;; it should just be initialized through emacs. emacs does package init AFTER your init.el
+;; One option is (eval-after-load 'package '(add-to-list 'package-archives ...))
+;; dtw but you don't need to
+;; just customize it
+;; how then, can anyone load packages in the init file?
+;; macrobat: yes... but in 24 packages are started automatically after init
+;; don't get me wrong, of course you can do it. but it's not "right"
+;; I shouldn't setq package-load-list?
+;; I don't think so, no.
+;; packages should autoload. any package that doesn't should be loaded with an (eval-after-init ...)
+;; lots of packages are modes that you want to load with mode-alist... which can be done even if the package isn't loaded,
+;; or done on some hook, which can be done without loading the package or done on a key which can also be done without
+;; loading the package
+;; where can I find this information (and more)?
+;; well, the elisp manual describes the packaging startup. but it's not very clear on the implications.
+
+;; Any settings for packages sould be done with eval-after-init? 
+;; I don't think so, use customize if you can. If not then use a
+;; package specific hook and if you can't do that then use an
+;; eval-after-init, I guess.
+
 ;; package.el is put in the elpa dir or comes with emacs24
-;; (require 'package)
 (load "package_23_github.el")
+;; (require 'package)
 (add-to-list 'package-archives
          '("marmalade" . "http://marmalade-repo.org/packages/"))
 ;; Each element in this list should be a list (NAME VERSION)
@@ -49,10 +81,16 @@
 ;; This was installed by package-install.el. This provides support for the package system and
 ;; interfacing with ELPA, the package archive. Move this code earlier if you want to reference
 ;; packages in this file:
+
+;; (eval-after-load 'package '(add-to-list 'package-archives ...))
+;; packages should autoload. any package that doesn't should be loaded with an (eval-after-init ...)
 (when
     (load
      (expand-file-name "~/.emacs.d/elpa/package_23_github.el"))
   (package-initialize))
+
+
+;;; ---------------------------------------------------
 
 ;; http://www.emacswiki.org/cgi-bin/wiki.pl?SessionManagement
 ;; need desktop-save-mode, and desktop-change-dir?

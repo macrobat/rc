@@ -24,8 +24,8 @@ EndOffset=9
 StartOffsetMode=THUNAR_SBR_OFFSET_MODE_LEFT
 
 [ThunarSbrInsertRenamer]
-Offset=14
+Offset=7
 Mode=THUNAR_SBR_INSERT_MODE_INSERT
 OffsetMode=THUNAR_SBR_OFFSET_MODE_LEFT
-Text=-\ 
+Text=_
 
