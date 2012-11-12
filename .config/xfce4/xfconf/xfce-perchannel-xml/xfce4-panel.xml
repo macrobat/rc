@@ -68,9 +68,11 @@
         <value type="string" value="xchat"/>
         <value type="string" value="clementine"/>
         <value type="string" value="orage"/>
+        <value type="string" value="clipit"/>
         <value type="string" value="deluge"/>
         <value type="string" value="dropbox"/>
         <value type="string" value="parcellite"/>
+        <value type="string" value="audacious"/>
         <value type="string" value="opera"/>
         <value type="string" value="gnome-mplayer"/>
       </property>
@@ -148,7 +150,6 @@
       <property name="plugin-ids" type="array">
         <value type="int" value="16"/>
         <value type="int" value="17"/>
-        <value type="int" value="18"/>
         <value type="int" value="20"/>
         <value type="int" value="21"/>
       </property>

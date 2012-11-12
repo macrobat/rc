@@ -2,7 +2,7 @@
 # /home/occam/.nvidia-settings-rc
 #
 # Configuration file for nvidia-settings - the NVIDIA X Server Settings utility
-# Generated on Thu May 24 17:43:21 2012
+# Generated on Wed Oct 31 14:34:14 2012
 #
 
 # ConfigProperties:
@@ -13,9 +13,10 @@ DisplayStatusBar = Yes
 SliderTextEntries = Yes
 IncludeDisplayNameInConfigFile = No
 ShowQuitDialog = No
-Timer = PowerMizer_Monitor_(GPU_0),Yes,1000
-Timer = Thermal_Monitor_(GPU_0),Yes,1000
 Timer = Graphics_Card_(GPU_0),Yes,1000
+Timer = Thermal_Monitor_(GPU_0),Yes,1000
+Timer = PowerMizer_Monitor_(GPU_0),Yes,1000
+Timer = Memory_Used_(GPU_0),Yes,3000
 
 # Attributes:
 
@@ -26,29 +27,25 @@ Timer = Graphics_Card_(GPU_0),Yes,1000
 0/CursorShadowBlue=0
 0/CursorShadowXOffset=4
 0/CursorShadowYOffset=2
-0/SyncToVBlank=0
+0/SyncToVBlank=1
 0/LogAniso=0
 0/FSAA=0
 0/TextureSharpen=0
-0/TextureClamping=0
+0/TextureClamping=1
+0/FXAA=0
 0/AllowFlipping=1
 0/FSAAAppControlled=1
 0/LogAnisoAppControlled=1
 0/OpenGLImageSettings=1
 0/FSAAAppEnhanced=0
-0/RedBrightness=0.000000
-0/GreenBrightness=0.000000
-0/BlueBrightness=0.000000
-0/RedContrast=0.000000
-0/GreenContrast=0.000000
-0/BlueContrast=0.000000
-0/RedGamma=1.000000
-0/GreenGamma=1.000000
-0/BlueGamma=1.000000
 0/DigitalVibrance[CRT-1]=0
-0/XVideoTextureBrightness=0
-0/XVideoTextureContrast=0
-0/XVideoTextureHue=0
-0/XVideoTextureSaturation=0
-0/XVideoTextureSyncToVBlank=1
 0/XVideoSyncToDisplay=2
+besk:0[dpy:1]/RedBrightness=0.000000
+besk:0[dpy:1]/GreenBrightness=0.000000
+besk:0[dpy:1]/BlueBrightness=0.000000
+besk:0[dpy:1]/RedContrast=0.000000
+besk:0[dpy:1]/GreenContrast=0.000000
+besk:0[dpy:1]/BlueContrast=0.000000
+besk:0[dpy:1]/RedGamma=1.000000
+besk:0[dpy:1]/GreenGamma=1.000000
+besk:0[dpy:1]/BlueGamma=1.000000

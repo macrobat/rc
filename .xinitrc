@@ -77,5 +77,7 @@ if [[ WM = openbox ]] ; then
 fi
 #exec ck-launch-session openbox-session
 # exec ck-launch-session dbus-launch ${WM:=awesome}
-exec ck-launch-session dbus-launch ${WM:=startxfce4}
+# exec ck-launch-session dbus-launch ${WM:=startxfce4}
+# consolekit has been removed
+exec ${WM:=startxfce4}
 

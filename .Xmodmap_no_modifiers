@@ -1,28 +1,6 @@
-! add, remove MODIFIERNAME = KEYSYMNAME
-! to see the mod keys: xmodmap -pm
-
-! keysym Escape = Caps_Lock
-! keysym Caps_Lock = Escape
-! add Lock = Caps_Lock
-
-! Don't, escape will disappear:
-! xmodmap -e "keysym Escape = Control_L"
-
-! to revert some modkeys:
-! xmodmap -e "remove Control = Control_L"
-! xmodmap -e "keysym Control_L = Caps_Lock"
-! xmodmap -e "add Lock = Caps_Lock"
-! xmodmap -e "add Control = Control_L"
-
-! don't want control on all of these:
-! Escape (0x9),  Escape (0x25),  Control_L (0x42),  Control_R (0x69)
-
-remove Lock = Caps_Lock
-remove Control = Control_L
 keysym Caps_Lock = Control_L
 keysym Control_L = Escape
-add Control = Control_L
-
+add Control = Control_L	
 keycode  30 = u U u U udiaeresis Udiaeresis downarrow uparrow u U downarrow uparrow u U downarrow uparrow
 keycode  34 = aring Aring aring Aring dead_diaeresis dead_abovering dead_diaeresis dead_abovering aring Aring dead_diaeresis dead_abovering aring Aring dead_diaeresis dead_abovering
 keycode  35 = asciitilde asciicircum diaeresis asciicircum udiaeresis Udiaeresis asciitilde caron diaeresis asciicircum asciitilde caron diaeresis asciicircum asciitilde caron

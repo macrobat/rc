@@ -456,7 +456,7 @@ alias chot='chown -R trazan:users'
 #alias =''
 #alias =''
 
-alias ae='source ~/.zshrc'
+# alias ae='source ~/.zshrc'
 alias sb='source ~/.zshrc'
 alias vb='vim ~/.zshrc'
 

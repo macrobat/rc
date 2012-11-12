@@ -1,5 +1,15 @@
 Keep conf files under version control.
+ssh-agent zsh
+ssh-add ~/.ssh/id_rsa_github
+git log
+git diff
+git status
+git add somefile
+git commit -am "comment"
+git push master origin
+
 Different machines can branch.
+copy default file into rc, then
 ln -sb file_in_rc default_name
 lollink() { naeme="$(readlink -nm "$1")"; ln -sb "$naeme" "${naeme/rc\/}"; }
 

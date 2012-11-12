@@ -48,6 +48,8 @@
      (expand-file-name "~/.emacs.d/elpa/package.el"))
   (package-initialize))
 
+(browse-kill-ring-default-keybindings) ;; M-y
+
 ;; http://www.emacswiki.org/cgi-bin/wiki.pl?SessionManagement
 ;; need desktop-save-mode, and desktop-change-dir?
 ;; (info "(emacs)Saving Emacs Sessions")
@@ -103,7 +105,9 @@
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.hpp\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.hh\\'" . c++-mode))
-(add-to-list 'auto-mode-alist '("\\.cl\\'" . common-lisp-mode))
+;;(add-to-list 'auto-mode-alist '("\\.cl\\'" . common-lisp-mode))
+(add-to-list 'auto-mode-alist '("\\.cl\\'" . lisp-mode)) ; no ELI
+(add-to-list 'auto-mode-alist '("\\.lisp\\'" . lisp-mode))
 (add-hook 'c-mode-hook (lambda () (setq tab-width 4)))
 (add-hook 'c++-mode-hook (lambda () (setq tab-width 4)))
 ;; File mode specification error: (invalid-function (setq tab-width 4)
@@ -274,8 +278,10 @@
 ;; C-x } runs the command enlarge-window-horizontally
 ;; C-x ^ runs the command enlarge-window
 ;; XXX wontwork, use a loop?
-;; (global-set-key (kbd "C-x {") (lambda () (interactive) '(shrink-window-horizontally (5)))
+;; (global-set-key (kbd "C-x {") (lambda () (interactive) '(shrink-window-horizontally 5))
 ;; (global-set-key (kbd "C-x }") '(digit-argument 4 (enlarge-window-horizontally))
+;; (global-set-key (kbd "C-x }") '(enlarge-window-horizontally 7))
+;; (enlarge-window-horizontally 3) ; detta funkar ju???
 
 ;; backward-kill-word är både <C-backspace> <M-backspace>
 (global-set-key (kbd "<C-backspace>") 'backward-kill-sexp)
@@ -533,14 +539,37 @@
 ;; http://www.franz.com/emacs/slime.lhtml
 
 ;; kör manuellt. /sw/allegro-8.2/emacs-allegro-cl funkar inte.
-(load "/sw/allegro-8.2/local/allegro.el")
-(allegro-setup-emacs-cl)
+;;(load "/sw/allegro-8.2/local/allegro.el")
+;; gå miste om help, rename-me, font, new window, frame resizing.
+;; -----------------------------------------------------------------------------
+;; (load "~/.emacs.d/allegro-edit.el") ; (add-hook 'kill-emacs-hook ...) -------
+;; -----------------------------------------------------------------------------
+;; with or without fi: ? this fails
+(add-hook 'fi:inferior-common-lisp-mode-hook
+	  (lambda () (local-set-key fi:inferior-common-lisp-mode-map (kbd "M-p")  fi:pop-input)))
+	     ;;(local-set-key fi:inferior-common-lisp-mode-map (kbd "<Alt-p>")  fi:pop-input)
+	     ;;(local-set-key fi:inferior-common-lisp-mode-map (kbd "<Alt-n>")  fi:push-input)
 
+;; (setq inferior-common-lisp-mode-hook nil)
+
+
+;; (allegro-setup-emacs-cl) ; onödigt
+;; Symbol's function definition is void: allegro-setup-emacs-cl
 
 ;; in keymap (hade exempel i init.el på lappyn)
 ;; fi:inferior-common-lisp-mode-map
 ;; bind    A-p  fi:pop-input
+;;      (add-hook 'texinfo-mode-hook
+               ;; '(lambda ()
+               ;;    (define-key texinfo-mode-map "\C-cp" 'backward-paragraph)
+               ;;    (define-key texinfo-mode-map "\C-cn" 'forward-paragraph)))
 
+;; (add-hook 'foo-mode-hook (lambda () (local-set-key (kbd "C-c h") 'some-fn)))
+
+;; (add-hook 'inferior-common-lisp-mode-hook
+;; 	  (lambda () ; no '?
+;; 	     (define-key fi:inferior-common-lisp-mode-map "<Alt-p>"  fi:pop-input)
+;; 	     (define-key fi:inferior-common-lisp-mode-map "<Alt-n>"  fi:push-input)))
 
 ;; ------
 
@@ -572,10 +601,20 @@
 ;;      (setq slime-complete-symbol*-fancy t)
 ;;      (setq slime-complete-symbol-function 'slime-fuzzy-complete-symbol)))
 
-
 ;; detta löste sig
 ;; error: (void-function slime-setup-contribs)
 ;; hittar inget slime-contribs
+
+
+;; kör slime istället. #lisp tycker ingen anvÃ¤nder ELI
+;; -----------------------------------------------------------------------------
+;; "There is no connection to Lisp"
+;; (load (expand-file-name "~/quicklisp/slime-helper.el"))
+;; (setq inferior-lisp-program "/sw/allegro-8.2/alisp")
+;; lägg saker i ~/.quicklisp ist? it ain't broke, don't fix!
+;; funkar inte: ("quicklisp-slime-helper")
+;; (slime)
+;; -----------------------------------------------------------------------------
 
 
 
@@ -596,7 +635,7 @@
 (setq erc-colors-list '("green" "blue" "red"
 			"dark gray" "dark orange"
 			"dark magenta" "maroon"
-			"indian red" "black" "forest green"
+			"indian red" "forest green"
 			"midnight blue" "dark violet"))
 ;; special colors for some people
 (setq erc-nick-color-alist '(("macrobat" ."pink")
@@ -627,8 +666,9 @@
 (add-hook 'erc-insert-modify-hook 'erc-put-color-on-nick)
 
 (setq erc-autojoin-channels-alist
-          '(("freenode.net" "##C" "#lisp" "#debian" "#emacs")))
+          '(("freenode.net" "#lisp" "#debian" "#emacs"))) ; need login for ##C
 
+(setq erc-scrolltobottom-mode 1)
 
 ;; colorize nicks
 ;; timestamps (just minutes)
@@ -659,6 +699,7 @@
 ;; vill ha störrre fönsterrr, sätt den överst till vä åxå
 ;; funkar ju faan inte. lägger sist!
 ;; (append default-frame-alist '((width . 110) (height . 70)))
-(set-frame-size (selected-frame) 110 77) ; om ovan vägrar
+(when window-system
+  (set-frame-size (selected-frame) 110 77)) ; om ovan vägrar
 ;; (set-frame-size (selected-frame) 110 72) ; för tool-br och menu-bar
 

@@ -56,8 +56,9 @@
  (readline-input-history
   (
    #"(exit)"
-   #"exit"
    #"(quit)"
+   #"(empty? '())"
+   #"exit"
    #"(getf '( :C +_+ :D ^_^ :P o.0 ) :D )"
    #",bt"
    #"ls"
