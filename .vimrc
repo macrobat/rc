@@ -23,7 +23,7 @@ set ch=2
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-set history=5000	" keep lines of command line history
+set history=7000	" keep lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching

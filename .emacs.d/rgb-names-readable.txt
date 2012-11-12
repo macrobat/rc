@@ -38,7 +38,7 @@
 #ffe4e1         "misty rose"                    255 228 225
 #ffe4e1         "MistyRose"                     255 228 225
 #ffffff         "white"                         255 255 255
-#000            "black"                         0 0 0
+#000000         "black"                         0 0 0
 #2f4f4f         "dark slate gray"               47 79 79
 #2f4f4f         "DarkSlateGray"                 47 79 79
 #2f4f4f         "dark slate grey"               47 79 79
@@ -63,9 +63,9 @@
 #d3d3d3         "LightGray"                     211 211 211
 #191970         "midnight blue"                 25 25 112
 #191970         "MidnightBlue"                  25 25 112
-#0080           "navy"                          0 0 128
-#0080           "navy blue"                     0 0 128
-#0080           "NavyBlue"                      0 0 128
+#008000         "navy"                          0 0 128
+#008000         "navy blue"                     0 0 128
+#008000         "NavyBlue"                      0 0 128
 #6495ed         "cornflower blue"               100 149 237
 #6495ed         "CornflowerBlue"                100 149 237
 #483d8b         "dark slate blue"               72 61 139
@@ -76,15 +76,15 @@
 #7b68ee         "MediumSlateBlue"               123 104 238
 #8470ff         "light slate blue"              132 112 255
 #8470ff         "LightSlateBlue"                132 112 255
-#00cd           "medium blue"                   0 0 205
-#00cd           "MediumBlue"                    0 0 205
+#00cd00         "medium blue"                   0 0 205
+#00cd00         "MediumBlue"                    0 0 205
 #4169e1         "royal blue"                    65 105 225
 #4169e1         "RoyalBlue"                     65 105 225
-#00ff           "blue"                          0 0 255
+#00ff00         "blue"                          0 0 255
 #1e90ff         "dodger blue"                   30 144 255
 #1e90ff         "DodgerBlue"                    30 144 255
-#0bfff          "deep sky blue"                 0 191 255
-#0bfff          "DeepSkyBlue"                   0 191 255
+#0bfff0         "deep sky blue"                 0 191 255
+#0bfff0         "DeepSkyBlue"                   0 191 255
 #87ceeb         "sky blue"                      135 206 235
 #87ceeb         "SkyBlue"                       135 206 235
 #87cefa         "light sky blue"                135 206 250
@@ -99,12 +99,12 @@
 #b0e0e6         "PowderBlue"                    176 224 230
 #afeeee         "pale turquoise"                175 238 238
 #afeeee         "PaleTurquoise"                 175 238 238
-#0ced1          "dark turquoise"                0 206 209
-#0ced1          "DarkTurquoise"                 0 206 209
+#0ced10         "dark turquoise"                0 206 209
+#0ced10         "DarkTurquoise"                 0 206 209
 #48d1cc         "medium turquoise"              72 209 204
 #48d1cc         "MediumTurquoise"               72 209 204
 #40e0d0         "turquoise"                     64 224 208
-#0ffff          "cyan"                          0 255 255
+#0ffff0         "cyan"                          0 255 255
 #e0ffff         "light cyan"                    224 255 255
 #e0ffff         "LightCyan"                     224 255 255
 #5f9ea0         "cadet blue"                    95 158 160
@@ -112,8 +112,8 @@
 #66cdaa         "medium aquamarine"             102 205 170
 #66cdaa         "MediumAquamarine"              102 205 170
 #7fffd4         "aquamarine"                    127 255 212
-#0640           "dark green"                    0 100 0
-#0640           "DarkGreen"                     0 100 0
+#064000         "dark green"                    0 100 0
+#064000         "DarkGreen"                     0 100 0
 #556b2f         "dark olive green"              85 107 47
 #556b2f         "DarkOliveGreen"                85 107 47
 #8fbc8f         "dark sea green"                143 188 143
@@ -126,14 +126,14 @@
 #20b2aa         "LightSeaGreen"                 32 178 170
 #98fb98         "pale green"                    152 251 152
 #98fb98         "PaleGreen"                     152 251 152
-#0ff7f          "spring green"                  0 255 127
-#0ff7f          "SpringGreen"                   0 255 127
-#7cfc0          "lawn green"                    124 252 0
-#7cfc0          "LawnGreen"                     124 252 0
-#0ff0           "green"                         0 255 0
-#7fff0          "chartreuse"                    127 255 0
-#0fa9a          "medium spring green"           0 250 154
-#0fa9a          "MediumSpringGreen"             0 250 154
+#0ff7f0         "spring green"                  0 255 127
+#0ff7f0         "SpringGreen"                   0 255 127
+#7cfc00         "lawn green"                    124 252 0
+#7cfc00         "LawnGreen"                     124 252 0
+#0ff000         "green"                         0 255 0
+#7fff00         "chartreuse"                    127 255 0
+#0fa9a0         "medium spring green"           0 250 154
+#0fa9a0         "MediumSpringGreen"             0 250 154
 #adff2f         "green yellow"                  173 255 47
 #adff2f         "GreenYellow"                   173 255 47
 #32cd32         "lime green"                    50 205 50
@@ -153,13 +153,13 @@
 #fafad2         "LightGoldenrodYellow"          250 250 210
 #ffffe0         "light yellow"                  255 255 224
 #ffffe0         "LightYellow"                   255 255 224
-#ffff0          "yellow"                        255 255 0
-#ffd70          "gold"                          255 215 0
+#ffff00         "yellow"                        255 255 0
+#ffd700         "gold"                          255 215 0
 #eedd82         "light goldenrod"               238 221 130
 #eedd82         "LightGoldenrod"                238 221 130
 #daa520         "goldenrod"                     218 165 32
-#b886b          "dark goldenrod"                184 134 11
-#b886b          "DarkGoldenrod"                 184 134 11
+#b886b0         "dark goldenrod"                184 134 11
+#b886b0         "DarkGoldenrod"                 184 134 11
 #bc8f8f         "rosy brown"                    188 143 143
 #bc8f8f         "RosyBrown"                     188 143 143
 #cd5c5c         "indian red"                    205 92 92
@@ -182,16 +182,16 @@
 #fa8072         "salmon"                        250 128 114
 #ffa07a         "light salmon"                  255 160 122
 #ffa07a         "LightSalmon"                   255 160 122
-#ffa50          "orange"                        255 165 0
-#ff8c0          "dark orange"                   255 140 0
-#ff8c0          "DarkOrange"                    255 140 0
+#ffa500         "orange"                        255 165 0
+#ff8c00         "dark orange"                   255 140 0
+#ff8c00         "DarkOrange"                    255 140 0
 #ff7f50         "coral"                         255 127 80
 #f08080         "light coral"                   240 128 128
 #f08080         "LightCoral"                    240 128 128
 #ff6347         "tomato"                        255 99 71
-#ff450          "orange red"                    255 69 0
-#ff450          "OrangeRed"                     255 69 0
-#ff00           "red"                           255 0 0
+#ff4500         "orange red"                    255 69 0
+#ff4500         "OrangeRed"                     255 69 0
+#ff0000         "red"                           255 0 0
 #ff69b4         "hot pink"                      255 105 180
 #ff69b4         "HotPink"                       255 105 180
 #ff1493         "deep pink"                     255 20 147
@@ -206,7 +206,7 @@
 #c71585         "MediumVioletRed"               199 21 133
 #d02090         "violet red"                    208 32 144
 #d02090         "VioletRed"                     208 32 144
-#ff0ff          "magenta"                       255 0 255
+#ff0ff0         "magenta"                       255 0 255
 #ee82ee         "violet"                        238 130 238
 #dda0dd         "plum"                          221 160 221
 #da70d6         "orchid"                        218 112 214
@@ -214,8 +214,8 @@
 #ba55d3         "MediumOrchid"                  186 85 211
 #9932cc         "dark orchid"                   153 50 204
 #9932cc         "DarkOrchid"                    153 50 204
-#940d3          "dark violet"                   148 0 211
-#940d3          "DarkViolet"                    148 0 211
+#940d30         "dark violet"                   148 0 211
+#940d30         "DarkViolet"                    148 0 211
 #8a2be2         "blue violet"                   138 43 226
 #8a2be2         "BlueViolet"                    138 43 226
 #a020f0         "purple"                        160 32 240
@@ -282,10 +282,10 @@
 #436eee         "RoyalBlue2"                    67 110 238
 #3a5fcd         "RoyalBlue3"                    58 95 205
 #27408b         "RoyalBlue4"                    39 64 139
-#00ff           "blue1"                         0 0 255
-#00ee           "blue2"                         0 0 238
-#00cd           "blue3"                         0 0 205
-#008b           "blue4"                         0 0 139
+#00ff00         "blue1"                         0 0 255
+#00ee00         "blue2"                         0 0 238
+#00cd00         "blue3"                         0 0 205
+#008b00         "blue4"                         0 0 139
 #1e90ff         "DodgerBlue1"                   30 144 255
 #1c86ee         "DodgerBlue2"                   28 134 238
 #1874cd         "DodgerBlue3"                   24 116 205
@@ -294,10 +294,10 @@
 #5cacee         "SteelBlue2"                    92 172 238
 #4f94cd         "SteelBlue3"                    79 148 205
 #36648b         "SteelBlue4"                    54 100 139
-#0bfff          "DeepSkyBlue1"                  0 191 255
-#0b2ee          "DeepSkyBlue2"                  0 178 238
-#09acd          "DeepSkyBlue3"                  0 154 205
-#0688b          "DeepSkyBlue4"                  0 104 139
+#0bfff0         "DeepSkyBlue1"                  0 191 255
+#0b2ee0         "DeepSkyBlue2"                  0 178 238
+#09acd0         "DeepSkyBlue3"                  0 154 205
+#0688b0         "DeepSkyBlue4"                  0 104 139
 #87ceff         "SkyBlue1"                      135 206 255
 #7ec0ee         "SkyBlue2"                      126 192 238
 #6ca6cd         "SkyBlue3"                      108 166 205
@@ -330,14 +330,14 @@
 #8ee5ee         "CadetBlue2"                    142 229 238
 #7ac5cd         "CadetBlue3"                    122 197 205
 #53868b         "CadetBlue4"                    83 134 139
-#0f5ff          "turquoise1"                    0 245 255
-#0e5ee          "turquoise2"                    0 229 238
-#0c5cd          "turquoise3"                    0 197 205
-#0868b          "turquoise4"                    0 134 139
-#0ffff          "cyan1"                         0 255 255
-#0eeee          "cyan2"                         0 238 238
-#0cdcd          "cyan3"                         0 205 205
-#08b8b          "cyan4"                         0 139 139
+#0f5ff0         "turquoise1"                    0 245 255
+#0e5ee0         "turquoise2"                    0 229 238
+#0c5cd0         "turquoise3"                    0 197 205
+#0868b0         "turquoise4"                    0 134 139
+#0ffff0         "cyan1"                         0 255 255
+#0eeee0         "cyan2"                         0 238 238
+#0cdcd0         "cyan3"                         0 205 205
+#08b8b0         "cyan4"                         0 139 139
 #97ffff         "DarkSlateGray1"                151 255 255
 #8deeee         "DarkSlateGray2"                141 238 238
 #79cdcd         "DarkSlateGray3"                121 205 205
@@ -358,18 +358,18 @@
 #90ee90         "PaleGreen2"                    144 238 144
 #7ccd7c         "PaleGreen3"                    124 205 124
 #548b54         "PaleGreen4"                    84 139 84
-#0ff7f          "SpringGreen1"                  0 255 127
-#0ee76          "SpringGreen2"                  0 238 118
-#0cd66          "SpringGreen3"                  0 205 102
-#08b45          "SpringGreen4"                  0 139 69
-#0ff0           "green1"                        0 255 0
-#0ee0           "green2"                        0 238 0
-#0cd0           "green3"                        0 205 0
-#08b0           "green4"                        0 139 0
-#7fff0          "chartreuse1"                   127 255 0
-#76ee0          "chartreuse2"                   118 238 0
-#66cd0          "chartreuse3"                   102 205 0
-#458b0          "chartreuse4"                   69 139 0
+#0ff7f0         "SpringGreen1"                  0 255 127
+#0ee760         "SpringGreen2"                  0 238 118
+#0cd660         "SpringGreen3"                  0 205 102
+#08b450         "SpringGreen4"                  0 139 69
+#0ff000         "green1"                        0 255 0
+#0ee000         "green2"                        0 238 0
+#0cd000         "green3"                        0 205 0
+#08b000         "green4"                        0 139 0
+#7fff00         "chartreuse1"                   127 255 0
+#76ee00         "chartreuse2"                   118 238 0
+#66cd00         "chartreuse3"                   102 205 0
+#458b00         "chartreuse4"                   69 139 0
 #c0ff3e         "OliveDrab1"                    192 255 62
 #b3ee3a         "OliveDrab2"                    179 238 58
 #9acd32         "OliveDrab3"                    154 205 50
@@ -390,22 +390,22 @@
 #eeeed1         "LightYellow2"                  238 238 209
 #cdcdb4         "LightYellow3"                  205 205 180
 #8b8b7a         "LightYellow4"                  139 139 122
-#ffff0          "yellow1"                       255 255 0
-#eeee0          "yellow2"                       238 238 0
-#cdcd0          "yellow3"                       205 205 0
-#8b8b0          "yellow4"                       139 139 0
-#ffd70          "gold1"                         255 215 0
-#eec90          "gold2"                         238 201 0
-#cdad0          "gold3"                         205 173 0
-#8b750          "gold4"                         139 117 0
+#ffff00         "yellow1"                       255 255 0
+#eeee00         "yellow2"                       238 238 0
+#cdcd00         "yellow3"                       205 205 0
+#8b8b00         "yellow4"                       139 139 0
+#ffd700         "gold1"                         255 215 0
+#eec900         "gold2"                         238 201 0
+#cdad00         "gold3"                         205 173 0
+#8b7500         "gold4"                         139 117 0
 #ffc125         "goldenrod1"                    255 193 37
 #eeb422         "goldenrod2"                    238 180 34
 #cd9b1d         "goldenrod3"                    205 155 29
 #8b6914         "goldenrod4"                    139 105 20
-#ffb9f          "DarkGoldenrod1"                255 185 15
-#eeade          "DarkGoldenrod2"                238 173 14
-#cd95c          "DarkGoldenrod3"                205 149 12
-#8b658          "DarkGoldenrod4"                139 101 8
+#ffb9f0         "DarkGoldenrod1"                255 185 15
+#eeade0         "DarkGoldenrod2"                238 173 14
+#cd95c0         "DarkGoldenrod3"                205 149 12
+#8b6580         "DarkGoldenrod4"                139 101 8
 #ffc1c1         "RosyBrown1"                    255 193 193
 #eeb4b4         "RosyBrown2"                    238 180 180
 #cd9b9b         "RosyBrown3"                    205 155 155
@@ -450,14 +450,14 @@
 #ee9572         "LightSalmon2"                  238 149 114
 #cd8162         "LightSalmon3"                  205 129 98
 #8b5742         "LightSalmon4"                  139 87 66
-#ffa50          "orange1"                       255 165 0
-#ee9a0          "orange2"                       238 154 0
-#cd850          "orange3"                       205 133 0
-#8b5a0          "orange4"                       139 90 0
-#ff7f0          "DarkOrange1"                   255 127 0
-#ee760          "DarkOrange2"                   238 118 0
-#cd660          "DarkOrange3"                   205 102 0
-#8b450          "DarkOrange4"                   139 69 0
+#ffa500         "orange1"                       255 165 0
+#ee9a00         "orange2"                       238 154 0
+#cd8500         "orange3"                       205 133 0
+#8b5a00         "orange4"                       139 90 0
+#ff7f00         "DarkOrange1"                   255 127 0
+#ee7600         "DarkOrange2"                   238 118 0
+#cd6600         "DarkOrange3"                   205 102 0
+#8b4500         "DarkOrange4"                   139 69 0
 #ff7256         "coral1"                        255 114 86
 #ee6a50         "coral2"                        238 106 80
 #cd5b45         "coral3"                        205 91 69
@@ -466,18 +466,18 @@
 #ee5c42         "tomato2"                       238 92 66
 #cd4f39         "tomato3"                       205 79 57
 #8b3626         "tomato4"                       139 54 38
-#ff450          "OrangeRed1"                    255 69 0
-#ee400          "OrangeRed2"                    238 64 0
-#cd370          "OrangeRed3"                    205 55 0
-#8b250          "OrangeRed4"                    139 37 0
-#ff00           "red1"                          255 0 0
-#ee00           "red2"                          238 0 0
-#cd00           "red3"                          205 0 0
-#8b00           "red4"                          139 0 0
+#ff4500         "OrangeRed1"                    255 69 0
+#ee4000         "OrangeRed2"                    238 64 0
+#cd3700         "OrangeRed3"                    205 55 0
+#8b2500         "OrangeRed4"                    139 37 0
+#ff0000         "red1"                          255 0 0
+#ee0000         "red2"                          238 0 0
+#cd0000         "red3"                          205 0 0
+#8b0000         "red4"                          139 0 0
 #ff1493         "DeepPink1"                     255 20 147
 #ee1289         "DeepPink2"                     238 18 137
 #cd1076         "DeepPink3"                     205 16 118
-#8ba50          "DeepPink4"                     139 10 80
+#8ba500         "DeepPink4"                     139 10 80
 #ff6eb4         "HotPink1"                      255 110 180
 #ee6aa7         "HotPink2"                      238 106 167
 #cd6090         "HotPink3"                      205 96 144
@@ -502,10 +502,10 @@
 #ee3a8c         "VioletRed2"                    238 58 140
 #cd3278         "VioletRed3"                    205 50 120
 #8b2252         "VioletRed4"                    139 34 82
-#ff0ff          "magenta1"                      255 0 255
-#ee0ee          "magenta2"                      238 0 238
-#cd0cd          "magenta3"                      205 0 205
-#8b08b          "magenta4"                      139 0 139
+#ff0ff0         "magenta1"                      255 0 255
+#ee0ee0         "magenta2"                      238 0 238
+#cd0cd0         "magenta3"                      205 0 205
+#8b08b0         "magenta4"                      139 0 139
 #ff83fa         "orchid1"                       255 131 250
 #ee7ae9         "orchid2"                       238 122 233
 #cd69c9         "orchid3"                       205 105 201
@@ -534,20 +534,20 @@
 #eed2ee         "thistle2"                      238 210 238
 #cdb5cd         "thistle3"                      205 181 205
 #8b7b8b         "thistle4"                      139 123 139
-#000            "gray0"                         0 0 0
-#000            "grey0"                         0 0 0
-#333            "gray1"                         3 3 3
-#333            "grey1"                         3 3 3
-#555            "gray2"                         5 5 5
-#555            "grey2"                         5 5 5
-#888            "gray3"                         8 8 8
-#888            "grey3"                         8 8 8
-#aaa            "gray4"                         10 10 10
-#aaa            "grey4"                         10 10 10
-#ddd            "gray5"                         13 13 13
-#ddd            "grey5"                         13 13 13
-#fff            "gray6"                         15 15 15
-#fff            "grey6"                         15 15 15
+#000000         "gray0"                         0 0 0
+#000000         "grey0"                         0 0 0
+#333000         "gray1"                         3 3 3
+#333000         "grey1"                         3 3 3
+#555000         "gray2"                         5 5 5
+#555000         "grey2"                         5 5 5
+#888000         "gray3"                         8 8 8
+#888000         "grey3"                         8 8 8
+#aaa000         "gray4"                         10 10 10
+#aaa000         "grey4"                         10 10 10
+#ddd000         "gray5"                         13 13 13
+#ddd000         "grey5"                         13 13 13
+#fff000         "gray6"                         15 15 15
+#fff000         "grey6"                         15 15 15
 #121212         "gray7"                         18 18 18
 #121212         "grey7"                         18 18 18
 #141414         "gray8"                         20 20 20
@@ -740,14 +740,14 @@
 #a9a9a9         "DarkGrey"                      169 169 169
 #a9a9a9         "dark gray"                     169 169 169
 #a9a9a9         "DarkGray"                      169 169 169
-#008b           "dark blue"                     0 0 139
-#008b           "DarkBlue"                      0 0 139
-#08b8b          "dark cyan"                     0 139 139
-#08b8b          "DarkCyan"                      0 139 139
-#8b08b          "dark magenta"                  139 0 139
-#8b08b          "DarkMagenta"                   139 0 139
-#8b00           "dark red"                      139 0 0
-#8b00           "DarkRed"                       139 0 0
+#008b00         "dark blue"                     0 0 139
+#008b00         "DarkBlue"                      0 0 139
+#08b8b0         "dark cyan"                     0 139 139
+#08b8b0         "DarkCyan"                      0 139 139
+#8b08b0         "dark magenta"                  139 0 139
+#8b08b0         "DarkMagenta"                   139 0 139
+#8b0000         "dark red"                      139 0 0
+#8b0000         "DarkRed"                       139 0 0
 #90ee90         "light green"                   144 238 144
 #90ee90         "LightGreen"                    144 238 144
 

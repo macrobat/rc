@@ -3,11 +3,19 @@
 <channel name="xfce4-keyboard-shortcuts" version="1.0">
   <property name="commands" type="empty">
     <property name="default" type="empty">
-      <property name="&lt;Alt&gt;F2" type="empty"/>
+      <property name="&lt;Alt&gt;F1" type="empty"/>
+      <property name="&lt;Alt&gt;F2" type="empty">
+        <property name="startup-notify" type="empty"/>
+      </property>
+      <property name="&lt;Alt&gt;F3" type="empty">
+        <property name="startup-notify" type="empty"/>
+      </property>
       <property name="&lt;Control&gt;&lt;Alt&gt;Delete" type="empty"/>
       <property name="XF86Display" type="empty"/>
       <property name="&lt;Super&gt;p" type="empty"/>
       <property name="&lt;Control&gt;Escape" type="empty"/>
+      <property name="XF86WWW" type="empty"/>
+      <property name="XF86Mail" type="empty"/>
     </property>
     <property name="custom" type="empty">
       <property name="&lt;Alt&gt;F2" type="string" value="xfrun4"/>
@@ -120,6 +128,7 @@
       <property name="&lt;Super&gt;F8" type="string" value="workspace_8_key"/>
       <property name="&lt;Super&gt;F9" type="string" value="workspace_9_key"/>
       <property name="&lt;Primary&gt;F9" type="string" value="move_window_workspace_9_key"/>
+      <property name="&lt;Super&gt;Tab" type="string" value="switch_application_key"/>
     </property>
   </property>
   <property name="providers" type="array">

@@ -17,7 +17,7 @@
     <property name="cycle_workspaces" type="bool" value="true"/>
     <property name="dbl_click_time" type="int" value="400"/>
     <property name="double_click_action" type="string" value="maximize"/>
-    <property name="easy_click" type="string" value="Alt"/>
+    <property name="easy_click" type="string" value="Super"/>
     <property name="focus_hint" type="bool" value="true"/>
     <property name="focus_new" type="bool" value="true"/>
     <property name="frame_opacity" type="int" value="100"/>
@@ -50,7 +50,7 @@
     <property name="snap_to_border" type="bool" value="true"/>
     <property name="snap_to_windows" type="bool" value="true"/>
     <property name="snap_width" type="int" value="9"/>
-    <property name="theme" type="string" value="Cruxish"/>
+    <property name="theme" type="string" value="Meenee"/>
     <property name="title_alignment" type="string" value="center"/>
     <property name="title_font" type="string" value="Sans Bold 9"/>
     <property name="title_horizontal_offset" type="int" value="0"/>

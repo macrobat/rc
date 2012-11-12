@@ -77,7 +77,7 @@ layouts =
     awful.layout.suit.tile.bottom,	-- 3 setting to default
     awful.layout.suit.tile.top,		-- 4
 --    awful.layout.suit.fair, 
---    awful.layout.suit.fair.horizontal,
+    awful.layout.suit.fair.horizontal,
     awful.layout.suit.spiral,
     awful.layout.suit.spiral.dwindle,
     awful.layout.suit.max,
@@ -93,7 +93,8 @@ layouts =
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, awful.layout.suit.tile.bottom)
+    --tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, awful.layout.suit.tile.bottom)
+    tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, layouts[1])
 end
 -- }}}
 
@@ -343,6 +344,7 @@ clientkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end),
     awful.key({ modkey,           }, "o",      awful.client.movetoscreen                        ),
     awful.key({ modkey, "Shift"   }, "r",      function (c) c:redraw()                       end),
+    awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end),
     awful.key({ modkey,           }, "n",
         function (c)
             -- The client currently has the input focus, so it cannot be
@@ -505,13 +507,14 @@ function run_once(prg)
 end
 
 -- AUTORUN APPS!
-run_once("parcellite")
+--run_once("parcellite")
+run_once("clipit")
 --run_once("xmodmap ~/.Xmodmap") -- script  i bin från .xinitrc ist
-run_once("wicd-client")
+--run_once("wicd-client")
 --run_once("terminal") -- is the xfce4 terminal 
-run_once("urxvt -pe tabbed")
+--run_once("urxvt -pe tabbed")
 --run_once("gvim /home/occam/doku/laplacelog")
-run_once("gvim -S ~/doku/vimse")
+--run_once("gvim -S ~/doku/vimse")
 ---- lägg på andra tags
 --run_once("chromium-browser")
 --run_once("")

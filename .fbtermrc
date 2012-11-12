@@ -6,8 +6,10 @@
 
 # font family names/pixelsize used by fbterm, multiple font family names must be seperated by ','
 # and using a fixed width font as the first is strongly recommended
-font-names=mono
-font-size=18
+#font-names=mono
+# unreadable font-names=inconsolata
+font-names=terminus
+font-size=12
 
 # force font width, usually for non-fixed width fonts
 # legal value format: n (fw_new = n), +n (fw_new = fw_old + n), -n (fw_new = fw_old - n)
@@ -19,7 +21,7 @@ color-foreground=7
 color-background=0
 
 # max scroll-back history lines of every window, value must be [0 - 65535], 0 means disable it
-history-lines=6000
+history-lines=8000
 
 # up to 5 additional text encodings, multiple encodings must be seperated by ','
 # run 'iconv --list' to get available encodings.

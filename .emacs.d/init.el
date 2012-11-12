@@ -15,7 +15,8 @@
 ;; cons onto load-path list before we can load/require libs
 ;;(add-to-list 'load-path "~/.emacs.d/")
 ;; mapc is for side-effects only, it doesn't return a list like mapcar does
-(mapc '(lambda (dir) (add-to-list 'load-path dir)) '("~/.emacs.d/" "~/.emacs.d/elpa"))
+(mapc '(lambda (dir) (add-to-list 'load-path dir)) 
+      '("~/.emacs.d/" "~/.emacs.d/elpa" "~/.emacs.d/themes"))
 ;; "~/.emacs.d/elpa/paredit-22"
 ;; do I neeed all dirs in elpa too?
 
@@ -74,7 +75,9 @@
 (setq package-load-list
       '((bm "1.53") (browse-kill-ring "1.3.1") (buffer-move "0.4")
         (rainbow-mode "0.1") (workgroups "0.2.0") (paredit "22")
-        (goto-last-change "1.2")))
+        (goto-last-change "1.2") (popwin "0.4")))
+        ;; Symbol's function definition is void: popwin:display-buffer
+        ;; (popwin "0.4") ; have to load the crap manually, like a peasant
 ;; htmlize "1.39"
 ;; pkgs installed by elpa will be requireable
 ;; (package-initialize)
@@ -84,10 +87,13 @@
 
 ;; (eval-after-load 'package '(add-to-list 'package-archives ...))
 ;; packages should autoload. any package that doesn't should be loaded with an (eval-after-init ...)
+
+;; haet. it doesn't fucking load!!!!!!!1elebenty
 (when
     (load
      (expand-file-name "~/.emacs.d/elpa/package_23_github.el"))
-  (package-initialize))
+  (package-initialize)
+  (require 'popwin))
 
 
 ;;; ---------------------------------------------------
@@ -166,16 +172,18 @@
    "-unknown-DejaVu Sans Mono-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1") ; desktop
   (set-scroll-bar-mode 'right)
 
-  ;;(color-theme-initialize) ; old way, not in new emacs
-  ;; har lagt "color-theme" och temata i ~/.emacs.d
-  ;; themes that suck less: zenburn arjen goldenrod billw
+  ;; (color-theme-initialize) ; old way, not in new emacs
   ;; (load "color-theme-solarized")
-  ;; (color-theme-solarized-light)
+  ;; (color-theme-solarized-dark)
+  ;; custom-theme-load-path is (custom-theme-directory t)
+  ;; finns temata i /usr/share/emacs/24.2/etc/
+  ;; har lagt "color-theme" i ~/.emacs.d och temata i ~/.emacs.d/themes
+  ;; themes that suck less: zenburn arjen goldenrod billw
+  (setq custom-theme-directory "~/.emacs.d/themes")
   (load "color-theme")
   (load "arjen-theme")
   (color-theme-arjen)
-  ;;(color-theme-zenburn)
-  ;; (color-theme-gnome2)
+  ;; (color-theme-zenburn) (color-theme-gnome2)
   ;; region är lite tråkig, försöker ändra runt rad 100
 
   ;; om jag stänger av, funkar inte S-Ins. om det är på ändras i clipboard
@@ -199,6 +207,7 @@
 
   ;; (setq pop-up-windows nil) ; skit, ersätter bef. buffer med popup
   (setq pop-up-windows t)
+  ;; (setq display-buffer-function 'popwin:display-buffer)
   ;; how do i know/control in what window a buffer will pop up in?
   ;; (info "(emacs) Force Same Window") might be useful
   ;; a variable that controls whether a new buffer should get
@@ -208,7 +217,7 @@
   ;; protips: one-window-p & (length (window-list))
   ;; Defined in `/usr/share/emacs/23.1/lisp/window.elc'.
 
-) 
+)
 ;; end of "when window-system"
 
 ;;; ---------------------------------------------------
@@ -269,6 +278,7 @@
 ;; has nothing to do with minibuffer M-x cycling
 (global-set-key (kbd "C-x C-b") 'buffer-menu) ; nor buffer-list nor ibuffer
 (global-set-key (kbd "C-h a") 'apropos)
+(setq apropos-do-all t) ; search deper and slower
 ;; literal tab
 (global-set-key (kbd "<backtab>") '(lambda () (interactive) (insert "\t")))
 (windmove-default-keybindings) ; S-arrowkey, move to window
@@ -294,13 +304,14 @@
 (add-hook 'emacs-lisp-mode-hook
           (lambda () (local-set-key [(C-j)] 'eval-print-last-sexp)))
 
+;; hang theese on a hook?
 (when (featurep 'paredit)
   (define-key paredit-mode-map (kbd "C-j") 'eval-print-last-sexp)
   ;; stopped working in archlinux X
   (define-key paredit-mode-map (kbd "S-<backspace>") 'backward-delete-char)
-;; ,paredit-nonlisp is
-;; (set (make-local-variable 'paredit-space-for-delimiter-predicates)
-;;  '((lambda (endp delimiter nil)))
+  ;; ,paredit-nonlisp is
+  ;; (set (make-local-variable 'paredit-space-for-delimiter-predicates)
+  ;;  '((lambda (endp delimiter nil)))
   )
 
 ;; You add functions to the hook, not function calls, lambda doesn't need '
@@ -384,6 +395,9 @@
 (setq c-default-style "linux"
       c-basic-offset 4)
 (setq echo-keystrokes '0.0625)
+
+;; tab-complete when using M-:
+(define-key read-expression-map (kbd "TAB") 'lisp-complete-symbol)
 
 ;; Now, (add-hook ... '(lambda () ...)) will work, but you shouldn't use it.
 ;; For various obscure reasons related to byte-compilation, (lambda () ...) will work better.
@@ -509,11 +523,12 @@
           `(("^.*/" "~/.emacs.d/autosaves/" t)))
 (savehist-mode 1)
 
+;;; ---------------------------------------------------
 ;;; org mode
-
 ;; from David O'Toole Org tutorial
-(define-key global-map "\C-cl" 'org-store-link)
-(define-key global-map "\C-ca" 'org-agenda)
+;; set this crap in the right keymap instead
+;; (define-key global-map "\C-cl" 'org-store-link)
+;; (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done t)
 
 
@@ -522,7 +537,7 @@
 ;;; ---------------------------------------------------
 ;;; web stuffs
 
-(setq nxml-slash-auto-complete-flag 't) ; finish a </
+;; (setq nxml-slash-auto-complete-flag 't) ; finish a </
 ;; // css mode comments is illegal
 
 ;;; end web stuffs
@@ -567,16 +582,28 @@
 ;(setq common-lisp-hyperspec-root "http://www.lispworks.com/reference/HyperSpec/")
 
 ;; you can use slime-space instead of eldoc-mode
-;; where the OS keeps slime
-(add-to-list 'load-path "/usr/share/emacs/site-lisp/slime")
-(require 'slime)
-;; only run slime related things on demand. M-x slime
-;; (require 'slime-autoloads)
+;; where the OS keeps slime.
+;; maybe copy to /usr/local/share/emacs/site-lisp ?
+;; ==============================================================
+;; set up slime with quicklisp and slime-helper.el
+;; do this in the repl:
+;; (quicklisp-quickstart:install :path ".quicklisp/")
 
+;; slime-helper.el installed in "~/.quicklisp/slime-helper.el"
+;; To use, add this to your ~/.emacs:
+(load (expand-file-name "~/.quicklisp/slime-helper.el"))
+;; Loading that file adds Quicklisp slime path to your load-path.
+
+;; Replace "sbcl" with the path to your implementation
 (setq inferior-lisp-program "sbcl")
 ;; (setq inferior-lisp-program "clisp") ; for lol, why no slime-repl?
 ;; (setq inferior-lisp-program "/usr/bin/clisp")
 ;; (setq inferior-lisp-program "clojure")
+
+;; (add-to-list 'load-path "/usr/share/emacs/site-lisp/slime")
+(require 'slime)
+;; only run slime related things on demand. M-x slime
+;; (require 'slime-autoloads)
 
 ;; not global, set it in the keymap if slime is loaded
 ;; (global-set-key (kbd "<f12>") 'slime-selector)
@@ -645,7 +672,6 @@
 ;; erc, rcirc, lyskom
 ;; see erc-conf.el
 
-
 (setq rcirc-default-nick "macrobat_")
 (setq rcirc-default-user-name "macrobat")
 (setq rcirc-server-alist
@@ -702,14 +728,18 @@
 ;;--------------------------------------------------------------------
 
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
-
- ; end of custom-set-variables
-)
- (custom-set-faces
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ ;; SHA-256 hash of safe theme files
+ '(custom-safe-themes (quote ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default))))
+ 
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  )
 
 ;; (when window-system

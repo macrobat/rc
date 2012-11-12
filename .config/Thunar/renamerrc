@@ -1,6 +1,6 @@
 [Configuration]
 LastActiveMode=THUNAR_RENAMER_MODE_NAME
-LastActiveRenamer=ThunarSbrInsertRenamer
+LastActiveRenamer=ThunarSbrRemoveRenamer
 
 [ThunarSbrCaseRenamer]
 Mode=THUNAR_SBR_CASE_RENAMER_MODE_LOWER
@@ -17,15 +17,15 @@ Mode=THUNAR_SBR_NUMBER_MODE_123
 Start=1
 Text=
 
+[ThunarSbrInsertRenamer]
+Offset=5
+Mode=THUNAR_SBR_INSERT_MODE_OVERWRITE
+OffsetMode=THUNAR_SBR_OFFSET_MODE_LEFT
+Text=a
+
 [ThunarSbrRemoveRenamer]
 EndOffsetMode=THUNAR_SBR_OFFSET_MODE_LEFT
-StartOffset=8
-EndOffset=9
+StartOffset=0
+EndOffset=8
 StartOffsetMode=THUNAR_SBR_OFFSET_MODE_LEFT
-
-[ThunarSbrInsertRenamer]
-Offset=7
-Mode=THUNAR_SBR_INSERT_MODE_INSERT
-OffsetMode=THUNAR_SBR_OFFSET_MODE_LEFT
-Text=_
 
