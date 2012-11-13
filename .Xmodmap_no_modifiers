@@ -1,6 +1,10 @@
-keysym Caps_Lock = Control_L
-keysym Control_L = Escape
-add Control = Control_L	
+! add, remove MODIFIERNAME = KEYSYMNAME
+! to see the mod keys: xmodmap -pm
+! to reset a borked map: 
+! setxkbmap se -variant nodeadkeys -option terminate:ctrl_alt_bksp
+
+! plain modifiers (for TUTOR line asm over ssh)
+! esc on esc, caps on caps, ctrl on ctr_l
 keycode  30 = u U u U udiaeresis Udiaeresis downarrow uparrow u U downarrow uparrow u U downarrow uparrow
 keycode  34 = aring Aring aring Aring dead_diaeresis dead_abovering dead_diaeresis dead_abovering aring Aring dead_diaeresis dead_abovering aring Aring dead_diaeresis dead_abovering
 keycode  35 = asciitilde asciicircum diaeresis asciicircum udiaeresis Udiaeresis asciitilde caron diaeresis asciicircum asciitilde caron diaeresis asciicircum asciitilde caron
