@@ -1,5 +1,7 @@
 ! add, remove MODIFIERNAME = KEYSYMNAME
 ! to see the mod keys: xmodmap -pm
+! to reset a borked map: 
+! setxkbmap se -variant nodeadkeys -option terminate:ctrl_alt_bksp
 
 ! keysym Escape = Caps_Lock
 ! keysym Caps_Lock = Escape
