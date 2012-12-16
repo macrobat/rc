@@ -36,7 +36,8 @@
 			     ))
 
 (defun erc-get-color-for-nick (nick)
-  "Gets a color for NICK. If NICK is in erc-nick-color-alist, use that color, else hash the nick and use a random color from the pool"
+  "Gets a color for NICK. If NICK is in erc-nick-color-alist, 
+  use that color, else hash the nick and use a random color from the pool"
   (or (cdr (assoc nick erc-nick-color-alist))
       (nth
        (mod (string-to-number
@@ -93,3 +94,4 @@
 ;; it."
 ;; Use (add-to-list 'erc-modules 'scrolltobottom) followed by (erc-update-modules)
 ;; add-to-list works fine.  but you have to manually call erc-update-modules
+

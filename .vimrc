@@ -248,7 +248,7 @@ set nolazyredraw
 " testa för icke gui först
 " CSApprox.vim is _sometimes_ better than this:
 if !has("gui_running")
-    "colo torte
+    " colo torte
     " colo calmar256_light
 	" colo jellybeans
 	" colo neverness
@@ -272,8 +272,6 @@ command! -bang -nargs=? -complete=help H tab help<bang> <args>
 " If you would prefer Y to be consistent with C and D: (don't change S)
 nnoremap Y y$
 
-" like emacs M-x (why is it an ø?)
-nnoremap ø : " specific for my setup?
 " dont use, you have to press esc twice to get normal
 "nnoremap x :  " <esc><esc>
 "vnoremap x :
@@ -303,6 +301,7 @@ nmap <leader>l :set list!<CR>
 map ,cd :cd %:p:h<CR>
 " vimtip2, use %% to expand path for current buf
 cabbr <expr> %% expand('%:p:h')
+" cannot search for strings starting with t
 cabbr t tabe
 imap jj <esc>
 
@@ -394,14 +393,14 @@ set textwidth=80
 " Toggle the NERD Tree with F7
 nmap <F7> :NERDTreeToggle<CR>
          
-" derekwyatt har mera ,binds för emacs cmdline och windowing
+" derekwyatt has more ,binds for emacs cmdline and windowing
 
 " Swap two words. from cursor to end of next
 " får problem med massa markeringar, yank-paste blir konstigt
 " nmap <silent> gw :s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR>`'
 
 " http://vim.wikia.com/wiki/Mapping_keys_in_Vim_-_Tutorial_(Part_1)
-" kan inte söka /W när jag mappat :W till :w
+" cannot search /W when :W is mapped to :w
 " cnoremap W w
 " allow emacs-like command line editing
 " :h CTRL-R
@@ -417,6 +416,10 @@ cnoremap <ESC>f     <S-Right>
 cnoremap <ESC><C-H> <C-W>
 " cnoremap <C-B>      <Left>    "should be alt
 " cnoremap <C-F>      <Right>
+
+"let the old window stay in the same place when :sp or :vs
+set splitbelow
+set splitright
 
 " Maps to make handling windows a bit easier
 noremap <silent> ,h :wincmd h<CR>

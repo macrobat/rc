@@ -1,3 +1,24 @@
+# -*- conf -*-
+## Do some useful things in bash, python, etc:
+##
+##   - Insert matching parens.
+##   - Make C-SPC set the mark.
+##   - Make M-SPC do just-one-space.
+##   - Completion auto-inserts trailing / for symlinks to dirs.
+##     Useful because "find x/" works but "find x" doesn't.
+##   - Expand tildes in Bash.
+
+set mark-symlinked-directories on
+set visible-stats on
+
+set completion-query-items 24
+set mark-directories on
+set show-all-if-ambiguous on
+
+$if Bash
+  set expand-tilde on
+$endif
+
 # do not bell on tab-completion
 set bell-style none
 #set bell-style visible   #flashy-flash
@@ -9,40 +30,59 @@ set output-meta on
 
 $if mode=emacs
 
-# for linux console and RH/Debian xterm
-"\e[1~": beginning-of-line
-"\e[4~": end-of-line
-#"\e[5~": beginning-of-history
-#"\e[6~": end-of-history
-"\e[5~": reverse-search-history
-"\e[6~": forward-search-history
-"\e[7~": beginning-of-line
-"\e[3~": delete-char
-"\e[2~": quoted-insert
-"\e[5C": forward-word
-"\e[5D": backward-word
-"\e\e[C": forward-word
-"\e\e[D": backward-word
-"\e[1;5C": forward-word
-"\e[1;5D": backward-word
+    # for linux console and RH/Debian xterm
+    "\e[1~": beginning-of-line
+    "\e[4~": end-of-line
+    #"\e[5~": beginning-of-history
+    #"\e[6~": end-of-history
+    "\e[5~": reverse-search-history
+    "\e[6~": forward-search-history
+    "\e[7~": beginning-of-line
+    "\e[3~": delete-char
+    "\e[2~": quoted-insert
+    "\e[5C": forward-word
+    "\e[5D": backward-word
+    "\e\e[C": forward-word
+    "\e\e[D": backward-word
+    "\e[1;5C": forward-word
+    "\e[1;5D": backward-word
 
-# for rxvt
-"\e[8~": end-of-line
+    # for rxvt
+    "\e[8~": end-of-line
 
-# for non RH/Debian xterm, can't hurt for RH/DEbian xterm
-"\eOH": beginning-of-line
-"\eOF": end-of-line
+    # for non RH/Debian xterm, can't hurt for RH/DEbian xterm
+    "\eOH": beginning-of-line
+    "\eOF": end-of-line
 
-# for freebsd console
-"\e[H": beginning-of-line
-"\e[F": end-of-line
+    # for freebsd console
+    "\e[H": beginning-of-line
+    "\e[F": end-of-line
+
+    # twb stuff. doesn't work
+    # poor-man's insert-parentheses
+    (: "\C-v(\C-v)\C-b"
+    [: "\C-v[\C-v]\C-b"
+    {: "\C-v{\C-v}\C-b"
+    }: forward-char
+    ]: forward-char
+    ): forward-char
+
+    Control-SPC: set-mark
+    Meta-SPC: "\M-\\ "                    # just-one-space
+
+    # Mimic M-x shell, since the default bindings for these don't work.
+    # Meta-n: next-history
+    # Meta-p: previous-history
+    "\e[-n": next-history
+    "\e[-p": previous-history
+
 $endif
 
 #enable history search (archwiki post install tips)
 "\e[A":history-search-backward
 "\e[B":history-search-forward
 
-#snabb-tabb
+# fast tab
 set show-all-if-ambiguous on
 set show-all-if-unmodified on
 
@@ -51,6 +91,19 @@ set show-all-if-unmodified on
 # $include ~/.inputrc
 
 #egendefinierat
-"ŋ":"| grep -i "
-"©":"| column -t "
+"\t":menu-complete
+# what is wrong here?
+"\C-S-i":menu-complete-backward
+"\C-s-i":menu-complete-backward
+"\C-g":abort
+
+"ł":" | less -M -e "           #l
+"»":" | xargs "                #x
+"ŋ":" | grep -i "              #g
+"µ":" | column -t "            #m
+"þ":" | tr '\n' ' ' "          #t or p
+"©":" | cut -d ' ' -f "        #c
+"→":" | xclip -in "            #i
+"œ":" xclip -out "             #o
+"đ":" find -iname '**' "       #f  #see drop()
 
