@@ -43,6 +43,7 @@ urxvt.depth                 : 24
 urxvt.scrollTtyOutput       : 0
 urxvt.scrollTtyKeypress	    : 1
 urxvt*geometry			    : 150x50
+gvim*geometry			    : 152x56
 
 !sätter längre ned 
 !urxvt*background		    : black

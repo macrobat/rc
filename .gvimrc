@@ -41,6 +41,9 @@ tab all
 " first, enable status line always
 set laststatus=2
 
+" like emacs M-x (why is it an ø?) . only in gvim
+nnoremap ø : " specific for my setup?
+
 " vimtip 1287
 " now set it up to change the status line based on mode
 "if version >= 700

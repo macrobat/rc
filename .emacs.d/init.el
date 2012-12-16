@@ -451,7 +451,7 @@
 
 ;; is a toggle
 (blink-cursor-mode 1)
-
+(setq-default cursor-type '(bar . 4)) ; globally
 ;; tabs are evil. C-x h M-x {un,}tabify
 (setq-default indent-tabs-mode nil)
 

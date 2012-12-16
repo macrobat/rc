@@ -1,6 +1,6 @@
 HISTFILE=~/.zsh_history
-HISTSIZE=8192 # in RAM
-SAVEHIST=8191 # on disk
+HISTSIZE=16384 # in RAM
+SAVEHIST=16383 # on disk
 setopt APPEND_HISTORY
 # write each new cmd to file continously 
 setopt INC_APPEND_HISTORY 
@@ -36,6 +36,13 @@ bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/occam/.zshrc'
+
+# autoload commandline options: 
+#-U -- suppress alias expansion for functions 
+#-k -- mark function for ksh-style autoloading 
+#-t -- turn on execution tracing for functions 
+#-w -- specify that arguments refer to files compiled with zcompile 
+#-z -- mark function for zsh-style autoloading
 
 autoload -Uz compinit
 compinit
@@ -99,6 +106,10 @@ zstyle ':completion:*' menu select=4
 #zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 zstyle ':completion:*' use-compctl false
 zstyle ':completion:*' verbose true
+# The -e option to zstyle even allows completion function code to appear as the
+# argument to a style; this requires  some  understanding  of the internals of
+# completion functions (see zshcompwid(1))). We can now tab complete ../
+zstyle -e ':completion:*' special-dirs '[[ $PREFIX = (../)#(|.|..) ]] && reply=(..)'
 
 #################################################################
 # verkar va olika i olika terminaler
@@ -300,6 +311,7 @@ function bak() { cp $1{,.bak} ; }
 function drop() { find -L ${2:=.} -iname "*$1*" ; }
 function ec() { emacsclient --create-frame --alternate-editor="" -nw "$@" ; }
 function rot13() { tr '[a-m][n-z][A-M][N-Z]' '[n-z][a-m][N-Z][A-M]'; }
+function tobc() {echo "$1 $2 $3" | bc }
 
 #alias vl='c /var/log'
 #alias ca='c ~/.config/awesome'
