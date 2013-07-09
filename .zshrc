@@ -94,9 +94,12 @@ zstyle ':completion:*:cd:*' ignore-parents parent pwd
 ##  the differing lines from zshrc_compinstall
 zstyle ':completion:*' auto-description 'option: %d'
 zstyle ':completion:*' completer _expand _complete _ignored _match _correct _approximate
-#zstyle ':completion:*' format 'completion of %d'
-#zstyle ':completion:*' glob 'NUMERIC == 2'
-#zstyle ':completion:*' group-name ''
+## zstyle ':completion:*' format 'completion of %d'
+## zstyle ':completion:*' glob 'NUMERIC == 2'
+## zstyle ':completion:*' group-name ''
+## zstyle ':completion:*' insert-unambiguous true
+## zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+## zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
 zstyle ':completion:*' match-original both
 zstyle ':completion:*' matcher-list '' '+m:{[:lower:]}={[:upper:]}' '+r:|[._-/]=* r:|=*' 'l:|=* r:|=*'
 ## zstyle ':completion:*' max-errors 3 numeric
@@ -106,6 +109,7 @@ zstyle ':completion:*' menu select=4
 #zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 zstyle ':completion:*' use-compctl false
 zstyle ':completion:*' verbose true
+zstyle :compinstall filename '/home/occam/.zsh_compinstall'
 # The -e option to zstyle even allows completion function code to appear as the
 # argument to a style; this requires  some  understanding  of the internals of
 # completion functions (see zshcompwid(1))). We can now tab complete ../
@@ -311,7 +315,7 @@ function bak() { cp $1{,.bak} ; }
 function drop() { find -L ${2:=.} -iname "*$1*" ; }
 function ec() { emacsclient --create-frame --alternate-editor="" -nw "$@" ; }
 function rot13() { tr '[a-m][n-z][A-M][N-Z]' '[n-z][a-m][N-Z][A-M]'; }
-function tobc() {echo "$1 $2 $3" | bc }
+function tobc() {echo "scale=5; $1 $2 $3" | bc } # escape the *
 
 #alias vl='c /var/log'
 #alias ca='c ~/.config/awesome'
@@ -320,7 +324,7 @@ function tobc() {echo "$1 $2 $3" | bc }
 alias go='c ~/bin/projects/java/tddc69'    #temp
 alias gn_='for f in *.adb; do gnatclean "$f"; done'
 alias g--='g++ -std=c++98 -pedantic -Wall -Wextra'
-alias proj='c ~/bin/projects/lisp/kurs/lisp-nonogram-solver'
+alias proj='c ~/bin/projects/'
 alias cd-='cd -'
 alias cd..='cd ..'
 # alias ..='cd ..'
@@ -458,7 +462,8 @@ alias em='emacsclient'
 
 alias ub='mount -t vfat /dev/sdb1 /media/usb/; cd /media/usb/'
 #alias batt='cat /proc/acpi/battery/C23B/state'
-alias htp='htpdate -s www.kth.se www.sr.se www.nrk.no'
+# icmp allowed and ntp works, no need for htpdate
+#alias htp='htpdate -s www.kth.se www.sr.se www.nrk.no'
 
 alias choc='chown -R occam:users'
 alias chov='chown -R veder:users'

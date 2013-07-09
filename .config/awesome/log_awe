@@ -247,8 +247,7 @@ Current IP Address: 81.170.150.127
 besk.dyndns.org
 You will need to configure your client to use port 8245 for external IP detection from our CheckIP site
 besk.dyndns.org	Host 	81.170.150.127	Nov. 12, 2009 10:56 PM
-ferlorat lösen till kanonmatswe x:( bytt till kkumars låt
-till dyndns account använder jag danielelm... 
+till dyndns account använder jag namn... 
 den går som daemon
 kan ssh:a in från lappyn över dyndns, men frågas inte efter passphrase, bara lösen.
 ================================================================================

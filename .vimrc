@@ -111,8 +111,13 @@ endif
 
 " place new stuff below:
 
-" To use gc to transpose the current character with the next, without changing
-" the cursor position:
+" <A-q> to format a para 
+nnoremap ñ gqap
+" keeps cursor at the same position. won't use the remapped gw below
+inoremap ñ <esc>gwapi
+
+" To use gc to transpose the current character with the next, 
+" without changing the cursor position:
 :nnoremap <silent> gc xph
 
 " To use gw to transpose the current word with the next, without changing cursor
@@ -267,7 +272,7 @@ nmap <silent> ,w :set invwrap<CR>:set wrap?<CR>
 command! -bang -nargs=? -complete=help Help tab help<bang> <args>
 command! -bang -nargs=? -complete=help H tab help<bang> <args>
 
-" does yankring break this?
+" does yankring break this? Yes!
 " http://vim.wikia.com/wiki/Mapping_keys_in_Vim_-_Tutorial_(Part_1)
 " If you would prefer Y to be consistent with C and D: (don't change S)
 nnoremap Y y$
@@ -449,33 +454,6 @@ noremap <silent> ,J <C-W>J
 " noremap <silent> ,mh <C-W>H
 " noremap <silent> ,mj <C-W>J
 
-" some addons aren't managed. 
-" notice that line break \ is on _first_ non-whitespace
-function! SetupVAM()
-    set runtimepath+=~/.vim/vim-addon-manager
-    " commenting try .. endtry because trace is lost if you use it.
-    " There should be no exception anyway.
-	" This calls the autoload function ActivateAddons in the file vam with a 
-	" string argument and a dictionary argument
-    "  call vam#ActivateAddons(['pluginA', 'pluginB'], {'auto_install' : 0})
-    "   call vam#ActivateAddons([''], {'auto_install' : 0})
-       call vam#ActivateAddons([
-		\'The_NERD_tree', 'The_NERD_Commenter', 'CSApprox', 'Gundo', 'buffergrep',
-		\ 'Color_Sampler_Pack', 'FuzzyFinder', 'Scratch', 'unimpaired', 'YankRing',
-		\ 'colorizer', 'surround', 'Insertlessly'], {'auto_install' : 0})
-      " pluginA could be github:YourName see vam#install#RewriteName()
-    " catch /.*/
-    " echoe v:exception
-    " endtry
-endf
-call SetupVAM()
-" experimental: run after gui has been started (gvim) [3]
-" option1: au VimEnter * call SetupVAM()
-" option2: au GUIEnter * call SetupVAM()
-
-" vam doesn't add these. I want the commands and the help
-set runtimepath+=~/.vim/The_NERD_Commenter,~/.vim/unimpaired,~/.vim/FuzzyFinder,~/.vim/Gundo,~/.vim/Insertlessly,~/.vim/CSApprox,~/.vim/L9,~/.vim/The_NERD_tree,~/.vim/YankRing,~/.vim/surround,~/.vim/transwrd
-
 " maybe <silent> 
 noremap <F2> :call ToggleLineNumbering()<CR>
  
@@ -521,4 +499,33 @@ vmap  ,c$           <Plug>NERDCommenterToEOL
 nmap  ,cA           <Plug>NERDCommenterAppend
 vmap  ,cA           <Plug>NERDCommenterAppend
 nmap  ,ca           <Plug>NERDCommenterAltDelims
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" some addons aren't managed. 
+" notice that line break \ is on _first_ non-whitespace
+function! SetupVAM()
+    set runtimepath+=~/.vim/vim-addon-manager
+    " commenting try .. endtry because trace is lost if you use it.
+    " There should be no exception anyway.
+	" This calls the autoload function ActivateAddons in the file vam with a 
+	" string argument and a dictionary argument
+    "  call vam#ActivateAddons(['pluginA', 'pluginB'], {'auto_install' : 0})
+    "   call vam#ActivateAddons([''], {'auto_install' : 0})
+       call vam#ActivateAddons([
+		\'The_NERD_tree', 'The_NERD_Commenter', 'CSApprox', 'Gundo', 'buffergrep',
+		\ 'Color_Sampler_Pack', 'FuzzyFinder', 'Scratch', 'unimpaired', 'YankRing',
+		\ 'colorizer', 'surround', 'Insertlessly'], {'auto_install' : 0})
+      " pluginA could be github:YourName see vam#install#RewriteName()
+    " catch /.*/
+    " echoe v:exception
+    " endtry
+endf
+call SetupVAM()
+" experimental: run after gui has been started (gvim) [3]
+" option1: au VimEnter * call SetupVAM()
+" option2: au GUIEnter * call SetupVAM()
+
+" vam doesn't add these. I want the commands and the help
+set runtimepath+=~/.vim/The_NERD_Commenter,~/.vim/unimpaired,~/.vim/FuzzyFinder,~/.vim/Gundo,~/.vim/Insertlessly,~/.vim/CSApprox,~/.vim/L9,~/.vim/The_NERD_tree,~/.vim/YankRing,~/.vim/surround,~/.vim/transwrd
 

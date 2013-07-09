@@ -1,4 +1,3 @@
-T 1326642076 18<28lenswipe>	babilen, would i be better just serving up an image?
 T 1326642081 18<28lenswipe>	rather than a vanilla install
 T 1326642108 18<27babilen>	no
 T 1326642111 18<28lenswipe>	kk
@@ -1526,3 +1525,9 @@ T 1326690211 18<28zane>	acu_:  what?
 T 1326690213 18<24acu_>	perhaps
 T 1326690227 18<24acu_>	there are some caches somewhere
 T 1326690240 18<28zane>	acu_: what do u mean? caches?
+T 1355862949 19*	19Now talking on #debian
+T 1355862949 29*	29Topic for #debian 29is: squeeze (6.0.6) released; /msg dpkg squeeze | jessie will be wheezy+1 | lenny EOL 2012-02-06; /msg dpkg lenny->squeeze | wheezy frozen; /msg dpkg freeze | NO FLOOD: /msg dpkg pastebin | /msg bots NOT people | offtopic: #debian-offtopic | wheezy/sid: #debian-next (irc.oftc.net) | FAQ: http://deb.li/IRCFAQ | channel logs: http://deb.li/yQXC
+T 1355862949 29*	29Topic for #debian 29set by babilen!~babilen@unaffiliated/babilen 29at Sat Sep 29 16:34:16 2012
+T 1355862949 22*	Guest28508 is now known as mentor
+T 1355862949 28-29ChanServ28-	[#debian] Welcome to #Debian. This is a discussion channel; if you have a question about Debian GNU/Linux, ask and we will try our best to answer it. Newcomers should read the channel's guidelines by typing "/msg dpkg guidelines". Please do not paste in the channel; use #flood instead. Thank you.
+T 1355862949 22*	#debian :http://www.debian.org

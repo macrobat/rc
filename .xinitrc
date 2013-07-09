@@ -58,7 +58,8 @@ xrdb ~/.Xresources
 #/home/occam/bin/scripts/swap_esc_caps.sh &
 xmodmap ~/.Xmodmap
 
-xscreensaver -nosplash &
+# why does it never start?
+/usr/bin/xscreensaver -nosplash &
 
 # exec openbox-session
 # exec gnome-session
