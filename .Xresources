@@ -88,7 +88,11 @@ urxvt*perl-ext-common	    : default,matcher
 !urxvt-url-select is installed, howto kbd launch?
 !urxvt*urlLauncher		    : /usr/bin/google-chrome
 !*urlLauncher		        : /usr/bin/conkeror
-*urlLauncher		        : /usr/bin/firefox
+!*urlLauncher		        : /usr/bin/firefox
+!urxvt*urlLauncher		    : /usr/bin/firefox
+!URxvt*urlLauncher		    : /usr/bin/firefox
+! it changed name
+urxvt*url-launcher		    : /usr/bin/firefox
 urxvt*matcher.button	    : 1
 urxvt*matcher.pattern.1	    : \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
 urxvt*secondaryScroll	    : true

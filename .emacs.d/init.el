@@ -35,12 +35,13 @@
 ;; puts other things. there is also, emms-cache-file.
 
 ;;; ---------------------------------------------------
+;;; packages
 
 ;; FIXME
 ;; you must not be initializing properly?
 ;; the variable is not autoloaded
 ;; if you do M-x list-packages  then you'll see it
-;; and of course any customization or seting of that variable before the package is loaded will persist over the package
+;; and of course any customization or setting of that variable before the package is loaded will persist over the package
 ;; load.
 ;; so, (package-initialize) is done before add-list?
 ;; macrobat: no, you shouldn't do that
@@ -54,7 +55,7 @@
 ;; don't get me wrong, of course you can do it. but it's not "right"
 ;; I shouldn't setq package-load-list?
 ;; I don't think so, no.
-;; packages should autoload. any package that doesn't should be loaded with an (eval-after-init ...)
+;; packages should autoload. any package that doesn't should be loaded with an (eval-after-init ...) ; no such thing!!!
 ;; lots of packages are modes that you want to load with mode-alist... which can be done even if the package isn't loaded,
 ;; or done on some hook, which can be done without loading the package or done on a key which can also be done without
 ;; loading the package
@@ -68,16 +69,37 @@
 
 ;; package.el is put in the elpa dir or comes with emacs24
 (load "package_23_github.el")
-;; (require 'package)
-(add-to-list 'package-archives
-         '("marmalade" . "http://marmalade-repo.org/packages/"))
+
+;; 2013-05-28 trying default emacs24 package. vortex of fail
+;; http://www.emacswiki.org/emacs/ELPA
+;; have to use eval-after-load around each package use 
+;; and -autoloads for the minor modes
+;; eval-after-load "broccoli-autoloads" ; <-- "broccoli-autoloads", not "broccoli"
+;; (package-initialize) ; fails: cannot open ~/.emacs.d/elpa/archives/-pkg
+;; package-initialize is run _after_ init file load and before after-init-hook
+;; (require 'package) ; don't in emacs24
+
+;; using setq
+;; (setq package-archives
+;;          '("marmalade" . "http://marmalade-repo.org/packages/"))
+;; (add-to-list 'package-archives
+;;   '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "http://marmalade-repo.org/packages/")
+                         ("melpa" . "http://melpa.milkbox.net/packages/")))
+
 ;; Each element in this list should be a list (NAME VERSION)
 (setq package-load-list
       '((bm "1.53") (browse-kill-ring "1.3.1") (buffer-move "0.4")
         (rainbow-mode "0.1") (workgroups "0.2.0") (paredit "22")
         (goto-last-change "1.2") (popwin "0.4")))
+        ;; smartparen better than paredit?
+
         ;; Symbol's function definition is void: popwin:display-buffer
         ;; (popwin "0.4") ; have to load the crap manually, like a peasant
+;; (eval-after-init (package-initialize) (require 'popwin)) ; there is no eval-after-init
+;; (add-hook 'after-init-hook (lambda () (require 'popwin)))
+
 ;; htmlize "1.39"
 ;; pkgs installed by elpa will be requireable
 ;; (package-initialize)
@@ -86,16 +108,15 @@
 ;; packages in this file:
 
 ;; (eval-after-load 'package '(add-to-list 'package-archives ...))
-;; packages should autoload. any package that doesn't should be loaded with an (eval-after-init ...)
+;; "packages should autoload. any package that doesn't should be loaded with an (eval-after-init ...)"
+;; there is no eval-after-init
 
 ;; haet. it doesn't fucking load!!!!!!!1elebenty
-(when
-    (load
-     (expand-file-name "~/.emacs.d/elpa/package_23_github.el"))
+(when (load (expand-file-name "~/.emacs.d/elpa/package_23_github.el"))
   (package-initialize)
   (require 'popwin))
 
-
+;;; ^packages^
 ;;; ---------------------------------------------------
 
 ;; http://www.emacswiki.org/cgi-bin/wiki.pl?SessionManagement
@@ -105,7 +126,9 @@
 ;; (require 'session) ; se om det hjälper
 ;; (setq session-save-file "~/.emacs.d/session")
 ;; (add-hook 'after-init-hook 'session-initialize)
-(require 'desktop-menu)
+
+;;; disabling tmp
+;; (require 'desktop-menu)
 (desktop-save-mode 1)
 ;; (desktop-read) ;gives error ;needed? the desktop wasn't read before
 
@@ -136,7 +159,27 @@
 ;; (add-hook 'emacs-lisp-mode-hook       (lambda () (paredit-mode +1)))
 ;; (add-hook 'lisp-mode-hook             (lambda () (paredit-mode +1)))
 ;; (add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode +1)))
-(require 'rainbow-delimiters)
+
+;; local-set-key changes the major mode, not the minor paredit-mode
+;;(if (or (featurep emacs-lisp-mode) (featurep lisp-interaction-mode))
+;;      (local-set-key (kbd "<C-j>") 'eval-print-last-sexp)
+;;   (global-set-key (kbd "<C-j>") 'newline))
+;; bind delete to backward-delete-char in paredit-mode
+;;(with-current-buffer "*scratch*" (local-set-key
+;;                                (kbd "<C-j>") 'eval-print-last-sexp))
+
+;; hang theese on a hook?
+(when (featurep 'paredit)
+  (define-key paredit-mode-map (kbd "C-j") 'eval-print-last-sexp)
+  ;; stopped working in archlinux X
+  (define-key paredit-mode-map (kbd "S-<backspace>") 'backward-delete-char)
+  ;; ,paredit-nonlisp is
+  ;; (set (make-local-variable 'paredit-space-for-delimiter-predicates)
+  ;;  '((lambda (endp delimiter nil)))
+  )
+
+;; (require 'rainbow-delimiters)
+
 ;; (rainbow-delimiters-mode) ; buffer-local?
 ;; maybe like this?
 ;; (setq rainbow-delimiters-mode 1)
@@ -194,12 +237,10 @@
   ;; browse-url       browse-url-at-point    browse-url-at-mouse
   (setq browse-url-generic-program (executable-find "firefox")
         browse-url-browser-function 'browse-url-generic)
-                                        ;(setq tabbar-mode t) ; lägg alla *buffers* i en grupp.
+  ;; (setq tabbar-mode t) ; lägg alla *buffers* i en grupp.
   ;; är skit, dålig dålig sortering
   ;; tabbar.el är fr 2005 och är ~2000 rader. vilken tabbar är i emacs24?
   ;; finns snippets på http://www.emacswiki.org/emacs/TabBarMode
-                                        ;(require 'tabbar)
-                                        ;(tabbar-mode t)
   (tool-bar-mode -1)
   (menu-bar-mode -1)
   (winner-mode 1) ; undo window changes
@@ -221,9 +262,10 @@
 ;; end of "when window-system"
 
 ;;; ---------------------------------------------------
-;; keys, utseende och sånt
+;;; keys, utseende och sånt
 ;; the angle brackets are only used for things such as <C-backspace>
-;; "The binding goes in the current buffer's local map, which in most cases is shared with all other buffers in the same major mode."
+;; "The binding goes in the current buffer's local map, which in most
+;; cases is shared with all other buffers in the same major mode."
 ;; vector syntax: (global-set-key [(meta left)] #'previous-buffer)
 ;; (kbd "<C-tab>") is just a macro that returns [C-tab]
 ;; typically you use `minor-mode-map-alist' to bind keys that you want to be active only in a certain minor mode.
@@ -271,12 +313,12 @@
 (global-set-key (kbd "C-*") 'register-to-point)
 
 ;; isf (slime-next-note) ; gå till kompileringsfel
-;;(add-hook 'lisp-mode-hook (lambda ()
-;;(local-set-key (kbd "M-n") 'dabbrev-expand)))
+;;(add-hook 'lisp-mode-hook (lambda () (local-set-key (kbd "M-n") 'dabbrev-expand)))
 ;;(add-hook 'lisp-mode-hook (lambda () (local-set-key (kbd "M-p") 'hippie-expand)))
 
 ;; has nothing to do with minibuffer M-x cycling
-(global-set-key (kbd "C-x C-b") 'buffer-menu) ; nor buffer-list nor ibuffer
+;; (global-set-key (kbd "C-x C-b") 'buffer-menu) ; nor buffer-list nor ibuffer
+(global-set-key (kbd "C-x C-b") 'ibuffer) ; [remap list-buffers] funkar visst inte
 (global-set-key (kbd "C-h a") 'apropos)
 (setq apropos-do-all t) ; search deper and slower
 ;; literal tab
@@ -293,26 +335,8 @@
 (global-set-key (kbd "<RET>") 'newline-and-indent)
 ;; swap <RET> and C-j unless in python-mode. add-hook python-mode-hook?
 
-;; local-set-key changes the major mode, not the minor paredit-mode
-;;(if (or (featurep emacs-lisp-mode) (featurep lisp-interaction-mode))
-;;      (local-set-key (kbd "<C-j>") 'eval-print-last-sexp)
-;;   (global-set-key (kbd "<C-j>") 'newline))
-;; bind delete to backward-delete-char in paredit-mode
-;;(with-current-buffer "*scratch*" (local-set-key
-;;                                (kbd "<C-j>") 'eval-print-last-sexp))
-
 (add-hook 'emacs-lisp-mode-hook
           (lambda () (local-set-key [(C-j)] 'eval-print-last-sexp)))
-
-;; hang theese on a hook?
-(when (featurep 'paredit)
-  (define-key paredit-mode-map (kbd "C-j") 'eval-print-last-sexp)
-  ;; stopped working in archlinux X
-  (define-key paredit-mode-map (kbd "S-<backspace>") 'backward-delete-char)
-  ;; ,paredit-nonlisp is
-  ;; (set (make-local-variable 'paredit-space-for-delimiter-predicates)
-  ;;  '((lambda (endp delimiter nil)))
-  )
 
 ;; You add functions to the hook, not function calls, lambda doesn't need '
 (global-set-key (kbd "C-S-j") (lambda () (interactive) (join-line t))) ; vimmy
@@ -323,11 +347,18 @@
 ;; gör ingenting, returnera ingenting, kbd macro is C-x (
 (global-set-key (kbd "C-x C-k RET") 'ignore)
 
-;; C-x ^ runs the command enlarge-window
+;; C-x v is for vc
+(global-set-key (kbd "C-x ^") (lambda () (interactive)
+                                (enlarge-window 3)))
 (global-set-key (kbd "C-x }") (lambda () (interactive)
                                 (enlarge-window-horizontally 5)))
 (global-set-key (kbd "C-x {") (lambda () (interactive)
                                 (shrink-window-horizontally 5)))
+;; error "s- must prefix a single character, not down"
+;; (global-set-key (kbd "s-up") (lambda () (interactive)
+;;                                 (enlarge-window-horizontally 5)))
+;; (global-set-key (kbd "s-down") (lambda () (interactive)
+;;                                 (shrink-window-horizontally 5)))
 
 ;; for bubbling...
 ;; (beginning-of-line)(kill-line)(up)(yank)
@@ -368,7 +399,7 @@
 (defalias 'sb  'isearch-backward-regexp) ; C-M r
 (defalias 'ss  'isearch-forward-regexp)  ; C-M s
 (defalias 'bb  'bury-buffer)
-(defalias '\0  'bury-buffer)
+(defalias '\0  'bury-buffer)             ; M-x RET
 (defalias 'hr  'highlight-regexp)
 (defalias 'rb  'revert-buffer)
 (defalias 'pm  'paredit-mode)
@@ -384,7 +415,7 @@
   (interactive)
   (when buffer-file-name
     (kill-new (file-truename buffer-file-name))))
-(defalias 'fx 'copy-full-path-to-kill-ring)
+(defalias 'fx 'copy-full-path-to-kill-ring) ; find a better name
 
 ;; with auto-fill-mode, breaks lines at whitespace
 ;(setq fill-column 79) ; doesn't ever work, even with add-hook!
@@ -428,12 +459,21 @@
 		      (bm-toggle))))
 ;; there is also Bookmark+
 
-;; lower mouse scroll from 5. also use with C and S
+(defun smaller-text () (interactive) (text-scale-adjust -1))
+(global-set-key (kbd "C-<mouse-4>") 'smaller-text)
+(defun larger-text () (interactive) (text-scale-adjust +1))
+(global-set-key (kbd "C-<mouse-5>") 'larger-text)
+;; (global-set-key (kbd "C-<mouse-5>") '(lambda (s) ((interactive) (text-scale-adjust s)) +1))
+;; (global-set-key (kbd "C-<mouse-5>") '(lambda (s) ((interactive) (text-scale-adjust s)) +1))
+
+;; lower mouse scroll from 5. also use with shift (and maybe ctrl) 
 (setq mouse-wheel-scroll-amount
 '(4
  ((shift)
   . 1)
- ((control)) ))
+ ;; ((control)) ; use C-<mouse-4> for fontsize dec
+ ))
+
 (setq mouse-wheel-progressive-speed nil)
 
 (put 'dired-find-alternate-file 'disabled nil) ; är 'a
@@ -672,11 +712,11 @@
 ;; erc, rcirc, lyskom
 ;; see erc-conf.el
 
-(setq rcirc-default-nick "macrobat_")
-(setq rcirc-default-user-name "macrobat")
+(setq rcirc-default-nick "mcRibbit_")
+(setq rcirc-default-user-name "mcRibbit")
 (setq rcirc-server-alist
       '(("irc.freenode.net" :channels
-         ("#emacs" "#lisp" "##C" "#archlinux"))))
+         ("#emacs" "#lisp" "#debian" "#archlinux"))))
 
 
 ;;;(require lyskom)
@@ -733,7 +773,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  ;; SHA-256 hash of safe theme files
- '(custom-safe-themes (quote ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default))))
+ '(custom-safe-themes
+   (quote ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879"
+           "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default))))
  
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

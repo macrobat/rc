@@ -26,6 +26,8 @@
 # m:xxx + c:xxx 
 # Shift+... 
 
+# bind to lock screen: xscreensaver-command --lock
+
 #keystate_numlock = enable
 #keystate_scrolllock = enable
 #keystate_capslock = enable
@@ -53,6 +55,8 @@
     m:0x4 + c:111
     Control + Up 
 
+# add actions for XF86AudioPlay XF86AudioPrev XF86AudioNext
+
 # launch apps
 "gmrun"
     m:0x18 + c:68
@@ -63,6 +67,8 @@
     m:0x11 + c:107
     Shift+Mod2 + Print 
 
+# dmenu_run replaces dmenu_path
+# use it directly without piping?
 #"exe=$(dmenu_path | dmenu -i -nb DarkSlateGray4) && exec $exe"
 #"exe=$(dmenu_path | dmenu -i -nb DarkSlateGray4 -fn "-*-fixed-*-*-*-*-20-*-*-*-*-*-*-*") && exec $exe"
 "dmenu_run -nb DarkSlateGray4 -fn "-*-fixed-*-*-*-*-20-*-*-*-*-*-*-*""
@@ -70,21 +76,23 @@
     Alt + space 
 
 # lambda ()
-"Hello from Scheme!"
-    (run-command xdotool type "apanpapan")
-    (newline))) 
+#"Hello from Scheme!"
+    #(run-command xdotool type "apanpapan")
+    #(newline))) 
 
-"xterm"
-   ;; (remove-xbindkey '(control p))
+#"xterm"
+   #;; (remove-xbindkey '(control p))
 
+# why? does not work
 # paste with a modmapped escape button
-"xdotool key Shift+Insert"
-    #    m:0x10 + c:9
-    Mod2 + onesuperior 
+#"xdotool key Shift+Insert"
+#    #    m:0x10 + c:9
+#    # altgr + shift + 1: ¹
+#    Mod2 + onesuperior 
 
 # Alt + dollar
-#"exe2=$(dmenu_path | dmenu -i -nb DarkOliveGreen -fn "-*-fixed-*-*-*-*-20-*-*-*-*-*-*-*") && urxvt -pe tabbed -e $exe2"
-"exe2=$(dmenu_path -i -nb DarkOliveGreen -fn "-*-fixed-*-*-*-*-20-*-*-*-*-*-*-*") && urxvt -pe tabbed -e $exe2"
+#"exe2=$(dmenu_run | dmenu -i -nb DarkOliveGreen -fn "-*-fixed-*-*-*-*-20-*-*-*-*-*-*-*") && urxvt -pe tabbed -e $exe2"
+# "exe2=$(dmenu_run -i -nb DarkOliveGreen -fn "-*-fixed-*-*-*-*-20-*-*-*-*-*-*-*") && urxvt -pe tabbed -e $exe2"
     #m:0x40 + c:51
     #Mod4 + apostrophe 
 

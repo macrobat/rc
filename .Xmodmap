@@ -1,7 +1,10 @@
 ! add, remove MODIFIERNAME = KEYSYMNAME
-! to see the mod keys: xmodmap -pm
 ! to reset a borked map: 
 ! setxkbmap se -variant nodeadkeys -option terminate:ctrl_alt_bksp
+! xmodmap -pm to see the mod keys
+! xmodmap -pke to see the list of bindings
+! use xev to see what a key is called/bound to
+! alt-gr is the fifth item, alt-gr + shift is the sixth
 
 ! keysym Escape = Caps_Lock
 ! keysym Caps_Lock = Escape
@@ -19,6 +22,18 @@
 ! don't want control on all of these:
 ! Escape (0x9),  Escape (0x25),  Control_L (0x42),  Control_R (0x69)
 
+! 30 german üÜ 
+! 32,38 norwegian/danish æÆ øØ
+! 34 åÅ is a more dead key with alt-gr
+! 35 dead easy unmodded ~ tilde
+! 47,48 {} curly braces
+! 49 $ is more useful than §
+! 51 quotedbl instead of acute '* "×
+! 59,60 [] on the ,. keys
+! 91 keypad decimal dot instead of comma
+! 135 to combine two chars into one
+! 191 why? was: XF86Tools NoSymbol XF86Tools
+
 remove Lock = Caps_Lock
 remove Control = Control_L
 keysym Caps_Lock = Control_L
@@ -26,8 +41,10 @@ keysym Control_L = Escape
 add Control = Control_L
 
 keycode  30 = u U u U udiaeresis Udiaeresis downarrow uparrow u U downarrow uparrow u U downarrow uparrow
-keycode  34 = aring Aring aring Aring dead_diaeresis dead_abovering dead_diaeresis dead_abovering aring Aring dead_diaeresis dead_abovering aring Aring dead_diaeresis dead_abovering
+keycode  32 = o O o O oslash Oslash oe OE o O oe OE o O oe OE
+! keycode  34 = aring Aring aring Aring dead_diaeresis dead_abovering dead_diaeresis dead_abovering aring Aring dead_diaeresis dead_abovering aring Aring dead_diaeresis dead_abovering
 keycode  35 = asciitilde asciicircum diaeresis asciicircum udiaeresis Udiaeresis asciitilde caron diaeresis asciicircum asciitilde caron diaeresis asciicircum asciitilde caron
+keycode  38 = a A a A ae AE ordfeminine masculine a A ordfeminine masculine a A ordfeminine masculine
 keycode  47 = odiaeresis Odiaeresis odiaeresis Odiaeresis braceleft bracketleft oslash Oslash odiaeresis Odiaeresis oslash Oslash
 keycode  48 = adiaeresis Adiaeresis adiaeresis Adiaeresis braceright bracketright ae AE adiaeresis Adiaeresis ae AE
 keycode  49 = dollar asciitilde paragraph onehalf section threequarters paragraph threequarters section onehalf paragraph threequarters section onehalf paragraph threequarters

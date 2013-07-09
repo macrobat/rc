@@ -2,6 +2,7 @@
 //require("extensions/noscript.js");
 require("new-tabs.js"); // For the new tabs
 require("session.js"); //load earlier session
+session_auto_save_auto_load = true;
 require("clicks-in-new-buffer.js");
 clicks_in_new_buffer_target = OPEN_NEW_BUFFER_BACKGROUND;
 clicks_in_new_buffer_button = 1; // middle button

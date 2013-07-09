@@ -1183,3 +1183,15 @@ T 1326690348 18<24dto>	lucy and ramonaaaaa. sunset saaaaam
 T 1326690467 18<29__yhvh__>	maybe, does font-lock do links (hypertext)?
 T 1326690600 Tcl interface unloaded
 T 1326690600 Python interface unloaded
+T 1355862949 19*	19Now talking on #emacs
+T 1355862949 29*	29Topic for #emacs 29is: they see me trollin' they hatin' | Emacs starts pretest - go checkout 24.2.91 | http://www.emacswiki.org/EmacsChannel | Pastebin: http://paste.lisp.org | No public logging! What happens in #emacs stays in #emacs | No sexism, racism, misogyny, or other general asshattery | fsbot connected via redirect due to freenode capping - maybe flaky
+T 1355862949 29*	29Topic for #emacs 29set by elkng!~elkng@unaffiliated/elkng 29at Tue Dec 18 08:50:13 2012
+T 1355862949 22*	#emacs :http://emacswiki.org/
+T 1355862970 18<29nounchh>	different question: how do you conveniently delete yasnippets? manually remove them from the snippets dir?
+T 1355862970 18<24dropdrive>	Is there a built-in way to, given "foo", execute "git foo" if it is defined (as an alias or as git-foo on PATH) otherwise execute some provided default location for git-foo (in a directory not in my PATH)?
+T 1355862983 18<29nounchh>	there is no handy yas/delete-snippet or yas/remove-snippet
+T 1355863005 31<macrobat_>30	hey, doubly identified!
+T 1355863092 18<25macrobat>	it3ration: I think the client uses the extra nicks of your choice if they are taken. same if someone stole your nick
+T 1355863108 31<macrobat_>30	macrobat: bye
+T 1355863112 Tcl interface unloaded
+T 1355863112 Python interface unloaded

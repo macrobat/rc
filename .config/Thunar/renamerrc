@@ -18,14 +18,14 @@ Start=1
 Text=
 
 [ThunarSbrInsertRenamer]
-Offset=5
-Mode=THUNAR_SBR_INSERT_MODE_OVERWRITE
+Offset=0
+Mode=THUNAR_SBR_INSERT_MODE_INSERT
 OffsetMode=THUNAR_SBR_OFFSET_MODE_LEFT
-Text=a
+Text=Plattetyder_
 
 [ThunarSbrRemoveRenamer]
 EndOffsetMode=THUNAR_SBR_OFFSET_MODE_LEFT
-StartOffset=0
-EndOffset=8
+StartOffset=16
+EndOffset=43
 StartOffsetMode=THUNAR_SBR_OFFSET_MODE_LEFT
 

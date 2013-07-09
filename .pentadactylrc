@@ -3,30 +3,31 @@
 " where is the error?
 
 " suggestions S search engines
-set complete=slSf
+"set complete=slSf
 nmap <C-Left> :bprevious<CR>
 nmap <C-Right> :bnext<CR>
 
-" text _and_ image zoom keys
-nmap + :zoom! +15<CR>
+" text _and_ image zoom keys. called "full zoom" by dactyl
+" should the amount be in {} ?
+nmap + :zoom! +13<CR>
 " invalid option -
-" nmap - :zoom! -15<CR>
-nmap ´ :zoom! -15<CR>
+ nmap '-' :zoom! -13<CR>
+"nmap ´ :zoom! -13<CR>
 " text zoom keys
-nmap <C-+> :zoom +16<CR>
-nmap <C--> :zoom -16<CR>
+nmap <C-+> :zoom +14<CR>
+nmap <C--> :zoom -14<CR>
 
 " to reset the caret (for a search) when you gg to top of page
 " so that you don't start a new search where the old one left of
 "nmap -b gg igg<Esc>
 
-"funkar inte
+" funkar inte
 "cabbreviate H sidebar History
 
 "cabbreviate Addons emenu Tools.Add-ons
 
 "cabbreviate dta emenu Tools.DownThemAll! Tools.DownThemAll!...
-"funkar inte
+" funkar inte
 " Enable passthrough mode on some Google sites:
 ":autocmd LocationChange ^https?://(spreadsheets|mail)\.google\.com/ :normal! <C-z>
 " Set the filetype to mail when editing email at Gmail:

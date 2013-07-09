@@ -1,48 +1,3 @@
-T 1326651122 18<20vodik>	Arthic: just use sprunge
-T 1326651137 18<20vodik>	you don't need to install anything, its just curl
-T 1326651165 18<19Arthic>	k
-T 1326651173 18<20garbagegod>	I have a bunch of ~700mb video files on my server which has a residential 1-300kbps upload speed and I want to stream the video to watch it... The problem is mplayer refuses to open it, vlc dosent support skipping foward/backward, and if you pause it the video cuts off and you have to restart the whole thing which is annoying... Is there anything better suited to this application?
-T 1326651295 18<20garbagegod>	Not to mention my vlc install is really messed up, and I love vlc, there's really no other video player that even holds a candle to it, but it refuses to scale video beyond its original aspect ratio...
-T 1326651385 18<20vodik>	!vlc
-T 1326651386 18<22phrik>	vlc: statically compiled mplayer libraries surrounded by qt interface
-T 1326651392 18<20vodik>	:)
-T 1326651396 18<25Turska>	not exactly
-T 1326651405 18<20vodik>	i know its hyperbole
-T 1326651407 18<20garbagegod>	Is there a yaourt function that will reinstall vlc and all of its dependencies as well?
-T 1326651416 18<19Arthic>	it's not working
-T 1326651418 18<20vodik>	garbagegod: stop using yaourt when you hit problems
-T 1326651424 18<20vodik>	garbagegod: pacman -S vlc
-T 1326651427 18<20garbagegod>	Heh, sorry I meant pacman
-T 1326651433 18<20garbagegod>	vodik: are you serious?
-T 1326651444 18<20vodik>	garbagegod: yaourt does obsure pacman's error messages
-T 1326651444 18<25Turska>	if VLC was statically compiled mplayer libraries with a QT interface, it might actually be good
-T 1326651455 18<20vodik>	Turska: lol
-T 1326651455 18<25Turska>	unfortunately, it's something much, much worse
-T 1326651455 22*	Bluewind_ is now known as Bluewind
-T 1326651472 18<20vodik>	garbagegod: so it can make debugging harder
-T 1326651480 18<20garbagegod>	Hey, mplayer dosen't support audio boost, etc...
-T 1326651488 18<20vodik>	garbagegod: yeah it does
-T 1326651516 18<20vodik>	garbagegod: but if yaourt is failing on vlc-dev, step 1 is to build vlc-dev _by hand_ with makepkg
-T 1326651533 18<20vodik>	garbagegod: otherwise god knows whats the problem
-T 1326651540 18<20garbagegod>	heh
-T 1326651541 18<20vodik>	Arthic: not working how?
-T 1326651542 18<20garbagegod>	I fixed it -_-
-T 1326651589 18<20vodik>	well that was anticlimatic
-T 1326651625 18<22Adjunct>	what fixed it?
-T 1326651629 18<22Adjunct>	win7?
-T 1326651636 18<20vodik>	we'll never know :o
-T 1326651637 18<22Adjunct>	:D
-T 1326651641 18<20vodik>	he'll die with the answer
-T 1326651646 18<22Adjunct>	hehe
-T 1326651653 18<19Arthic>	ah i got it vodik
-T 1326651663 18<19Arthic>	http://sprunge.us/GGEM
-T 1326651710 18<20vodik>	that log doesn't end... is X running?
-T 1326651716 18<19Arthic>	nope
-T 1326651731 18<19Arthic>	oh wait
-T 1326651735 18<20vodik>	pgrep -lf X
-T 1326651755 18<19Arthic>	i think this will be more useful : http://sprunge.us/bfKI
-T 1326651793 18<27majuscule>	I just patched screen with the vertical patch, http://vsp4sdl.yuggoth.org/wrp_vertical_split_0.3_4.0.2.diff.bz2, and recompiled screen with this PKGBUILD: http://paste.pocoo.org/show/535236/, and upgraded the package with `sudo pacman -U screen*.pkg.tar.xz` but I cannot seem to create a vertical split with <c-a>| or find information about the option in the man page.
-T 1326651796 18<22phrik>	Title: Page Not Found | LodgeIt! (at paste.pocoo.org)
 T 1326651800 18<20vodik>	Arthic: updating font cache... /usr/bin/fc-cache: error while loading shared libraries: /usr/lib/libfreetype.so.6: file too short
 T 1326651815 18<20vodik>	Arthic: pacman -S freetype2
 T 1326651824 18<19Arthic>	yeah that's what i'm saying
@@ -3042,3 +2997,15 @@ T 1326690558 18<26squidly>	I'm goign to setup a tftp boot and install on 
 T 1326690562 18<20vodik>	archeyDevil: btw, if you want haskell to read from Xresourses, you need this library: http://hackage.haskell.org/package/X11-rm-0.2
 T 1326690563 18<22phrik>	Title: HackageDB: X11-rm-0.2 (at hackage.haskell.org)
 T 1326690575 18<22archeyDevil>	:D
+T 1355862948 19*	19Now talking on #archlinux
+T 1355862948 29*	29Topic for #archlinux 29is: Welcome to Arch Linux World Domination, Inc. <+> go read pacman.log , check mkinitcpio -L <+> No more initscripts soon https://www.archlinux.org/news/end-of-initscripts-support/ <+> Please read before updating: https://bbs.archlinux.org/viewtopic.php?id=57205
+T 1355862948 29*	29Topic for #archlinux 29set by phrik!~archbot@archlinux/bot/phrik 29at Tue Dec 11 07:55:52 2012
+T 1355862958 18<20heftig>	pango-view wants a filename
+T 1355862973 18<27Earnestly>	Yeah
+T 1355862994 18<28Boohbah>	mkinitcpio fails on lvm hook because dmsetup is in /usr/sbin instead of /sbin, fixed by symlinking
+T 1355862997 18<28Boohbah>	pls halp
+T 1355863008 22*	ZekeS is now known as ZshIsCrap
+T 1355863009 18<26ZshIsCrap>	what now
+T 1355863010 18<28Boohbah>	*testing
+T 1355863072 18<28Boohbah>	or rather, i am new to the testing repo and i don't know if i should be concerned with this
+T 1355863082 18<22spicewiesel>	na mal sehen was das wird :)

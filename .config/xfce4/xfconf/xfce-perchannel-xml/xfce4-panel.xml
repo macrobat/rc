@@ -51,6 +51,7 @@
         <value type="string" value="13126744682.desktop"/>
         <value type="string" value="13126744683.desktop"/>
         <value type="string" value="13252404492.desktop"/>
+        <value type="string" value="13678925411.desktop"/>
       </property>
     </property>
     <property name="plugin-9" type="string" value="tasklist">
@@ -69,6 +70,7 @@
         <value type="string" value="clementine"/>
         <value type="string" value="orage"/>
         <value type="string" value="clipit"/>
+        <value type="string" value="hexchat"/>
         <value type="string" value="deluge"/>
         <value type="string" value="dropbox"/>
         <value type="string" value="parcellite"/>
@@ -113,6 +115,9 @@
     <property name="plugin-1" type="string" value="separator">
       <property name="style" type="uint" value="1"/>
     </property>
+    <property name="plugin-11" type="string" value="separator">
+      <property name="style" type="uint" value="1"/>
+    </property>
   </property>
   <property name="panels" type="uint" value="2">
     <property name="panel-0" type="empty">
@@ -128,8 +133,9 @@
         <value type="int" value="7"/>
         <value type="int" value="8"/>
         <value type="int" value="9"/>
-        <value type="int" value="10"/>
         <value type="int" value="1"/>
+        <value type="int" value="10"/>
+        <value type="int" value="11"/>
         <value type="int" value="12"/>
         <value type="int" value="14"/>
       </property>

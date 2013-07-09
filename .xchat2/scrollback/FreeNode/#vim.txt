@@ -1164,3 +1164,8 @@ T 1326690198 18<27bairui>	also, it's all good and well providing a comman
 T 1326690235 18<27bairui>	ah, that reminds me... i've been meaning to write a How To Write Your First Vim Plugin article for a while now too...
 T 1326690570 18<27briandoll>	I'm reading about <sid> but I'm not clear where it goes.  on the "command" line or the "nmap" line or both?
 T 1326690591 18<27briandoll>	also, i'm renaming it to change-inside-surroundings.vim  verbose but more explicit :)
+T 1355862949 19*	19Now talking on #vim
+T 1355862949 29*	29Topic for #vim 29is: Can't Talk? Get Registered on FreeNode (HOWTO: http://ur1.ca/90niw) | Vim 7.3.754 http://vim.sf.net | Don't ask to ask! | Before you ask :help, and :helpgrep, and google | WIKI: http://vim.wikia.com | FACEBOOK: http://tinyurl.com/vim-facebook | PASTE: http://vpaste.net/?ft=vim | DONATE: http://www.vim.org/sponsor
+T 1355862949 29*	29Topic for #vim 29set by jamessan 29at Sat Dec  8 03:23:58 2012
+T 1355862949 28-29ChanServ28-	[#vim] vim discussion .. www.vim.org, vim.sf.net, :help
+T 1355862949 22*	#vim :http://vi-improved.org

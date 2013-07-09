@@ -1,4 +1,4 @@
-; Thunar GtkAccelMap rc-file         -*- scheme -*-
+; thunar GtkAccelMap rc-file         -*- scheme -*-
 ; this file is an automated accelerator map dump
 ;
 ; (gtk_accel_path "<Actions>/ThunarLauncher/sendto-desktop" "")
@@ -59,7 +59,6 @@
 ; (gtk_accel_path "<Actions>/ThunarWindow/open-templates" "")
 ; (gtk_accel_path "<Actions>/ThunarStandardView/copy" "<Primary>c")
 ; (gtk_accel_path "<Actions>/ThunarWindow/view-location-selector-pathbar" "")
-; (gtk_accel_path "<Actions>/ThunarWindow/open-trash" "")
 ; (gtk_accel_path "<Actions>/ThunarBookmarks/27b76909e60ec40969cdfb72e87afda9" "")
 ; (gtk_accel_path "<Actions>/ThunarStandardView/properties" "<Alt>Return")
 ; (gtk_accel_path "<Actions>/ThunarStandardView/delete" "")
@@ -71,6 +70,7 @@
 ; (gtk_accel_path "<Actions>/ThunarStandardView/cut" "<Primary>x")
 ; (gtk_accel_path "<Actions>/ThunarWindow/close-window" "<Primary>q")
 ; (gtk_accel_path "<Actions>/ThunarStandardView/select-all-files" "")
+; (gtk_accel_path "<Actions>/ThunarActions/uca-action-1369087610542125-1" "")
 ; (gtk_accel_path "<Actions>/ThunarWindow/open-location" "<Primary>l")
 ; (gtk_accel_path "<Actions>/ThunarWindow/zoom-reset" "<Primary>0")
 ; (gtk_accel_path "<Actions>/ThunarWindow/view-statusbar" "")
