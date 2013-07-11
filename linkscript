@@ -6,19 +6,19 @@
 ### testing!
 ## what happens if there already is a link?
 # mkdir foo; cd foo; touch mytralala
-# foolin="$(readlink -nm mytralala)"; echo $foolin
-# ln -sb "$foolin" "${foolin/my/your}"; ls
-# ln -sb "$foolin" "${foolin/my/your}"; ls
-## unnecessary # ln -sb "${foolin/my/your}" "${foolin/my/our}"; ls
+# foolink="$(readlink -nm mytralala)"; echo $foolink
+# ln -sb "$foolink" "${foolink/my/your}"; ls
+# ln -sb "$foolink" "${foolink/my/your}"; ls
+## unnecessary # ln -sb "${foolink/my/your}" "${foolink/my/our}"; ls
 ## the older link name is renamed by appending it with ~
 ## it does the right thing!
 
 # oneliner for manual labor
-# lollink() { naeme="$(readlink -nm "$1")"; ln -sb "$naeme" "${naeme/rc\/}"; }
+# lollink() { lolname="$(readlink -nm "$1")"; ln -sb "$lolname" "${lolname/rc\/}"; }
 
 lollink() {
-    naeme="$(readlink -nm "$1")"
-    ln -sb "$naeme" "${naeme/rc\/}"
+    lolname="$(readlink -nm "$1")"
+    ln -sb "$lolname" "${lolname/rc\/}"
 }
 
 ## list of all dirs to be linked
@@ -60,6 +60,4 @@ TEH_FILES=".conkerorrc .galculator .xscreensaver .fbtermrc .gvimrc .Xresources \
 	# awesome
 	# openbox
 	# geeqie
-
-
 

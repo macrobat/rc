@@ -11,7 +11,7 @@ git push master origin
 Different machines can branch.
 copy default file into rc, then
 ln -sb file_in_rc default_name
-lollink() { naeme="$(readlink -nm "$1")"; ln -sb "$naeme" "${naeme/rc\/}"; }
+lollink() { lolname="$(readlink -nm "$1")"; ln -sb "$lolname" "${lolname/rc\/}"; }
 
 leave some things out:
 ~/.ssh
