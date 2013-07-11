@@ -81,6 +81,7 @@ urxvt*urgentOnBell		    : false
 !ingen genomsikt i denna
 urxvt.transparent		    : false
 urxvt*inheritPixmap		    : false
+!https://github.com/muennich/urxvt-perls
 urxvt*perl-ext-common	    : default,matcher
 !global launcher for all apps.
 !allows you to open links from the terminal in a new
