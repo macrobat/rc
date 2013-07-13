@@ -92,7 +92,7 @@
 (setq package-load-list
       '((bm "1.53") (browse-kill-ring "1.3.1") (buffer-move "0.4")
         (rainbow-mode "0.1") (workgroups "0.2.0") (paredit "22")
-        (goto-last-change "1.2") (popwin "0.4")))
+        (goto-last-change "1.2") (popwin "0.4") (geiser "0.4")))
         ;; smartparen better than paredit?
 
         ;; Symbol's function definition is void: popwin:display-buffer
@@ -223,9 +223,10 @@
   ;; har lagt "color-theme" i ~/.emacs.d och temata i ~/.emacs.d/themes
   ;; themes that suck less: zenburn arjen goldenrod billw
   (setq custom-theme-directory "~/.emacs.d/themes")
-  (load "color-theme")
-  (load "arjen-theme")
-  (color-theme-arjen)
+  ;; (load "color-theme")
+  ;; (load "arjen-theme")
+  ;; (color-theme-arjen)
+  
   ;; (color-theme-zenburn) (color-theme-gnome2)
   ;; region är lite tråkig, försöker ändra runt rad 100
 
@@ -772,10 +773,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- ;; SHA-256 hash of safe theme files
  '(custom-safe-themes
-   (quote ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879"
-           "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default))))
+   (quote
+    ("7424f30467b665f5e508b674c6390aed011fa8f6c574b688cb37d283a5fa2ff6" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default))))
  
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
