@@ -1,0 +1,42 @@
+Keep conf files under version control.
+ssh-agent zsh
+ssh-add ~/.ssh/id_rsa_github
+git log
+git diff
+git status
+git add somefile
+git commit -am "comment"
+git push master origin
+
+Different machines can branch.
+copy default file into rc, then
+ln -sb file_in_rc default_name
+<<<<<<< HEAD
+this creates a soft link and makes a backup default_name~ file
+=======
+>>>>>>> 69dbce2623bc1bd0bc53e55dc9e8f7270a11fdf4
+lollink() { lolname="$(readlink -nm "$1")"; ln -sb "$lolname" "${lolname/rc\/}"; }
+
+leave some things out:
+~/.ssh
+~/.macromedia
+~/.cache
+~/.ccache
+	
+
+pick and choose:
+games
+	~/.xonotic
+	~/.nexuiz
+	~/.darkplaces
+	~/.warsow
+	~/.openarena
+
+~/.emacs.d
+~/.moc
+
+~/.config/
+	awesome
+	openbox
+	geeqie
+
