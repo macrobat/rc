@@ -111,6 +111,10 @@ endif
 
 " place new stuff below:
 
+" emacs undo bind
+nnoremap <C-_> u
+inoremap <C-_> <esc>ui
+
 " <A-q> to format a para 
 nnoremap ñ gqap
 " keeps cursor at the same position. won't use the remapped gw below
@@ -118,27 +122,27 @@ inoremap ñ <esc>gwapi
 
 " To use gc to transpose the current character with the next, 
 " without changing the cursor position:
-:nnoremap <silent> gc xph
+nnoremap <silent> gc xph
 
 " To use gw to transpose the current word with the next, without changing cursor
 " position: (See note.)
 " :nnoremap <silent> gw "_yiw:s/\(\%#\w\+\)\(\W\+\)\(\w\+\)/\3\2\1/<CR><c-o><c-l>
 " This version will work across newlines:
-:nnoremap <silent> gw "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o><c-l>
+nnoremap <silent> gw "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o><c-l>
 
 " To use gl to transpose the current word with the previous, keeping cursor on
 " current word: (This feels like "pushing" the word to the left.)
-:nnoremap <silent> gl "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o><c-l>
+nnoremap <silent> gl "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o><c-l>
 
 " To use gr to transpose the current word with the next, keeping cursor on
 " current word: (This feels like "pushing" the word to the right.)
-:nnoremap <silent> gr "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>/\w\+\_W\+<CR><c-l>
+nnoremap <silent> gr "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>/\w\+\_W\+<CR><c-l>
 
 " To use g} to transpose the current paragraph with the next:
-:nnoremap g} {dap}P
+nnoremap g} {dap}P
 
 " To use g{ to transpose the current paragraph with the prev:
-:nnoremap g{ {dap{P}
+nnoremap g{ {dap{P}
 
 
 " swap directory, uniquified names where % is /
@@ -187,11 +191,10 @@ let g:yankring_history_file = '.vim/yankring_history'
 let g:is_bash = 1
 
 " http://vimcasts.org/episodes/bubbling-text/
-" move selected lines <C-Up> or <C-Down>
-" not working in terminal, needs other binds
-" downloaded tpopes unimpaired.vim http://www.vim.org/scripts/script.php?script_id=1590
-" <C-Up> or <C-Down> wontwork. 
-" using M-k and M-j for 
+" move selected lines <A-Up> and <A-Down>
+" downloaded tpopes unimpaired.vim 
+" http://www.vim.org/scripts/script.php?script_id=1590
+" using M-k and M-j for vim in a terminal
 " Bubble single lines in normal
 nmap <A-Up> [e
 nmap <A-Down> ]e
