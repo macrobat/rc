@@ -88,12 +88,25 @@
                          ("marmalade" . "http://marmalade-repo.org/packages/")
                          ("melpa" . "http://melpa.milkbox.net/packages/")))
 
+;; man kan visst inte bara ändra. använd inbyggda package?
+;; File error: Cannot open load file, buffer-move
+;; (setq package-load-list
+;;       '((bm "20121212.2224") (browse-kill-ring "20130702.1224")
+;;         (buffer-move "20110305.249")
+;;         (rainbow-mode "0.1") (workgroups "0.2.0") (paredit "22")
+;;         (goto-last-change "1.2") (popwin "0.4") (geiser "0.4")))
+
+
 ;; Each element in this list should be a list (NAME VERSION)
 (setq package-load-list
       '((bm "1.53") (browse-kill-ring "1.3.1") (buffer-move "0.4")
         (rainbow-mode "0.1") (workgroups "0.2.0") (paredit "22")
-        (goto-last-change "1.2") (popwin "0.4") (geiser "0.4")))
-        ;; smartparen better than paredit?
+        (goto-last-change "1.2") (popwin "0.4") 
+	;; (geiser "0.4")
+        ;; (dash "20130712.2307") ; File exists: blabla dash-pkg.el
+        ))
+
+        ;; smartparen better than paredit? needs dash
 
         ;; Symbol's function definition is void: popwin:display-buffer
         ;; (popwin "0.4") ; have to load the crap manually, like a peasant
@@ -183,6 +196,7 @@
 ;; (rainbow-delimiters-mode) ; buffer-local?
 ;; maybe like this?
 ;; (setq rainbow-delimiters-mode 1)
+;; needs paredit loaded too
 (add-hook 'lisp-mode-hook             (lambda () (rainbow-delimiters-mode)))
 (add-hook 'lisp-interaction-mode-hook (lambda () (rainbow-delimiters-mode)))
 
@@ -190,6 +204,9 @@
 ;; using elpa now (load-file "~/.emacs.d/rainbow/rainbow-mode.el")
 (require 'rainbow-mode)
 (add-hook 'css-mode-hook (rainbow-mode))
+
+;; glömt vad "autoload" är
+;; M-x unload-feature to un-require
 (setq auto-mode-alist (cons '("\.lua$" . lua-mode) auto-mode-alist))
 (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
 ;; want // comments in c and c++ mode for c and cpp headers
@@ -202,18 +219,18 @@
 (add-hook 'c++-mode-hook (lambda () (setq tab-width 4)))
 (add-hook 'makefile-mode-hook 'setq indent-tabs-mode t)
 ;; File mode specification error: (invalid-function (setq tab-width 4)
+;; not "gnu" style. c-set-style is C-c .
+(setq c-default-style "linux"
+      c-basic-offset 4)
 
-;; glömt vad "autoload" är
-;; M-x unload-feature to un-require
-
-;; "when" has an implicit progn,  so it's just:
+;; "when" has an implicit progn
 ;; (when (condition) (do 1) (do 2) (do n))
 (when window-system
   (set-default-font
    ;; M-x set-frame-font
    ;; "-unknown-DejaVu Sans Mono-normal-normal-normal-*-12-*-*-*-m-0-iso10646-1") ; lappy
    "-unknown-DejaVu Sans Mono-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1") ; desktop
-  (set-scroll-bar-mode 'right)
+  ;; (set-scroll-bar-mode 'right)
 
   ;; (color-theme-initialize) ; old way, not in new emacs
   ;; (load "color-theme-solarized")
@@ -269,7 +286,8 @@
 ;; cases is shared with all other buffers in the same major mode."
 ;; vector syntax: (global-set-key [(meta left)] #'previous-buffer)
 ;; (kbd "<C-tab>") is just a macro that returns [C-tab]
-;; typically you use `minor-mode-map-alist' to bind keys that you want to be active only in a certain minor mode.
+;; typically you use `minor-mode-map-alist' to bind keys that you want
+;;     to be active only in a certain minor mode.
 ;; ([]) lands you in debugger
 ;; [] don't work, use (kbd "C-bla") or keys spelled out [(control j)]
 ;; local bindings shadow global ones
@@ -312,6 +330,7 @@
 ;; vimmy normal mode m and '
 (global-set-key (kbd "C-'") 'point-to-register)
 (global-set-key (kbd "C-*") 'register-to-point)
+(global-set-key (kbd "C-.") 'repeat) ; vimmy
 
 ;; isf (slime-next-note) ; gå till kompileringsfel
 ;;(add-hook 'lisp-mode-hook (lambda () (local-set-key (kbd "M-n") 'dabbrev-expand)))
@@ -408,7 +427,7 @@
 ;; (defalias 'ans 'ansi-term "/usr/bin/zsh") ; stupid
 ;; (defalias 'ans '(funcall 'ansi-term (getenv "SHELL")))
 ;; (ansi-term zsh) ; wontwork
-(defalias 'ans (save-window-excursion (ansi-term "/bin/zsh")))
+;; (defalias 'ans (save-window-excursion (ansi-term "/bin/zsh")))
 
 ;; http://stackoverflow.com
 (defun copy-full-path-to-kill-ring ()
@@ -423,9 +442,6 @@
 ;(add-hook 'lisp-mode-hook (lambda () (setq fill-column 79)))
 ;; exempel: (add-hook 'lisp-mode-hook (lambda () (sl_ime-mode t)))
 (setq column-number-mode t) ; see column in mode-line
-;; not "gnu" style. c-set-style is C-c .
-(setq c-default-style "linux"
-      c-basic-offset 4)
 (setq echo-keystrokes '0.0625)
 
 ;; tab-complete when using M-:
@@ -491,7 +507,7 @@
 ;; resten av buffern evalueras inte annars
 
 ;; is a toggle
-(blink-cursor-mode 1)
+(blink-cursor-mode -1)
 (setq-default cursor-type '(bar . 4)) ; globally
 ;; tabs are evil. C-x h M-x {un,}tabify
 (setq-default indent-tabs-mode nil)
@@ -504,7 +520,7 @@
 ;; (setq comint-scroll-to-bottom-on-input t)
 (setq whitespace-style '(face trailing lines-tail tabs) whitespace-line-column 80)
 
-(setq sentence-end-double-space nil)
+(setq sentence-end-double-space nil) ; double space is default? really?
 
 ;;; ^keys^  ^utseende^
 ;;; ---------------------------------------------------
@@ -515,7 +531,6 @@
   (let ((inhibit-read-only t))
     (erase-buffer)))
 
-;; \\\\\\\\\\DONOTWANT\\\\\\\\\\
 (setq reb-re-syntax 'string)
 (require 'browse-kill-ring)
 
@@ -713,7 +728,7 @@
 ;; erc, rcirc, lyskom
 ;; see erc-conf.el
 
-(setq rcirc-default-nick "mcRibbit_")
+(setq rcirc-default-nick "mcRibbit")
 (setq rcirc-default-user-name "mcRibbit")
 (setq rcirc-server-alist
       '(("irc.freenode.net" :channels

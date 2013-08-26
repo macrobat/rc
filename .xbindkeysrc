@@ -74,6 +74,9 @@
 "dmenu_run -nb DarkSlateGray4 -fn "-*-fixed-*-*-*-*-20-*-*-*-*-*-*-*""
     m:0x8 + c:65
     Alt + space 
+    
+    m:0x50 + c:65
+    Mod2+Mod4 + space
 
 # lambda ()
 #"Hello from Scheme!"
@@ -99,9 +102,12 @@
 # use the global path
 #"/home/occam/bin/packages/gitclown/clipbored/scripts/dmenuclip"
 # dmenuclip
-"/usr/bin/site_perl/dmenuclip"
-    m:0x4 + c:66
-    Control + Escape 
+# tac: failed to open ‘/clipbored/clips’ for reading: No such file or directory
+
+#"/usr/bin/site_perl/dmenuclip"
+    #m:0x4 + c:66
+    #Control + Escape 
+
 # keys won't work:
 	#m:0x50 + c:52
     #Mod2+Mod4 + z 

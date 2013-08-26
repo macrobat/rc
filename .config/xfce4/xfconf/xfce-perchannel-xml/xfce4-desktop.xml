@@ -12,6 +12,8 @@
         <property name="image-show" type="bool" value="true"/>
         <property name="last-image-list" type="string" value="/home/occam/.config/xfce4/desktop/backdrop.list"/>
         <property name="color-style" type="int" value="1"/>
+        <property name="backdrop-cycle-enable" type="bool" value="false"/>
+        <property name="backdrop-cycle-timer" type="uint" value="1"/>
       </property>
       <property name="monitor1" type="empty">
         <property name="image-path" type="string" value="/home/occam/pics/bakgrund/great_tits.jpg"/>
@@ -28,5 +30,6 @@
     <property name="icon-size" type="uint" value="28"/>
     <property name="use-custom-font-size" type="bool" value="true"/>
     <property name="font-size" type="double" value="9.000000"/>
+    <property name="show-thumbnails" type="bool" value="false"/>
   </property>
 </channel>

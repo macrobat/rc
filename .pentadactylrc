@@ -40,3 +40,6 @@ nmap <C--> :zoom -14<CR>
 
 " ;<tab> to see the extended hint modes. ;y for yanking
 
+" :messages
+" :dialog (for example openfile)
+

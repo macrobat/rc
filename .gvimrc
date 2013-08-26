@@ -36,13 +36,13 @@ set mousehide
 tab all
 
 " :Man whatever
-:so /usr/share/vim/vim73/ftplugin/man.vim
+:so /usr/share/vim/vim74/ftplugin/man.vim
 
 " first, enable status line always
 set laststatus=2
 
-" like emacs M-x (why is it an ø?) . only in gvim
-nnoremap ø : " specific for my setup?
+" like emacs M-x (why is it an ø?) . only in gvim. specific for my setup?
+nnoremap ø :
 
 " vimtip 1287
 " now set it up to change the status line based on mode
@@ -58,7 +58,7 @@ function! InsertStatuslineColor(mode)
   "a: means parameter of the current function
   if a:mode == 'i'
     hi statusline guibg=#2C6A78 "cyan dark
-  elseif a:mode == 'r'                           
+  elseif a:mode == 'r'
     hi statusline guibg=#2632AA "blue desaturated
   else
     hi statusline guibg=#D4B728 "yellow dark

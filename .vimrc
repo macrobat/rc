@@ -115,12 +115,12 @@ endif
 nnoremap <C-_> u
 inoremap <C-_> <esc>ui
 
-" <A-q> to format a para 
+" <A-q> to format a para
 nnoremap ñ gqap
 " keeps cursor at the same position. won't use the remapped gw below
 inoremap ñ <esc>gwapi
 
-" To use gc to transpose the current character with the next, 
+" To use gc to transpose the current character with the next,
 " without changing the cursor position:
 nnoremap <silent> gc xph
 
@@ -168,15 +168,16 @@ nnoremap <F5> :GundoToggle<CR>
 set nobackup
 " backup file before overwriting, delete original
 set writebackup
-" don't join with two spaces after a '.', '?' and '!'  
+" don't join with two spaces after a '.', '?' and '!'
 set nojoinspaces
 
 " persistent undo with undofile
 " Undo files are normally saved in the same directory as the file.  This can be
-" changed with the 'undodir' option. You should keep 'undofile' off, 
+" changed with the 'undodir' option. You should keep 'undofile' off,
 " otherwise you end up with two undo files for every write.
 
 "yankring . finns yankring-tutorial
+" bind lite saker
 "let g:yankring
 "let g:yankring_min_element_length = 2
 "let g:yankring_max_element_length 64K "ought to be enough for anyone
@@ -192,7 +193,7 @@ let g:is_bash = 1
 
 " http://vimcasts.org/episodes/bubbling-text/
 " move selected lines <A-Up> and <A-Down>
-" downloaded tpopes unimpaired.vim 
+" downloaded tpopes unimpaired.vim
 " http://www.vim.org/scripts/script.php?script_id=1590
 " using M-k and M-j for vim in a terminal
 " Bubble single lines in normal
@@ -228,7 +229,6 @@ nnoremap <leader>v :call ToggleVirtualEdit()<CR>
   "autocmd bufwritepost .vimrc source $MYVIMRC
 "endif
 
-
 " "t-e~s/t!
 " is set per buffer? :( then run it whenever i open one? no ending <CR>?
 " why is ( and not * keywords?
@@ -243,7 +243,7 @@ if !exists("autocommands_loaded")
   let autocommands_loaded = 1
   au FileType * set iskeyword+=-,~,/,!,.,*
   au FileType * set iskeyword-=(,)
-  " au FileType * set noet " what about yaifa  " DONOTWANT! OR NEED!
+  " au FileType * set noet " what about yaifa? DONOTWANT! OR NEED!
 endif
 
 " comment and see if tabs get redrawn when switched to.
@@ -251,6 +251,9 @@ endif
 "set lazyredraw
 set nolazyredraw
 
+" E185: Cannot find color scheme 'vividchalk'
+" set runtimepath+=~/.vim/Color_Sampler_Pack/colors/
+set runtimepath+=~/.vim/Color_Sampler_Pack/
 " vim känner av number of colors själv. $TERM
 " don't do set t_Co=88 "isf 256
 " testa för icke gui först
@@ -262,8 +265,8 @@ if !has("gui_running")
 	" colo neverness
 	" colo northland
 	" colo oceanblack
-	" colo vibrantink 
-	" colo 
+	" colo vibrantink
+	" colo
     colo vividchalk " too subtle search hilite
 endif
 
@@ -295,7 +298,7 @@ nnoremap <Down> gj
 nnoremap <S-h> gT
 nnoremap <S-l> gt
 
-" maps ',b' to display the buffer list and invoke the ':buffer' command. 
+" maps ',b' to display the buffer list and invoke the ':buffer' command.
 " You can enter the desired buffer number and hit <Enter> to edit the buffer.
 " (Enter space after)
 nnoremap ,b :ls<CR>:buffer<Space>
@@ -327,13 +330,6 @@ inoremap <silent> <C-S-l> <Esc>:nohl<CR><C-o>i "kind of useless
 " fail mappings: inserts stuff like ":nohl ":
 " inoremap <silent> <C-l> :execute "nohl"
 " inoremap <silent> <C-l> <C-o>:nohl<CR><C-l>
-
-  "<2-LeftMouse>   - Left mouse button double-click
-  "doubleclick for WORD select
-  " test-ord.med/path/
-  "nnoremap <2-LeftMouse> <B><v><E>
-  "nnoremap <2-LeftMouse> <B>:visual<CR><E>
-" get more when wordmoving & doubleclicling
 
 " Better command-line completion for emenu, popup...
 set wildmenu
@@ -395,12 +391,12 @@ set textwidth=80
 " set shiftwidth=4
 " set tabstop=4  Why is it 8?
 " http://vim.wikia.com/wiki/Indenting_source_code
-" if you want to distinguish between "indentation" and "alignment", i.e., 
+" if you want to distinguish between "indentation" and "alignment", i.e.,
 " the number of hard tabs equals the indentation level, use the Smart Tabs plug-in.
 
 " Toggle the NERD Tree with F7
 nmap <F7> :NERDTreeToggle<CR>
-         
+
 " derekwyatt has more ,binds for emacs cmdline and windowing
 
 " Swap two words. from cursor to end of next
@@ -457,24 +453,35 @@ noremap <silent> ,J <C-W>J
 " noremap <silent> ,mh <C-W>H
 " noremap <silent> ,mj <C-W>J
 
-" maybe <silent> 
-noremap <F2> :call ToggleLineNumbering()<CR>
- 
+" FIXME: only does nonu/rnu, toggles nu current line
+" DONE
 func! ToggleLineNumbering()
     if !exists('s:LineNumbering')
-        let s:LineNumbering = -1
+        "echo s:LineNumbering
+        let s:LineNumbering = 0
     else
         let s:LineNumbering = (s:LineNumbering + 1) % 3
     endif
- 
+
+    " maybe 1 rnu, 2 nu, anything else - nothing
     if s:LineNumbering == 0
-        set nornu nonu
-    elseif &rnu == 1
-        set nu
-    else
+        set nonu
         set rnu
+        echo "rnu"
+    "elseif &rnu == 1
+    elseif s:LineNumbering == 1
+        set nornu
+        set nu
+        echo "nu"
+    else
+        set nornu
+        set nonu
+        echo
     endif
 endfunc
+
+" <silent> :
+noremap <silent> <F2> :call ToggleLineNumbering()<CR>
 
 " NERD_commenter is acting up, needs more binds
 nmap  ,cc           <Plug>NERDCommenterComment
@@ -505,13 +512,13 @@ nmap  ,ca           <Plug>NERDCommenterAltDelims
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" some addons aren't managed. 
+" some addons aren't managed.
 " notice that line break \ is on _first_ non-whitespace
 function! SetupVAM()
     set runtimepath+=~/.vim/vim-addon-manager
     " commenting try .. endtry because trace is lost if you use it.
     " There should be no exception anyway.
-	" This calls the autoload function ActivateAddons in the file vam with a 
+	" This calls the autoload function ActivateAddons in the file vam with a
 	" string argument and a dictionary argument
     "  call vam#ActivateAddons(['pluginA', 'pluginB'], {'auto_install' : 0})
     "   call vam#ActivateAddons([''], {'auto_install' : 0})

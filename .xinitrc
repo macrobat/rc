@@ -48,6 +48,7 @@ xinput set-prop 'Razer Razer 1600dpi Mouse' 'Device Accel Profile' -1
 # xinput --set-prop --type=float $RAZERID 245 4.000000 
 # disable emulate3buttons
 xinput --set-prop --type=int $RAZERID 254 0
+xinput --set-button-map $RAZERID 1 2 3 4 5 6 7 9 8
 
 # borde ju va automagiskt
 xrdb ~/.Xresources

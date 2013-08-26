@@ -9,19 +9,23 @@
  (plt:framework-pref:drracket:unit-window-width 1596)
  (plt:framework-pref:drracket:unit-window-height 1168)
  (plt:framework-pref:drracket:unit-window-max? #f)
- (plt:framework-pref:drracket:language-dialog:hierlist-default ("Legacy Languages" "R5RS"))
  (plt:framework-pref:drracket:language-settings ((-32768) (#6(#t print mixed-fraction-e #f #t debug) (default) #0() "#lang racket\n" #t #t)))
  (plt:framework-pref:drracket:toolbar-state (#f . left))
  (plt:framework-pref:framework:show-delegate? #t)
- (plt:framework-pref:drracket:recent-language-names (("Determine language from source" #6(#t print mixed-fraction-e #f #t debug) (default) #0() "#lang racket\n" #t #t) ("R5RS" . #7(#f trad-write mixed-fraction-e #f #t debug #t))))
  (plt:framework-pref:drracket:unit-window-position (0 805 489))
- (plt:framework-pref:framework:recently-opened-files/pos ((#"/home/occam/bin/projects/lisp/scheme/debut.rkt" 0 0) (#"/home/occam/bin/projects/lisp/scheme/kvadrat.ss" 0 0) (#"/home/occam/bin/projects/lisp/scheme/quick.ss" 0 0)))
  (plt:framework-pref:framework:verify-exit #f)
- (plt:framework-pref:framework:exit-when-no-frames #t)
  (|plt:DrRacket-splash-max-width| 809)
- (plt:framework-pref:plt:debug-tool:stack/variable-area 9/10)
- (plt:framework-pref:drracket:unit-window-size-percentage 1297/2150)
  (plt:framework-pref:drracket:unit-window-size (#t 1596 1168))
+ (plt:framework-pref:framework:exit-when-no-frames #t)
+ (|plt:DrRacket 5.3.5-splash-max-width| 872)
+ (plt:framework-pref:plt:debug-tool:stack/variable-area 9/10)
+ (plt:framework-pref:drracket:window-position #hash((#f . (0 502 79)) (((0 0 1600 1200)) . (0 502 79))))
+ (plt:framework-pref:framework:recently-opened-files/pos ((#"/home/occam/bin/projects/lisp/scheme/kvadrat.ss" 0 0) (#"/home/occam/bin/projects/lisp/scheme/debut.rkt" 0 0) (#"/home/occam/bin/projects/lisp/scheme/quick.ss" 0 0)))
+ (plt:framework-pref:drracket:recent-language-names (("Determine language from source" #6(#t print mixed-fraction-e #f #t debug) (default) #0() "#lang racket\n" #t #t ((main) (test))) ("R5RS" . #7(#f trad-write mixed-fraction-e #f #t debug #t))))
+ (plt:framework-pref:drracket:window-size #hash((#f . (#f 885 952)) (((0 0 1600 1200)) . (#f 885 952))))
+ (plt:framework-pref:drracket:unit-window-size-percentage 1297/2150)
+ (plt:framework-pref:framework:standard-style-list:font-size 10)
+ (plt:framework-pref:drracket:language-dialog:hierlist-default ("Legacy Languages" "R5RS"))
  (plt:framework-pref:drracket:console-previous-exprs
   (
    ("(define substring-capitalize\n  (lambda (string start end)\n    (let ((result (string-copy string)))\n      (substring-capitalize! result start end)\n      result)))\n\n(define bottle-wall\n  (lambda (max-bottles)\n    (let* ((bottles max-bottles)\n           (s (lambda () (if (= bottles 1) \"\" \"s\")))\n           (sing-count (lambda () \n                         (string-append\n                          (if (= 0 bottles) \"no more\"\n                              (number->string bottles))\n                          \" bottle\" (s) \" of beer \")))\n           (on-wall \"on the wall\"))\n      (lambda (msg . args)\n        (case msg\n          ((count) bottles)\n\n          ((sing-wall)\n           (display \n            (substring-capitalize \n             (string-append \n              (sing-count) on-wall \", \" (sing-count) \".\")\n             0 2))\n           (newline))\n\t  \n          ((sing-remove)\n           (set! bottles (modulo (- bottles 1)\n                                 (1+ max-bottles)))\n           (display (string-append\n\t\t     (if (= bottles max-bottles)\n\t\t\t \"Go to the store and buy some more, \"\n\t\t\t \"Take one down and pass it around, \")\n\t\t     (sing-count) on-wall \".\"))\n           (newline) (newline)))))))\n\n(define 99-bottles\n  (lambda ()\n    (let* ((max 99)\n           (mywall (bottle-wall max)))\n      (let loop ()\n        (mywall 'sing-wall)\n        (mywall 'sing-remove)\n        (if (not (= max (mywall 'count)))\n            (loop))))))")
@@ -52,12 +56,26 @@
    ("(expt (+ 1 (/ 1 1000)) 1000)")
    ("e12")
    ("1e12")
+   ("(kvadrat 4\n           )")
   ))
  (readline-input-history
   (
    #"(exit)"
-   #"(equal? \"\303\237\" \"\303\237\")"
+   #"(macro-expand list?)"
+   #"(list? '())"
+   #"(init 'racket)"
+   #"(init racket)"
+   #"(require mzib/compat)"
+   #"(require 'mzib/compat)"
+   #"(require mzlib)"
+   #"(atom 'a)"
+   #"(atom? 'a)"
+   #"(atom? cons)"
    #"(quit)"
+   #"()"
+   #"(null? '(a))"
+   #"(null '())"
+   #"(equal? \"\303\237\" \"\303\237\")"
    #"(floor (+ 16.99999999999999 1))"
    #"(floor (+ 16.999999999999999 1))"
    #"(floor (+ 16.999999 1))"
