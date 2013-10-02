@@ -23,10 +23,10 @@ set ch=2
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-set history=7000	" keep lines of command line history
-set ruler		" show the cursor position all the time
-set showcmd		" display incomplete commands
-set incsearch		" do incremental searching
+set history=7000    " keep lines of command history
+set ruler           " show the cursor position all the time
+set showcmd         " display incomplete commands
+set incsearch       " do incremental searching
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
@@ -103,7 +103,7 @@ endif " has("autocmd")
 " Only define it when not defined already.
 if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-		  \ | wincmd p | diffthis
+          \ | wincmd p | diffthis
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -114,11 +114,6 @@ endif
 " emacs undo bind
 nnoremap <C-_> u
 inoremap <C-_> <esc>ui
-
-" <A-q> to format a para
-nnoremap ñ gqap
-" keeps cursor at the same position. won't use the remapped gw below
-inoremap ñ <esc>gwapi
 
 " To use gc to transpose the current character with the next,
 " without changing the cursor position:
@@ -179,11 +174,11 @@ set nojoinspaces
 "yankring . finns yankring-tutorial
 " bind lite saker
 "let g:yankring
-"let g:yankring_min_element_length = 2
-"let g:yankring_max_element_length 64K "ought to be enough for anyone
-"let g:yankring_max_display = 70 "max of what will be shown
+let g:yankring_min_element_length = 3
+"let g:yankring_max_element_length " 64K ? ought to be enough for anyone
+let g:yankring_max_display = 30 "max of what will be shown
 "let g:yankring_persist = 0
-"let g:yankring_share_between_instances = 0
+let g:yankring_share_between_instances = 0
 " let g:yankring_dot_repeat_yank = 1 "0
 "let g:yankring_history_file = '~/.vim/yankring_history'
 let g:yankring_history_file = '.vim/yankring_history'
@@ -261,12 +256,12 @@ set runtimepath+=~/.vim/Color_Sampler_Pack/
 if !has("gui_running")
     " colo torte
     " colo calmar256_light
-	" colo jellybeans
-	" colo neverness
-	" colo northland
-	" colo oceanblack
-	" colo vibrantink
-	" colo
+    " colo jellybeans
+    " colo neverness
+    " colo northland
+    " colo oceanblack
+    " colo vibrantink
+    " colo
     colo vividchalk " too subtle search hilite
 endif
 
@@ -518,14 +513,14 @@ function! SetupVAM()
     set runtimepath+=~/.vim/vim-addon-manager
     " commenting try .. endtry because trace is lost if you use it.
     " There should be no exception anyway.
-	" This calls the autoload function ActivateAddons in the file vam with a
-	" string argument and a dictionary argument
+    " This calls the autoload function ActivateAddons in the file vam with a
+    " string argument and a dictionary argument
     "  call vam#ActivateAddons(['pluginA', 'pluginB'], {'auto_install' : 0})
     "   call vam#ActivateAddons([''], {'auto_install' : 0})
        call vam#ActivateAddons([
-		\'The_NERD_tree', 'The_NERD_Commenter', 'CSApprox', 'Gundo', 'buffergrep',
-		\ 'Color_Sampler_Pack', 'FuzzyFinder', 'Scratch', 'unimpaired', 'YankRing',
-		\ 'colorizer', 'surround', 'Insertlessly'], {'auto_install' : 0})
+        \'The_NERD_tree', 'The_NERD_Commenter', 'CSApprox', 'Gundo', 'buffergrep',
+        \ 'Color_Sampler_Pack', 'FuzzyFinder', 'Scratch', 'unimpaired', 'YankRing',
+        \ 'colorizer', 'surround', 'Insertlessly'], {'auto_install' : 0})
       " pluginA could be github:YourName see vam#install#RewriteName()
     " catch /.*/
     " echoe v:exception

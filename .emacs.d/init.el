@@ -15,7 +15,7 @@
 ;; cons onto load-path list before we can load/require libs
 ;;(add-to-list 'load-path "~/.emacs.d/")
 ;; mapc is for side-effects only, it doesn't return a list like mapcar does
-(mapc '(lambda (dir) (add-to-list 'load-path dir)) 
+(mapc '(lambda (dir) (add-to-list 'load-path dir))
       '("~/.emacs.d/" "~/.emacs.d/elpa" "~/.emacs.d/themes"))
 ;; "~/.emacs.d/elpa/paredit-22"
 ;; do I neeed all dirs in elpa too?
@@ -62,7 +62,7 @@
 ;; where can I find this information (and more)?
 ;; well, the elisp manual describes the packaging startup. but it's not very clear on the implications.
 
-;; Any settings for packages sould be done with eval-after-init? 
+;; Any settings for packages sould be done with eval-after-init?
 ;; I don't think so, use customize if you can. If not then use a
 ;; package specific hook and if you can't do that then use an
 ;; eval-after-init, I guess.
@@ -72,7 +72,7 @@
 
 ;; 2013-05-28 trying default emacs24 package. vortex of fail
 ;; http://www.emacswiki.org/emacs/ELPA
-;; have to use eval-after-load around each package use 
+;; have to use eval-after-load around each package use
 ;; and -autoloads for the minor modes
 ;; eval-after-load "broccoli-autoloads" ; <-- "broccoli-autoloads", not "broccoli"
 ;; (package-initialize) ; fails: cannot open ~/.emacs.d/elpa/archives/-pkg
@@ -101,9 +101,11 @@
 (setq package-load-list
       '((bm "1.53") (browse-kill-ring "1.3.1") (buffer-move "0.4")
         (rainbow-mode "0.1") (workgroups "0.2.0") (paredit "22")
-        (goto-last-change "1.2") (popwin "0.4") 
-	;; (geiser "0.4")
-        ;; (dash "20130712.2307") ; File exists: blabla dash-pkg.el
+        (goto-last-change "1.2") (popwin "0.4")
+        ;; (geiser "0.4") ; default wontwork
+        (dash "20130712.2307") ; for sp. File exists: blab dash-pkg.el
+        (smartparen "20130715.1530")
+        (workgroups2 "20131002.1143")
         ))
 
         ;; smartparen better than paredit? needs dash
@@ -127,7 +129,10 @@
 ;; haet. it doesn't fucking load!!!!!!!1elebenty
 (when (load (expand-file-name "~/.emacs.d/elpa/package_23_github.el"))
   (package-initialize)
-  (require 'popwin))
+  (require 'popwin)
+  ;; see also display-buffer-alist
+  (setq special-display-function
+        'popwin:special-display-popup-window))
 
 ;;; ^packages^
 ;;; ---------------------------------------------------
@@ -155,7 +160,7 @@
 ;; # alias em='emacsclient'
 (server-start)
 
-;; DONOTWANT!! (glasses-mode) sätter visst in _ här och var
+(setq initial-scratch-message ";; This Machine Kills Text\n\n")
 (setq inhibit-startup-message t)
 (show-paren-mode 1)
 (setq show-paren-style 'parenthesis) ; highlight just parens
@@ -166,7 +171,7 @@
 ;; stupid straightjacket, masks many useful keybinds. (M-q)
 ;; paredit is a minor mode
 ;; (require 'paredit) ; don't need to enable it for rain-delim
-;; require it with elpa
+;; require it with elpa?
 ;; (autoload 'paredit-mode "paredit"
 ;;   "Minor mode for pseudo-structurally editing Lisp code." t)
 ;; (add-hook 'emacs-lisp-mode-hook       (lambda () (paredit-mode +1)))
@@ -197,8 +202,16 @@
 ;; maybe like this?
 ;; (setq rainbow-delimiters-mode 1)
 ;; needs paredit loaded too
-(add-hook 'lisp-mode-hook             (lambda () (rainbow-delimiters-mode)))
-(add-hook 'lisp-interaction-mode-hook (lambda () (rainbow-delimiters-mode)))
+(add-hook 'lisp-mode-hook
+          (lambda ()
+            (require 'paredit)
+            (require 'rainbow-delimiters)
+            (rainbow-delimiters-mode)))
+(add-hook 'lisp-interaction-mode-hook
+          (lambda ()
+            (require 'paredit)
+            (require 'rainbow-delimiters)
+            (rainbow-delimiters-mode)))
 
 ;; You don't add a hook; you hang a function on a hook.
 ;; using elpa now (load-file "~/.emacs.d/rainbow/rainbow-mode.el")
@@ -240,10 +253,11 @@
   ;; har lagt "color-theme" i ~/.emacs.d och temata i ~/.emacs.d/themes
   ;; themes that suck less: zenburn arjen goldenrod billw
   (setq custom-theme-directory "~/.emacs.d/themes")
+  (load-theme 'solarized-dark t) ; t consider safe
   ;; (load "color-theme")
   ;; (load "arjen-theme")
   ;; (color-theme-arjen)
-  
+
   ;; (color-theme-zenburn) (color-theme-gnome2)
   ;; region är lite tråkig, försöker ändra runt rad 100
 
@@ -304,6 +318,21 @@
   (global-set-key (kbd "M-7") 'dabbrev-expand)
   (global-set-key (kbd "M-0") 'count-lines-region))
 
+;; handle lines more easily
+;; http://emacs-fu.blogspot.se/2009/11/copying-lines-without-selecting-them.html
+(defadvice kill-ring-save (before slick-copy activate compile) "When called
+  interactively with no active region, copy a single line instead."
+  (interactive (if mark-active (list (region-beginning) (region-end)) (message
+  "Copied line") (list (line-beginning-position) (line-beginning-position
+  2)))))
+
+(defadvice kill-region (before slick-cut activate compile)
+  "When called interactively with no active region, kill a single line instead."
+  (interactive
+    (if mark-active (list (region-beginning) (region-end))
+      (list (line-beginning-position)
+        (line-beginning-position 2)))))
+
 ;; http://www.opensubscriber.com/message/emacs-devel@gnu.org/10971693.html
 (defun comment-dwim-line (&optional arg)
   "Replacement comment-dwim. If no region is selected and current
@@ -355,8 +384,10 @@
 (global-set-key (kbd "<RET>") 'newline-and-indent)
 ;; swap <RET> and C-j unless in python-mode. add-hook python-mode-hook?
 
+;; there's no *scratch* hook. hyphen is part of word
 (add-hook 'emacs-lisp-mode-hook
-          (lambda () (local-set-key [(C-j)] 'eval-print-last-sexp)))
+          (lambda () (local-set-key [(C-j)] 'eval-print-last-sexp))
+          (lambda () (modify-syntax-entry ?- "w" emacs-lisp-mode-syntax-table)))
 
 ;; You add functions to the hook, not function calls, lambda doesn't need '
 (global-set-key (kbd "C-S-j") (lambda () (interactive) (join-line t))) ; vimmy
@@ -469,11 +500,11 @@
 (require 'bm)
 ;; toggle bookmarks by clicking in the fringe:
 (global-set-key (kbd "<left-fringe> <mouse-1>")
-		#'(lambda(event)
-		    (interactive "e")
-		    (save-excursion
-		      (mouse-set-point event)
-		      (bm-toggle))))
+        #'(lambda(event)
+            (interactive "e")
+            (save-excursion
+              (mouse-set-point event)
+              (bm-toggle))))
 ;; there is also Bookmark+
 
 (defun smaller-text () (interactive) (text-scale-adjust -1))
@@ -483,7 +514,7 @@
 ;; (global-set-key (kbd "C-<mouse-5>") '(lambda (s) ((interactive) (text-scale-adjust s)) +1))
 ;; (global-set-key (kbd "C-<mouse-5>") '(lambda (s) ((interactive) (text-scale-adjust s)) +1))
 
-;; lower mouse scroll from 5. also use with shift (and maybe ctrl) 
+;; lower mouse scroll from 5. also use with shift (and maybe ctrl)
 (setq mouse-wheel-scroll-amount
 '(4
  ((shift)
@@ -495,16 +526,20 @@
 
 (put 'dired-find-alternate-file 'disabled nil) ; är 'a
 
-;; https://github.com/tlh/workgroups.el       spara windows, har kill ring
-;; could Byte-compile workgroups.el. This isn't required, but it'll speed some things up
-;; prefix key for Workgroups' cmd is C-z
+;; https://github.com/tlh/workgroups.el
+;; https://github.com/pashinin/workgroups2
+;; if you start as "emacs --daemon" - turn off autoloading of workgroups
+;; prefix key for workgroups is C-z (try C-c z)
 ;; (add-to-list 'load-path "~/.emacs.d/workgroups.el/") ; done already
-(require 'workgroups)
+;; (require 'workgroups)
+(require 'workgroups2)
 (workgroups-mode 1)
 (setq wg-morph-on nil)
-(wg-load "~/.emacs.d/workgroups") ; holds multiple wg:s
-;; måste skapa och spara workgroup C-z c name C-z C-s,
-;; resten av buffern evalueras inte annars
+;; which file is the session file? not keep in repo?
+;; (wg-load "~/.emacs.d/workgroups") ; holds multiple wg:s
+
+;; must create and save workgroup C-z c name C-z C-s,
+;; or the rest of init.el won't eval
 
 ;; is a toggle
 (blink-cursor-mode -1)
@@ -522,6 +557,10 @@
 
 (setq sentence-end-double-space nil) ; double space is default? really?
 
+(setq frame-title-format '("%b")) ; no hostname
+
+;; DONOTWANT!! (glasses-mode) sätter visst in _ här och var
+
 ;;; ^keys^  ^utseende^
 ;;; ---------------------------------------------------
 
@@ -537,7 +576,7 @@
 ;; (require 'ido) ; already loaded? is part of emacs
 (ido-mode t)
 (setq ido-save-directory-list-file "~/.emacs.d/ido.last")
-(setq ido-enable-flex-matching t) ; fuzzy matching 
+(setq ido-enable-flex-matching t) ; fuzzy matching
 ;; InteractivelyDoThings. ido (f ex find files, buffers)
 ;; http://www.emacswiki.org/emacs/InteractivelyDoThings
 ;; http://www0.fh-trier.de/~politza/emacs/ido-hacks.el.gz
@@ -551,7 +590,8 @@
 ;; list of 11. from emacs24 ido.el:
 ;; (defcustom ido-decorations '( "{" "}" " | " " | ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]") "")
 
-(defun ido-disable-line-trucation () (set (make-local-variable 'truncate-lines) nil))
+(defun ido-disable-line-trucation () ; use a lambda
+  (set (make-local-variable 'truncate-lines) nil))
 (add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-trucation)
 
 ;; XXX ido-hacks wont work with emacs24
@@ -578,6 +618,14 @@
 ;;         (REGEXP REPLACEMENT UNIQUIFY)
           `(("^.*/" "~/.emacs.d/autosaves/" t)))
 (savehist-mode 1)
+
+;; newer yow
+(when (file-exists-p "~/.emacs.d/zippyisms")
+  (setq cookie-file "~/.emacs.d/zippyisms"))
+(defalias 'yow 'cookie)
+
+;; no asking to follow symlinks into vcs
+(remove-hook find-file-hook vc-find-file-hook)
 
 ;;; ---------------------------------------------------
 ;;; org mode
@@ -612,7 +660,7 @@
 ;; /etc/emacs/ har lite skräp åxå
 
 ;;; ---------------------------------------------------
-;; slime för hemmabruk
+;; slime för hemmabruk. stoppa i egen fil?
 
 ;; (define-key slime-mode-map [(return)] 'paredit-newline)
 ;; (define-key slime-mode-map [(bla ( )] (lambda () (interactive) (insert "(")))
@@ -647,49 +695,68 @@
 
 ;; slime-helper.el installed in "~/.quicklisp/slime-helper.el"
 ;; To use, add this to your ~/.emacs:
-(load (expand-file-name "~/.quicklisp/slime-helper.el"))
+;; (load (expand-file-name "~/.quicklisp/slime-helper.el")) ; <-----
 ;; Loading that file adds Quicklisp slime path to your load-path.
-
 ;; Replace "sbcl" with the path to your implementation
-(setq inferior-lisp-program "sbcl")
+;; (setq inferior-lisp-program "sbcl") ; <-----
 ;; (setq inferior-lisp-program "clisp") ; for lol, why no slime-repl?
 ;; (setq inferior-lisp-program "/usr/bin/clisp")
 ;; (setq inferior-lisp-program "clojure")
 
 ;; (add-to-list 'load-path "/usr/share/emacs/site-lisp/slime")
-(require 'slime)
+;; (require 'slime) ; <-----
 ;; only run slime related things on demand. M-x slime
 ;; (require 'slime-autoloads)
 
 ;; not global, set it in the keymap if slime is loaded
 ;; (global-set-key (kbd "<f12>") 'slime-selector)
 ;; (define-key lisp-mode-map [f12] 'slime-selector)
-(define-key lisp-mode-map [(C-j)] 'slime-eval-last-expression-in-repl)
-(add-hook 'lisp-mode-hook
-          (lambda () (local-set-key [(C-j)] 'slime-eval-last-expression-in-repl))
-          (lambda () (local-set-key (kbd "<f12>") 'slime-selector)))
+;; (define-key lisp-mode-map [(C-j)] 'slime-eval-last-expression-in-repl)
+;; (add-hook 'lisp-mode-hook
+          ;; (lambda () (local-set-key [(C-j)] 'slime-eval-last-expression-in-repl))
+          ;; (lambda () (local-set-key (kbd "<f12>") 'slime-selector))) ; <-----
 
 ;; (global-set-key [(C-j)] 'slime-eval-last-expression-in-repl)
 ;; (global-set-key (kbd "<C-j>") 'slime-eval-last-expression-in-repl)
 
 ;; Versions differ: 2011-03-13 (slime) vs. 2011-08-31 (swank)
-(setq slime-protocol-version 'ignore)
-
-(setq slime-complete-symbol*-fancy t)
-(setq slime-complete-symbol-function 'slime-fuzzy-complete-symbol)
+;; (setq slime-protocol-version 'ignore) ; <-----
+;; (setq slime-complete-symbol*-fancy t) ; <-----
+;; (setq slime-complete-symbol-function 'slime-fuzzy-complete-symbol) ; <-----
 ;; wontwork:
 ;;(slime-set-default-directory "/home/occam/bin/projects/lisp")
-(setq common-lisp-hyperspec-root "file:/usr/share/doc/HyperSpec/")
+;; (setq common-lisp-hyperspec-root "file:/usr/share/doc/HyperSpec/") ; <-----
 ;;(require 'slime-autoloads) ; what does this one do?
-(slime-setup '(slime-repl slime-scratch slime-editing-commands
-                          slime-asdf slime-fancy))
+;; (slime-setup '(slime-repl slime-scratch slime-editing-commands slime-asdf slime-fancy)) ; <-----
 ;; fancy should be everything, but isn't
 ;; (slime-setup '(slime-repl)) ; repl only
 ;; (slime-setup '(slime-repl slime-scratch
 ;;                slime-editing-commands slime-fancy))
 
-(slime)
+;; (slime) ; <-----
 ;; (slime-scratch)
+
+(defun run-slime ()
+  (load (expand-file-name "~/.quicklisp/slime-helper.el"))
+  (setq inferior-lisp-program "sbcl")
+  (require 'slime)
+  (define-key lisp-mode-map [(C-j)] 'slime-eval-last-expression-in-repl)
+
+  (add-hook
+   'lisp-mode-hook
+   (lambda () (local-set-key [(C-j)] 'slime-eval-last-expression-in-repl))
+   (lambda () (local-set-key (kbd "<f12>") 'slime-selector)))
+
+  (setq slime-protocol-version 'ignore)
+  (setq slime-complete-symbol*-fancy t)
+  (setq slime-complete-symbol-function 'slime-fuzzy-complete-symbol)
+  (setq common-lisp-hyperspec-root "file:/usr/share/doc/HyperSpec/")
+
+  (slime-setup
+   '(slime-repl slime-scratch slime-editing-commands
+                slime-asdf slime-fancy))
+  (slime)
+  (slime-scratch))
 
 ;;; geiser for scheme interaction
 ;; how do I give emacs the path to a scheme?
@@ -697,6 +764,13 @@
 ;; (load-file "~/bin/packages/gitclown/geiser/elisp/geiser.el")
 ;; (load "~/bin/packages/gitclown/geiser/build/elisp/geiser-load")
 ;; (setq geiser-repl-use-other-window  nil)
+
+;; (setq geiser-repl-startup-time 20000) ; on slow puters
+(setq geiser-impl-installed-implementations '(racket guile))
+(setq geiser-repl-query-on-kill-p nil)
+(setq geiser-active-implementations '(racket))
+(load-file "~/.emacs.d/elisp/geiser/elisp/geiser.el")
+
 
 ;; setup autoload
 
@@ -739,8 +813,8 @@
 ;; (load-file "/usr/share/emacs/site-lisp/lyskom.elc")
 ;; (autoload 'lyskom "lyskom.elc" "Köra LysKom" t)
 ;; ;; Use environment variables KOMNAME and KOMSERVER
-;; (add-hook 'lyskom-mode-hook 
-;;   (lambda () 
+;; (add-hook 'lyskom-mode-hook
+;;   (lambda ()
 ;;     (set-language-environment "Latin-1")
 ;;     ;; changed order:
 ;;     (setq kom-preferred-charsets '(utf-8 latin-1 iso-8859-1))))
@@ -777,7 +851,7 @@
 ;; (setq auto-mode-alist (append '(("\\.gp$" . gnuplot-mode)) auto-mode-alist))
 
 ;; This line binds the function-9 key so that it opens a buffer into
-;; gnuplot mode 
+;; gnuplot mode
 ;; (global-set-key [(f9)] 'gnuplot-make-buffer)
 
 ;; end of line for gnuplot-mode
@@ -788,10 +862,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("7424f30467b665f5e508b674c6390aed011fa8f6c574b688cb37d283a5fa2ff6" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default))))
- 
+ '(custom-safe-themes t)
+ )
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -801,5 +874,5 @@
 
 ;; (when window-system
 ;;   (set-frame-size (selected-frame) 110 77))
-;; (set-frame-size (selected-frame) 110 72) ; för tool-br och menu-bar
+;; (set-frame-size (selected-frame) 110 72) ; for tool-bar & menu-bar
 

@@ -61,6 +61,7 @@
 ; (gtk_accel_path "<Actions>/ThunarWindow/view-location-selector-pathbar" "")
 ; (gtk_accel_path "<Actions>/ThunarBookmarks/27b76909e60ec40969cdfb72e87afda9" "")
 ; (gtk_accel_path "<Actions>/ThunarStandardView/properties" "<Alt>Return")
+; (gtk_accel_path "<Actions>/ThunarActions/Twp::setwallpaper" "")
 ; (gtk_accel_path "<Actions>/ThunarStandardView/delete" "")
 ; (gtk_accel_path "<Actions>/ThunarBookmarks/a0570ff95d453995acf5fbfee072a1ff" "")
 ; (gtk_accel_path "<Actions>/ThunarWindow/empty-trash" "")

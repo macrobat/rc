@@ -2,8 +2,8 @@
 "colorscheme darkslategray
 colo wombat256 "too subtle cursor, red bkgrnd on : $ #
 "colo rootwater
-"colo pyte              "light
-"colo torte       	"använd i vim, ser kommentarer
+"colo pyte              " light
+"colo torte             " använd i vim, ser kommentarer
 "colorscheme navajo_night
 "colorscheme chocolateliquor
 "colorscheme pyte
@@ -44,6 +44,11 @@ set laststatus=2
 " like emacs M-x (why is it an ø?) . only in gvim. specific for my setup?
 nnoremap ø :
 
+" <A-q> to format a para
+nnoremap ñ gqap
+" keeps cursor at the same position. won't use the remapped gw below
+inoremap ñ <esc>gwapi
+
 " vimtip 1287
 " now set it up to change the status line based on mode
 "if version >= 700
@@ -71,7 +76,7 @@ au InsertLeave * hi statusline guibg=#597418  "green, mossy
 
 " horizontal scrollbar
 if &diff == 1
-	set guioptions+=b
+    set guioptions+=b
 "else
    " set guioptions-=b
 endif
