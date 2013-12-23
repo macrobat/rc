@@ -1,1 +1,1 @@
-/usr/bin/jackd -p 128 -R -T -d alsa -n 2 -r 48000 -p 1024 -d hw:0,0 
+/usr/bin/jackd -r -t2000 -dalsa -r48000 -p256 -n3 -M -D -Chw:M1010LT -Phw:SB

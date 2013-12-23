@@ -111,7 +111,8 @@ endif
 
 " place new stuff below:
 
-" emacs undo bind
+" emacs kill next word and undo bind
+nnoremap <A-d> de
 nnoremap <C-_> u
 inoremap <C-_> <esc>ui
 

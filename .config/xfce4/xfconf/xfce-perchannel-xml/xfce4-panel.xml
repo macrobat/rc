@@ -66,10 +66,11 @@
       <property name="names-visible" type="array">
         <value type="string" value="thunar"/>
         <value type="string" value="vlc"/>
+        <value type="string" value="cadence.py"/>
         <value type="string" value="xchat"/>
         <value type="string" value="clementine"/>
-        <value type="string" value="orage"/>
         <value type="string" value="hexchat"/>
+        <value type="string" value="orage"/>
         <value type="string" value="clipit"/>
         <value type="string" value="deluge"/>
         <value type="string" value="dropbox"/>
@@ -166,7 +167,7 @@
         <value type="int" value="20"/>
         <value type="int" value="21"/>
       </property>
-      <property name="position" type="string" value="p=6;x=0;y=0"/>
+      <property name="position" type="string" value="p=1;x=1578;y=1032"/>
       <property name="leave-opacity" type="uint" value="80"/>
       <property name="enter-opacity" type="uint" value="100"/>
       <property name="position-locked" type="bool" value="false"/>

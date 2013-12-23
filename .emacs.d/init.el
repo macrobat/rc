@@ -17,6 +17,9 @@
 ;; mapc is for side-effects only, it doesn't return a list like mapcar does
 (mapc '(lambda (dir) (add-to-list 'load-path dir))
       '("~/.emacs.d/" "~/.emacs.d/elpa" "~/.emacs.d/themes"))
+;; no asking to follow symlinks into vcs. early in the config
+;; (remove-hook find-file-hook 'vc-find-file-hook) ; crap refuses to be turned off?
+
 ;; "~/.emacs.d/elpa/paredit-22"
 ;; do I neeed all dirs in elpa too?
 
@@ -369,7 +372,7 @@
 ;; (global-set-key (kbd "C-x C-b") 'buffer-menu) ; nor buffer-list nor ibuffer
 (global-set-key (kbd "C-x C-b") 'ibuffer) ; [remap list-buffers] funkar visst inte
 (global-set-key (kbd "C-h a") 'apropos)
-(setq apropos-do-all t) ; search deper and slower
+(setq apropos-do-all t) ; search deper and slower. or use with C-u prefix
 ;; literal tab
 (global-set-key (kbd "<backtab>") '(lambda () (interactive) (insert "\t")))
 (windmove-default-keybindings) ; S-arrowkey, move to window
@@ -526,19 +529,23 @@
 
 (put 'dired-find-alternate-file 'disabled nil) ; är 'a
 
-;; https://github.com/tlh/workgroups.el
 ;; https://github.com/pashinin/workgroups2
-;; if you start as "emacs --daemon" - turn off autoloading of workgroups
-;; prefix key for workgroups is C-z (try C-c z)
-;; (add-to-list 'load-path "~/.emacs.d/workgroups.el/") ; done already
+;; "if you start as "emacs --daemon" - turn off autoloading of workgroups"
+;; prefix key for workgroups is C-c z (try C-z)
 ;; (require 'workgroups)
 (require 'workgroups2)
-(workgroups-mode 1)
-(setq wg-morph-on nil)
-;; which file is the session file? not keep in repo?
-;; (wg-load "~/.emacs.d/workgroups") ; holds multiple wg:s
-
-;; must create and save workgroup C-z c name C-z C-s,
+(when (featurep 'workgroups2)
+  ;; will this work. don't want crap in ~/
+  (wg-find-session-file "~/.emacs_workgroups")
+  (workgroups-mode 1)
+  (setq wg-morph-on nil)
+  (global-set-key (kbd "C-c z !") nil)
+  (global-set-key (kbd "C-z") nil)
+  (global-set-key (kbd "C-c z d") nil))
+;; where is the file?
+;; don't keep session file in repo
+;; (wg-load "~/.emacs.d/workgroups")
+;; must create and save a workgroup C-z c name C-z C-s,
 ;; or the rest of init.el won't eval
 
 ;; is a toggle
@@ -573,11 +580,9 @@
 (setq reb-re-syntax 'string)
 (require 'browse-kill-ring)
 
-;; (require 'ido) ; already loaded? is part of emacs
 (ido-mode t)
 (setq ido-save-directory-list-file "~/.emacs.d/ido.last")
 (setq ido-enable-flex-matching t) ; fuzzy matching
-;; InteractivelyDoThings. ido (f ex find files, buffers)
 ;; http://www.emacswiki.org/emacs/InteractivelyDoThings
 ;; http://www0.fh-trier.de/~politza/emacs/ido-hacks.el.gz
 ;; ido sparar tid och kan mkt http://vimeo.com/1013263
@@ -724,7 +729,7 @@
 ;; (setq slime-complete-symbol*-fancy t) ; <-----
 ;; (setq slime-complete-symbol-function 'slime-fuzzy-complete-symbol) ; <-----
 ;; wontwork:
-;;(slime-set-default-directory "/home/occam/bin/projects/lisp")
+;;(slime-set-default-directory "~/bin/projects/lisp")
 ;; (setq common-lisp-hyperspec-root "file:/usr/share/doc/HyperSpec/") ; <-----
 ;;(require 'slime-autoloads) ; what does this one do?
 ;; (slime-setup '(slime-repl slime-scratch slime-editing-commands slime-asdf slime-fancy)) ; <-----
@@ -790,11 +795,11 @@
 ;; kör manuellt. /sw/allegro-8.2/emacs-allegro-cl funkar inte.
 ;; (load "/sw/allegro-8.2/local/allegro.el")
 
-;; ladda ngt i /home/occam/bin/acl82express/ ?
+;; ladda ngt i ~/bin/acl82express/ ?
 ;; ;; (load "/sw/allegro-8.2/local/allegro.el")
 ;; (allegro-setup-emacs-cl)
 ;; (setq inferior-lisp-program "alisp")
-;; (setq inferior-lisp-program "/home/occam/bin/acl82express/alisp")
+;; (setq inferior-lisp-program "~/bin/acl82express/alisp")
 ;; inte detta (setq inferior-lisp-program "allegro-express")
 
 

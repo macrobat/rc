@@ -2,7 +2,7 @@
 # /home/occam/.nvidia-settings-rc
 #
 # Configuration file for nvidia-settings - the NVIDIA X Server Settings utility
-# Generated on Thu Mar 21 05:25:25 2013
+# Generated on Sat Oct 19 04:30:32 2013
 #
 
 # ConfigProperties:
@@ -13,21 +13,15 @@ DisplayStatusBar = Yes
 SliderTextEntries = Yes
 IncludeDisplayNameInConfigFile = No
 ShowQuitDialog = No
-Timer = Graphics_Card_(GPU_0),Yes,1000
-Timer = Thermal_Monitor_(GPU_0),Yes,1000
-Timer = PowerMizer_Monitor_(GPU_0),Yes,1000
+UpdateRulesOnProfileNameChange = Yes
 Timer = Memory_Used_(GPU_0),Yes,3000
+Timer = PowerMizer_Monitor_(GPU_0),Yes,1000
+Timer = Thermal_Monitor_(GPU_0),Yes,1000
+Timer = Graphics_Card_(GPU_0),Yes,1000
 
 # Attributes:
 
-0/CursorShadow=0
-0/CursorShadowAlpha=64
-0/CursorShadowRed=0
-0/CursorShadowGreen=0
-0/CursorShadowBlue=0
-0/CursorShadowXOffset=4
-0/CursorShadowYOffset=2
-0/SyncToVBlank=0
+0/SyncToVBlank=1
 0/LogAniso=0
 0/FSAA=0
 0/TextureSharpen=0
@@ -36,16 +30,16 @@ Timer = Memory_Used_(GPU_0),Yes,3000
 0/AllowFlipping=1
 0/FSAAAppControlled=1
 0/LogAnisoAppControlled=1
-0/OpenGLImageSettings=0
+0/OpenGLImageSettings=1
 0/FSAAAppEnhanced=0
 0/DigitalVibrance[CRT-0]=0
 0/XVideoSyncToDisplay=1
-besk:0[dpy:0]/RedBrightness=0.000000
-besk:0[dpy:0]/GreenBrightness=0.000000
-besk:0[dpy:0]/BlueBrightness=0.000000
-besk:0[dpy:0]/RedContrast=0.000000
-besk:0[dpy:0]/GreenContrast=0.000000
-besk:0[dpy:0]/BlueContrast=0.000000
-besk:0[dpy:0]/RedGamma=1.000000
-besk:0[dpy:0]/GreenGamma=1.000000
-besk:0[dpy:0]/BlueGamma=1.000000
+[DPY:VGA-0]/RedBrightness=0.000000
+[DPY:VGA-0]/GreenBrightness=0.000000
+[DPY:VGA-0]/BlueBrightness=0.000000
+[DPY:VGA-0]/RedContrast=0.000000
+[DPY:VGA-0]/GreenContrast=0.000000
+[DPY:VGA-0]/BlueContrast=0.000000
+[DPY:VGA-0]/RedGamma=1.000000
+[DPY:VGA-0]/GreenGamma=1.000000
+[DPY:VGA-0]/BlueGamma=1.000000
