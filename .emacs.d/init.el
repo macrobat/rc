@@ -151,7 +151,7 @@
 ;;; disabling tmp
 ;; (require 'desktop-menu)
 (desktop-save-mode 1)
-;; (desktop-read) ;gives error ;needed? the desktop wasn't read before
+(desktop-read) ;gives error ;needed? the desktop wasn't read before
 
 ;; old crap. want unique buffer names
 ;;(require 'uniquify) (setq uniquify-buffer-name-style 'forward)
@@ -255,11 +255,11 @@
   ;; finns temata i /usr/share/emacs/24.2/etc/
   ;; har lagt "color-theme" i ~/.emacs.d och temata i ~/.emacs.d/themes
   ;; themes that suck less: zenburn arjen goldenrod billw
-  (setq custom-theme-directory "~/.emacs.d/themes")
-  (load-theme 'solarized-dark t) ; t consider safe
-  ;; (load "color-theme")
-  ;; (load "arjen-theme")
-  ;; (color-theme-arjen)
+  ;; (setq custom-theme-directory "~/.emacs.d/themes")
+  ;; (load-theme 'solarized-dark t) ; t consider safe
+  (load "color-theme")
+  (load "arjen-theme")
+  (color-theme-arjen)
 
   ;; (color-theme-zenburn) (color-theme-gnome2)
   ;; region är lite tråkig, försöker ändra runt rad 100
@@ -529,14 +529,21 @@
 
 (put 'dired-find-alternate-file 'disabled nil) ; är 'a
 
+;; wg2 is shit or it doesn't work. DONOTWANT
+;; says session is unmodified when I want to save
+;; Can't use ~/.emacs.d/workgroups
+;; for some reason always uses ~/.emacs_workgroups
+
 ;; https://github.com/pashinin/workgroups2
 ;; "if you start as "emacs --daemon" - turn off autoloading of workgroups"
 ;; prefix key for workgroups is C-c z (try C-z)
 ;; (require 'workgroups)
 (require 'workgroups2)
 (when (featurep 'workgroups2)
-  ;; will this work. don't want crap in ~/
-  (wg-find-session-file "~/.emacs_workgroups")
+  ;; session kind of works, but I don't want crap in ~/
+  ;; M-x wg-save-session saves it there anyway
+  ;; (wg-find-session-file "~/.emacs_workgroups")
+  (wg-find-session-file "~/.emacs.d/workgroups")
   (workgroups-mode 1)
   (setq wg-morph-on nil)
   (global-set-key (kbd "C-c z !") nil)
@@ -630,7 +637,8 @@
 (defalias 'yow 'cookie)
 
 ;; no asking to follow symlinks into vcs
-(remove-hook find-file-hook vc-find-file-hook)
+;; these is no vc-find-file-hook. not yet?
+;; (remove-hook find-file-hook vc-find-file-hook)
 
 ;;; ---------------------------------------------------
 ;;; org mode

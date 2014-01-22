@@ -2,7 +2,7 @@
 
 <channel name="xsettings" version="1.0">
   <property name="Net" type="empty">
-    <property name="ThemeName" type="string" value="Darklooks"/>
+    <property name="ThemeName" type="string" value="Atolm-gtk3"/>
     <property name="IconThemeName" type="string" value="Neu"/>
     <property name="DoubleClickTime" type="int" value="290"/>
     <property name="DoubleClickDistance" type="int" value="9"/>
