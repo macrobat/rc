@@ -62,6 +62,7 @@
   (
    #"(exit)"
    #"(macro-expand list?)"
+   #"(quit)"
    #"(list? '())"
    #"(init 'racket)"
    #"(init racket)"
@@ -71,7 +72,6 @@
    #"(atom 'a)"
    #"(atom? 'a)"
    #"(atom? cons)"
-   #"(quit)"
    #"()"
    #"(null? '(a))"
    #"(null '())"
