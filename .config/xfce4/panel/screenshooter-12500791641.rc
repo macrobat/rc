@@ -1,9 +1,0 @@
-delay=0
-region=3
-action=1
-show_save_dialog=1
-show_mouse=1
-close=0
-screenshot_dir=file:///home/occam/pics/screenshots
-app=feh
-
