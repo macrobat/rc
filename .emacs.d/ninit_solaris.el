@@ -517,7 +517,7 @@
 ;; (require 'slime)
 ;; (global-set-key (kbd "<f12>") 'slime-selector)
 ;; ;; wontwork:
-;; ;;(slime-set-default-directory "/home/occam/bin/projects/lisp")
+;; ;;(slime-set-default-directory "~/bin/projects/lisp")
 ;; (setq common-lisp-hyperspec-root "file:/usr/share/doc/HyperSpec/")
 ;; ;;(require 'slime-autoloads) ; what does this one do?
 ;; (slime-setup '(slime-fancy)) ; should be everything

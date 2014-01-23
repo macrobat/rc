@@ -9,9 +9,9 @@ PATH=/usr/local/bin:/usr/bin:/bin:/usr/games:/sbin:/usr/sbin
 export PATH
 
 # (some folders i dont have), i might want /opt/qt/bin . mtr is in /usr/sbin
-#export PATH="/bin:/usr/bin:/sbin:/usr/sbin:/opt/java/jre/bin:/usr/bin/perlbin/site:/usr/bin/perlbin/vendor:/usr/bin/perlbin/core:/opt/qt/bin:/usr/local/bin:/home/occam/bin"
+#export PATH="/bin:/usr/bin:/sbin:/usr/sbin:/opt/java/jre/bin:/usr/bin/perlbin/site:/usr/bin/perlbin/vendor:/usr/bin/perlbin/core:/opt/qt/bin:/usr/local/bin:~/bin"
 # orig path med GNUtjafs
-#/home/occam/GNUstep/Tools:/opt/GNUstep/Local/Tools:/opt/GNUstep/System/Tools:/bin:/usr/bin:/sbin:/usr/sbin:/opt/java/jre/bin:/usr/bin/perlbin/site:/usr/bin/perlbin/vendor:/usr/bin/perlbin/core:/opt/qt/bin:/usr/local/bin
+#~/GNUstep/Tools:/opt/GNUstep/Local/Tools:/opt/GNUstep/System/Tools:/bin:/usr/bin:/sbin:/usr/sbin:/opt/java/jre/bin:/usr/bin/perlbin/site:/usr/bin/perlbin/vendor:/usr/bin/perlbin/core:/opt/qt/bin:/usr/local/bin
 
 # kolla om vi kan ha color, dumb terminal & pacman-color
 # use ENV_VAR, check debians .bashrc

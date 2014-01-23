@@ -65,7 +65,7 @@ wifi signal, battery, cpu load,
 
 ska installera gcolor2, samma gui som terminal :)
 p vill ha update igen
-ska cp allt awesome till occam, och köra därifrån åxå/ist
+ska cp allt awesome till $HOME, och köra därifrån åxå/ist
 confa lm-sensors, hur göra med acpi?
 lättare med allt systemjox jag har där, som aurprylar
 
@@ -226,8 +226,8 @@ den ville ha asciidoc xmlto, men funka inte ändå!
 
 wowowowowow  sshfs!
 behöver jag inte ha och va med i gruppen fuse?
-gpasswd -d occam fuse ; groupdel fuse
-mkdir ~/bin/sshfsmnt; sshfs occam@192.168.1.103:/home/occam ~/bin/sshfsmnt
+gpasswd -d user fuse ; groupdel fuse
+mkdir ~/bin/sshfsmnt; sshfs user@192.168.1.103:/home/user ~/bin/sshfsmnt
 fusermount -u ~/bin/sshfsmnt
 bara rsync, keys till ssh och konto på dyndns.com kvar, om jag vill hitta min desktop från laptop
 verkar som datorerna får olika ip när man bootar, wired / wireless?
@@ -421,7 +421,7 @@ gentoo   gcc: “Stop staring at my output; you have no life!”
 deluge går inte igång, kör rtorrent. toad
 
 Mon Feb  1 22:48:00 CET 2010
-kör awesome som occam nu.
+kör awesome som minvanligauser nu.
 
 awesome tasklist rmb client list enl anrx:
 awful.key({ altkey }, "Escape", function () mouse.coords({x=525, y=330}, true)

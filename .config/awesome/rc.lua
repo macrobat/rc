@@ -8,7 +8,7 @@ require("beautiful")
 require("naughty")
 -- Widget library (git clone)
 require("vicious")
--- dropdown regular apps, like tilda. 
+-- dropdown regular apps, like tilda.
 -- ("togglefloat a client" finns redan)
 -- keybinds?
 --require("scratch")
@@ -52,10 +52,11 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 -- beautiful.init("/usr/share/awesome/themes/default/theme.lua")
-beautiful.init("/home/occam/.config/awesome/themes/zenburn/theme.lua")
+-- does this really need abs path? trying tilde
+beautiful.init("~/.config/awesome/themes/zenburn/theme.lua")
 
 --just set this once, from the cli instead:
---os.execute("awsetbg -u feh -f /home/occam/pics/wallpapers/arch_headphones2.png")
+--os.execute("awsetbg -u feh -f ~/pics/wallpapers/arch_headphones2.png")
 
 -- This is used later as the default terminal and editor to run.
 --terminal = "terminal"
@@ -76,7 +77,7 @@ layouts =
     awful.layout.suit.tile.left,	-- 2
     awful.layout.suit.tile.bottom,	-- 3 setting to default
     awful.layout.suit.tile.top,		-- 4
---    awful.layout.suit.fair, 
+--    awful.layout.suit.fair,
     awful.layout.suit.fair.horizontal,
     awful.layout.suit.spiral,
     awful.layout.suit.spiral.dwindle,
@@ -220,7 +221,7 @@ for s = 1, screen.count() do
     mytasklist[s] = awful.widget.tasklist(function(c)
                                               return awful.widget.tasklist.label.currenttags(c, s)
                                           end, mytasklist.buttons)
-					  
+
 	-- Initialize widget
 	-- Register widget
 
@@ -279,9 +280,9 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Tab",
         function ()
             awful.client.focus.history.previous()
-            if client.focus then 
+            if client.focus then
 		-- använder kbd. här vill vi ha raise, även om floating.
-                client.focus:raise() 
+                client.focus:raise()
             end
         end),
 
@@ -298,7 +299,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Return", function () awful.util.spawn_with_shell(terminal) end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
-	-- FIXME dollar Dollar $ wontwork, xbindkeys also fails, 
+	-- FIXME dollar Dollar $ wontwork, xbindkeys also fails,
 	-- dmenuclip starts without me asking for it
     --awful.key({ modkey,           }, "Dollar", awful.util.spawn("/usr/bin/site_perl/dmenuclip")),
     --awful.key({         "Control" }, "Escape", awful.util.spawn("/usr/bin/site_perl/dmenuclip")),
@@ -337,7 +338,7 @@ clientkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "Up",    function () awful.client.moveresize(  0, -40,   0,   0) end),
     awful.key({ modkey, "Control" }, "Left",  function () awful.client.moveresize(-40,   0,   0,   0) end),
     awful.key({ modkey, "Control" }, "Right", function () awful.client.moveresize( 40,   0,   0,   0) end),
-    
+
     awful.key({ modkey,           }, "f",      function (c) c.fullscreen = not c.fullscreen  end),
     awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ),
@@ -418,7 +419,7 @@ root.keys(globalkeys)
 --  WM_CLASS(STRING) = "smplayer", "Smplayer"
 --                       |           |--- class
 --                       |--- instance
---                       
+--
 --   WM_NAME(STRING) = "SMPlayer"
 --                      |--- name
 --  xprop | egrep "^WM_CLASS|^WM_NAME"
@@ -474,7 +475,7 @@ client.add_signal("manage", function (c, startup)
             and awful.client.focus.filter(c) then
             client.focus = c
 	-- vill vi ha raise-on-focus i floating layout? små fönster försvinner direkt bakom större
-        --    c:raise()  	
+        --    c:raise()
         end
     end)
 
@@ -495,7 +496,7 @@ client.add_signal("unfocus", function(c) c.border_color = beautiful.border_norma
 -- }}}
 
 --funkar ju inte så jävla bra. $USERNAME (isf user)
---To execute an application only once, e.g. for restarting awesome, 
+--To execute an application only once, e.g. for restarting awesome,
 --use this function (from the awesome wiki):
 --använder visst inte awful.util.spawn, skulle va bättre?
 function run_once(prg)
@@ -511,9 +512,8 @@ end
 run_once("clipit")
 --run_once("xmodmap ~/.Xmodmap") -- script  i bin från .xinitrc ist
 --run_once("wicd-client")
---run_once("terminal") -- is the xfce4 terminal 
+--run_once("terminal") -- is the xfce4 terminal
 --run_once("urxvt -pe tabbed")
---run_once("gvim /home/occam/doku/laplacelog")
 --run_once("gvim -S ~/doku/vimse")
 ---- lägg på andra tags
 --run_once("chromium-browser")

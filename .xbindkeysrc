@@ -100,7 +100,7 @@
     #Mod4 + apostrophe 
 
 # use the global path
-#"/home/occam/bin/packages/gitclown/clipbored/scripts/dmenuclip"
+#"~/bin/packages/gitclown/clipbored/scripts/dmenuclip"
 # dmenuclip
 # tac: failed to open ‘/clipbored/clips’ for reading: No such file or directory
 

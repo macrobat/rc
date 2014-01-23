@@ -2,8 +2,8 @@ HISTFILE=~/.zsh_history
 HISTSIZE=16384 # in RAM
 SAVEHIST=16383 # on disk
 setopt APPEND_HISTORY
-# write each new cmd to file continously 
-setopt INC_APPEND_HISTORY 
+# write each new cmd to file continously
+setopt INC_APPEND_HISTORY
 # for sharing history between zsh processes
 setopt SHARE_HISTORY
 
@@ -13,8 +13,8 @@ setopt HIST_IGNORE_ALL_DUPS
 #setopt HIST_IGNORE_SPACE #ign lines with spc start
 setopt HIST_REDUCE_BLANKS
 setopt HIST_SAVE_NO_DUPS
-# Whenever the user enters a line with history expansion, 
-# don't execute the line directly; instead, perform history expansion 
+# Whenever the user enters a line with history expansion,
+# don't execute the line directly; instead, perform history expansion
 # and  reload the line into the editing buffer.
 setopt HIST_VERIFY
 
@@ -22,12 +22,12 @@ setopt autocd extendedglob
 # globdots ?
 # correct mistakes
 setopt CORRECT
-setopt AUTO_LIST 
+setopt AUTO_LIST
 # allow tab completion in the middle of a word
 setopt COMPLETE_IN_WORD
 # tab completion moves to end of word
 setopt ALWAYS_TO_END
-setopt listtypes 
+setopt listtypes
 # comment in the interactive shell
 setopt interactivecomments
 
@@ -35,13 +35,13 @@ unsetopt beep
 bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/occam/.zshrc'
+zstyle :compinstall filename '~/.zshrc'
 
-# autoload commandline options: 
-#-U -- suppress alias expansion for functions 
-#-k -- mark function for ksh-style autoloading 
-#-t -- turn on execution tracing for functions 
-#-w -- specify that arguments refer to files compiled with zcompile 
+# autoload commandline options:
+#-U -- suppress alias expansion for functions
+#-k -- mark function for ksh-style autoloading
+#-t -- turn on execution tracing for functions
+#-w -- specify that arguments refer to files compiled with zcompile
 #-z -- mark function for zsh-style autoloading
 
 autoload -Uz compinit
@@ -54,7 +54,7 @@ colors
 
 # http://grml.org/zsh/zsh-lovers.html
 
-# Wrap characters, that do *not* consume space in %{…%}. Repeat ten times! 
+# Wrap characters, that do *not* consume space in %{…%}. Repeat ten times!
 # Escape sequences for colors are such characters.
 # moved color prompt into the color test
 # this will be a change from the .bashrc
@@ -109,7 +109,7 @@ zstyle ':completion:*' menu select=4
 #zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 zstyle ':completion:*' use-compctl false
 zstyle ':completion:*' verbose true
-zstyle :compinstall filename '/home/occam/.zsh_compinstall'
+zstyle :compinstall filename '~/.zsh_compinstall'
 # The -e option to zstyle even allows completion function code to appear as the
 # argument to a style; this requires  some  understanding  of the internals of
 # completion functions (see zshcompwid(1))). We can now tab complete ../
@@ -121,8 +121,8 @@ zstyle -e ':completion:*' special-dirs '[[ $PREFIX = (../)#(|.|..) ]] && reply=(
 #bindkey '\e[1~' beginning-of-line
 #bindkey '^[[7^' beginning-of-line
 #bindkey '^[[7~' beginning-of-line
-#bindkey '\e[4~' end-of-line 
-#bindkey '^[[8^' end-of-line 
+#bindkey '\e[4~' end-of-line
+#bindkey '^[[8^' end-of-line
 #bindkey '^[[8~' end-of-line
 #
 # sabbas av "flytta tabb" i urxvt -pe tabbed
@@ -140,7 +140,7 @@ bindkey ' ' magic-space # also do history expansion on space
 stty erase '^?'         #vim in tmux
 #delete key
 bindkey '\e[3~' delete-char
-# home-end olika för olika terms 
+# home-end olika för olika terms
 # home
 bindkey '^[OH'  beginning-of-line 	# xfce4 terminal
 bindkey '^[[7~' beginning-of-line 	# urxvt
@@ -200,18 +200,18 @@ alias -s txt=$EDITOR
 #alias -s install=$EDITOR
 
 # man zshbuiltins:
-# If  the  -s  flags  is present, define a suffix alias: if the 
-# command word on a command line is in the form 'text.name', 
-# where text is any non-empty string, it is replaced by the text 
-# 'value text.name'.  Note that name is treated as a literal 
-# string, not a pattern.  A trailing space in value is not special 
+# If  the  -s  flags  is present, define a suffix alias: if the
+# command word on a command line is in the form 'text.name',
+# where text is any non-empty string, it is replaced by the text
+# 'value text.name'.  Note that name is treated as a literal
+# string, not a pattern.  A trailing space in value is not special
 # in this case.  For example,
          #alias -s ps=gv
-# will  cause the command `*.ps' to be expanded to `gv *.ps'.  
-# As alias expansion is carried out earlier than globbing, the 
-# `*.ps' will then be expanded.  Suffix aliases constitute a 
-# different name space from other aliases (so in the above 
-# example it is still possible to  create an alias for the command 
+# will  cause the command `*.ps' to be expanded to `gv *.ps'.
+# As alias expansion is carried out earlier than globbing, the
+# `*.ps' will then be expanded.  Suffix aliases constitute a
+# different name space from other aliases (so in the above
+# example it is still possible to  create an alias for the command
 # ps) and the two sets are never listed together.
 
 # alias -g gets expanded invisibly (and may interfere with stuff?)
@@ -241,21 +241,22 @@ bindkey -s đ " find -iname '**' "	#f  #see drop()
 #bindkey -s " |  "
 
 # <  is a builtin pager. > edits a new file
-# zsh screencast. tab funkar inte som där. 
+# zsh screencast. tab funkar inte som där.
 # menu select
 ####################################################
 # should be almost like .bashrc below:
-#PATH=/home/occam/bin:/usr/local/bin:/usr/bin:/bin:/usr/games:/home/occam/bin/scripts
+# can ~ be used in PATH?
+#PATH=~/bin:/usr/local/bin:/usr/bin:/bin:/usr/games:~/bin/scripts
 test "$PATH_BAK" || PATH_BAK="$PATH"
 
-# franz allegro lisp /home/occam/bin/packages/franz/acl82express
+# franz allegro lisp ~/bin/packages/franz/acl82express
 PATH=/usr/local/bin:/usr/bin:/bin:/usr/games:/sbin:/usr/sbin:/usr/bin/core_perl:/opt/java/bin
 export PATH
 
 # (some folders i dont have), i might want /opt/qt/bin . mtr is in /usr/sbin
-#export PATH="/bin:/usr/bin:/sbin:/usr/sbin:/opt/java/jre/bin:/usr/bin/perlbin/site:/usr/bin/perlbin/vendor:/usr/bin/perlbin/core:/opt/qt/bin:/usr/local/bin:/home/occam/bin"
+#export PATH="/bin:/usr/bin:/sbin:/usr/sbin:/opt/java/jre/bin:/usr/bin/perlbin/site:/usr/bin/perlbin/vendor:/usr/bin/perlbin/core:/opt/qt/bin:/usr/local/bin:~/bin"
 # orig path med GNUtjafs
-#/home/occam/GNUstep/Tools:/opt/GNUstep/Local/Tools:/opt/GNUstep/System/Tools:/bin:/usr/bin:/sbin:/usr/sbin:/opt/java/jre/bin:/usr/bin/perlbin/site:/usr/bin/perlbin/vendor:/usr/bin/perlbin/core:/opt/qt/bin:/usr/local/bin
+#~/GNUstep/Tools:/opt/GNUstep/Local/Tools:/opt/GNUstep/System/Tools:/bin:/usr/bin:/sbin:/usr/sbin:/opt/java/jre/bin:/usr/bin/perlbin/site:/usr/bin/perlbin/vendor:/usr/bin/perlbin/core:/opt/qt/bin:/usr/local/bin
 
 # kolla om vi kan ha color, dumb terminal & pacman-color
 # use ENV_VAR, check debians .bashrc
@@ -285,7 +286,7 @@ if [ "$TERM" != "dumb" ]; then
 
     if [[ -x /usr/bin/pacman-color ]]; then
       alias p='pacman-color'
-    fi	
+    fi
 fi
 
 #export BROWSER="opera -w"
@@ -294,9 +295,9 @@ export BROWSER="firefox"
 export PAGER="less -M -e"
 export EDITOR="vim"
 # for conkeror, may take precedence over EDITOR
-# do not want: su makes root use the same value. 
+# do not want: su makes root use the same value.
 # use su - and source the shell init rc from .profile
-# export VISUAL="gvim -f" 
+# export VISUAL="gvim -f"
 
 # zsh has pushd and popd
 #function cx() { if [[ $# -eq 0 ]] ; then popd ; else pushd "$@" ; fi ; }
@@ -349,7 +350,7 @@ bindkey . rationalise-dot
 #        append indicator (one of */=>@|) to entries
 # --file-type
 #        likewise, except do not append `*'
- 
+
 alias l='ls -C'
 alias ll='ls -lAh'
 alias la='ls -Ah'
@@ -451,7 +452,7 @@ alias cpl='mplayer cdda:// -cache 3000 -cache-min 3 -cdda speed=7'
 alias acro='~/bin/acrobat/bin/acroread'
 
 # åxå lagt in som C-RET i .xbindkeysrc
-# connection refused even if daemon running? 
+# connection refused even if daemon running?
 # urt --cursorColor Orange
 alias urt='urxvt -pe tabbed'   #have urxvtd -q -o -f running
 alias URT='urxvt -name URxvt' #transparent (.Xdefaults)
