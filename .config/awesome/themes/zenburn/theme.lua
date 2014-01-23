@@ -11,8 +11,8 @@ theme = {}
 
 --set wp in rc.lua instead
 --theme.wallpaper_cmd = { "awsetbg /usr/share/awesome/themes/zenburn/zenburn-background.png" }
--- testar okommenterat, eftersom jag får default wp annars
---theme.wallpaper_cmd = { "awsetbg /home/occam/pics/wallpaper/platypus.jpg" }
+-- får default wp annars
+--theme.wallpaper_cmd = { "awsetbg ~/pics/wallpaper/platypus.jpg" }
 -- }}}
 
 -- {{{ Styles

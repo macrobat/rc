@@ -13,7 +13,7 @@
 *.so
 *.class
 
-# compresed
+# compressed
 *.rar
 *.tar
 *.zip
