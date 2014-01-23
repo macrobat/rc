@@ -8,16 +8,16 @@ awful.key({ modkey, "Shift", "Control"}, "t", function () myLayoutTogglingFuncti
 
 autostart apps: parcellite, xmodmap, gvim session, terminal
 sätt tag åxå. awful.rules
-If you want to put Firefox on a specific tag at startup, you can add: 
+If you want to put Firefox on a specific tag at startup, you can add:
 { rule = { instance = "firefox" } properties = { tag = mytagobject } }
 
 -- vad menas med .. i run_once?  konka strängar
--- hur kombinerar jag detta? 
+-- hur kombinerar jag detta?
 -- varför skulle man vilja starta flera instanser när man startar om awesome?
 -- Autorun programs
 autorun = true
-autorunApps = 
-{ 
+autorunApps =
+{
    "swiftfox",
    "mutt",
    "consonance",
@@ -31,7 +31,7 @@ if autorun then
 end
 
 --FUNKAR!!!!!
---To execute an application only once, e.g. for restarting awesome, 
+--To execute an application only once, e.g. for restarting awesome,
 --use this function (from the awesome wiki):
 function run_once(prg)
 	if not prg then
@@ -45,8 +45,8 @@ run_once("parcellite")
 -- Autorun programs (compsoc.tardis.ed.ac.uk lr arch wiki?)
 --
    autorun = true
-   autorunApps = 
-   { 
+   autorunApps =
+   {
       "terminal",
       "gvim -S /home/trazan/doku/awe_confs",
       "xchat",
@@ -61,7 +61,7 @@ Det tar inte; vad kallas tangenterna?
 
 önskewidgets med vicious. bara dra igång, top. bestäm placering senare
 kanske toggle visa/dölj med en knapptryckning
-wifi signal, battery, cpu load, 
+wifi signal, battery, cpu load,
 
 ska installera gcolor2, samma gui som terminal :)
 p vill ha update igen
@@ -82,7 +82,7 @@ jo, den går, är bara jevvligt diskret. C-M-h. finns i systray åxå
 vill jag synca med C-c buffern?. nej
 
 Uzbl-browser is a complete, "working out of the box" browser
-fel i libwebkit, recompile enchant with "--disable-zemberek" 
+fel i libwebkit, recompile enchant with "--disable-zemberek"
 updatera abs med "abs" först, byt prefix till /usr/local
 hur sätter man en högre version på ett pkg? kolla PKGBUILD i wiki
 pkgver högre än 1.5.0 kolla enchant hemsida för nån version
@@ -104,7 +104,7 @@ zenburn med ljusare focus border
 kört lxappearance
 tenebrific är som aud-default. mörka teman:
 Tenebrific Clearlooks-DarkLime clearlooks-DarkOrange Darkilouche HighContrastInverse LowContrast NOX
-Black-Diamond 
+Black-Diamond
 http://awesome.naquadah.org/wiki/Customizing_GTK_Apps
 
 http://compsoc.tardis.ed.ac.uk/wiki/AwesomeWM_guide
@@ -115,7 +115,7 @@ Awesome has support for (2D) transparency through xcompmgr. Note that you'll pro
 opera can't be shown side-by-side to another client on a tag in archlinux, uses all space (in debian it'ss fine). I haven't set any rule for opera
 cant resize clients in archlinux
 
-på statusbar har jag: 
+på statusbar har jag:
 menu med icon, tags, lua & run prompt, taskbar, systray, klocka, layout switcher
 
 esc är en bra key i chromium, focus på locationbar
@@ -156,7 +156,7 @@ kanske kan ta opera.desktop från debian, gvimdiff med firefox.desktop
 (｡◕‿◕｡)
 
 -- för desktop icons enl. freedesktop README
-$ lua 
+$ lua
 > require('freedesktop.desktop')
 ./freedesktop/desktop.lua:8: module 'awful' not found:
 	no field package.preload['awful']
@@ -175,7 +175,7 @@ stack traceback:
 	stdin:1: in main chunk
 	[C]: ?
 Varför en sån path? awful ligger ju på annat ställe
-fel inuti desktop.lua ingen awful 
+fel inuti desktop.lua ingen awful
 kanske kan fixa den?
 
 funkar inte även om jag gör nedanstående, awful hittas, men har errors
@@ -183,7 +183,7 @@ cp -r /usr/share/awesome/lib/  /usr/share/lua/5.1/
 hur ska jag köra/testa .lua scripts?
 
 pcmanfm
-får upp usb, men kan inte mounta. JO! se nedan 
+får upp usb, men kan inte mounta. JO! se nedan
 Rejected send message, 1 matched rules; type="method_call", sender=":1.14" (uid=1001 pid=3871 comm="pcmanfm) interface="org.freedesktop.Hal.Device.Volume" member="Mount" error name="(unset)" requested_reply=0 destination="org.freedesktop.Hal" (uid=0 pid=1634 comm="/usr/sbin/hald))
 kanske vill ha pmount? thunar-volman?
 vad måste köras för att thunar-volman ska automounta?
@@ -192,7 +192,7 @@ exec ck-launch-session awesome      förståss!!!
 råkade ha trafon i klädbyltet, den blev VARM
 
 -- {{{ -- }}} är fold markers i vim, inget med lua att göra
---[[ opening long comment  
+--[[ opening long comment
 ]] closing
 
 uzbl!
@@ -232,7 +232,7 @@ fusermount -u ~/bin/sshfsmnt
 bara rsync, keys till ssh och konto på dyndns.com kvar, om jag vill hitta min desktop från laptop
 verkar som datorerna får olika ip när man bootar, wired / wireless?
 
-ssh duke@besk.dyndns.org !!!!
+ssh user@host.dyndns.org
 hitta andra datorn: nmap -sP 192.168.1.1/24
 
 finns dyndns och mac address filter till routern
@@ -242,31 +242,26 @@ ez-ipupdate isf ddclient
 accounts containing only Dynamic DNS Free hosts expire if they are not updated within a 30-day period
 klicka på uppdateringsmejlet tormodem slö nesji ikta. arslig amris server
 div0 kör dyndns för nexuiz. känner igen "endoftheinternet"
-Dynamic DNS hostname to keep updated: 
+Dynamic DNS hostname to keep updated:
 Current IP Address: 81.170.150.127
-besk.dyndns.org
 You will need to configure your client to use port 8245 for external IP detection from our CheckIP site
-besk.dyndns.org	Host 	81.170.150.127	Nov. 12, 2009 10:56 PM
-till dyndns account använder jag namn... 
+frafra.dyndns.org	Host 	81.170.150.127	Nov. 12, 2009 10:56 PM
+till dyndns account använder jag namn... blä
 den går som daemon
 kan ssh:a in från lappyn över dyndns, men frågas inte efter passphrase, bara lösen.
 ================================================================================
-(define (fakkultet n)
-  (if (= 0 n)
-      1
-      (* n (fakkultet (- n 1)))))
-================================================================================
+
 en extern monitor:
 skaffat lxrandr
 har ingen videobild med bägge monitorerna.
 koppla in och kolla vad jag har med xrandr -q
-xrandr --output LVDS1 --mode 1400x1050 --output VGA1 --mode 1024x768 --right-of LVDS1    
+xrandr --output LVDS1 --mode 1400x1050 --output VGA1 --mode 1024x768 --right-of LVDS1
 tebax:
 xrandr --output VGA1 --mode 1024x768 --output LVDS1 --mode 1400x1050 --left-of VGA1
 
 xrandr --output VGA1 --off
 inget händer om man bara "xrandr --output VGA1 --mode 1024x768"
-fixa tebax med 
+fixa tebax med
 xrandr --mode 1400x1050
 xrandr -s 1400x1050
 
@@ -317,8 +312,8 @@ attempt to perform arithmetic on field 'timer' (a string value)
     batwibox[s] = awful.wibox({ position = "top", screen = s })
     batwibox[s].widgets = { {
     	batwidget },
-	layout = awful.widget.layout.horizontal.rightleft 
-    }	
+	layout = awful.widget.layout.horizontal.rightleft
+    }
 
 	wibox
 Wibox object. Fields
@@ -350,10 +345,10 @@ widgetname:buttons(awful.util.table.join(
 ))
 
 function arggh { for i in {1..21} ; do echo arggh $i ; done }
-================================================================================  
+================================================================================
 grep "Categories" /usr/share/applications/* | awk -F "=" '{print $2}' | tr ";" "\n" | sort | uniq -c
 
-menyn funkar nu. 
+menyn funkar nu.
 ================================================================================
 network programming
 http://beej.us/guide/bgnet/output/html/multipage/theory.html
@@ -386,10 +381,10 @@ restart with:
 pgrep awesome
 kill -s SIGHUP <pid_of_awesome_in_xephyr>
 
-Big advantage of this approach is that if I break rc.lua.new, 
-I don't break my current awesome desktop (and possibly crash all my X apps, 
-lose all unsaved things and so on...). Once I'm happy with my new settings, 
-I move rc.lua.new to rc.lua and restart awesome. And I can be sure it 
+Big advantage of this approach is that if I break rc.lua.new,
+I don't break my current awesome desktop (and possibly crash all my X apps,
+lose all unsaved things and so on...). Once I'm happy with my new settings,
+I move rc.lua.new to rc.lua and restart awesome. And I can be sure it
 will work and restarting with new config won't mess up things.
 
 Xephyr, stort X, är del av xorg-server
@@ -414,14 +409,14 @@ kan läsa fil i lua, kan inte cd path. kan jag bara göra EN sak?
 Lua is a dynamically typed language. This means that variables do not have types; only values do. There are no type definitions in the language. All values carry their own type.
 ================================================================================
 
-hostnames: loach, plaice, albacore, halibut, 
-hal9000, nutmeg, 
-zeratul, artanis, kerrigan, overmind, hive, cerebrat, aiur, protoss, 
+hostnames: loach, plaice, albacore, halibut,
+hal9000, nutmeg,
+zeratul, artanis, kerrigan, overmind, hive, cerebrat, aiur, protoss,
 
 skaffat eminent. uppdaterar rednotebook. kanske bättre att skriva en del där, eg.
 
-alt-tab är inte lika viktigt i ett tiling wm. 
-open ports: netstat -atu 
+alt-tab är inte lika viktigt i ett tiling wm.
+open ports: netstat -atu
 gentoo   gcc: “Stop staring at my output; you have no life!”
 deluge går inte igång, kör rtorrent. toad
 
@@ -446,12 +441,12 @@ ska ha fixat lite floating rules nu. se FAQ:
 WM_CLASS(STRING) = "smplayer", "Smplayer"
                      |             |-- class
                      |-- instance
-                     
+
 WM_NAME(STRING) = "SMPlayer"
                     |-- name
 
 How can I add a keyboard layout switcher ?
-You can use the xxkb utility. It has a tray icon and supports settings layouts per client. As an alternative you can use an awesome widget, you can even find some examples on the wiki Change keyboard maps. 
+You can use the xxkb utility. It has a tray icon and supports settings layouts per client. As an alternative you can use an awesome widget, you can even find some examples on the wiki Change keyboard maps.
 
 mod4-C-space    toggle floating client
 mod4-C-ret      swap the client c with the master
@@ -466,10 +461,10 @@ if your mouse pointer cant leave the Xephyr window, it worked
 One single command for copying a complete keymap from one server to another.
 setxkbmap -print | xkbcomp - :1.0
 
-put that code in your manage hook ,or use zenity: 
+put that code in your manage hook ,or use zenity:
 xpop='xprop | grep --color=none "WM_CLASS\|^WM_NAME" | xmessage -file -'
 
-gjorde fel och skrev över vicious/init.lua 
+gjorde fel och skrev över vicious/init.lua
 !kommentera ut require
 
 Sat May  8 05:21:15 CEST 2010
@@ -511,13 +506,13 @@ You can use the awful.client.moveresize function. The following clientkeys examp
 
 ================================================================================
 
-man kan binda shift_r. "shift is not a modifier" (därav nil)  awful.key({nil, "Shift_R" }, "d"  
+man kan binda shift_r. "shift is not a modifier" (därav nil)  awful.key({nil, "Shift_R" }, "d"
 shift + mod4 + <num> moves the client to that tag
 + ctrl will toggle the tag on a client
 there's a bug in 3.4.5 awsetbg which never selects the wp setter it finds
 so, if you do have feh you still need to change your wallpaper_cmd to awsetbg -u feh
 vill ha C-A-arrows move client to next tag + goto next tag
-awful.client.movetotag(target, c) 
+awful.client.movetotag(target, c)
 c: Optional client to move, otherwise the focused one is used
 kanske (target -1) (target +1)
 vilken tag har jag?
@@ -530,11 +525,11 @@ awful.tag.viewidx (i, screen)
 kanske getdata (tag)?
 awful.tag.viewprev(screen) This is the same a tag.viewidx(-1).  s?
 
-I don't want the widget between the prompt and the tasklist! 
+I don't want the widget between the prompt and the tasklist!
 The tasklist uses the flex layout internally, which has to come last always,
 as it uses the place left over by the other widgets. This memwidget is a table
 of widgets (with just one element, but a few functions and such), so it needs
-its own layout, though that is kind of sucky. Try: 
+its own layout, though that is kind of sucky. Try:
 memwidget.layout = awful.widget.layout.horizontal.rightleft
 
 --http://awesome.naquadah.org/wiki/Naughty
@@ -547,7 +542,7 @@ memwidget.layout = awful.widget.layout.horizontal.rightleft
 --naughty.config.width            = 300
 --naughty.config.gap              = 1
 --naughty.config.ontop            = true
---naughty.config.font             = "Domestic Manners 28" --beautiful.font or 
+--naughty.config.font             = "Domestic Manners 28" --beautiful.font or
 --naughty.config.icon             = nil
 --naughty.config.icon_size        = 16
 --naughty.config.fg               = beautiful.fg_focus or '#ffffff'
@@ -561,11 +556,11 @@ råkade ha sönder X-sessionen, tog inte emot keypresses, bara mus. magic sysrq
 
 This is a modified run command that accepts an intial ":" keyword to indicate launching commands in a terminal.
 For instance, ":mc" would open a terminal and run mc.
-Or my favorite ":aptitude".  
-This is all done in the ~/.config/awesome/rc.lua 
-This is the key definition that you would add to your globalkeys: 
- 
-awful.key({ modkey,           }, "r", 
+Or my favorite ":aptitude".
+This is all done in the ~/.config/awesome/rc.lua
+This is the key definition that you would add to your globalkeys:
+
+awful.key({ modkey,           }, "r",
               function () awful.prompt.run({prompt="Run:"},
                                            mypromptbox[mouse.screen].widget,
                                            check_for_terminal,
@@ -574,14 +569,14 @@ awful.key({ modkey,           }, "r",
 
 These are the functions it needs. I just added them to the bottom of my rc.lua and that seems to work just fine:
 
--- {{{ functions to help launch run commands in a terminal using ":" keyword 
+-- {{{ functions to help launch run commands in a terminal using ":" keyword
 function check_for_terminal (command)
    if command:sub(1,1) == ":" then
       command = terminal .. ' -e ' .. command:sub(2)
    end
    awful.util.spawn(command)
 end
-   
+
 function clean_for_completion (command, cur_pos, ncomp, shell)
    local term = false
    if command:sub(1,1) == ":" then
@@ -663,7 +658,7 @@ then match class URxvt, name vimp
 short for title is -T
 
 awful.tag.incmwfact     - increase master width factor
-awful.client.incwfact   - increase width factor 
+awful.client.incwfact   - increase width factor
 
 hur funkar detta?
 0 tags the window for all tags (sticky)
@@ -682,7 +677,7 @@ beats the default mod+right-click easy. var placera detta?  clientbuttons!
     awful.button({ modkey }, 4, function () awful.tag.incmwfact(-0.04)   end),
     awful.button({ "Mod1" }, 5, function () awful.tag.incmwfact( 0.04)   end),
     awful.button({ "Mod1" }, 4, function () awful.tag.incmwfact(-0.04)   end))
-gjorde fel, funkade utan att jag tryckte på pingvinknappen/alt. kunde inte skrålla 
+gjorde fel, funkade utan att jag tryckte på pingvinknappen/alt. kunde inte skrålla
 exempel: modkey,                Mod1            "4"
 
 Tue Jul 27 20:08:57 CEST 2010
@@ -698,8 +693,8 @@ in unfocus: c.opacity = 0.5
 
       |\      _,,,--,,_  ,)
      /,`.-'`'   -,  ;-;;'
-___ |,4-  ) )-,_ ) /\_______ 
-   '----'(_/--' (_/-' 
+___ |,4-  ) )-,_ ) /\_______
+   '----'(_/--' (_/-'
 
 
 
@@ -735,7 +730,7 @@ finns mkt kommentarer att ta bort
             layout = awful.widget.layout.horizontal.leftright
         },
         --exchanging these 2 lines
-	--batwidget,	
+	--batwidget,
         mylayoutbox[s],
         mytextclock,
         s == 1 and mysystray or nil,
@@ -752,7 +747,7 @@ end
 	--vicious.register(batwidget, vicious.widgets.bat, '$2' '$1', 61, 'BAT1')
 	--vicious.register(batwidget, vicious.widgets.bat, '$2' '$1', 61, 'C177')
         --new vicious 10-05-18, there is a widget now
-        
+
         --stänger av, har bytt laptop
     --batwidget = awful.widget.progressbar()
     --batwidget:set_width(12)
@@ -776,7 +771,7 @@ end
         s == 1 and mysystray or nil,
         mytextclock,
         mylayoutbox[s],
-	
+
         layout = awful.widget.layout.horizontal.leftright,
         height = mywibox[s].height
     }
@@ -791,7 +786,7 @@ cp en rc.breakme.lua
 Sun Dec  5 23:08:30 CET 2010
 
 awesome startar inte, bytte tillfälligt till 3.4.8 och rc.lua passar inte
-kan inte kompilera lua-oocairo-git då pod2man inte hittas, 
+kan inte kompilera lua-oocairo-git då pod2man inte hittas,
 den perlmodulen finns, men inte i $PATH, fixar tillfälligt. behöver visst inte CPAN just nu
 jag la till själva perlscriptet till PATH isf mappen där det bor, skulle gjort:
 export PATH="/home/duke/bin:/usr/local/bin:/usr/bin:/bin:/usr/games:/home/duke/bin/scripts:/usr/lib/perl5/core_perl/bin/"

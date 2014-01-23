@@ -12,7 +12,7 @@ numlockx on
 setxkbmap se -variant nodeadkeys -option terminate:ctrl_alt_bksp
 
 # mera keybinds (~/.xbindkeysrc)
-xbindkeys -f ~/.xbindkeysrc 
+xbindkeys -f ~/.xbindkeysrc
 
 # tapping off for 2 secs when typing. -t allows moving:
 # -K ignore Modifier+Key combos. -d daemon -i timeout
@@ -22,7 +22,7 @@ xbindkeys -f ~/.xbindkeysrc
 # tmp comment
 urxvtd -q -o -f
 
-# clipbored daemon, see if it's running first? 
+# clipbored daemon, see if it's running first?
 # crap, only gives one word, stdout-puts previous choice
 #if [[ -x /usr/bin/site_perl/clipbored ]]
 #then
@@ -37,7 +37,7 @@ urxvtd -q -o -f
 source ~/.fehbg
 # exmpl #feh --bg-scale 'pics/bakgrund/arch_headphones2.png'
 
-# change mouse pointer in awesome 
+# change mouse pointer in awesome
 xsetroot -cursor_name left_ptr
 # xinput --set-prop --type=float 8 245 4.000000
 # read, filter, assign, apply. RAZERID is typically 8
@@ -45,7 +45,7 @@ xsetroot -cursor_name left_ptr
 RAZERID=$(xinput --list | awk -F "=" '/Razer Razer 1600dpi Mouse/ {print $2}' | awk '{print $1}')
 # 0 is not negative enough
 xinput set-prop 'Razer Razer 1600dpi Mouse' 'Device Accel Profile' -1
-# xinput --set-prop --type=float $RAZERID 245 4.000000 
+# xinput --set-prop --type=float $RAZERID 245 4.000000
 # disable emulate3buttons
 xinput --set-prop --type=int $RAZERID 254 0
 xinput --set-button-map $RAZERID 1 2 3 4 5 6 7 9 8
@@ -56,7 +56,7 @@ xrdb ~/.Xresources
 # måste va efter setxkbmap
 # funkar inte. inte ~/.Xprofile heller
 #sleep 3 && xmodmap ~/.Xmodmap
-#/home/occam/bin/scripts/swap_esc_caps.sh &
+#~/bin/scripts/swap_esc_caps.sh &
 xmodmap ~/.Xmodmap
 
 # why does it never start?
@@ -74,7 +74,7 @@ xmodmap ~/.Xmodmap
 #awesome -c ~/.config/awesome/rc.lua_20101005-1.lua
 #ck-launch-session awesome
 
-if [[ WM = openbox ]] ; then 
+if [[ WM = openbox ]] ; then
 	WM="openbox-session"
 fi
 #exec ck-launch-session openbox-session
