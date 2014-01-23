@@ -6,4 +6,4 @@
 	main-window-geometry = 1596x1168+0+0
 	history-view-vpane-position = 880
 [core]
-	excludesfile = /home/occam/.gitignore
+	excludesfile = ~/.gitignore
