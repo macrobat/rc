@@ -1,6 +1,6 @@
 ;;; setup and launch erc
 
-;; maybe use stuff from pjbs erc-yank.el to prevent pasting > 2 lines?
+;; maybe use stuff from erc-yank.el to prevent pasting > 2 lines?
 
 ;; ErcScrollToBottom
 ;; M-x customize-variable RET <erc-module>
@@ -11,7 +11,7 @@
 ;;  (erc-tls :server "irc.freenode.net" :port 6697 :nick nick :password pass))
 
 ;; wontwork
-;; (defun my-erc (erc :server "irc.freenode.net" :port 6667 :nick macrobat_))
+;; (defun my-erc (erc :server "irc.freenode.net" :port 6667 :nick "bla bla"))
 
 (defun chat ()
   (interactive)

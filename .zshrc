@@ -315,6 +315,7 @@ function bak() { cp $1{,.bak} ; }
 # put the rest of the argument list at the end. $@:something 2
 function drop() { find -L ${2:=.} -iname "*$1*" ; }
 function ec() { emacsclient --create-frame --alternate-editor="" -nw "$@" ; }
+# bsd-games /usr/bin/rot13 is: exec /usr/bin/caesar 13 "$@"
 function rot13() { tr '[a-m][n-z][A-M][N-Z]' '[n-z][a-m][N-Z][A-M]'; }
 function tobc() {echo "scale=5; $1 $2 $3" | bc } # escape the *
 
@@ -333,6 +334,7 @@ alias cd..='cd ..'
 # alias ....='cd ../../../'
 # alias cu='cd ../'
 
+# expand . to /..
 # Allow stuff like "cd ..../dir"
 rationalise-dot() {
     if [[ $LBUFFER = *.. ]]; then
@@ -458,7 +460,8 @@ alias urt='urxvt -pe tabbed'   #have urxvtd -q -o -f running
 alias URT='urxvt -name URxvt' #transparent (.Xdefaults)
 alias tid='watch -t -n1 "date +%T| figlet"'
 alias m='cat /proc/mounts'
-alias em='emacsclient'
+# use the ec function. or uemacs for fun
+# alias em='emacsclient'
 # alias ack='ack-grep' # not necessary in arch
 
 alias ub='mount -t vfat /dev/sdb1 /media/usb/; cd /media/usb/'

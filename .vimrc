@@ -120,6 +120,12 @@ inoremap <C-_> <esc>ui
 " without changing the cursor position:
 nnoremap <silent> gc xph
 
+" derekwyatt has more ,binds for emacs cmdline and windowing
+" Swap two words. from cursor to end of next
+" får problem med massa markeringar, yank-paste blir konstigt
+" nmap <silent> gw :s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR>`'
+
+" TODO: test adding <esc> nohl on these 3
 " To use gw to transpose the current word with the next, without changing cursor
 " position: (See note.)
 " :nnoremap <silent> gw "_yiw:s/\(\%#\w\+\)\(\W\+\)\(\w\+\)/\3\2\1/<CR><c-o><c-l>
@@ -392,12 +398,6 @@ set textwidth=80
 
 " Toggle the NERD Tree with F7
 nmap <F7> :NERDTreeToggle<CR>
-
-" derekwyatt has more ,binds for emacs cmdline and windowing
-
-" Swap two words. from cursor to end of next
-" får problem med massa markeringar, yank-paste blir konstigt
-" nmap <silent> gw :s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR>`'
 
 " http://vim.wikia.com/wiki/Mapping_keys_in_Vim_-_Tutorial_(Part_1)
 " cannot search /W when :W is mapped to :w

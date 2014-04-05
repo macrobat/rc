@@ -1,51 +1,43 @@
 ;; in case of error, use (when nil ) to bisect this file
 
-;; TODO: use autoloads
+;; cons onto load-path list before we can load/require libs
+;;(add-to-list 'load-path "~/.emacs.d/") ; warning
+;; mapc is for side-effects only, it doesn't return a list like mapcar does
+
+(mapc '(lambda (dir) (add-to-list 'load-path dir)) ; if in, I want "~/.emacs.d/" last
+      '("~/.emacs.d/elisp" "~/.emacs.d/" )) ; "~/.emacs.d/themes"
+
+;; set up unicode
+;; (prefer-coding-system       'utf-8)
+;; (set-default-coding-systems 'utf-8) ; sets the next two
+;; (set-terminal-coding-system 'utf-8)
+;; (set-keyboard-coding-system 'utf-8)
+;; obsolete. use `buffer-file-coding-system'
+;; (setq default-buffer-file-coding-system 'utf-8)
+
+;; put all in ~/emacs.d : init file .emacs-places .emms-cache .ido.last
+
+;;; ==============================================================
+
+;;; packages
+
+
+;; TODO
+;; elpa initializes after init-file is loaded, a way to conf pkgs is
+;; (add-hook 'after-init-hook
+;; '(lambda () (load-file "~/.emacs.d/package-init.el"))) and conf that file
+;; with use-package you can defer loading until needed
+
+;; TODO: use autoload
 ;; (autoload FUNCTION FILE &optional DOCSTRING INTERACTIVE TYPE)
 ;; Define FUNCTION to autoload from FILE.
 ;; FUNCTION is a symbol; FILE is a file name string to pass to `load'
 
-;; set up unicode
-;; (prefer-coding-system       'utf-8)
-;; (set-default-coding-systems 'utf-8)
-;; (set-terminal-coding-system 'utf-8)
-;; (set-keyboard-coding-system 'utf-8)
-;; (setq default-buffer-file-coding-system 'utf-8)
-
-;; cons onto load-path list before we can load/require libs
-;;(add-to-list 'load-path "~/.emacs.d/")
-;; mapc is for side-effects only, it doesn't return a list like mapcar does
-(mapc '(lambda (dir) (add-to-list 'load-path dir))
-      '("~/.emacs.d/" "~/.emacs.d/elpa" "~/.emacs.d/themes"))
-;; no asking to follow symlinks into vcs. early in the config
-;; (remove-hook find-file-hook 'vc-find-file-hook) ; crap refuses to be turned off?
-
-;; "~/.emacs.d/elpa/paredit-22"
-;; do I neeed all dirs in elpa too?
-
-;; removed these, use packages and elpa
-;; "~/.emacs.d/workgroups.el/" "~/.emacs.d/slime/" "~/.emacs./rainbow"
-;; "emacs-color-theme-solarized"
-;; no need for special slime. works with clisp now
-;; "/usr/share/emacs/site-lisp/slime/contrib/"
-;; have added slime to default Info dir
-;; (add-to-list 'Info-default-directory-list "~/.emacs.d/slime/doc/")
-
-;; lägg allt i ~/emacs.d inbegriper .emacs .emacs-places .emms-cache .ido.last
-;; You can use ~/.emacs.d/init.el instead of ~/.emacs with no links required
-;; and you can customize the variable ido-save-directory-list-file.
-;; the same with emms-directory emms-directory specifies where emms
-;; puts other things. there is also, emms-cache-file.
-
-;;; ---------------------------------------------------
-;;; packages
-
-;; FIXME
 ;; you must not be initializing properly?
 ;; the variable is not autoloaded
 ;; if you do M-x list-packages  then you'll see it
-;; and of course any customization or setting of that variable before the package is loaded will persist over the package
-;; load.
+;; and of course any customization or setting of that variable before the
+;; package is loaded will persist over the package load.
 ;; so, (package-initialize) is done before add-list?
 ;; macrobat: no, you shouldn't do that
 ;; initializing how?
@@ -58,20 +50,24 @@
 ;; don't get me wrong, of course you can do it. but it's not "right"
 ;; I shouldn't setq package-load-list?
 ;; I don't think so, no.
-;; packages should autoload. any package that doesn't should be loaded with an (eval-after-init ...) ; no such thing!!!
-;; lots of packages are modes that you want to load with mode-alist... which can be done even if the package isn't loaded,
-;; or done on some hook, which can be done without loading the package or done on a key which can also be done without
-;; loading the package
+
+;; packages should autoload. any package that doesn't should be loaded with an
+;; (eval-after-init ...) ; no such thing!!! lots of packages are modes that you
+;; want to load with mode-alist... which can be done even if the package isn't
+;; loaded, or done on some hook, which can be done without loading the package
+;; or done on a key which can also be done without loading the package
+
 ;; where can I find this information (and more)?
-;; well, the elisp manual describes the packaging startup. but it's not very clear on the implications.
+;; well, the elisp manual describes the packaging startup.
+;; but it's not very clear on the implications.
 
 ;; Any settings for packages sould be done with eval-after-init?
 ;; I don't think so, use customize if you can. If not then use a
 ;; package specific hook and if you can't do that then use an
 ;; eval-after-init, I guess.
 
-;; package.el is put in the elpa dir or comes with emacs24
-(load "package_23_github.el")
+;; package.el comes with emacs24
+(load "~/.emacs.d/elpa/package_23_github.el")
 
 ;; 2013-05-28 trying default emacs24 package. vortex of fail
 ;; http://www.emacswiki.org/emacs/ELPA
@@ -82,43 +78,34 @@
 ;; package-initialize is run _after_ init file load and before after-init-hook
 ;; (require 'package) ; don't in emacs24
 
-;; using setq
 ;; (setq package-archives
 ;;          '("marmalade" . "http://marmalade-repo.org/packages/"))
 ;; (add-to-list 'package-archives
 ;;   '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")
-                         ("melpa" . "http://melpa.milkbox.net/packages/")))
-
-;; man kan visst inte bara ändra. använd inbyggda package?
-;; File error: Cannot open load file, buffer-move
-;; (setq package-load-list
-;;       '((bm "20121212.2224") (browse-kill-ring "20130702.1224")
-;;         (buffer-move "20110305.249")
-;;         (rainbow-mode "0.1") (workgroups "0.2.0") (paredit "22")
-;;         (goto-last-change "1.2") (popwin "0.4") (geiser "0.4")))
-
+;;                         ("melpa" . "http://melpa.milkbox.net/packages/") ; very fresh pkgs
+))
 
 ;; Each element in this list should be a list (NAME VERSION)
 (setq package-load-list
       '((bm "1.53") (browse-kill-ring "1.3.1") (buffer-move "0.4")
-        (rainbow-mode "0.1") (workgroups "0.2.0") (paredit "22")
+         (paredit "22") (rainbow-mode "0.1")
         (goto-last-change "1.2") (popwin "0.4")
-        ;; (geiser "0.4") ; default wontwork
-        (dash "20130712.2307") ; for sp. File exists: blab dash-pkg.el
-        (smartparen "20130715.1530")
-        (workgroups2 "20131002.1143")
         ))
+;; (geiser "0.4") ; default wontwork
+;; smartparen better than paredit? needs dash
+;; (dash "20130712.2307") ; File exists: blabla dash-pkg.el
+;; (smartparen "20130715.1530")
+;; (workgroups "0.2.0") ; wont load, do it manually
+;; (workgroups2 "20131002.1143") ; buggy
+;; (htmlize "1.39")
 
-        ;; smartparen better than paredit? needs dash
-
-        ;; Symbol's function definition is void: popwin:display-buffer
-        ;; (popwin "0.4") ; have to load the crap manually, like a peasant
+;; Symbol's function definition is void: popwin:display-buffer
+;; (popwin "0.4") ; have to load it manually
 ;; (eval-after-init (package-initialize) (require 'popwin)) ; there is no eval-after-init
 ;; (add-hook 'after-init-hook (lambda () (require 'popwin)))
 
-;; htmlize "1.39"
 ;; pkgs installed by elpa will be requireable
 ;; (package-initialize)
 ;; This was installed by package-install.el. This provides support for the package system and
@@ -137,8 +124,8 @@
   (setq special-display-function
         'popwin:special-display-popup-window))
 
-;;; ^packages^
-;;; ---------------------------------------------------
+;;; ^^packages
+;;; ==============================================================
 
 ;; http://www.emacswiki.org/cgi-bin/wiki.pl?SessionManagement
 ;; need desktop-save-mode, and desktop-change-dir?
@@ -148,10 +135,10 @@
 ;; (setq session-save-file "~/.emacs.d/session")
 ;; (add-hook 'after-init-hook 'session-initialize)
 
-;;; disabling tmp
+;;; let wg handle sessions instead?
 ;; (require 'desktop-menu)
-(desktop-save-mode 1)
-(desktop-read) ;gives error ;needed? the desktop wasn't read before
+;; (desktop-save-mode 1)
+;; (desktop-read) ;gives error ;needed? the desktop wasn't read before
 
 ;; old crap. want unique buffer names
 ;;(require 'uniquify) (setq uniquify-buffer-name-style 'forward)
@@ -170,58 +157,81 @@
 ;;(setq show-paren-style 'expression) ; highlight entire expression
 ;; M-x customize-face RET show-paren-match RET         byt bakgrund
 
+;; (add-hook ... '(lambda () ...)) will work, but you shouldn't use it.
+;; For reasons related to byte-compilation, (lambda () ...) is better.
+
+;; TODO: pkginit
 ;; http://www.emacswiki.org/emacs/PareditCheatsheet
-;; stupid straightjacket, masks many useful keybinds. (M-q)
-;; paredit is a minor mode
+;; straightjacket, masks many useful keybinds. (M-q)
 ;; (require 'paredit) ; don't need to enable it for rain-delim
 ;; require it with elpa?
-;; (autoload 'paredit-mode "paredit"
-;;   "Minor mode for pseudo-structurally editing Lisp code." t)
+;; is the first arg something in the file or the users own function?
+(autoload 'paredit-mode "~/.emacs.d/elpa/paredit-22/paredit-autoloads.el"
+  "Minor mode for pseudo-structurally editing Lisp code." t nil)
 ;; (add-hook 'emacs-lisp-mode-hook       (lambda () (paredit-mode +1)))
 ;; (add-hook 'lisp-mode-hook             (lambda () (paredit-mode +1)))
 ;; (add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode +1)))
-
-;; local-set-key changes the major mode, not the minor paredit-mode
 ;;(if (or (featurep emacs-lisp-mode) (featurep lisp-interaction-mode))
-;;      (local-set-key (kbd "<C-j>") 'eval-print-last-sexp)
-;;   (global-set-key (kbd "<C-j>") 'newline))
 ;; bind delete to backward-delete-char in paredit-mode
-;;(with-current-buffer "*scratch*" (local-set-key
-;;                                (kbd "<C-j>") 'eval-print-last-sexp))
+;; (with-current-buffer "*scratch*" (local-set-key
+;;   (kbd "<C-j>") 'eval-print-last-sexp))
+;; ,paredit-nonlisp is
+;; (set (make-local-variable
+;; 'paredit-space-for-delimiter-predicates)
+;;  '((lambda (endp delimiter nil)))
 
-;; hang theese on a hook?
-(when (featurep 'paredit)
-  (define-key paredit-mode-map (kbd "C-j") 'eval-print-last-sexp)
-  ;; stopped working in archlinux X
-  (define-key paredit-mode-map (kbd "S-<backspace>") 'backward-delete-char)
-  ;; ,paredit-nonlisp is
-  ;; (set (make-local-variable 'paredit-space-for-delimiter-predicates)
-  ;;  '((lambda (endp delimiter nil)))
-  )
+;; (when (featurep 'paredit) <bind some keys>)
+;; paredit-mode-off-hook
+;; paredit-mode-on-hook
+(add-hook 'paredit-mode-on-hook
+;; local-set-key changes the major mode, not the minor paredit-mode
+	  ;; (lambda () (local-set-key
+	  ;; 	 (kbd "C-j") 'eval-print-last-sexp))
+	  ;; (lambda () (local-set-key
+	  ;; 	 (kbd "S-<backspace>") 'backward-delete-char))
+	  (lambda () (define-key paredit-mode-map
+		  (kbd "C-j") 'eval-print-last-sexp))
+	  (lambda () (define-key paredit-mode-map
+		  (kbd "S-<backspace>") 'backward-delete-char))
+	  (lambda () (message "paredit on. no message?"))
+	  )
+
+(add-hook 'paredit-mode-off-hook
+	  (lambda () (message "paredit off. message works.")))
+
 
 ;; (require 'rainbow-delimiters)
-
-;; (rainbow-delimiters-mode) ; buffer-local?
-;; maybe like this?
-;; (setq rainbow-delimiters-mode 1)
-;; needs paredit loaded too
+;; (rainbow-delimiters-mode 1) ; buffer-local
+;; needs paredit loaded
 (add-hook 'lisp-mode-hook
           (lambda ()
             (require 'paredit)
             (require 'rainbow-delimiters)
-            (rainbow-delimiters-mode)))
+            (rainbow-delimiters-mode 1)))
 (add-hook 'lisp-interaction-mode-hook
           (lambda ()
             (require 'paredit)
             (require 'rainbow-delimiters)
-            (rainbow-delimiters-mode)))
+            (rainbow-delimiters-mode 1)))
 
-;; You don't add a hook; you hang a function on a hook.
-;; using elpa now (load-file "~/.emacs.d/rainbow/rainbow-mode.el")
+;; smart-parens: no '' pair in emacs-lisp-mode
+;; (sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
+;; (sp-local-pair 'scheme-mode "'" nil :actions nil)
+;; (sp-local-pair 'geiser-repl-mode "'" nil :actions nil)
+
+;;; ---------------------------------------------------
+;;; web stuffs
+
+;; (setq nxml-slash-auto-complete-flag 't) ; finish a </
+;; // css mode comments is illegal
+
+;; using elpa  (load-file "~/.emacs.d/rainbow/rainbow-mode.el")
 (require 'rainbow-mode)
 (add-hook 'css-mode-hook (rainbow-mode))
+;;; ^^web stuffs
+;;; ---------------------------------------------------
 
-;; glömt vad "autoload" är
+
 ;; M-x unload-feature to un-require
 (setq auto-mode-alist (cons '("\.lua$" . lua-mode) auto-mode-alist))
 (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
@@ -240,48 +250,55 @@
       c-basic-offset 4)
 
 ;; "when" has an implicit progn
-;; (when (condition) (do 1) (do 2) (do n))
 (when window-system
-  (set-default-font
+  (set-frame-font ; set-default-font is obsolete
    ;; M-x set-frame-font
-   ;; "-unknown-DejaVu Sans Mono-normal-normal-normal-*-12-*-*-*-m-0-iso10646-1") ; lappy
-   "-unknown-DejaVu Sans Mono-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1") ; desktop
+   ;; smaller laptop fontsize
+;; "-unknown-DejaVu Sans Mono-normal-normal-normal-*-12-*-*-*-m-0-iso10646-1")
+   "-unknown-DejaVu Sans Mono-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1")
+  ;; (set-frame-font "Inconsolata")
+  ;; (set-frame-font "Consolas")
+  ;; (set-frame-font "Andale Mono")
+  ;; (set-frame-font "Terminus")
+
   ;; (set-scroll-bar-mode 'right)
 
-  ;; (color-theme-initialize) ; old way, not in new emacs
+  ;; (color-theme-initialize) ; old-old way
   ;; (load "color-theme-solarized")
   ;; (color-theme-solarized-dark)
   ;; custom-theme-load-path is (custom-theme-directory t)
   ;; finns temata i /usr/share/emacs/24.2/etc/
   ;; har lagt "color-theme" i ~/.emacs.d och temata i ~/.emacs.d/themes
   ;; themes that suck less: zenburn arjen goldenrod billw
-  ;; (setq custom-theme-directory "~/.emacs.d/themes")
   ;; (load-theme 'solarized-dark t) ; t consider safe
+  
+  ;; load-theme and themes in ~/.emacs.d/themes . both these work
+  (setq custom-theme-directory "~/.emacs.d/themes")
+  (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+
   (load "color-theme")
-  (load "arjen-theme")
+  (load "~/.emacs.d/themes/arjen-theme")
   (color-theme-arjen)
 
-  ;; (color-theme-zenburn) (color-theme-gnome2)
-  ;; region är lite tråkig, försöker ändra runt rad 100
+  ;; (color-theme-zenburn) ; (color-theme-gnome2)
+  ;; region has aboring colour, change ~ line 100
 
-  ;; om jag stänger av, funkar inte S-Ins. om det är på ändras i clipboard
+  ;; nil => S-Ins wontwork. t => changes clipboard
   (setq x-select-enable-clipboard t)
   (setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
 
-  ;; vill öppna länkar i conkeror/firefox
   ;; browse-url       browse-url-at-point    browse-url-at-mouse
   (setq browse-url-generic-program (executable-find "firefox")
         browse-url-browser-function 'browse-url-generic)
-  ;; (setq tabbar-mode t) ; lägg alla *buffers* i en grupp.
-  ;; är skit, dålig dålig sortering
-  ;; tabbar.el är fr 2005 och är ~2000 rader. vilken tabbar är i emacs24?
-  ;; finns snippets på http://www.emacswiki.org/emacs/TabBarMode
+  ;; (setq tabbar-mode t) ; have all *buffers* in a group?
+  ;; bad, bad sorting of tabs. tabbar.el is from 2005. ~2000 lines.
+  ;; snippets http://www.emacswiki.org/emacs/TabBarMode
   (tool-bar-mode -1)
   (menu-bar-mode -1)
   (winner-mode 1) ; undo window changes
   ;;(speedbar t) ;; i want it in buffer mode < and narrower in awesome >
 
-  ;; (setq pop-up-windows nil) ; skit, ersätter bef. buffer med popup
+  ;; (setq pop-up-windows nil) ; shit, replaces shown buffer with popup
   (setq pop-up-windows t)
   ;; (setq display-buffer-function 'popwin:display-buffer)
   ;; how do i know/control in what window a buffer will pop up in?
@@ -289,15 +306,24 @@
   ;; a variable that controls whether a new buffer should get
   ;; a different window from the current window. Non-nil means
   ;; `display-buffer' should make a new window. You can customize
-  ;; this variable.
-  ;; protips: one-window-p & (length (window-list))
-  ;; Defined in `/usr/share/emacs/23.1/lisp/window.elc'.
 
-)
-;; end of "when window-system"
+) ; end of "when window-system"
 
-;;; ---------------------------------------------------
-;;; keys, utseende och sånt
+;; (require 'workgroups)
+;; crap won't require with elpa
+;; byte-compiled
+(when (file-exists-p "~/.emacs.d/elpa/workgroups-0.2.0/workgroups.elc")
+  (load-file "~/.emacs.d/elpa/workgroups-0.2.0/workgroups.elc"))
+  (workgroups-mode 1)
+  (setq wg-morph-on nil)
+  (wg-load "~/.emacs.d/workgroups")  ; holds multiple wg:s
+;; wg-prefix-key is a defcustom. is it set?
+;; (when (featurep 'workgroups) )
+
+(put 'dired-find-alternate-file 'disabled nil) ; is 'a
+
+;;; ==============================================================
+;;; keys, looks
 ;; the angle brackets are only used for things such as <C-backspace>
 ;; "The binding goes in the current buffer's local map, which in most
 ;; cases is shared with all other buffers in the same major mode."
@@ -321,7 +347,7 @@
   (global-set-key (kbd "M-7") 'dabbrev-expand)
   (global-set-key (kbd "M-0") 'count-lines-region))
 
-;; handle lines more easily
+;; handle lines conveniently
 ;; http://emacs-fu.blogspot.se/2009/11/copying-lines-without-selecting-them.html
 (defadvice kill-ring-save (before slick-copy activate compile) "When called
   interactively with no active region, copy a single line instead."
@@ -364,12 +390,7 @@
 (global-set-key (kbd "C-*") 'register-to-point)
 (global-set-key (kbd "C-.") 'repeat) ; vimmy
 
-;; isf (slime-next-note) ; gå till kompileringsfel
-;;(add-hook 'lisp-mode-hook (lambda () (local-set-key (kbd "M-n") 'dabbrev-expand)))
-;;(add-hook 'lisp-mode-hook (lambda () (local-set-key (kbd "M-p") 'hippie-expand)))
 
-;; has nothing to do with minibuffer M-x cycling
-;; (global-set-key (kbd "C-x C-b") 'buffer-menu) ; nor buffer-list nor ibuffer
 (global-set-key (kbd "C-x C-b") 'ibuffer) ; [remap list-buffers] funkar visst inte
 (global-set-key (kbd "C-h a") 'apropos)
 (setq apropos-do-all t) ; search deper and slower. or use with C-u prefix
@@ -387,7 +408,7 @@
 (global-set-key (kbd "<RET>") 'newline-and-indent)
 ;; swap <RET> and C-j unless in python-mode. add-hook python-mode-hook?
 
-;; there's no *scratch* hook. hyphen is part of word
+;; there's no *scratch* hook. hyphen is now part of word
 (add-hook 'emacs-lisp-mode-hook
           (lambda () (local-set-key [(C-j)] 'eval-print-last-sexp))
           (lambda () (modify-syntax-entry ?- "w" emacs-lisp-mode-syntax-table)))
@@ -395,9 +416,6 @@
 ;; You add functions to the hook, not function calls, lambda doesn't need '
 (global-set-key (kbd "C-S-j") (lambda () (interactive) (join-line t))) ; vimmy
 
-;; C-x f runs the command set-fill-column
-;; wrap in (if ( bla ido-mode) )
-(global-set-key (kbd "C-x f") 'ido-find-file)
 ;; gör ingenting, returnera ingenting, kbd macro is C-x (
 (global-set-key (kbd "C-x C-k RET") 'ignore)
 
@@ -408,16 +426,6 @@
                                 (enlarge-window-horizontally 5)))
 (global-set-key (kbd "C-x {") (lambda () (interactive)
                                 (shrink-window-horizontally 5)))
-;; error "s- must prefix a single character, not down"
-;; (global-set-key (kbd "s-up") (lambda () (interactive)
-;;                                 (enlarge-window-horizontally 5)))
-;; (global-set-key (kbd "s-down") (lambda () (interactive)
-;;                                 (shrink-window-horizontally 5)))
-
-;; for bubbling...
-;; (beginning-of-line)(kill-line)(up)(yank)
-;; (exchange-point-and-mark
-
 
 (global-set-key (kbd "<C-S-backspace>") 'kill-line)
 (global-set-key (kbd "<C-S-k>") 'kill-line)
@@ -439,10 +447,11 @@
 ;; C-x C-j jump to dired. behöver inte spara på en massa dired-buffrar?
 (require 'dired-x)
 
-;; what to bind for browse-kill-ring ?
 (browse-kill-ring-default-keybindings)
 (global-set-key (kbd "C-c k") 'browse-kill-ring)
-;; M-w är kill-ring-save, funkar bra
+;; have downloaded browse-kill-ring+.el
+;; M-w is kill-ring-save, it works
+
 ;; Define aliases ; use C-q C-j to /re/place a return
 ;; fmakunbound to unbound an alias
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -450,18 +459,14 @@
 (defalias 'qr  'query-replace)           ; M-%     M-5
 (defalias 'rr  'replace-regexp)
 (defalias 'rs  'replace-string)
+;; won't leave cursor in minibuffer
 (defalias 'sb  'isearch-backward-regexp) ; C-M r
 (defalias 'ss  'isearch-forward-regexp)  ; C-M s
 (defalias 'bb  'bury-buffer)
-(defalias '\0  'bury-buffer)             ; M-x RET
+(defalias '\0  'bury-buffer)             ; first in suggestions, M-x RET
 (defalias 'hr  'highlight-regexp)
 (defalias 'rb  'revert-buffer)
 (defalias 'pm  'paredit-mode)
-
-;; (defalias 'ans 'ansi-term "/usr/bin/zsh") ; stupid
-;; (defalias 'ans '(funcall 'ansi-term (getenv "SHELL")))
-;; (ansi-term zsh) ; wontwork
-;; (defalias 'ans (save-window-excursion (ansi-term "/bin/zsh")))
 
 ;; http://stackoverflow.com
 (defun copy-full-path-to-kill-ring ()
@@ -481,16 +486,10 @@
 ;; tab-complete when using M-:
 (define-key read-expression-map (kbd "TAB") 'lisp-complete-symbol)
 
-;; Now, (add-hook ... '(lambda () ...)) will work, but you shouldn't use it.
-;; For various obscure reasons related to byte-compilation, (lambda () ...) will work better.
-
-;; lambda finns inte i utskrift med M-x ps-print-buffer-with-faces
+;; lambda won't show when printing with M-x ps-print-buffer-with-faces
 (require 'pretty-lambdada)
 (pretty-lambda-for-modes)
 
-;; wtf does this one do? useless!
-;(require 'visible-mark)
-;(setq visible-mode t)
 
 ;; bm is better http://www.nongnu.org/bm/ can't jump across buffers, though
 ;; (require 'bm) ; no? (file-error "Cannot open load file" "bm")
@@ -499,6 +498,7 @@
 ;;(define-key global-map [f9] 'bookmark-jump)
 ;;(define-key global-map [f10] 'bookmark-set)
 
+;; TODO: pkginit
 ;; (load "bm-1.52") ; new version, elpa
 (require 'bm)
 ;; toggle bookmarks by clicking in the fringe:
@@ -509,6 +509,10 @@
               (mouse-set-point event)
               (bm-toggle))))
 ;; there is also Bookmark+
+
+;; won't work, use customize-group bookmark
+;(setq 'bookmark-default-file "~/.emacs.d/bookmarks")
+
 
 (defun smaller-text () (interactive) (text-scale-adjust -1))
 (global-set-key (kbd "C-<mouse-4>") 'smaller-text)
@@ -527,34 +531,6 @@
 
 (setq mouse-wheel-progressive-speed nil)
 
-(put 'dired-find-alternate-file 'disabled nil) ; är 'a
-
-;; wg2 is shit or it doesn't work. DONOTWANT
-;; says session is unmodified when I want to save
-;; Can't use ~/.emacs.d/workgroups
-;; for some reason always uses ~/.emacs_workgroups
-
-;; https://github.com/pashinin/workgroups2
-;; "if you start as "emacs --daemon" - turn off autoloading of workgroups"
-;; prefix key for workgroups is C-c z (try C-z)
-;; (require 'workgroups)
-(require 'workgroups2)
-(when (featurep 'workgroups2)
-  ;; session kind of works, but I don't want crap in ~/
-  ;; M-x wg-save-session saves it there anyway
-  ;; (wg-find-session-file "~/.emacs_workgroups")
-  (wg-find-session-file "~/.emacs.d/workgroups")
-  (workgroups-mode 1)
-  (setq wg-morph-on nil)
-  (global-set-key (kbd "C-c z !") nil)
-  (global-set-key (kbd "C-z") nil)
-  (global-set-key (kbd "C-c z d") nil))
-;; where is the file?
-;; don't keep session file in repo
-;; (wg-load "~/.emacs.d/workgroups")
-;; must create and save a workgroup C-z c name C-z C-s,
-;; or the rest of init.el won't eval
-
 ;; is a toggle
 (blink-cursor-mode -1)
 (setq-default cursor-type '(bar . 4)) ; globally
@@ -564,19 +540,21 @@
 ;; if case is important when searching:
 ;;(setq case-fold-search 'nil)
 
-;; shells. repl åxå?
+;; shells. apply to repl too?
 ;; ser t ex bara första raden filer vid ls
 ;; (setq comint-scroll-to-bottom-on-input t)
+(setq scroll-conservatively 1)
 (setq whitespace-style '(face trailing lines-tail tabs) whitespace-line-column 80)
 
 (setq sentence-end-double-space nil) ; double space is default? really?
 
 (setq frame-title-format '("%b")) ; no hostname
 
-;; DONOTWANT!! (glasses-mode) sätter visst in _ här och var
+(global-set-key (kbd "C-h C-f") 'find-function) ; don't bind the emacs FAQ
 
-;;; ^keys^  ^utseende^
-;;; ---------------------------------------------------
+
+;;; ^^keys ^^looks
+;;; ==============================================================
 
 (defun eshell/clear ()
   "http://www.khngai.com/emacs/eshell.php, to clear the eshell buffer."
@@ -592,15 +570,17 @@
 (setq ido-enable-flex-matching t) ; fuzzy matching
 ;; http://www.emacswiki.org/emacs/InteractivelyDoThings
 ;; http://www0.fh-trier.de/~politza/emacs/ido-hacks.el.gz
-;; ido sparar tid och kan mkt http://vimeo.com/1013263
+;; ido saves time http://vimeo.com/1013263
 
 ;; Display ido results vertically, rather than horizontally
-;; looks stupid. why "dummy"?
-;; Maybe "Confirm" is needed for example to make a new buffer
+;; ido-decorations in ido.el
+;; Maybe "Confirm" is f ex to make a new buffer
+;; TODO: make <up> <down> arrows work
 (setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
 
-;; list of 11. from emacs24 ido.el:
-;; (defcustom ido-decorations '( "{" "}" " | " " | ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]") "")
+;; C-x f runs the command set-fill-column
+;; wrap in (if ( bla ido-mode) )
+(global-set-key (kbd "C-x f") 'ido-find-file)
 
 (defun ido-disable-line-trucation () ; use a lambda
   (set (make-local-variable 'truncate-lines) nil))
@@ -631,37 +611,36 @@
           `(("^.*/" "~/.emacs.d/autosaves/" t)))
 (savehist-mode 1)
 
-;; newer yow
 (when (file-exists-p "~/.emacs.d/zippyisms")
-  (setq cookie-file "~/.emacs.d/zippyisms"))
+  (setq cookie-file "~/.emacs.d/zippyisms")) ; (message "yow")
 (defalias 'yow 'cookie)
 
-;; no asking to follow symlinks into vcs
-;; these is no vc-find-file-hook. not yet?
-;; (remove-hook find-file-hook vc-find-file-hook)
+;; Is there a way to disable asking to follow symlinks into vcs?
+;; setting it too early or too late
+;; these is no vc-find-file-hook. not eval-after-load
+;; (add-hook 'after-init-hook
+;;           '(lambda () (remove-hook 'find-file-hook 'vc-find-file-hook)))
+;; (setq vc-follow-symlinks nil) ; DO_AS_I_SAY_NOT_AS_I_DO
+;; Symbol's value as variable is void: global-font-lock-mode-check-buffers
+;; (setq find-file-hook
+;;      global-font-lock-mode-check-buffers epa-file-find-file-hook)
+;; this is too late. the hook is nil, but the question is asked
+;; (add-hook 'after-init-hook
+;;           '(lambda () (setq find-file-hook nil)))
 
-;;; ---------------------------------------------------
+
+;;; ==============================================================
 ;;; org mode
 ;; from David O'Toole Org tutorial
 ;; set this crap in the right keymap instead
 ;; (define-key global-map "\C-cl" 'org-store-link)
 ;; (define-key global-map "\C-ca" 'org-agenda)
-(setq org-log-done t)
 
+;; (setq org-log-done t)
 
+;;; ^^org mode
+;;; ==============================================================
 
-;;; end org mode
-;;; ---------------------------------------------------
-;;; web stuffs
-
-;; (setq nxml-slash-auto-complete-flag 't) ; finish a </
-;; // css mode comments is illegal
-
-;;; end web stuffs
-;;; ---------------------------------------------------
-
-;; won't work, use customize-group bookmark
-;(setq 'bookmark-default-file "~/.emacs.d/bookmarks")
 
 ;; nvm, fortune won't work anyway
 ;;(setq fortune-dir "/usr/share/fortune/")
@@ -670,87 +649,24 @@
 ;; set a mark, move the point with keystrokes and press delete, only one char disappears.
 ;; (delete-selection-mode 1) ; won't be put in kill-ring
 
-;; /etc/emacs/ har lite skräp åxå
 
-;;; ---------------------------------------------------
-;; slime för hemmabruk. stoppa i egen fil?
+
+;;; ==============================================================
 
 ;; (define-key slime-mode-map [(return)] 'paredit-newline)
 ;; (define-key slime-mode-map [(bla ( )] (lambda () (interactive) (insert "(")))
 ;; (define-key slime-mode-map [(literal ) )] (lambda () (interactive) (insert ")")))
 
-;; see info slime 2.5.2 Multiple Lisps
-;;(setq slime-lisp-implementations
-;;        '((cmucl ("/usr/bin/cmucl" "-quiet") :init slime-init-command)
-;;              (clisp ("/usr/bin/clisp" "-I") :init slime-init-command)))
-
-;; har visst en ~/.slime/``
-;; git cloned slime into .emacs.d/
-;; (add-to-list 'load-path "~/.emacs.d/slime")
-
-;; is this why i get no extra slime repl?
-;; (add-hook 'lisp-mode-hook (lambda () (slime-mode t)))
-;; (add-hook 'inferior-lisp-mode-hook (lambda () (inferior-slime-mode t)))
-
-;; Optionally, specify the lisp program you are using. Default is "lisp"
-;; i just get *inferior-lisp* no xtra repl
-
+;; you can use slime-space instead of eldoc-mode
 ;; opens up in $BROWSER
 ;(setq common-lisp-hyperspec-root "http://www.lispworks.com/reference/HyperSpec/")
+;; (setq common-lisp-hyperspec-root "file:/usr/share/doc/HyperSpec/")
 
-;; you can use slime-space instead of eldoc-mode
-;; where the OS keeps slime.
-;; maybe copy to /usr/local/share/emacs/site-lisp ?
-;; ==============================================================
-;; set up slime with quicklisp and slime-helper.el
-;; do this in the repl:
-;; (quicklisp-quickstart:install :path ".quicklisp/")
-
-;; slime-helper.el installed in "~/.quicklisp/slime-helper.el"
-;; To use, add this to your ~/.emacs:
-;; (load (expand-file-name "~/.quicklisp/slime-helper.el")) ; <-----
-;; Loading that file adds Quicklisp slime path to your load-path.
-;; Replace "sbcl" with the path to your implementation
-;; (setq inferior-lisp-program "sbcl") ; <-----
-;; (setq inferior-lisp-program "clisp") ; for lol, why no slime-repl?
-;; (setq inferior-lisp-program "/usr/bin/clisp")
-;; (setq inferior-lisp-program "clojure")
-
-;; (add-to-list 'load-path "/usr/share/emacs/site-lisp/slime")
-;; (require 'slime) ; <-----
-;; only run slime related things on demand. M-x slime
-;; (require 'slime-autoloads)
-
-;; not global, set it in the keymap if slime is loaded
-;; (global-set-key (kbd "<f12>") 'slime-selector)
-;; (define-key lisp-mode-map [f12] 'slime-selector)
-;; (define-key lisp-mode-map [(C-j)] 'slime-eval-last-expression-in-repl)
-;; (add-hook 'lisp-mode-hook
-          ;; (lambda () (local-set-key [(C-j)] 'slime-eval-last-expression-in-repl))
-          ;; (lambda () (local-set-key (kbd "<f12>") 'slime-selector))) ; <-----
-
-;; (global-set-key [(C-j)] 'slime-eval-last-expression-in-repl)
-;; (global-set-key (kbd "<C-j>") 'slime-eval-last-expression-in-repl)
-
-;; Versions differ: 2011-03-13 (slime) vs. 2011-08-31 (swank)
-;; (setq slime-protocol-version 'ignore) ; <-----
-;; (setq slime-complete-symbol*-fancy t) ; <-----
-;; (setq slime-complete-symbol-function 'slime-fuzzy-complete-symbol) ; <-----
-;; wontwork:
-;;(slime-set-default-directory "~/bin/projects/lisp")
-;; (setq common-lisp-hyperspec-root "file:/usr/share/doc/HyperSpec/") ; <-----
-;;(require 'slime-autoloads) ; what does this one do?
-;; (slime-setup '(slime-repl slime-scratch slime-editing-commands slime-asdf slime-fancy)) ; <-----
-;; fancy should be everything, but isn't
-;; (slime-setup '(slime-repl)) ; repl only
-;; (slime-setup '(slime-repl slime-scratch
-;;                slime-editing-commands slime-fancy))
-
-;; (slime) ; <-----
-;; (slime-scratch)
-
-(defun run-slime ()
+(defun run-slime () (interactive)
   (load (expand-file-name "~/.quicklisp/slime-helper.el"))
+  ;; (setq inferior-lisp-program "clisp") ; for lol, why no slime-repl?
+  ;; (setq inferior-lisp-program "/usr/bin/clisp")
+  ;; (setq inferior-lisp-program "clojure")
   (setq inferior-lisp-program "sbcl")
   (require 'slime)
   (define-key lisp-mode-map [(C-j)] 'slime-eval-last-expression-in-repl)
@@ -771,49 +687,21 @@
   (slime)
   (slime-scratch))
 
+
 ;;; geiser for scheme interaction
-;; how do I give emacs the path to a scheme?
 ;; (setq scheme-program-name "racket") ;"mit-scheme" "guile"
-;; (load-file "~/bin/packages/gitclown/geiser/elisp/geiser.el")
-;; (load "~/bin/packages/gitclown/geiser/build/elisp/geiser-load")
 ;; (setq geiser-repl-use-other-window  nil)
 
 ;; (setq geiser-repl-startup-time 20000) ; on slow puters
+(load-file "~/.emacs.d/elisp/geiser/elisp/geiser.el")
 (setq geiser-impl-installed-implementations '(racket guile))
 (setq geiser-repl-query-on-kill-p nil)
 (setq geiser-active-implementations '(racket))
-(load-file "~/.emacs.d/elisp/geiser/elisp/geiser.el")
 
 
-;; setup autoload
-
-;;; ---------------------------------------------------
-;; Allegro
-
-;; "You have to choose: either use Allegro's REPL or Slime's REPL.
-;;  If you load slime contribs, be prepared for bugs."
-;; bah, på IDA använde jag quicklisp och slime-helper. funkar
-
-;; inferior common lisp
-;; defun insert-res .. interactive .. (insert ":res")) (bind...)
-
-;; skiten slutar funka. testar att köra allegro med slime ist
-;; http://www.franz.com/emacs/slime.lhtml
-
-;; kör manuellt. /sw/allegro-8.2/emacs-allegro-cl funkar inte.
-;; (load "/sw/allegro-8.2/local/allegro.el")
-
-;; ladda ngt i ~/bin/acl82express/ ?
-;; ;; (load "/sw/allegro-8.2/local/allegro.el")
-;; (allegro-setup-emacs-cl)
-;; (setq inferior-lisp-program "alisp")
-;; (setq inferior-lisp-program "~/bin/acl82express/alisp")
-;; inte detta (setq inferior-lisp-program "allegro-express")
-
-
-;;; ---------------------------------------------------
+;;; ==============================================================
 ;; erc, rcirc, lyskom
-;; see erc-conf.el
+;; see erc-conf.el (rename to chat.el?)
 
 (setq rcirc-default-nick "mcRibbit")
 (setq rcirc-default-user-name "mcRibbit")
@@ -822,33 +710,8 @@
          ("#emacs" "#lisp" "#debian" "#archlinux"))))
 
 
-;;;(require lyskom)
-;; (load-file "/usr/share/emacs/site-lisp/lyskom.elc")
-;; (autoload 'lyskom "lyskom.elc" "Köra LysKom" t)
-;; ;; Use environment variables KOMNAME and KOMSERVER
-;; (add-hook 'lyskom-mode-hook
-;;   (lambda ()
-;;     (set-language-environment "Latin-1")
-;;     ;; changed order:
-;;     (setq kom-preferred-charsets '(utf-8 latin-1 iso-8859-1))))
-;; (setq kom-emacs-knows-iso-8859-1 t)
-;; ;; "M-x kom" startar lyskom
-;; (defun kom ()
-;;   (interactive)
-;;   (lyskom "kom.lysator.liu.se" "duke"))
+;;; ==============================================================
 
-;; (autoload 'lyskom "lyskom" "Start LysKOM" t)
-
-;; (defvar kom-server-aliases
-;;  '(("kom.lysator.liu.se" . "LysKOM")))
-
-;; (setq-default kom-default-language 'sv)
-;; (setq kom-default-server "kom.lysator.liu.se")
-;; (setq kom-default-user-name "duke")
-
-;;; ---------------------------------------------------
-
-;;--------------------------------------------------------------------
 ;; Lines enabling gnuplot-mode
 
 ;; move the files gnuplot.el to someplace in your lisp load-path or
@@ -868,21 +731,17 @@
 ;; (global-set-key [(f9)] 'gnuplot-make-buffer)
 
 ;; end of line for gnuplot-mode
-;;--------------------------------------------------------------------
+;;; ==============================================================
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
+
  '(custom-safe-themes t)
  )
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
+
  )
 
 ;; (when window-system

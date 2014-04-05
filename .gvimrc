@@ -35,7 +35,7 @@ set mousehide
 "see gvim.desktop in ~/.local/share/applications
 tab all
 
-" :Man whatever
+" :Man whatever. How bind it to K?
 :so /usr/share/vim/vim74/ftplugin/man.vim
 
 " first, enable status line always
