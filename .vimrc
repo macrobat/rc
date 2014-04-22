@@ -125,9 +125,9 @@ nnoremap <silent> gc xph
 " får problem med massa markeringar, yank-paste blir konstigt
 " nmap <silent> gw :s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR>`'
 
-" TODO: test adding <esc> nohl on these 3
-" To use gw to transpose the current word with the next, without changing cursor
-" position: (See note.)
+" TODO: add nohl on these. How? <esc>:nohl<C-m>
+" doesn't work for åäö. something fails - last line?
+" gw transpose the current word with the next, keep cursor position:
 " :nnoremap <silent> gw "_yiw:s/\(\%#\w\+\)\(\W\+\)\(\w\+\)/\3\2\1/<CR><c-o><c-l>
 " This version will work across newlines:
 nnoremap <silent> gw "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o><c-l>
@@ -520,7 +520,7 @@ function! SetupVAM()
     "   call vam#ActivateAddons([''], {'auto_install' : 0})
        call vam#ActivateAddons([
         \'The_NERD_tree', 'The_NERD_Commenter', 'CSApprox', 'Gundo', 'buffergrep',
-        \ 'Color_Sampler_Pack', 'FuzzyFinder', 'Scratch', 'unimpaired', 'YankRing',
+        \ 'Color_Sampler_Pack', 'Scratch', 'unimpaired', 'YankRing',
         \ 'colorizer', 'surround', 'Insertlessly'], {'auto_install' : 0})
       " pluginA could be github:YourName see vam#install#RewriteName()
     " catch /.*/
@@ -533,5 +533,9 @@ call SetupVAM()
 " option2: au GUIEnter * call SetupVAM()
 
 " vam doesn't add these. I want the commands and the help
-set runtimepath+=~/.vim/The_NERD_Commenter,~/.vim/unimpaired,~/.vim/FuzzyFinder,~/.vim/Gundo,~/.vim/Insertlessly,~/.vim/CSApprox,~/.vim/L9,~/.vim/The_NERD_tree,~/.vim/YankRing,~/.vim/surround,~/.vim/transwrd
+set runtimepath+=~/.vim/The_NERD_Commenter,~/.vim/unimpaired,~/.vim/Gundo,~/.vim/Insertlessly,~/.vim/CSApprox,~/.vim/The_NERD_tree,~/.vim/YankRing,~/.vim/surround,~/.vim/transwrd
+
+" removing
+" 'FuzzyFinder',
+" ~/.vim/L9,~/.vim/FuzzyFinder,
 

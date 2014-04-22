@@ -81,6 +81,7 @@ define_key(content_buffer_normal_keymap, "C--", "zoom-out-text");
 define_key(content_buffer_normal_keymap, "+", "zoom-in-full");
 define_key(content_buffer_normal_keymap, "=", "zoom-reset-full");
 define_key(content_buffer_normal_keymap, "-", "zoom-out-full");
+define_key(content_buffer_normal_keymap, "home", "cmd_scrollTop");
 
 // wontwork, putting narrower tabs in a separate file
 // "data:text/css,"+escape(".tab2 { min-width: 80px; max-width: 160px; }")

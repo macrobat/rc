@@ -1,128 +1,135 @@
 ;; in case of error, use (when nil ) to bisect this file
 
+;; check-parens
+;; (toggle-debug-on-error) ;
+
 ;; cons onto load-path list before we can load/require libs
 ;;(add-to-list 'load-path "~/.emacs.d/") ; warning
 ;; mapc is for side-effects only, it doesn't return a list like mapcar does
 
-(mapc '(lambda (dir) (add-to-list 'load-path dir)) ; if in, I want "~/.emacs.d/" last
-      '("~/.emacs.d/elisp" "~/.emacs.d/" )) ; "~/.emacs.d/themes"
+(mapc '(lambda (dir) (add-to-list 'load-path dir))
+      '(
+      ;; arjen refuses. DOASITELLYOU
+      ;; (load-file "~/.emacs.d/themes/color-theme.elc")
+      "~/.emacs.d/themes"
+      ;; if in, "~/.emacs.d/" should be last
+      "~/.emacs.d/elisp" "~/.emacs.d/packages" ;))
+	;; "~/.emacs.d/"
+	))
 
-;; set up unicode
 ;; (prefer-coding-system       'utf-8)
-;; (set-default-coding-systems 'utf-8) ; sets the next two
-;; (set-terminal-coding-system 'utf-8)
-;; (set-keyboard-coding-system 'utf-8)
-;; obsolete. use `buffer-file-coding-system'
-;; (setq default-buffer-file-coding-system 'utf-8)
+;; (set-default-coding-systems 'utf-8)
+;; (setq buffer-file-coding-system 'utf-8)
 
 ;; put all in ~/emacs.d : init file .emacs-places .emms-cache .ido.last
 
+
 ;;; ==============================================================
-
 ;;; packages
+;; so disappoint. ripping out the elpa system
+;; FIXME
+;; something in elpa stopped working. *Warnings* has a ~7k char line
+;; disable all that crap and load manually!
+;; maybe perspective.el instead of wg?
 
-
-;; TODO
-;; elpa initializes after init-file is loaded, a way to conf pkgs is
-;; (add-hook 'after-init-hook
-;; '(lambda () (load-file "~/.emacs.d/package-init.el"))) and conf that file
-;; with use-package you can defer loading until needed
-
-;; TODO: use autoload
-;; (autoload FUNCTION FILE &optional DOCSTRING INTERACTIVE TYPE)
-;; Define FUNCTION to autoload from FILE.
-;; FUNCTION is a symbol; FILE is a file name string to pass to `load'
-
-;; you must not be initializing properly?
-;; the variable is not autoloaded
-;; if you do M-x list-packages  then you'll see it
-;; and of course any customization or setting of that variable before the
-;; package is loaded will persist over the package load.
-;; so, (package-initialize) is done before add-list?
-;; macrobat: no, you shouldn't do that
-;; initializing how?
-;; it should just be initialized through emacs. emacs does package init AFTER your init.el
-;; One option is (eval-after-load 'package '(add-to-list 'package-archives ...))
-;; dtw but you don't need to
-;; just customize it
-;; how then, can anyone load packages in the init file?
-;; macrobat: yes... but in 24 packages are started automatically after init
-;; don't get me wrong, of course you can do it. but it's not "right"
-;; I shouldn't setq package-load-list?
-;; I don't think so, no.
-
-;; packages should autoload. any package that doesn't should be loaded with an
-;; (eval-after-init ...) ; no such thing!!! lots of packages are modes that you
-;; want to load with mode-alist... which can be done even if the package isn't
-;; loaded, or done on some hook, which can be done without loading the package
-;; or done on a key which can also be done without loading the package
-
-;; where can I find this information (and more)?
-;; well, the elisp manual describes the packaging startup.
-;; but it's not very clear on the implications.
-
-;; Any settings for packages sould be done with eval-after-init?
-;; I don't think so, use customize if you can. If not then use a
-;; package specific hook and if you can't do that then use an
-;; eval-after-init, I guess.
-
-;; package.el comes with emacs24
-(load "~/.emacs.d/elpa/package_23_github.el")
-
-;; 2013-05-28 trying default emacs24 package. vortex of fail
-;; http://www.emacswiki.org/emacs/ELPA
-;; have to use eval-after-load around each package use
-;; and -autoloads for the minor modes
-;; eval-after-load "broccoli-autoloads" ; <-- "broccoli-autoloads", not "broccoli"
-;; (package-initialize) ; fails: cannot open ~/.emacs.d/elpa/archives/-pkg
-;; package-initialize is run _after_ init file load and before after-init-hook
-;; (require 'package) ; don't in emacs24
-
-;; (setq package-archives
-;;          '("marmalade" . "http://marmalade-repo.org/packages/"))
-;; (add-to-list 'package-archives
-;;   '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("marmalade" . "http://marmalade-repo.org/packages/")
-;;                         ("melpa" . "http://melpa.milkbox.net/packages/") ; very fresh pkgs
+;; does not work. wrong-type-argument stringp nil
+;; (update-directory-autoloads "~/.emacs.d/packages")
+(defvar elpa-hate '(
+"~/.emacs.d/packages/rainbow-delimiters.el"
+"~/.emacs.d/packages/browse-kill-ring+.el"
+"~/.emacs.d/packages/browse-kill-ring.el"
+"~/.emacs.d/packages/goto-last-change.el"
+"~/.emacs.d/packages/rainbow-mode.el"
+"~/.emacs.d/packages/smartparens.el"
+"~/.emacs.d/packages/buffer-move.el"
+"~/.emacs.d/packages/workgroups.el"
+"~/.emacs.d/packages/paredit.el"
+"~/.emacs.d/packages/htmlize.el"
+"~/.emacs.d/packages/popwin.el"
+"~/.emacs.d/packages/dash.el"
+"~/.emacs.d/packages/bm.el"
 ))
 
-;; Each element in this list should be a list (NAME VERSION)
-(setq package-load-list
-      '((bm "1.53") (browse-kill-ring "1.3.1") (buffer-move "0.4")
-         (paredit "22") (rainbow-mode "0.1")
-        (goto-last-change "1.2") (popwin "0.4")
-        ))
-;; (geiser "0.4") ; default wontwork
-;; smartparen better than paredit? needs dash
-;; (dash "20130712.2307") ; File exists: blabla dash-pkg.el
-;; (smartparen "20130715.1530")
-;; (workgroups "0.2.0") ; wont load, do it manually
-;; (workgroups2 "20131002.1143") ; buggy
-;; (htmlize "1.39")
+(defvar elpa-hate-autoloads '(
+"~/.emacs.d/packages/rainbow-delimiters-autoloads.el"
+"~/.emacs.d/packages/browse-kill-ring+-autoloads.el" ; shit
+"~/.emacs.d/packages/browse-kill-ring-autoloads.el"
+"~/.emacs.d/packages/goto-last-change-autoloads.el"
+"~/.emacs.d/packages/rainbow-mode-autoloads.el"
+"~/.emacs.d/packages/smartparens-autoloads.el"
+"~/.emacs.d/packages/buffer-move-autoloads.el"
+"~/.emacs.d/packages/workgroups-autoloads.el"
+"~/.emacs.d/packages/paredit-autoloads.el"
+"~/.emacs.d/packages/htmlize-autoloads.el"
+"~/.emacs.d/packages/popwin-autoloads.el"
+"~/.emacs.d/packages/dash-autoloads.el"
+"~/.emacs.d/packages/bm-autoloads.el"
+))
+;; undo-tree now part of emacs
+;; have an old edited version of rainbow-delimiters in ./elisp/
 
-;; Symbol's function definition is void: popwin:display-buffer
-;; (popwin "0.4") ; have to load it manually
-;; (eval-after-init (package-initialize) (require 'popwin)) ; there is no eval-after-init
-;; (add-hook 'after-init-hook (lambda () (require 'popwin)))
+;; autoload all the crap
+(mapcar (lambda (el) (load-file el)) elpa-hate-autoloads)
+;; generate some files
+;; (mapc (lambda (el) (byte-compile-file el)) elpa-hate)
+;; resulting file doesn't have any content, just boilerplate
+;;     (setq generated-autoload-file "bm-autoloads.el")
+;;     (update-file-autoloads "bm.el")
+;; (mapc (lambda (el)
+;; 	(setq generated-autoload-file
+;; 	      (concat (substring el 0 -3) "-autoloads.el"))
+;; 	(update-file-autoloads el)) elpa-hate)
 
-;; pkgs installed by elpa will be requireable
-;; (package-initialize)
-;; This was installed by package-install.el. This provides support for the package system and
-;; interfacing with ELPA, the package archive. Move this code earlier if you want to reference
-;; packages in this file:
+;; http://www.emacswiki.org/emacs/PareditCheatsheet
+;; straightjacket, masks many useful keybinds. (M-q)
+;; this should be loaded already
+;; (autoload 'paredit-mode "~/.emacs.d/packages/paredit-autoloads.el"
+;;   "Minor mode for pseudo-structurally editing Lisp code." t nil)
 
-;; (eval-after-load 'package '(add-to-list 'package-archives ...))
-;; "packages should autoload. any package that doesn't should be loaded with an (eval-after-init ...)"
-;; there is no eval-after-init
+(add-hook 'paredit-mode-on-hook
+	  (lambda () (define-key paredit-mode-map
+		  (kbd "C-j") 'eval-print-last-sexp))
+	  (lambda () (define-key paredit-mode-map
+		  (kbd "S-<backspace>") 'backward-delete-char))
+	  (lambda () (message "paredit on. no message?"))
+	  )
 
-;; haet. it doesn't fucking load!!!!!!!1elebenty
-(when (load (expand-file-name "~/.emacs.d/elpa/package_23_github.el"))
-  (package-initialize)
-  (require 'popwin)
-  ;; see also display-buffer-alist
-  (setq special-display-function
-        'popwin:special-display-popup-window))
+(add-hook 'paredit-mode-off-hook
+	  (lambda () (message "paredit off. message works.")))
+
+;; new rainbow parens are too subtle
+;; (require 'rainbow-delimiters)
+;; (rainbow-delimiters-mode 1) ; needs paredit loaded
+;; TODO autoload
+(mapc
+ (lambda (bla-mode)
+   (add-hook bla-mode
+	     (lambda ()
+	       ;; (require 'paredit)
+	       ;; (require 'rainbow-delimiters)
+	       (paredit-mode)
+	       ;; (rainbow-delimiters)
+	       (rainbow-delimiters-mode 1))))
+ '(emacs-lisp-mode-hook lisp-mode-hook lisp-interaction-mode-hook))
+
+;; autoload works here
+(add-hook 'geiser-repl-mode-hook
+          (lambda ()
+            (turn-on-smartparens-mode)
+          (sp-local-pair 'geiser-repl-mode "'" nil :actions nil)))
+;; smart-parens: no '' pair in lisp modes
+;; (sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
+;; (sp-local-pair 'common-lisp-mode "'" nil :actions nil)
+;; (sp-local-pair 'scheme-mode "'" nil :actions nil)
+
+
+;; autoloads, how do they work?
+;; is it necessary for lua-mode? comes with emacs
+;; (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
+;; (autoload 'buffer-move-mode "buffer-mode" "buffer mode." t)
+;; (autoload '-mode "-mode" " editing mode." t)
+
+
 
 ;;; ^^packages
 ;;; ==============================================================
@@ -160,82 +167,13 @@
 ;; (add-hook ... '(lambda () ...)) will work, but you shouldn't use it.
 ;; For reasons related to byte-compilation, (lambda () ...) is better.
 
-;; TODO: pkginit
-;; http://www.emacswiki.org/emacs/PareditCheatsheet
-;; straightjacket, masks many useful keybinds. (M-q)
-;; (require 'paredit) ; don't need to enable it for rain-delim
-;; require it with elpa?
-;; is the first arg something in the file or the users own function?
-(autoload 'paredit-mode "~/.emacs.d/elpa/paredit-22/paredit-autoloads.el"
-  "Minor mode for pseudo-structurally editing Lisp code." t nil)
-;; (add-hook 'emacs-lisp-mode-hook       (lambda () (paredit-mode +1)))
-;; (add-hook 'lisp-mode-hook             (lambda () (paredit-mode +1)))
-;; (add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode +1)))
-;;(if (or (featurep emacs-lisp-mode) (featurep lisp-interaction-mode))
-;; bind delete to backward-delete-char in paredit-mode
-;; (with-current-buffer "*scratch*" (local-set-key
-;;   (kbd "<C-j>") 'eval-print-last-sexp))
-;; ,paredit-nonlisp is
-;; (set (make-local-variable
-;; 'paredit-space-for-delimiter-predicates)
-;;  '((lambda (endp delimiter nil)))
 
-;; (when (featurep 'paredit) <bind some keys>)
-;; paredit-mode-off-hook
-;; paredit-mode-on-hook
-(add-hook 'paredit-mode-on-hook
-;; local-set-key changes the major mode, not the minor paredit-mode
-	  ;; (lambda () (local-set-key
-	  ;; 	 (kbd "C-j") 'eval-print-last-sexp))
-	  ;; (lambda () (local-set-key
-	  ;; 	 (kbd "S-<backspace>") 'backward-delete-char))
-	  (lambda () (define-key paredit-mode-map
-		  (kbd "C-j") 'eval-print-last-sexp))
-	  (lambda () (define-key paredit-mode-map
-		  (kbd "S-<backspace>") 'backward-delete-char))
-	  (lambda () (message "paredit on. no message?"))
-	  )
-
-(add-hook 'paredit-mode-off-hook
-	  (lambda () (message "paredit off. message works.")))
-
-
-;; (require 'rainbow-delimiters)
-;; (rainbow-delimiters-mode 1) ; buffer-local
-;; needs paredit loaded
-(add-hook 'lisp-mode-hook
-          (lambda ()
-            (require 'paredit)
-            (require 'rainbow-delimiters)
-            (rainbow-delimiters-mode 1)))
-(add-hook 'lisp-interaction-mode-hook
-          (lambda ()
-            (require 'paredit)
-            (require 'rainbow-delimiters)
-            (rainbow-delimiters-mode 1)))
-
-;; smart-parens: no '' pair in emacs-lisp-mode
-;; (sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
-;; (sp-local-pair 'scheme-mode "'" nil :actions nil)
-;; (sp-local-pair 'geiser-repl-mode "'" nil :actions nil)
-
-;;; ---------------------------------------------------
-;;; web stuffs
-
-;; (setq nxml-slash-auto-complete-flag 't) ; finish a </
-;; // css mode comments is illegal
-
-;; using elpa  (load-file "~/.emacs.d/rainbow/rainbow-mode.el")
-(require 'rainbow-mode)
-(add-hook 'css-mode-hook (rainbow-mode))
-;;; ^^web stuffs
-;;; ---------------------------------------------------
-
-
+;; \\' means end of string. (rx eos) => "\\'"
 ;; M-x unload-feature to un-require
+;; (add-to-list auto-mode-alist '("\.lua\\'" . lua-mode))
+;; auto-mode-alist is broken or something. using this instead
 (setq auto-mode-alist (cons '("\.lua$" . lua-mode) auto-mode-alist))
-(autoload 'lua-mode "lua-mode" "Lua editing mode." t)
-;; want // comments in c and c++ mode for c and cpp headers
+;; want c89 // comments in c and c++ mode for c and cpp headers
 (add-to-list 'auto-mode-alist '("\\.c\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.hpp\\'" . c++-mode))
@@ -246,19 +184,24 @@
 (add-hook 'makefile-mode-hook 'setq indent-tabs-mode t)
 ;; File mode specification error: (invalid-function (setq tab-width 4)
 ;; not "gnu" style. c-set-style is C-c .
-(setq c-default-style "linux"
-      c-basic-offset 4)
+(setq c-default-style "linux")
+(setq c-basic-offset 4)
 
-;; "when" has an implicit progn
+;; M-x set-frame-font
 (when window-system
-  (set-frame-font ; set-default-font is obsolete
-   ;; M-x set-frame-font
-   ;; smaller laptop fontsize
-;; "-unknown-DejaVu Sans Mono-normal-normal-normal-*-12-*-*-*-m-0-iso10646-1")
-   "-unknown-DejaVu Sans Mono-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1")
+  ;; set-default-font is obsolete
+  ;; (set-frame-font
+  ;; "-unknown-DejaVu Sans Mono\
+  ;; -normal-normal-normal-*-16-*-*-*-m-0-iso10646-1")
+  ;; smaller laptop fontsize
+  ;; "-unknown-DejaVu Sans Mono\
+  ;; -normal-normal-normal-*-12-*-*-*-m-0-iso10646-1")
+
+  (set-frame-font "DejaVu Sans Mono")
+  ;; (set-frame-font "Source Code Pro") ; too wide
   ;; (set-frame-font "Inconsolata")
-  ;; (set-frame-font "Consolas")
   ;; (set-frame-font "Andale Mono")
+  ;; (set-frame-font "Consolas")
   ;; (set-frame-font "Terminus")
 
   ;; (set-scroll-bar-mode 'right)
@@ -271,15 +214,14 @@
   ;; har lagt "color-theme" i ~/.emacs.d och temata i ~/.emacs.d/themes
   ;; themes that suck less: zenburn arjen goldenrod billw
   ;; (load-theme 'solarized-dark t) ; t consider safe
-  
+
   ;; load-theme and themes in ~/.emacs.d/themes . both these work
   (setq custom-theme-directory "~/.emacs.d/themes")
   (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-
-  (load "color-theme")
-  (load "~/.emacs.d/themes/arjen-theme")
+  ;; load-path not using "~/.emacs.d/themes/"
+  (load-file "~/.emacs.d/themes/color-theme.elc")
+  (load-file "~/.emacs.d/themes/arjen-theme.elc")
   (color-theme-arjen)
-
   ;; (color-theme-zenburn) ; (color-theme-gnome2)
   ;; region has aboring colour, change ~ line 100
 
@@ -312,11 +254,14 @@
 ;; (require 'workgroups)
 ;; crap won't require with elpa
 ;; byte-compiled
-(when (file-exists-p "~/.emacs.d/elpa/workgroups-0.2.0/workgroups.elc")
-  (load-file "~/.emacs.d/elpa/workgroups-0.2.0/workgroups.elc"))
+;; killed elpa. moved crap. not using elpa/workgroups-0.2.0/
+;; TODO autoload
+;; (when (file-exists-p "~/.emacs.d/packages/workgroups.elc")
+;;   (load-file "~/.emacs.d/packages/workgroups.elc"))
   (workgroups-mode 1)
   (setq wg-morph-on nil)
   (wg-load "~/.emacs.d/workgroups")  ; holds multiple wg:s
+  
 ;; wg-prefix-key is a defcustom. is it set?
 ;; (when (featurep 'workgroups) )
 
@@ -335,16 +280,16 @@
 ;; [] don't work, use (kbd "C-bla") or keys spelled out [(control j)]
 ;; local bindings shadow global ones
 
-;; no need for shift
 (when window-system
   ;; use digit-argument when in terminal.
   ;; C-number doesn't work in term / may do other things
   ;; wrong(mapcar (lambda (k) (interactive) (describe-key k)) '(M-! M-% M-& M-/ M-=))
+  ;; no need for shift
   (global-set-key (kbd "M-1") 'shell-command)
   (global-set-key (kbd "M-2") 'shell-command-on-region)
   (global-set-key (kbd "M-5") 'query-replace)
   (global-set-key (kbd "M-6") 'async-shell-command)
-  (global-set-key (kbd "M-7") 'dabbrev-expand)
+  (global-set-key (kbd "M-7") 'hippie-expand)
   (global-set-key (kbd "M-0") 'count-lines-region))
 
 ;; handle lines conveniently
@@ -374,6 +319,8 @@
       (comment-or-uncomment-region (line-beginning-position) (line-end-position))
     (comment-dwim arg)))
 (global-set-key "\M-;" 'comment-dwim-line)
+
+
 ;; unnecessary, use M-w (global-set-key (kbd "M-e") 'copy-region-as-kill)
 (global-set-key (kbd "<mode-line> <mouse-4>") 'previous-buffer)
 (global-set-key (kbd "<mode-line> <mouse-5>") 'next-buffer)
@@ -382,9 +329,9 @@
 ;;(global-set-key (kbd "M-n") 'dabbrev-expand) ; duplicates info buffer?
 ;;(global-set-key (kbd "M-p") 'hippie-expand)
 
-;; (global-set-key (kbd "C-'") 'dabbrev-expand) is on M-7 M-/
-;; (global-set-key (kbd "C-*") 'hippie-expand)
-(global-set-key (kbd "<C-tab>") 'hippie-expand) ; next-buffer?
+;; (global-set-key (kbd "C-'") 'dabbrev-expand)
+;; (global-set-key (kbd "C-*") 'hippie-expand) ; is on M-7 M-/
+(global-set-key (kbd "<C-tab>") 'dabbrev-expand) ; next-buffer?
 ;; vimmy normal mode m and '
 (global-set-key (kbd "C-'") 'point-to-register)
 (global-set-key (kbd "C-*") 'register-to-point)
@@ -398,6 +345,7 @@
 (global-set-key (kbd "<backtab>") '(lambda () (interactive) (insert "\t")))
 (windmove-default-keybindings) ; S-arrowkey, move to window
 
+;; TODO autoload
 (require 'buffer-move)
 ;; buffermove.el 4 identical functions - good candidate for a rewrite
 (global-set-key (kbd "<C-S-up>")     'buf-move-up)
@@ -445,7 +393,8 @@
                                         ; "no such buffer"
 
 ;; C-x C-j jump to dired. behöver inte spara på en massa dired-buffrar?
-(require 'dired-x)
+;; not using it. is large
+;; (require 'dired-x)
 
 (browse-kill-ring-default-keybindings)
 (global-set-key (kbd "C-c k") 'browse-kill-ring)
@@ -486,6 +435,7 @@
 ;; tab-complete when using M-:
 (define-key read-expression-map (kbd "TAB") 'lisp-complete-symbol)
 
+;; TODO autoload, pretty-lambdada is in ./elisp/
 ;; lambda won't show when printing with M-x ps-print-buffer-with-faces
 (require 'pretty-lambdada)
 (pretty-lambda-for-modes)
@@ -498,9 +448,8 @@
 ;;(define-key global-map [f9] 'bookmark-jump)
 ;;(define-key global-map [f10] 'bookmark-set)
 
-;; TODO: pkginit
-;; (load "bm-1.52") ; new version, elpa
-(require 'bm)
+;; TODO autoload
+;; (require 'bm)
 ;; toggle bookmarks by clicking in the fringe:
 (global-set-key (kbd "<left-fringe> <mouse-1>")
         #'(lambda(event)
@@ -556,6 +505,8 @@
 ;;; ^^keys ^^looks
 ;;; ==============================================================
 
+(defun ans () (interactive) (ansi-term "/bin/zsh"))
+
 (defun eshell/clear ()
   "http://www.khngai.com/emacs/eshell.php, to clear the eshell buffer."
   (interactive)
@@ -563,7 +514,10 @@
     (erase-buffer)))
 
 (setq reb-re-syntax 'string)
-(require 'browse-kill-ring)
+;; TODO load browse-kill-ring+-autoloads
+;; browse-kill-ring+ so as not to delete windows
+;; 
+;; (require 'browse-kill-ring+)
 
 (ido-mode t)
 (setq ido-save-directory-list-file "~/.emacs.d/ido.last")
@@ -576,7 +530,11 @@
 ;; ido-decorations in ido.el
 ;; Maybe "Confirm" is f ex to make a new buffer
 ;; TODO: make <up> <down> arrows work
-(setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
+(setq ido-decorations
+      (quote
+       ("\n-> " "" "\n   " "\n   ..." "[" "]" \
+	" [No match]" " [Matched]" \
+	" [Not readable]" " [Too big]" " [Confirm]")))
 
 ;; C-x f runs the command set-fill-column
 ;; wrap in (if ( bla ido-mode) )
@@ -586,7 +544,6 @@
   (set (make-local-variable 'truncate-lines) nil))
 (add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-trucation)
 
-;; XXX ido-hacks wont work with emacs24
 (require 'ido-hacks) ; M-x completion? (execute-extended-command)
 ;; use it with "ido-hacks-mode" how conf it? :D
 (ido-hacks-mode t)
@@ -732,6 +689,18 @@
 
 ;; end of line for gnuplot-mode
 ;;; ==============================================================
+;;; ---------------------------------------------------
+;;; web stuffs
+
+;; (setq nxml-slash-auto-complete-flag 't) ; finish a </
+;; // css mode comments is illegal
+
+;; not using elpa
+;; TODO autoload
+;; (require 'rainbow-mode)
+(add-hook 'css-mode-hook (lambda () (rainbow-mode)))
+;;; ^^web stuffs
+;;; ---------------------------------------------------
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -741,7 +710,6 @@
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
-
  )
 
 ;; (when window-system

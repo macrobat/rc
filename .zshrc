@@ -61,15 +61,19 @@ colors
 # maybe a 2-line prompt for narrow terminals?
 #PROMPT='%n%B[%~]%b%% '
 #PROMPT=$'%{\e[1;32m%}%zsh%{\e[1;00m%}|%n%B[%~]%b%% '
-PROMPT=$'%{\e[1;32m%}%n%{\e[1;00m%}@%m%B[%~]%b%% '
 #PROMPT='zsh|%n%B[%~]%b%% ' #setting it again, further down
 #PROMPT=$'%{\e[1;32m%}zsh%{\e[1;00m%}|%n%B[%~]%b%% '
+
+PROMPT_BAK="$PROMPT"
+# migrate to double line prompt. write a function to change it?
+PROMPT=$'%{\e[1;32m%}%n%{\e[1;00m%}@%m%B[%~]%b%% '
+PROMPT1="$PROMPT"
+PROMPT_2LINES=$'%{\e[1;32m%}%n%{\e[1;00m%}@%m%B[%~]%b\n%% '
+
 if [[ $TERM = "dumb" ]]
 then
 	PROMPT="%n@%m%B[%~]%b%% "
 fi
-
-PROMPT_BAK="$PROMPT"
 
 # revise these! man zshcompsys
 #zstyle ':completion:*' completer _expand _complete _correct _approximate
