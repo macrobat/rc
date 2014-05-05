@@ -44,6 +44,10 @@ set laststatus=2
 " like emacs M-x (why is it an ø?) . only in gvim. specific for my setup?
 nnoremap ø :
 
+" emacsy C-SPC visual line
+nnoremap <C-space> V
+inoremap <C-space> <C-o>V
+
 " <A-q> to format a para
 nnoremap ñ gqap
 " keeps cursor at the same position. won't use the remapped gw below

@@ -7,7 +7,7 @@ setopt INC_APPEND_HISTORY
 # for sharing history between zsh processes
 setopt SHARE_HISTORY
 
-# använd !-1 och inte !:1
+# use !-1 not !:1
 export HISTIGNORE="ls:[bf]g:exit:reset:clear:cd*"
 setopt HIST_IGNORE_ALL_DUPS
 #setopt HIST_IGNORE_SPACE #ign lines with spc start
@@ -58,7 +58,6 @@ colors
 # Escape sequences for colors are such characters.
 # moved color prompt into the color test
 # this will be a change from the .bashrc
-# maybe a 2-line prompt for narrow terminals?
 #PROMPT='%n%B[%~]%b%% '
 #PROMPT=$'%{\e[1;32m%}%zsh%{\e[1;00m%}|%n%B[%~]%b%% '
 #PROMPT='zsh|%n%B[%~]%b%% ' #setting it again, further down
@@ -75,8 +74,10 @@ then
 	PROMPT="%n@%m%B[%~]%b%% "
 fi
 
+
 # revise these! man zshcompsys
-#zstyle ':completion:*' completer _expand _complete _correct _approximate
+# zstyle ':completion:*' 
+# completers: _expand _complete _correct _approximate
 # for example make zathura autocomplete pdf files
 # zstyle ':completion:*:zathura:*' file-patterns '*.pdf'
 zstyle ':completion:*' completions 1
@@ -88,7 +89,7 @@ zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the char to ins
 zstyle ':completion:*' max-errors 2
 zstyle ':completion:*' original true
 zstyle ':completion:*' prompt 'correction: %e '
-## zstyle ':completion:*' squeeze-slashes true    #for ln. useful?
+# zstyle ':completion:*' squeeze-slashes true    #for ln. useful?
 zstyle ':completion:*' squeeze-slashes false
 zstyle ':completion:*' substitute 1
 #zstyle ':completion:*' menu select
@@ -120,8 +121,8 @@ zstyle :compinstall filename '~/.zsh_compinstall'
 zstyle -e ':completion:*' special-dirs '[[ $PREFIX = (../)#(|.|..) ]] && reply=(..)'
 
 #################################################################
-# verkar va olika i olika terminaler
-# o-funkis:
+# depends on terminal
+# not working:
 #bindkey '\e[1~' beginning-of-line
 #bindkey '^[[7^' beginning-of-line
 #bindkey '^[[7~' beginning-of-line
@@ -129,7 +130,7 @@ zstyle -e ':completion:*' special-dirs '[[ $PREFIX = (../)#(|.|..) ]] && reply=(
 #bindkey '^[[8^' end-of-line
 #bindkey '^[[8~' end-of-line
 #
-# sabbas av "flytta tabb" i urxvt -pe tabbed
+# eaten by "move tab" in urxvt -pe tabbed
 #bindkey '^[[5D' emacs-backward-word
 #bindkey '^[[5C' emacs-forward-word
 # funkar i xfce4 terminal:
@@ -144,7 +145,7 @@ bindkey ' ' magic-space # also do history expansion on space
 stty erase '^?'         #vim in tmux
 #delete key
 bindkey '\e[3~' delete-char
-# home-end olika för olika terms
+# home-end depends on terminal
 # home
 bindkey '^[OH'  beginning-of-line 	# xfce4 terminal
 bindkey '^[[7~' beginning-of-line 	# urxvt
@@ -159,7 +160,7 @@ bindkey '\e[2~' overwrite-mode
 bindkey '^[[5~' history-incremental-search-backward
 bindkey '^[[6~' history-incremental-search-forward
 # tab completion
-bindkey '^i'    expand-or-complete-prefix
+bindkey '^i' expand-or-complete-prefix
 
 bindkey '^]'    vi-match-bracket    # C-5 (under %)
 bindkey '^[k'   kill-region         # mark with C-<Space>
@@ -179,7 +180,7 @@ function _self_insert() {
 
 # http://bbs.archlinux.org/viewtopic.php?id=64607
 # Set up auto extension stuff
-# läs i mailcap?
+# read mailcap?
 alias -s html=$BROWSER
 alias -s org=$BROWSER
 alias -s php=$BROWSER
@@ -188,13 +189,13 @@ alias -s net=$BROWSER
 alias -s png=geeqie
 alias -s jpg=geeqie
 #alias -s gif=geeqie
-#alias -s eps=geeqie   # eps?
+#alias -s eps=geeqie	# eps?
 alias -s pdf=evince
-#alias -s sxw=soffice  # it's libre now, baby
-#alias -s doc=soffice
-#alias -s xls=soffice
-#alias -s ppt=soffice
-#alias -s odt=soffice
+alias -s sxw=soffice	# libreoffice 
+alias -s doc=soffice
+alias -s xls=soffice
+alias -s ppt=soffice
+alias -s odt=soffice
 alias -s gz=tar -xzvf
 alias -s bz2=tar -xjvf
 #alias -s java=$EDITOR
@@ -204,19 +205,20 @@ alias -s txt=$EDITOR
 #alias -s install=$EDITOR
 
 # man zshbuiltins:
-# If  the  -s  flags  is present, define a suffix alias: if the
-# command word on a command line is in the form 'text.name',
-# where text is any non-empty string, it is replaced by the text
-# 'value text.name'.  Note that name is treated as a literal
-# string, not a pattern.  A trailing space in value is not special
+# If the -s flag is present, define a suffix alias: 
+# if the command word on a command line is in the form 'text.name',
+# 	where text is any non-empty string, 
+# 	it is replaced by the text 'value text.name'.
+# Note that name is treated as a literal string, not a pattern.
+# A trailing space in value is not special
 # in this case.  For example,
-         #alias -s ps=gv
-# will  cause the command `*.ps' to be expanded to `gv *.ps'.
-# As alias expansion is carried out earlier than globbing, the
-# `*.ps' will then be expanded.  Suffix aliases constitute a
-# different name space from other aliases (so in the above
-# example it is still possible to  create an alias for the command
-# ps) and the two sets are never listed together.
+	#alias -s ps=gv
+# will cause the command `*.ps' to be expanded to `gv *.ps'.
+# As alias expansion is carried out earlier than globbing,
+# the `*.ps' will then be expanded.
+# Suffix aliases constitute a different name space from other aliases
+# (so in the above example it is still possible to create an alias for the command ps)
+# and the two sets are never listed together.
 
 # alias -g gets expanded invisibly (and may interfere with stuff?)
 # use something more exotic than I
@@ -245,7 +247,7 @@ bindkey -s đ " find -iname '**' "	#f  #see drop()
 #bindkey -s " |  "
 
 # <  is a builtin pager. > edits a new file
-# zsh screencast. tab funkar inte som där.
+# tab doesn't work like in the zsh screencast.
 # menu select
 ####################################################
 # should be almost like .bashrc below:
@@ -257,13 +259,16 @@ test "$PATH_BAK" || PATH_BAK="$PATH"
 PATH=/usr/local/bin:/usr/bin:/bin:/usr/games:/sbin:/usr/sbin:/usr/bin/core_perl:/opt/java/bin
 export PATH
 
-# (some folders i dont have), i might want /opt/qt/bin . mtr is in /usr/sbin
-#export PATH="/bin:/usr/bin:/sbin:/usr/sbin:/opt/java/jre/bin:/usr/bin/perlbin/site:/usr/bin/perlbin/vendor:/usr/bin/perlbin/core:/opt/qt/bin:/usr/local/bin:~/bin"
-# orig path med GNUtjafs
-#~/GNUstep/Tools:/opt/GNUstep/Local/Tools:/opt/GNUstep/System/Tools:/bin:/usr/bin:/sbin:/usr/sbin:/opt/java/jre/bin:/usr/bin/perlbin/site:/usr/bin/perlbin/vendor:/usr/bin/perlbin/core:/opt/qt/bin:/usr/local/bin
+# maybe /opt/qt/bin . mtr is in /usr/sbin
+#export PATH="/bin:/usr/bin:/sbin:/usr/sbin:/opt/java/jre/bin:/usr/bin/perlbin/site:/usr/bin/perlbin/vendor:/usr/bin/perlbin/core:/opt/qt/bin:/usr/local/bin:/home/occam/bin"
+    # /usr/bin/perlbin/site:/usr/bin/perlbin/vendor:/usr/bin/perlbin/core:\
+    # /opt/qt/bin:/usr/local/bin"
+# old PATH with GNUstep things
+# /opt/GNUstep/Local/Tools:/opt/GNUstep/System/Tools:/bin:/usr/bin:/sbin:\
+    # /usr/sbin:/opt/java/jre/bin:/usr/bin/perlbin/site:/usr/bin/perlbin/vendor:\
+    # /usr/bin/perlbin/core:/opt/qt/bin:/usr/local/bin
 
-# kolla om vi kan ha color, dumb terminal & pacman-color
-# use ENV_VAR, check debians .bashrc
+# check color and dumb terminal
 # enable color support of ls and also add handy aliases
 alias p='pacman'      #not in debian
 if [ "$TERM" != "dumb" ]; then
@@ -288,9 +293,6 @@ if [ "$TERM" != "dumb" ]; then
     export LESS_TERMCAP_ue=$'\E[0m'         # end underline
     export LESS_TERMCAP_us=$'\E[01;32m'     # begin underline
 
-    if [[ -x /usr/bin/pacman-color ]]; then
-      alias p='pacman-color'
-    fi
 fi
 
 #export BROWSER="opera -w"
@@ -326,17 +328,16 @@ function tobc() {echo "scale=5; $1 $2 $3" | bc } # escape the *
 #alias vl='c /var/log'
 #alias ca='c ~/.config/awesome'
 #alias go='c ~/bin/projects/lisp/kurs'    #temp
-#alias go='c ~/bin/projects/ada'
-alias go='c ~/bin/projects/java/tddc69'    #temp
+alias go='c ~/bin/projects/'    #temp
 alias gn_='for f in *.adb; do gnatclean "$f"; done'
 alias g--='g++ -std=c++98 -pedantic -Wall -Wextra'
 alias proj='c ~/bin/projects/'
 alias cd-='cd -'
 alias cd..='cd ..'
+## for bash. see rationalise-dot()
 # alias ..='cd ..'
 # alias ...='cd ../../'
 # alias ....='cd ../../../'
-# alias cu='cd ../'
 
 # expand . to /..
 # Allow stuff like "cd ..../dir"
@@ -350,8 +351,8 @@ rationalise-dot() {
 zle -N rationalise-dot
 bindkey . rationalise-dot
 
-# alias l='ls -CF' vill inte ha mus-copy-paste farligt '*' extratecken
-# har ju redan färgkodning
+# alias l='ls -CF' donotwant dangerous '*' suffixed to filename
+# there is colorcoding
 # -F, --classify
 #        append indicator (one of */=>@|) to entries
 # --file-type
@@ -363,10 +364,10 @@ alias la='ls -Ah'
 alias lu='l ..'
 alias l..='l ..'
 alias lg='ls -C --group-directories-first'
-alias lsl='l | less -e'
-alias lll='ll | less -e'
 alias l,='ls -m' # comma-separated
 alias l_='ls -x' # horizontal order
+alias lsl='l | less -e'
+alias lll='ll | less -e'
 
 alias lsg='less -M +G'
 alias lm='less -M -e'
@@ -390,10 +391,9 @@ alias x='chmod u+x'
 function pp() { ps u | grep USER; ps aux | grep -v "grep --color=auto" | grep -i "$@" ; }
 # vill inte ferga "USER", kan se till att inte visa pid-numret #en process per pipe, ju :)
 
-#alias p='pacman-color'
-if [[ -e /usr/bin/pacman ]]
+if [[ -x /usr/bin/pacman ]]
 then
-	alias ss='p -Ss'	# search
+    alias ss='p -Ss'	# search. \ss is socketstats. ss -tulip
 	alias si='p -Si'	# show
 	alias qs='p -Qs' 	# search installed
 	alias qi='p -Qi' 	# show installed
@@ -405,26 +405,25 @@ then
 fi
 
 ## debian stuffs
-if [[ -e /usr/bin/aptitude ]]
+if [[ -x /usr/bin/aptitude ]]
 then
 	alias a='aptitude'
 	alias au='sudo aptitude update'
 	alias adg='sudo aptitude update && sudo aptitude full-upgrade'
 	alias ai='sudo aptitude install'
-	alias ah='apt-cache search' # snabbare, local db
+	alias ah='apt-cache search' # faster, local db
 	alias s='aptitude search'
-	# apt-cache show visar inte status installerat eller ej
+	# apt-cache show. no installed status
 	alias aw='aptitude show'  # "as" is the gnu assembler
-	alias acw='apt-cache show'  # snabbare, local db
+	alias acw='apt-cache show'  # faster, local db
 	alias ach='apt-cache showpkg'
 	alias ac='apt-cache'
 	alias acp='apt-cache policy'
 	alias dpl='dpkg -l | grep "ii " |  grep -i'
-	dpkg --get-selections | grep -i  #bara namn, inte vers/descr
-	#alias rel='ept-cache related' #stopped working. axi-cache
 fi
+# alias ack='ack-grep' # debian. use ag - the silver searcher
 
-if [[ -e /usr/bin/colordiff ]]
+if [[ -x /usr/bin/colordiff ]]
 then
 	alias diff="colordiff"
 fi
@@ -432,56 +431,52 @@ fi
 alias killal='killall'
 alias kilall='killall'
 
-# fixa visudo/ chmod +s . (fixa inittab?)
-# /sbin is not in PATH
-alias shutdown='/sbin/shutdown -t3 -hP now'
-alias reboot='/sbin/reboot'
-alias halt='/sbin/halt'
+# fix visudo/ chmod +s .
+# /sbin/ is not in users PATH and is a symlink to /usr/bin/
+if [[ -x /usr/bin/systemctl ]]
+then
+    alias halt='systemctl poweroff'
+    alias shutdown='systemctl poweroff'
+    alias reboot='systemctl reboot'
+else
+    alias halt='/sbin/halt'
+    alias shutdown='/sbin/shutdown -t3 -hP now'
+    alias reboot='/sbin/reboot'
+fi
 
-# swap esc och caps, compose multikey, numpad decimal.
+# swap esc and caps, compose multikey, numpad decimal.
+# to reset a botched keymap:
+# setxkbd se to reset a botched keymap
 alias xD='xmodmap ~/.Xmodmap'
 
 alias pm='pmount /dev/disk/by-label/konserv'
 alias pum='pumount /dev/disk/by-label/konserv'
 
 alias mplayer='mplayer -nolirc '
-#alias wxyc='mplayer http://152.46.7.128:8000/wxyc.ogg'
 #alias wxyc='mplayer http://wxyc.org/wxyc-mp3.m3u'
 #alias wxyc='mplayer -cache 300 http://wxyc.org/wxyc-ogg.pls'
 alias wxyc='mplayer http://audio-mp3.ibiblio.org:8000/wxyc.mp3'
 #alias wxyc='mplayer  -msglevel all=-1 -cache 300 http://wxyc.org/files/streams/wxyc-ogg.pls'
-#alias wknc='mplayer -cache 3000 http://wknc.sma.ncsu.edu:8000/wknchq.ogg' # hq
-alias wknc='mplayer -cache 1500 http://wknc.sma.ncsu.edu:8000/wkncmq.ogg'  # ncsu
-#sätt cache i Kb och börja spela efter 3% fyllnad av den, varva lagom
+alias wknc='mplayer -cache 700 http://wknc.sma.ncsu.edu:8000/wkncmq.ogg'  # ncsu
+# set cache in Kb and start playing after 3% fill, quieter spin speed
 alias cpl='mplayer cdda:// -cache 3000 -cache-min 3 -cdda speed=7'
 
-alias acro='~/bin/acrobat/bin/acroread'
+# alias acro='~/bin/acrobat/bin/acroread'
 
-# åxå lagt in som C-RET i .xbindkeysrc
-# connection refused even if daemon running?
+# C-RET in .xbindkeysrc
 # urt --cursorColor Orange
 alias urt='urxvt -pe tabbed'   #have urxvtd -q -o -f running
 alias URT='urxvt -name URxvt' #transparent (.Xdefaults)
 alias tid='watch -t -n1 "date +%T| figlet"'
 alias m='cat /proc/mounts'
-# use the ec function. or uemacs for fun
-# alias em='emacsclient'
-# alias ack='ack-grep' # not necessary in arch
 
-alias ub='mount -t vfat /dev/sdb1 /media/usb/; cd /media/usb/'
+#alias ub='mount -t vfat /dev/sdc1 /media/usb/; cd /media/usb/'
 #alias batt='cat /proc/acpi/battery/C23B/state'
 # icmp allowed and ntp works, no need for htpdate
 #alias htp='htpdate -s www.kth.se www.sr.se www.nrk.no'
 
-alias choc='chown -R occam:users'
-alias chov='chown -R veder:users'
-alias chot='chown -R trazan:users'
-#alias chuk='sudo chown -R duke:duke'
-
-#alias =''
 #alias =''
 
-# alias ae='source ~/.zshrc'
 alias sb='source ~/.zshrc'
 alias vb='vim ~/.zshrc'
 

@@ -13,9 +13,9 @@ nmap <C-Right> :bnext<CR>
 " should the amount be in {} ?
 nmap + :zoom! +13<CR>
 " invalid option -
- nmap '-' :zoom! -13<CR>
+nmap '-' :zoom! -13<CR>
 "nmap ´ :zoom! -13<CR>
-" text zoom keys
+" text only zoom keys
 nmap <C-+> :zoom +14<CR>
 nmap <C--> :zoom -14<CR>
 

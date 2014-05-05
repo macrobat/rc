@@ -7,9 +7,11 @@
 ;;(add-to-list 'load-path "~/.emacs.d/") ; warning
 ;; mapc is for side-effects only, it doesn't return a list like mapcar does
 
+;; don't ask me about bloddy vc!!!!
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 (mapc '(lambda (dir) (add-to-list 'load-path dir))
       '(
-      ;; arjen refuses. DOASITELLYOU
       ;; (load-file "~/.emacs.d/themes/color-theme.elc")
       "~/.emacs.d/themes"
       ;; if in, "~/.emacs.d/" should be last
@@ -30,7 +32,6 @@
 ;; FIXME
 ;; something in elpa stopped working. *Warnings* has a ~7k char line
 ;; disable all that crap and load manually!
-;; maybe perspective.el instead of wg?
 
 ;; does not work. wrong-type-argument stringp nil
 ;; (update-directory-autoloads "~/.emacs.d/packages")
@@ -42,7 +43,7 @@
 "~/.emacs.d/packages/rainbow-mode.el"
 "~/.emacs.d/packages/smartparens.el"
 "~/.emacs.d/packages/buffer-move.el"
-"~/.emacs.d/packages/workgroups.el"
+"~/.emacs.d/packages/workgroups.el" ; require it or rewrite
 "~/.emacs.d/packages/paredit.el"
 "~/.emacs.d/packages/htmlize.el"
 "~/.emacs.d/packages/popwin.el"
@@ -52,21 +53,23 @@
 
 (defvar elpa-hate-autoloads '(
 "~/.emacs.d/packages/rainbow-delimiters-autoloads.el"
-"~/.emacs.d/packages/browse-kill-ring+-autoloads.el" ; shit
+"~/.emacs.d/packages/browse-kill-ring+-autoloads.el" ; shit?
 "~/.emacs.d/packages/browse-kill-ring-autoloads.el"
 "~/.emacs.d/packages/goto-last-change-autoloads.el"
 "~/.emacs.d/packages/rainbow-mode-autoloads.el"
 "~/.emacs.d/packages/smartparens-autoloads.el"
 "~/.emacs.d/packages/buffer-move-autoloads.el"
-"~/.emacs.d/packages/workgroups-autoloads.el"
 "~/.emacs.d/packages/paredit-autoloads.el"
 "~/.emacs.d/packages/htmlize-autoloads.el"
-"~/.emacs.d/packages/popwin-autoloads.el"
 "~/.emacs.d/packages/dash-autoloads.el"
 "~/.emacs.d/packages/bm-autoloads.el"
 ))
+;; has no autoloads
+;; "~/.emacs.d/packages/workgroups-autoloads.el"
+;; "~/.emacs.d/packages/popwin-autoloads.el"
 ;; undo-tree now part of emacs
-;; have an old edited version of rainbow-delimiters in ./elisp/
+;; the old edited version of rainbow-delimiters in ./elisp/
+;; has better/gaudier colors
 
 ;; autoload all the crap
 (mapcar (lambda (el) (load-file el)) elpa-hate-autoloads)
@@ -91,36 +94,35 @@
 		  (kbd "C-j") 'eval-print-last-sexp))
 	  (lambda () (define-key paredit-mode-map
 		  (kbd "S-<backspace>") 'backward-delete-char))
-	  (lambda () (message "paredit on. no message?"))
+	  (lambda () (message "paredit on"))
 	  )
 
 (add-hook 'paredit-mode-off-hook
-	  (lambda () (message "paredit off. message works.")))
+	  (lambda () (message "paredit off")))
 
 ;; new rainbow parens are too subtle
+;; M-x customize-group rainbow-delimiters
 ;; (require 'rainbow-delimiters)
 ;; (rainbow-delimiters-mode 1) ; needs paredit loaded
-;; TODO autoload
+;; common-lisp-mode is an alias for lisp-mode
 (mapc
  (lambda (bla-mode)
    (add-hook bla-mode
 	     (lambda ()
-	       ;; (require 'paredit)
+	       ;; (paredit-mode)
 	       ;; (require 'rainbow-delimiters)
-	       (paredit-mode)
 	       ;; (rainbow-delimiters)
+	       (require 'paredit)
+               (turn-on-smartparens-mode)
+               (sp-use-paredit-bindings)
+               ;; doesn't work here. dynamic scope?'
+               ;; (sp-local-pair bla-mode "'" nil :actions nil)
 	       (rainbow-delimiters-mode 1))))
- '(emacs-lisp-mode-hook lisp-mode-hook lisp-interaction-mode-hook))
+ '(emacs-lisp-mode-hook lisp-mode-hook lisp-interaction-mode-hook
+                        scheme-mode-hook geiser-repl-mode-hook))
 
-;; autoload works here
-(add-hook 'geiser-repl-mode-hook
-          (lambda ()
-            (turn-on-smartparens-mode)
-          (sp-local-pair 'geiser-repl-mode "'" nil :actions nil)))
-;; smart-parens: no '' pair in lisp modes
-;; (sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
-;; (sp-local-pair 'common-lisp-mode "'" nil :actions nil)
-;; (sp-local-pair 'scheme-mode "'" nil :actions nil)
+(add-hook 'smartparens-mode-hook
+          (lambda () (require 'smartparens-config))) ; less annoying lisp
 
 
 ;; autoloads, how do they work?
@@ -130,6 +132,7 @@
 ;; (autoload '-mode "-mode" " editing mode." t)
 
 
+(message "init: section packages end")
 
 ;;; ^^packages
 ;;; ==============================================================
@@ -143,6 +146,7 @@
 ;; (add-hook 'after-init-hook 'session-initialize)
 
 ;;; let wg handle sessions instead?
+;; does wg really handle sessions? it fails to load my buffers
 ;; (require 'desktop-menu)
 ;; (desktop-save-mode 1)
 ;; (desktop-read) ;gives error ;needed? the desktop wasn't read before
@@ -153,11 +157,11 @@
 
 ;; emacsclient - tells a running Emacs to visit a file
 ;; you need an already running Emacs server
-;; ec() { emacsclient --create-frame --alternate-editor="" -nw "$@"; }
 ;; # alias em='emacsclient'
+;; ec() { emacsclient --create-frame --alternate-editor="" -nw "$@"; }
 (server-start)
 
-(setq initial-scratch-message ";; This Machine Kills Text\n\n")
+(setq initial-scratch-message ";; This Machine Kills Text\n\n\n")
 (setq inhibit-startup-message t)
 (show-paren-mode 1)
 (setq show-paren-style 'parenthesis) ; highlight just parens
@@ -179,6 +183,7 @@
 (add-to-list 'auto-mode-alist '("\\.hpp\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.hh\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.cl\\'" . common-lisp-mode))
+(message "init: adding to auto-mode-alist")
 (add-hook 'c-mode-hook (lambda () (setq tab-width 4)))
 (add-hook 'c++-mode-hook (lambda () (setq tab-width 4)))
 (add-hook 'makefile-mode-hook 'setq indent-tabs-mode t)
@@ -186,6 +191,16 @@
 ;; not "gnu" style. c-set-style is C-c .
 (setq c-default-style "linux")
 (setq c-basic-offset 4)
+
+;;; ---------------------------------------------------
+;;; web
+
+;; (setq nxml-slash-auto-complete-flag 't) ; finish a </
+;; // css mode comments is illegal
+;; (require 'rainbow-mode)
+(add-hook 'css-mode-hook (lambda () (rainbow-mode)))
+;;; ^^web
+;;; ---------------------------------------------------
 
 ;; M-x set-frame-font
 (when window-system
@@ -240,6 +255,10 @@
   (winner-mode 1) ; undo window changes
   ;;(speedbar t) ;; i want it in buffer mode < and narrower in awesome >
 
+  (require 'popwin) ; has no autoloads
+  (setq special-display-function
+        'popwin:special-display-popup-window)
+
   ;; (setq pop-up-windows nil) ; shit, replaces shown buffer with popup
   (setq pop-up-windows t)
   ;; (setq display-buffer-function 'popwin:display-buffer)
@@ -249,26 +268,23 @@
   ;; a different window from the current window. Non-nil means
   ;; `display-buffer' should make a new window. You can customize
 
-) ; end of "when window-system"
+  ) ; end of "when window-system"
 
-;; (require 'workgroups)
-;; crap won't require with elpa
-;; byte-compiled
-;; killed elpa. moved crap. not using elpa/workgroups-0.2.0/
-;; TODO autoload
-;; (when (file-exists-p "~/.emacs.d/packages/workgroups.elc")
-;;   (load-file "~/.emacs.d/packages/workgroups.elc"))
+;; maybe perspective.el instead of wg?
+;; why won't it remember my windows and buffers?
+(require 'workgroups)
   (workgroups-mode 1)
   (setq wg-morph-on nil)
-  (wg-load "~/.emacs.d/workgroups")  ; holds multiple wg:s
+  (wg-load "~/.emacs.d/workgroups")
   
-;; wg-prefix-key is a defcustom. is it set?
-;; (when (featurep 'workgroups) )
+;; is wg-prefix-key set?
 
 (put 'dired-find-alternate-file 'disabled nil) ; is 'a
 
 ;;; ==============================================================
-;;; keys, looks
+;;; keys, aliases
+(message "init: section keys, aliases")
+
 ;; the angle brackets are only used for things such as <C-backspace>
 ;; "The binding goes in the current buffer's local map, which in most
 ;; cases is shared with all other buffers in the same major mode."
@@ -283,14 +299,14 @@
 (when window-system
   ;; use digit-argument when in terminal.
   ;; C-number doesn't work in term / may do other things
-  ;; wrong(mapcar (lambda (k) (interactive) (describe-key k)) '(M-! M-% M-& M-/ M-=))
-  ;; no need for shift
+  ;; no need for shift M-! M-% M-& M-/ M-=
   (global-set-key (kbd "M-1") 'shell-command)
   (global-set-key (kbd "M-2") 'shell-command-on-region)
   (global-set-key (kbd "M-5") 'query-replace)
   (global-set-key (kbd "M-6") 'async-shell-command)
   (global-set-key (kbd "M-7") 'hippie-expand)
-  (global-set-key (kbd "M-0") 'count-lines-region))
+  (global-set-key (kbd "M-8") 'dabbrev-expand) ; also on C-tab
+  (global-set-key (kbd "M-0") 'count-words-region))
 
 ;; handle lines conveniently
 ;; http://emacs-fu.blogspot.se/2009/11/copying-lines-without-selecting-them.html
@@ -320,14 +336,12 @@
     (comment-dwim arg)))
 (global-set-key "\M-;" 'comment-dwim-line)
 
-
 ;; unnecessary, use M-w (global-set-key (kbd "M-e") 'copy-region-as-kill)
+
 (global-set-key (kbd "<mode-line> <mouse-4>") 'previous-buffer)
 (global-set-key (kbd "<mode-line> <mouse-5>") 'next-buffer)
 ;; no more unintentional mouse-delete-window:
 (global-set-key (kbd "<mode-line> <mouse-3>") 'nil) ; something better
-;;(global-set-key (kbd "M-n") 'dabbrev-expand) ; duplicates info buffer?
-;;(global-set-key (kbd "M-p") 'hippie-expand)
 
 ;; (global-set-key (kbd "C-'") 'dabbrev-expand)
 ;; (global-set-key (kbd "C-*") 'hippie-expand) ; is on M-7 M-/
@@ -341,24 +355,24 @@
 (global-set-key (kbd "C-x C-b") 'ibuffer) ; [remap list-buffers] funkar visst inte
 (global-set-key (kbd "C-h a") 'apropos)
 (setq apropos-do-all t) ; search deper and slower. or use with C-u prefix
-;; literal tab
+;; shift-tab inserts literal tab
 (global-set-key (kbd "<backtab>") '(lambda () (interactive) (insert "\t")))
 (windmove-default-keybindings) ; S-arrowkey, move to window
 
-;; TODO autoload
+;; has no autoloads and we want the whole thing
+;; buffermove.el has 4 ~identical functions - good candidate for a rewrite
 (require 'buffer-move)
-;; buffermove.el 4 identical functions - good candidate for a rewrite
 (global-set-key (kbd "<C-S-up>")     'buf-move-up)
 (global-set-key (kbd "<C-S-down>")   'buf-move-down)
 (global-set-key (kbd "<C-S-left>")   'buf-move-left)
 (global-set-key (kbd "<C-S-right>")  'buf-move-right)
 
 (global-set-key (kbd "<RET>") 'newline-and-indent)
-;; swap <RET> and C-j unless in python-mode. add-hook python-mode-hook?
+;; hint: swap <RET> and C-j unless in python-mode. add-hook python-mode-hook?
 
 ;; there's no *scratch* hook. hyphen is now part of word
-(add-hook 'emacs-lisp-mode-hook
-          (lambda () (local-set-key [(C-j)] 'eval-print-last-sexp))
+(add-hook 'emacs-lisp-mode-hook ; [(C-j)]
+          (lambda () (local-set-key (kbd "C-j") 'eval-print-last-sexp))
           (lambda () (modify-syntax-entry ?- "w" emacs-lisp-mode-syntax-table)))
 
 ;; You add functions to the hook, not function calls, lambda doesn't need '
@@ -386,24 +400,18 @@
 ;; maybe C-S-g for (exit-minibuffer)
 (global-set-key [C-S-g] 'exit-minibuffer)
 
-;; bind q till bury-buffer i *Messages*
-;; (add-hook '    (lambda ()  (local-set-key (kbd "q") 'bury-buffer))
 (with-current-buffer "*Messages*" (local-set-key (kbd "q") 'bury-buffer))
-;; (with-current-buffer "*Warnings*" (local-set-key (kbd "q") 'bury-buffer))
-                                        ; "no such buffer"
 
-;; C-x C-j jump to dired. behöver inte spara på en massa dired-buffrar?
-;; not using it. is large
-;; (require 'dired-x)
-
+;; FIXME Still deletes windows
+;; browse-kill-ring+-autoloads
+;; browse-kill-ring+ so as not to delete windows
+;; (require 'browse-kill-ring+)
 (browse-kill-ring-default-keybindings)
 (global-set-key (kbd "C-c k") 'browse-kill-ring)
-;; have downloaded browse-kill-ring+.el
-;; M-w is kill-ring-save, it works
+;; M-w is kill-ring-save
 
 ;; Define aliases ; use C-q C-j to /re/place a return
 ;; fmakunbound to unbound an alias
-(defalias 'yes-or-no-p 'y-or-n-p)
 (defalias 'qrr 'query-replace-regexp)
 (defalias 'qr  'query-replace)           ; M-%     M-5
 (defalias 'rr  'replace-regexp)
@@ -416,6 +424,7 @@
 (defalias 'hr  'highlight-regexp)
 (defalias 'rb  'revert-buffer)
 (defalias 'pm  'paredit-mode)
+(message "init: set defaliases")
 
 ;; http://stackoverflow.com
 (defun copy-full-path-to-kill-ring ()
@@ -435,11 +444,10 @@
 ;; tab-complete when using M-:
 (define-key read-expression-map (kbd "TAB") 'lisp-complete-symbol)
 
-;; TODO autoload, pretty-lambdada is in ./elisp/
+;; no autoload, pretty-lambdada is in ./elisp/
 ;; lambda won't show when printing with M-x ps-print-buffer-with-faces
 (require 'pretty-lambdada)
 (pretty-lambda-for-modes)
-
 
 ;; bm is better http://www.nongnu.org/bm/ can't jump across buffers, though
 ;; (require 'bm) ; no? (file-error "Cannot open load file" "bm")
@@ -448,7 +456,7 @@
 ;;(define-key global-map [f9] 'bookmark-jump)
 ;;(define-key global-map [f10] 'bookmark-set)
 
-;; TODO autoload
+;; no autoload
 ;; (require 'bm)
 ;; toggle bookmarks by clicking in the fringe:
 (global-set-key (kbd "<left-fringe> <mouse-1>")
@@ -464,11 +472,9 @@
 
 
 (defun smaller-text () (interactive) (text-scale-adjust -1))
-(global-set-key (kbd "C-<mouse-4>") 'smaller-text)
+(global-set-key (kbd "C-<mouse-5>") 'smaller-text)
 (defun larger-text () (interactive) (text-scale-adjust +1))
-(global-set-key (kbd "C-<mouse-5>") 'larger-text)
-;; (global-set-key (kbd "C-<mouse-5>") '(lambda (s) ((interactive) (text-scale-adjust s)) +1))
-;; (global-set-key (kbd "C-<mouse-5>") '(lambda (s) ((interactive) (text-scale-adjust s)) +1))
+(global-set-key (kbd "C-<mouse-4>") 'larger-text)
 
 ;; lower mouse scroll from 5. also use with shift (and maybe ctrl)
 (setq mouse-wheel-scroll-amount
@@ -482,7 +488,8 @@
 
 ;; is a toggle
 (blink-cursor-mode -1)
-(setq-default cursor-type '(bar . 4)) ; globally
+(setq-default cursor-type '(bar . 5)) ; globally
+(setq-default cursor-in-non-selected-windows 'hollow)
 ;; tabs are evil. C-x h M-x {un,}tabify
 (setq-default indent-tabs-mode nil)
 
@@ -501,8 +508,9 @@
 
 (global-set-key (kbd "C-h C-f") 'find-function) ; don't bind the emacs FAQ
 
+(message "init: section keys end")
 
-;;; ^^keys ^^looks
+;;; ^^keys ^^aliases
 ;;; ==============================================================
 
 (defun ans () (interactive) (ansi-term "/bin/zsh"))
@@ -513,11 +521,9 @@
   (let ((inhibit-read-only t))
     (erase-buffer)))
 
-(setq reb-re-syntax 'string)
-;; TODO load browse-kill-ring+-autoloads
-;; browse-kill-ring+ so as not to delete windows
-;; 
-;; (require 'browse-kill-ring+)
+;; less \\\\backslashes. you can set it to 'rx
+;; need to load re-builder first? reb-quit
+(setq reb-re-syntax 'string) ; default is 'read
 
 (ido-mode t)
 (setq ido-save-directory-list-file "~/.emacs.d/ido.last")
@@ -537,8 +543,7 @@
 	" [Not readable]" " [Too big]" " [Confirm]")))
 
 ;; C-x f runs the command set-fill-column
-;; wrap in (if ( bla ido-mode) )
-(global-set-key (kbd "C-x f") 'ido-find-file)
+(global-set-key (kbd "C-x f") 'ido-find-file-other-window)
 
 (defun ido-disable-line-trucation () ; use a lambda
   (set (make-local-variable 'truncate-lines) nil))
@@ -599,25 +604,7 @@
 ;;; ==============================================================
 
 
-;; nvm, fortune won't work anyway
-;;(setq fortune-dir "/usr/share/fortune/")
-
-;; When I make a region with the mouse and press delete, it is deleted. When I
-;; set a mark, move the point with keystrokes and press delete, only one char disappears.
-;; (delete-selection-mode 1) ; won't be put in kill-ring
-
-
-
-;;; ==============================================================
-
-;; (define-key slime-mode-map [(return)] 'paredit-newline)
-;; (define-key slime-mode-map [(bla ( )] (lambda () (interactive) (insert "(")))
-;; (define-key slime-mode-map [(literal ) )] (lambda () (interactive) (insert ")")))
-
 ;; you can use slime-space instead of eldoc-mode
-;; opens up in $BROWSER
-;(setq common-lisp-hyperspec-root "http://www.lispworks.com/reference/HyperSpec/")
-;; (setq common-lisp-hyperspec-root "file:/usr/share/doc/HyperSpec/")
 
 (defun run-slime () (interactive)
   (load (expand-file-name "~/.quicklisp/slime-helper.el"))
@@ -636,6 +623,7 @@
   (setq slime-protocol-version 'ignore)
   (setq slime-complete-symbol*-fancy t)
   (setq slime-complete-symbol-function 'slime-fuzzy-complete-symbol)
+  ;; in $BROWSER "http://www.lispworks.com/reference/HyperSpec/"
   (setq common-lisp-hyperspec-root "file:/usr/share/doc/HyperSpec/")
 
   (slime-setup
@@ -645,10 +633,9 @@
   (slime-scratch))
 
 
-;;; geiser for scheme interaction
-;; (setq scheme-program-name "racket") ;"mit-scheme" "guile"
+;;; geiser scheme interaction M-x run-geiser
+;; (setq scheme-program-name "racket") ; "mit-scheme" "guile"
 ;; (setq geiser-repl-use-other-window  nil)
-
 ;; (setq geiser-repl-startup-time 20000) ; on slow puters
 (load-file "~/.emacs.d/elisp/geiser/elisp/geiser.el")
 (setq geiser-impl-installed-implementations '(racket guile))
@@ -689,18 +676,6 @@
 
 ;; end of line for gnuplot-mode
 ;;; ==============================================================
-;;; ---------------------------------------------------
-;;; web stuffs
-
-;; (setq nxml-slash-auto-complete-flag 't) ; finish a </
-;; // css mode comments is illegal
-
-;; not using elpa
-;; TODO autoload
-;; (require 'rainbow-mode)
-(add-hook 'css-mode-hook (lambda () (rainbow-mode)))
-;;; ^^web stuffs
-;;; ---------------------------------------------------
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -716,3 +691,4 @@
 ;;   (set-frame-size (selected-frame) 110 77))
 ;; (set-frame-size (selected-frame) 110 72) ; for tool-bar & menu-bar
 
+(message "init: reached end of file")
