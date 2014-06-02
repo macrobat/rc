@@ -1,16 +1,16 @@
 ;; in case of error, use (when nil ) to bisect this file
 
-;; check-parens
+;; (check-parens)
 ;; (toggle-debug-on-error) ;
 
 ;; cons onto load-path list before we can load/require libs
 ;;(add-to-list 'load-path "~/.emacs.d/") ; warning
 ;; mapc is for side-effects only, it doesn't return a list like mapcar does
 
-;; don't ask me about bloddy vc!!!!
+;; don't ask me about vc!!!! HATE
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-(mapc '(lambda (dir) (add-to-list 'load-path dir))
+(mapc '(lambda (dir) (add-to-list 'load-path dir 'APPEND)) ; put it last
       '(
       ;; (load-file "~/.emacs.d/themes/color-theme.elc")
       "~/.emacs.d/themes"
@@ -29,7 +29,6 @@
 ;;; ==============================================================
 ;;; packages
 ;; so disappoint. ripping out the elpa system
-;; FIXME
 ;; something in elpa stopped working. *Warnings* has a ~7k char line
 ;; disable all that crap and load manually!
 
@@ -64,7 +63,7 @@
 "~/.emacs.d/packages/dash-autoloads.el"
 "~/.emacs.d/packages/bm-autoloads.el"
 ))
-;; has no autoloads
+;; has no autoloads:
 ;; "~/.emacs.d/packages/workgroups-autoloads.el"
 ;; "~/.emacs.d/packages/popwin-autoloads.el"
 ;; undo-tree now part of emacs
@@ -82,6 +81,20 @@
 ;; 	(setq generated-autoload-file
 ;; 	      (concat (substring el 0 -3) "-autoloads.el"))
 ;; 	(update-file-autoloads el)) elpa-hate)
+
+;; can "install" via elpa, then copy to ~/.emacs.d/packages
+;; (require 'package)
+;; (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+;;                          ("marmalade" . "http://marmalade-repo.org/packages/")
+;; ;;                         ("melpa" . "http://melpa.milkbox.net/packages/")
+;; ))
+;; elpa
+;; └── archives
+;;     ├── gnu
+;;     │   └── archive-contents
+;;     └── marmalade
+;;         └── archive-contents
+
 
 ;; http://www.emacswiki.org/emacs/PareditCheatsheet
 ;; straightjacket, masks many useful keybinds. (M-q)
@@ -106,8 +119,8 @@
 ;; (rainbow-delimiters-mode 1) ; needs paredit loaded
 ;; common-lisp-mode is an alias for lisp-mode
 (mapc
- (lambda (bla-mode)
-   (add-hook bla-mode
+ (lambda (bla-hook)
+   (add-hook bla-hook
 	     (lambda ()
 	       ;; (paredit-mode)
 	       ;; (require 'rainbow-delimiters)
@@ -121,18 +134,25 @@
  '(emacs-lisp-mode-hook lisp-mode-hook lisp-interaction-mode-hook
                         scheme-mode-hook geiser-repl-mode-hook))
 
+;; doesn't fucking work
 (add-hook 'smartparens-mode-hook
-          (lambda () (require 'smartparens-config))) ; less annoying lisp
+          (lambda () (require 'smartparens-config)) ; less annoying lisp
+          (lambda () (sp-pair "'" nil :actions :rem))) ; work damnit
+
+;; there are no modes like that. What is it called?????
+;; (sp-local-pair geiser-repl-mode "'" nil :actions nil)
+;; (sp-local-pair repl-mode "'" nil :actions nil)
+;; (sp-local-pair REPL-mode "'" nil :actions nil)
 
 
 ;; autoloads, how do they work?
-;; is it necessary for lua-mode? comes with emacs
 ;; (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
 ;; (autoload 'buffer-move-mode "buffer-mode" "buffer mode." t)
 ;; (autoload '-mode "-mode" " editing mode." t)
 
-
+(message "==============================================================")
 (message "init: section packages end")
+(message "==============================================================")
 
 ;;; ^^packages
 ;;; ==============================================================
@@ -147,9 +167,10 @@
 
 ;;; let wg handle sessions instead?
 ;; does wg really handle sessions? it fails to load my buffers
-;; (require 'desktop-menu)
-;; (desktop-save-mode 1)
-;; (desktop-read) ;gives error ;needed? the desktop wasn't read before
+(require 'desktop-menu)
+(desktop-save-mode 1)
+(setq desktop-load-locked-desktop t)
+(desktop-read) ; gives error ; needed? the desktop wasn't read before
 
 ;; old crap. want unique buffer names
 ;;(require 'uniquify) (setq uniquify-buffer-name-style 'forward)
@@ -183,7 +204,9 @@
 (add-to-list 'auto-mode-alist '("\\.hpp\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.hh\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.cl\\'" . common-lisp-mode))
-(message "init: adding to auto-mode-alist")
+(message "==============================================================")
+(message "init: added to auto-mode-alist")
+(message "==============================================================")
 (add-hook 'c-mode-hook (lambda () (setq tab-width 4)))
 (add-hook 'c++-mode-hook (lambda () (setq tab-width 4)))
 (add-hook 'makefile-mode-hook 'setq indent-tabs-mode t)
@@ -221,6 +244,7 @@
 
   ;; (set-scroll-bar-mode 'right)
 
+  (setq custom-safe-themes t) ; just fucking load it already!
   ;; (color-theme-initialize) ; old-old way
   ;; (load "color-theme-solarized")
   ;; (color-theme-solarized-dark)
@@ -229,14 +253,16 @@
   ;; har lagt "color-theme" i ~/.emacs.d och temata i ~/.emacs.d/themes
   ;; themes that suck less: zenburn arjen goldenrod billw
   ;; (load-theme 'solarized-dark t) ; t consider safe
+  ;; (load-theme 'grandshell t) ; load! I hate you!
+  (load-file "~/.emacs.d/themes/grandshell-theme.el")
 
   ;; load-theme and themes in ~/.emacs.d/themes . both these work
   (setq custom-theme-directory "~/.emacs.d/themes")
   (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-  ;; load-path not using "~/.emacs.d/themes/"
-  (load-file "~/.emacs.d/themes/color-theme.elc")
-  (load-file "~/.emacs.d/themes/arjen-theme.elc")
-  (color-theme-arjen)
+  ;; if load-path not using "~/.emacs.d/themes/"
+  ;; (load-file "~/.emacs.d/themes/color-theme.elc")
+  ;; (load-file "~/.emacs.d/themes/arjen-theme.elc")
+  ;; (color-theme-arjen)
   ;; (color-theme-zenburn) ; (color-theme-gnome2)
   ;; region has aboring colour, change ~ line 100
 
@@ -257,10 +283,11 @@
 
   (require 'popwin) ; has no autoloads
   (setq special-display-function
-        'popwin:special-display-popup-window)
-
-  ;; (setq pop-up-windows nil) ; shit, replaces shown buffer with popup
-  (setq pop-up-windows t)
+        ;;'popwin:special-display-popup-window
+        'special-display-popup-frame ; original value
+        )
+  (setq pop-up-windows nil) ; shit, replaces shown buffer with popup
+  ;; (setq pop-up-windows t)
   ;; (setq display-buffer-function 'popwin:display-buffer)
   ;; how do i know/control in what window a buffer will pop up in?
   ;; (info "(emacs) Force Same Window") might be useful
@@ -272,10 +299,12 @@
 
 ;; maybe perspective.el instead of wg?
 ;; why won't it remember my windows and buffers?
-(require 'workgroups)
-  (workgroups-mode 1)
-  (setq wg-morph-on nil)
-  (wg-load "~/.emacs.d/workgroups")
+;; seems to fail in a recentish emacs. symbols function definition is void
+;; uses outdated flet
+;; (require 'workgroups)
+;;   (workgroups-mode 1)
+;;   (setq wg-morph-on nil)
+;;   (wg-load "~/.emacs.d/workgroups")
   
 ;; is wg-prefix-key set?
 
@@ -283,7 +312,9 @@
 
 ;;; ==============================================================
 ;;; keys, aliases
+(message "==============================================================")
 (message "init: section keys, aliases")
+(message "==============================================================")
 
 ;; the angle brackets are only used for things such as <C-backspace>
 ;; "The binding goes in the current buffer's local map, which in most
@@ -351,8 +382,9 @@
 (global-set-key (kbd "C-*") 'register-to-point)
 (global-set-key (kbd "C-.") 'repeat) ; vimmy
 
-
-(global-set-key (kbd "C-x C-b") 'ibuffer) ; [remap list-buffers] funkar visst inte
+;; (global-set-key (kbd "C-x C-b") (lambda () (ibuffer nil))) ; fail
+;; [remap list-buffers] funkar visst inte
+(global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-h a") 'apropos)
 (setq apropos-do-all t) ; search deper and slower. or use with C-u prefix
 ;; shift-tab inserts literal tab
@@ -424,7 +456,10 @@
 (defalias 'hr  'highlight-regexp)
 (defalias 'rb  'revert-buffer)
 (defalias 'pm  'paredit-mode)
+;; (defalias 'yes-or-no-p 'y-or-n-p) ; moved up
+(message "==============================================================")
 (message "init: set defaliases")
+(message "==============================================================")
 
 ;; http://stackoverflow.com
 (defun copy-full-path-to-kill-ring ()
@@ -508,7 +543,12 @@
 
 (global-set-key (kbd "C-h C-f") 'find-function) ; don't bind the emacs FAQ
 
+;; find the bind something better
+(global-set-key (kbd "M-o") 'other-window)
+
+(message "==============================================================")
 (message "init: section keys end")
+(message "==============================================================")
 
 ;;; ^^keys ^^aliases
 ;;; ==============================================================
@@ -535,7 +575,6 @@
 ;; Display ido results vertically, rather than horizontally
 ;; ido-decorations in ido.el
 ;; Maybe "Confirm" is f ex to make a new buffer
-;; TODO: make <up> <down> arrows work
 (setq ido-decorations
       (quote
        ("\n-> " "" "\n   " "\n   ..." "[" "]" \
@@ -545,9 +584,15 @@
 ;; C-x f runs the command set-fill-column
 (global-set-key (kbd "C-x f") 'ido-find-file-other-window)
 
-(defun ido-disable-line-trucation () ; use a lambda
+(defun ido-disable-line-trucation () ; can't use a plain lambda?
   (set (make-local-variable 'truncate-lines) nil))
 (add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-trucation)
+;; To modify the keybindings, use the ido-setup-hook.  For example:
+;;(add-hook 'ido-setup-hook 'ido-my-keys)
+;;(defun ido-my-keys () "Add my keybindings for ido."
+;;  (define-key ido-completion-map " " 'ido-next-match))
+;; <up> <down> arrows are for history, not for scrolling through matches
+;; (define-key ido-completion-map (kbd "<down>") 'ido-next-match)
 
 (require 'ido-hacks) ; M-x completion? (execute-extended-command)
 ;; use it with "ido-hacks-mode" how conf it? :D
@@ -579,7 +624,7 @@
 
 ;; Is there a way to disable asking to follow symlinks into vcs?
 ;; setting it too early or too late
-;; these is no vc-find-file-hook. not eval-after-load
+;; there is no vc-find-file-hook. not eval-after-load
 ;; (add-hook 'after-init-hook
 ;;           '(lambda () (remove-hook 'find-file-hook 'vc-find-file-hook)))
 ;; (setq vc-follow-symlinks nil) ; DO_AS_I_SAY_NOT_AS_I_DO
@@ -641,7 +686,7 @@
 (setq geiser-impl-installed-implementations '(racket guile))
 (setq geiser-repl-query-on-kill-p nil)
 (setq geiser-active-implementations '(racket))
-
+;; (setq geiser-mode-start-repl-p nil) ; to connect to a running scheme
 
 ;;; ==============================================================
 ;; erc, rcirc, lyskom
@@ -679,16 +724,27 @@
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(safe-local-variable-values (quote ((geiser-scheme-implementation . racket)))))
 
- '(custom-safe-themes t)
- )
+;; do as I tell you!!!!!!!!!
+(setq enable-local-variables :all)
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  )
 
-;; (when window-system
-;;   (set-frame-size (selected-frame) 110 77))
+;; workgroups stopped working
+(when window-system
+  (set-frame-size (selected-frame) 110 60)) ; I thought 77 worked?
 ;; (set-frame-size (selected-frame) 110 72) ; for tool-bar & menu-bar
 
+(message "==============================================================")
 (message "init: reached end of file")
+(message "==============================================================")
+

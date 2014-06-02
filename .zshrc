@@ -76,7 +76,7 @@ fi
 
 
 # revise these! man zshcompsys
-# zstyle ':completion:*' 
+# zstyle ':completion:*'
 # completers: _expand _complete _correct _approximate
 # for example make zathura autocomplete pdf files
 # zstyle ':completion:*:zathura:*' file-patterns '*.pdf'
@@ -191,7 +191,7 @@ alias -s jpg=geeqie
 #alias -s gif=geeqie
 #alias -s eps=geeqie	# eps?
 alias -s pdf=evince
-alias -s sxw=soffice	# libreoffice 
+alias -s sxw=soffice	# libreoffice
 alias -s doc=soffice
 alias -s xls=soffice
 alias -s ppt=soffice
@@ -205,9 +205,9 @@ alias -s txt=$EDITOR
 #alias -s install=$EDITOR
 
 # man zshbuiltins:
-# If the -s flag is present, define a suffix alias: 
+# If the -s flag is present, define a suffix alias:
 # if the command word on a command line is in the form 'text.name',
-# 	where text is any non-empty string, 
+# 	where text is any non-empty string,
 # 	it is replaced by the text 'value text.name'.
 # Note that name is treated as a literal string, not a pattern.
 # A trailing space in value is not special
@@ -328,7 +328,7 @@ function tobc() {echo "scale=5; $1 $2 $3" | bc } # escape the *
 #alias vl='c /var/log'
 #alias ca='c ~/.config/awesome'
 #alias go='c ~/bin/projects/lisp/kurs'    #temp
-alias go='c ~/bin/projects/'    #temp
+alias go='c ~/bin/projects/C/'    #temp
 alias gn_='for f in *.adb; do gnatclean "$f"; done'
 alias g--='g++ -std=c++98 -pedantic -Wall -Wextra'
 alias proj='c ~/bin/projects/'
@@ -469,6 +469,7 @@ alias urt='urxvt -pe tabbed'   #have urxvtd -q -o -f running
 alias URT='urxvt -name URxvt' #transparent (.Xdefaults)
 alias tid='watch -t -n1 "date +%T| figlet"'
 alias m='cat /proc/mounts'
+# findmnt draws a tree
 
 #alias ub='mount -t vfat /dev/sdc1 /media/usb/; cd /media/usb/'
 #alias batt='cat /proc/acpi/battery/C23B/state'

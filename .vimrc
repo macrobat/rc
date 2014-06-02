@@ -109,6 +109,60 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+
+" git clone https://github.com/MarcWeber/vim-addon-manager
+
+" This calls the autoload function ActivateAddons in the file vam with a
+" string argument and a dictionary argument
+" call vam#ActivateAddons(['pluginA', 'pluginB'], {'auto_install' : 0})
+" call vam#ActivateAddons([''], {'auto_install' : 0})
+function! SetupVAM()
+    set runtimepath+=~/.vim/vim-addon-manager
+       call vam#ActivateAddons([
+        \'The_NERD_tree', 'The_NERD_Commenter', 'CSApprox', 'Gundo', 'buffergrep',
+        \ 'Colour_Sampler_Pack', 'Scratch', 'unimpaired', 'YankRing',
+        \ 'surround', 'Insertlessly'], {'auto_install' : 0})
+
+       " 'colorizer',
+endf
+call SetupVAM()
+" notice that after line break '\' is on the _first_ non-whitespace
+
+" other plugins:
+" pluginA could be github:YourName see vam#install#RewriteName()
+" vam doesn't have Insertlessly. it just loads it from ~/.vim/Insertlessly
+" example: VAMActivate vim-airline
+" AirlineTheme solarized " or, like, airlineish
+" ctrlp
+" ultisnips
+
+" seems vam does add these now. I want the commands and the help
+"set runtimepath+=~/.vim/The_NERD_Commenter,~/.vim/unimpaired,~/.vim/Gundo,
+"\ ~/.vim/Insertlessly,~/.vim/CSApprox,~/.vim/The_NERD_tree,~/.vim/YankRing,
+"\ ~/.vim/surround,~/.vim/transwrd
+" https://github.com/dahu/Insertlessly
+set runtimepath+=~/.vim/Insertlessly
+
+" don't want colorizer enabled. 100% cpu
+" E492: Not an editor command: ColorClear
+" ColorClear
+" "lazy" eval?
+" just VAMInstall it?
+
+
+" removing
+" 'FuzzyFinder',
+
+" from inside SetupVAM():
+" commenting try .. endtry because trace is lost if you use it.
+" There should be no exception anyway.
+" catch /.*/
+" echoe v:exception
+" endtry
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " place new stuff below:
 
 " emacs kill next word and undo bind
@@ -290,8 +344,7 @@ nnoremap Y y$
 "vnoremap x :
 "inoremap x : <esc>: " meh :(
 
-" move in visual lines, (nice if line is wrapped)
-" currently not working. because of "text bubbling"?
+" move in visual lines, (useful with long, wrapped lines)
 nnoremap k gk
 nnoremap j gj
 nnoremap <Up> gk
@@ -314,8 +367,8 @@ nmap <leader>l :set list!<CR>
 map ,cd :cd %:p:h<CR>
 " vimtip2, use %% to expand path for current buf
 cabbr <expr> %% expand('%:p:h')
-" cannot search for strings starting with t
-cabbr t tabe
+" cannot search for strings starting with t. maybe "t " is better
+" cabbr t tabe
 imap jj <esc>
 
 "http://vimcasts.org/episodes/the-edit-command/
@@ -384,8 +437,8 @@ set tabstop=4 "8
 " needs autocommand?
 set textwidth=80
 
-" using :YAIFAMagic (plugin) to detect settings
 " this is not what i want :(
+" using :YAIFAMagic (plugin) to detect settings
 " set sts=2 | set tabstop=8 | set expandtab | set shiftwidth=2
 
 " Indentation settings for using hard tabs for indent. Display tabs as
@@ -449,8 +502,7 @@ noremap <silent> ,J <C-W>J
 " noremap <silent> ,mh <C-W>H
 " noremap <silent> ,mj <C-W>J
 
-" FIXME: only does nonu/rnu, toggles nu current line
-" DONE
+" did I write this one myself?
 func! ToggleLineNumbering()
     if !exists('s:LineNumbering')
         "echo s:LineNumbering
@@ -506,36 +558,4 @@ nmap  ,cA           <Plug>NERDCommenterAppend
 vmap  ,cA           <Plug>NERDCommenterAppend
 nmap  ,ca           <Plug>NERDCommenterAltDelims
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" some addons aren't managed.
-" notice that line break \ is on _first_ non-whitespace
-function! SetupVAM()
-    set runtimepath+=~/.vim/vim-addon-manager
-    " commenting try .. endtry because trace is lost if you use it.
-    " There should be no exception anyway.
-    " This calls the autoload function ActivateAddons in the file vam with a
-    " string argument and a dictionary argument
-    "  call vam#ActivateAddons(['pluginA', 'pluginB'], {'auto_install' : 0})
-    "   call vam#ActivateAddons([''], {'auto_install' : 0})
-       call vam#ActivateAddons([
-        \'The_NERD_tree', 'The_NERD_Commenter', 'CSApprox', 'Gundo', 'buffergrep',
-        \ 'Color_Sampler_Pack', 'Scratch', 'unimpaired', 'YankRing',
-        \ 'colorizer', 'surround', 'Insertlessly'], {'auto_install' : 0})
-      " pluginA could be github:YourName see vam#install#RewriteName()
-    " catch /.*/
-    " echoe v:exception
-    " endtry
-endf
-call SetupVAM()
-" experimental: run after gui has been started (gvim) [3]
-" option1: au VimEnter * call SetupVAM()
-" option2: au GUIEnter * call SetupVAM()
-
-" vam doesn't add these. I want the commands and the help
-set runtimepath+=~/.vim/The_NERD_Commenter,~/.vim/unimpaired,~/.vim/Gundo,~/.vim/Insertlessly,~/.vim/CSApprox,~/.vim/The_NERD_tree,~/.vim/YankRing,~/.vim/surround,~/.vim/transwrd
-
-" removing
-" 'FuzzyFinder',
-" ~/.vim/L9,~/.vim/FuzzyFinder,
 

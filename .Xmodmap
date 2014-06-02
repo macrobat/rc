@@ -1,5 +1,5 @@
 ! add, remove MODIFIERNAME = KEYSYMNAME
-! to reset a borked map: 
+! to reset a borked map:
 ! setxkbmap se -variant nodeadkeys -option terminate:ctrl_alt_bksp
 ! xmodmap -pm to see the mod keys
 ! xmodmap -pke to see the list of bindings
@@ -22,13 +22,14 @@
 ! don't want control on all of these:
 ! Escape (0x9),  Escape (0x25),  Control_L (0x42),  Control_R (0x69)
 
-! 30 german üÜ 
+! 30 german üÜ
 ! 32,38 norwegian/danish æÆ øØ
 ! 34 åÅ is a more dead key with alt-gr
 ! 35 dead easy unmodded ~ tilde
 ! 47,48 {} curly braces
-! 49 $ is more useful than §
+! 49 $ is more useful than § (section, pos 6), tilde bar
 ! 51 quotedbl instead of acute '* "×
+! 52,53 moving <> pos 6 to 5, in front of guillemot
 ! 59,60 [] on the ,. keys
 ! 91 keypad decimal dot instead of comma
 ! 135 to combine two chars into one
@@ -47,8 +48,10 @@ keycode  35 = asciitilde asciicircum diaeresis asciicircum udiaeresis Udiaeresis
 keycode  38 = a A a A ae AE ordfeminine masculine a A ordfeminine masculine a A ordfeminine masculine
 keycode  47 = odiaeresis Odiaeresis odiaeresis Odiaeresis braceleft bracketleft oslash Oslash odiaeresis Odiaeresis oslash Oslash
 keycode  48 = adiaeresis Adiaeresis adiaeresis Adiaeresis braceright bracketright ae AE adiaeresis Adiaeresis ae AE
-keycode  49 = dollar asciitilde paragraph onehalf section threequarters paragraph threequarters section onehalf paragraph threequarters section onehalf paragraph threequarters
+keycode  49 = dollar asciitilde paragraph onehalf bar section paragraph threequarters section onehalf paragraph threequarters section onehalf paragraph threequarters
 keycode  51 = apostrophe asterisk apostrophe asterisk quotedbl multiply acute multiply apostrophe asterisk
+keycode  52 = z Z z Z less guillemotleft guillemotleft less z Z guillemotleft less z Z guillemotleft less
+keycode  53 = x X x X greater guillemotright guillemotright greater x X guillemotright greater x X guillemotright greater
 keycode  59 = comma semicolon comma semicolon bracketleft less cedilla ogonek comma semicolon cedilla ogonek comma semicolon cedilla ogonek
 keycode  60 = period colon period colon bracketright greater periodcentered abovedot period colon periodcentered abovedot period colon periodcentered abovedot
 keycode  91 = colon period colon period periodcentered dead_abovedot

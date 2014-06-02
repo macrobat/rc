@@ -2,10 +2,29 @@
 
 " set guioptions?
 " set guioptions bCrs
+" set guioptions+=T
 " set guioptions+=m
+" B	Bookmark bar
+" C	Always show the command line outside of the status line
+" M	Always show messages outside of the status line
+" N	Tab number over image
+" T	Toolbar
+" b	Bottom scrollbar
+" c	Always show the command line, even when empty
+" r	Right scrollbar
+" l	Left scrollbar (l and r are mutually exclusive)
+" m	Menu bar
+" n	Tab number
+" s	Status bar
+
+set defsearch=duckduckgo
 
 " suggestions S search engines
-"set complete=slSf
+" outdated?
+" set complete=slSf
+" contemporary?
+" complete=search, location, file
+
 nmap <C-Left> :bprevious<CR>
 nmap <C-Right> :bnext<CR>
 
@@ -23,11 +42,10 @@ nmap <C--> :zoom -14<CR>
 " so that you don't start a new search where the old one left of
 "nmap -b gg igg<Esc>
 
-" funkar inte
 "cabbreviate H sidebar History
+nmap -ex <F8> sidebar History
 
-"cabbreviate Addons emenu Tools.Add-ons
-
+" use :dialog
 "cabbreviate dta emenu Tools.DownThemAll! Tools.DownThemAll!...
 " funkar inte
 " Enable passthrough mode on some Google sites:

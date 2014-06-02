@@ -1,9 +1,8 @@
 " just :source ~/.gvimrc
 "colorscheme darkslategray
-colo wombat256 "too subtle cursor, red bkgrnd on : $ #
 "colo rootwater
 "colo pyte              " light
-"colo torte             " använd i vim, ser kommentarer
+"colo torte             " for vim on terms with less colors,
 "colorscheme navajo_night
 "colorscheme chocolateliquor
 "colorscheme pyte
@@ -11,6 +10,8 @@ colo wombat256 "too subtle cursor, red bkgrnd on : $ #
 "colorscheme camo
 "colo aiseered
 "colo autumnleaf
+"colo wombat256 "too subtle cursor, red bkgrnd on : $ #
+colo wombat256mod  " better diffcolors
 
 "set guifont=DejaVu\ Sans\ Mono\ 10
 " l and 1 are too close. l has a serif for the left side of the foot
@@ -25,10 +26,10 @@ let &guicursor = &guicursor . ",a:blinkon0"
 "set nu "line numbering
 "set rnu "relative line numbering
 set nonu
-"noh    "vet inte hur highlight funkar, fixat C-l i .vimrc
+"noh    "don't know how highlight works, fixed C-l in .vimrc
 "set wildmenu
 
-"vill inte se pekaren när jag skriver
+"don't show the mouse pointer when I write
 set mousehide
 
 "open all files in tabs. (use the -p --remote-tab-silent options too)
@@ -36,7 +37,10 @@ set mousehide
 tab all
 
 " :Man whatever. How bind it to K?
-:so /usr/share/vim/vim74/ftplugin/man.vim
+" :so /usr/share/vim/vim74/ftplugin/man.vim
+" nunmap K
+" no such mapping. it is a default mapping
+nnoremap K <Nop>
 
 " first, enable status line always
 set laststatus=2
@@ -60,6 +64,7 @@ inoremap ñ <esc>gwapi
   "au InsertLeave * hi StatusLine term=reverse ctermfg=0 ctermbg=2 gui=bold,reverse
 "endif
 
+" use vim-airline instead!
 " less garish colors than magenta,green,blue,red
 " default the statusline to green when entering Vim
 hi statusline guibg=#597418
