@@ -171,6 +171,8 @@
 (desktop-save-mode 1)
 (setq desktop-load-locked-desktop t)
 (desktop-read) ; gives error ; needed? the desktop wasn't read before
+(setq desktop-base-file-name "desktop_savefile")
+(setq desktop-base-lock-name "desktop_lockfile")
 
 ;; old crap. want unique buffer names
 ;;(require 'uniquify) (setq uniquify-buffer-name-style 'forward)

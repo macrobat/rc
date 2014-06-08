@@ -1,5 +1,6 @@
 ! add, remove MODIFIERNAME = KEYSYMNAME
-! to reset a borked map:
+! reset the map before running xmodmap ~\.Xmodmap
+! or if the map is borked
 ! setxkbmap se -variant nodeadkeys -option terminate:ctrl_alt_bksp
 ! xmodmap -pm to see the mod keys
 ! xmodmap -pke to see the list of bindings
@@ -24,8 +25,8 @@
 
 ! 30 german üÜ
 ! 32,38 norwegian/danish æÆ øØ
-! 34 åÅ is a more dead key with alt-gr
-! 35 dead easy unmodded ~ tilde
+! 34 åÅ is a deader key with alt-gr
+! 35 dead, easy unmodded ~ asciitilde. ¨ is on 34 å
 ! 47,48 {} curly braces
 ! 49 $ is more useful than § (section, pos 6), tilde bar
 ! 51 quotedbl instead of acute '* "×
@@ -33,7 +34,6 @@
 ! 59,60 [] on the ,. keys
 ! 91 keypad decimal dot instead of comma
 ! 135 to combine two chars into one
-! 191 why? was: XF86Tools NoSymbol XF86Tools
 
 remove Lock = Caps_Lock
 remove Control = Control_L
@@ -54,7 +54,38 @@ keycode  52 = z Z z Z less guillemotleft guillemotleft less z Z guillemotleft le
 keycode  53 = x X x X greater guillemotright guillemotright greater x X guillemotright greater x X guillemotright greater
 keycode  59 = comma semicolon comma semicolon bracketleft less cedilla ogonek comma semicolon cedilla ogonek comma semicolon cedilla ogonek
 keycode  60 = period colon period colon bracketright greater periodcentered abovedot period colon periodcentered abovedot period colon periodcentered abovedot
-keycode  91 = colon period colon period periodcentered dead_abovedot
 keycode 135 = Multi_key Multi_key Multi_key Multi_key Multi_key Multi_key Multi_key Multi_key
-keycode 191 = KP_Delete KP_Separator KP_Delete KP_Separator
+
+! unlocked numpad
+! 106 63  82  86    keycode
+! \   &   %   #     unlocked, or locked   with shift
+! /   *   -   +     locked,   or unlocked with shift
+
+! unlocked numpad, or numlock with shift
+! < ^ >     79 80 81    7 8 9   less asciicircum greater
+! [ | ]     83 84 85    4 5 6   brackets bar
+! { ~ }     87 88 89    1 2 3   braces asciitilde
+! (   )     90 91       0 .     parens
+keycode  63 = KP_Multiply ampersand KP_Multiply KP_Multiply KP_Multiply KP_Multiply XF86ClearGrab KP_Multiply KP_Multiply XF86ClearGrab KP_Multiply KP_Multiply KP_Multiply KP_Multiply XF86ClearGrab KP_Multiply KP_Multiply KP_Multiply KP_Multiply XF86ClearGrab
+keycode  82 = KP_Subtract percent KP_Subtract KP_Subtract KP_Subtract KP_Subtract XF86Prev_VMode KP_Subtract KP_Subtract XF86Prev_VMode KP_Subtract KP_Subtract KP_Subtract KP_Subtract XF86Prev_VMode KP_Subtract KP_Subtract KP_Subtract KP_Subtract XF86Prev_VMode
+keycode 106 = KP_Divide backslash KP_Divide KP_Divide KP_Divide KP_Divide XF86Ungrab KP_Divide KP_Divide XF86Ungrab KP_Divide KP_Divide KP_Divide KP_Divide XF86Ungrab KP_Divide KP_Divide KP_Divide KP_Divide XF86Ungrab
+keycode  86 = KP_Add numbersign KP_Add KP_Add KP_Add KP_Add XF86Next_VMode KP_Add KP_Add XF86Next_VMode KP_Add KP_Add KP_Add KP_Add XF86Next_VMode KP_Add KP_Add KP_Add KP_Add XF86Next_VMode
+
+keycode  79 = less KP_7 KP_Home KP_7 KP_Home KP_7 KP_Home KP_7
+keycode  80 = asciicircum KP_8 KP_Up KP_8 KP_Up KP_8 KP_Up KP_8
+keycode  81 = greater KP_9 KP_Prior KP_9 KP_Prior KP_9 KP_Prior KP_9
+
+keycode  83 = bracketleft KP_4 KP_Left KP_4 KP_Left KP_4 KP_Left KP_4
+keycode  84 = bar KP_5 KP_Begin KP_5 KP_Begin KP_5 KP_Begin KP_5
+keycode  85 = bracketright KP_6 KP_Right KP_6 KP_Right KP_6 KP_Right KP_6
+
+keycode  87 = braceleft KP_1 KP_End KP_1 KP_End KP_1 KP_End KP_1
+keycode  88 = asciitilde KP_2 KP_Down KP_2 KP_Down KP_2 KP_Down KP_2
+keycode  89 = braceright KP_3 KP_Next KP_3 KP_Next KP_3 KP_Next KP_3
+
+keycode  90 = parenleft KP_0 KP_Insert KP_0 KP_Insert KP_0 KP_Insert KP_0
+keycode  91 = parenright period colon period periodcentered dead_abovedot
+
+! 191 why? mediabuttons? default: XF86Tools NoSymbol XF86Tools
+! keycode 191 = KP_Delete KP_Separator KP_Delete KP_Separator
 
