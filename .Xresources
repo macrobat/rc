@@ -6,10 +6,10 @@
 ! name.Class.resource: value
 ! ----------------------------------------------------------------------------
 ! Xft settings ---------------------------------------------------------------
-!litet x. stort funkar inte på xft
+! lowercase x. X not working on xft ?
 ! Xft.dpi:        96
 !Xft.rgba:       rgb
-!Xcursor.theme: 
+!Xcursor.theme:
 
 xft.antialias			    : true
 xft.hinting                 : true
@@ -45,17 +45,17 @@ urxvt.scrollTtyKeypress	    : 1
 urxvt*geometry			    : 150x50
 gvim*geometry			    : 152x56
 
-!sätter längre ned 
+!set this below
 !urxvt*background		    : black
 !urxvt*background		    : white
 !urxvt*foreground		    : white
 !urxvt*foreground		    : darkslategray
-!urxvt*tintColor			    : olivedrab2
+!urxvt*tintColor		    : olivedrab2
 
 urxvt*saveLines			    : 7000
 urxvt*title			        : urxvt
 
-!urxvt*font			    : xft:Terminus:pixelsize=15
+!urxvt*font	    		    : xft:Terminus:pixelsize=15
 !urxvt*italicfont		    : xft:Terminus:pixelsize=15:bold
 !urxvt -fn "xft:dejavu sans mono:pixelsize=15" -bg black -fg white
 !urxvt*font:                 xft:DejaVu Sans Mono:pixelsize=14 !:autohint=true
@@ -63,14 +63,14 @@ urxvt*title			        : urxvt
 !urxvt*italicFont:           xft:DejaVu Sans Mono:pixelsize=14:italic !:autohint=true
 !urxvt*boldItalicFont:       xft:DejaVu Sans Mono:pixelsize=14:bold:italic !:autohint=true
 
-! sätt annan hint? sätt en hint för gvim. hur funkar det med subpixel rendering?
-! tar tillfälligt bort :autohint=true
+! set other hint? set hint for gvim. how does subpixel hints work?
+! comment out temporarily :autohint=true
 !urxvt*font:             xft:Terminus:pixelsize=14
 !urxvt*boldFont:         xft:Terminus:pixelsize=14:bold
 !urxvt*italicFont:       xft:Terminus:pixelsize=14:italic
 !urxvt*boldItalicFont:   xft:Terminus:pixelsize=14:bold:italic
 !urxvt*letterSpace: -2
-! större font för desktop
+! larger font for desktop
 urxvt*font:             xft:DejaVu Sans Mono:pixelsize=16
 urxvt*boldFont:         xft:DejaVu Sans Mono:pixelsize=16:bold
 urxvt*italicFont:       xft:DejaVu Sans Mono:pixelsize=16:italic
@@ -78,7 +78,7 @@ urxvt*boldItalicFont:   xft:DejaVu Sans Mono:pixelsize=16:bold:italic
 
 !true for weechat hilite with beep.pl plugin
 urxvt*urgentOnBell		    : false
-!ingen genomsikt i denna
+! no transparency
 urxvt.transparent		    : false
 urxvt*inheritPixmap		    : false
 !https://github.com/muennich/urxvt-perls
@@ -106,7 +106,7 @@ urxvt.scrollBar_right	    : true
 !urxvt.scrollstyle           : plain
 urxvt*cursorBlink		    : false
 ! tab colour -----------------------------
-! händer inte ett skit
+! nothing happens
 !urxvt.*.tabbar-fg           : 3
 !urxvt.*.tabbar-bg           : 0
 !urxvt.*.tab-fg              : 0
@@ -123,7 +123,7 @@ urxvt*cursorBlink		    : false
 !set to 32-bit for real transparency (compositing required)
 !URxvt*depth:             24
 
-!URxvt*transparent		    : true 
+!URxvt*transparent		    : true
 !URxvt*tintColor			    : olivedrab2
 !URxvt*shading               : 30
 
@@ -135,15 +135,15 @@ urxvt*cursorBlink		    : false
 !URxvt.blurRadius:         12
 !URxvt.perl-ext-common:    default,tabbed
 
-!urxvt -pixmap pics/bakgrund/fjäder.jpg
+!urxvt -pixmap ~/pics/bakgrund/foo.jpg
 !-----------------------------
 
 urxvt*cursorColor :    rgb:ff/ff/2f
 urxvt*pointerColor:    rgb:ff/ff/2f
 
-!experimentera med ferger
-!ljusgult,  ljuslila och gröna för ljusa
-!mörkgult för mörkt
+!colour experiment
+!light yellow, light purple and green are too light
+!dark yellow is too dark
 !
 !!!Theme Two - Aron Griffin
 !*background: rgb:00/00/00
@@ -180,7 +180,7 @@ urxvt*pointerColor:    rgb:ff/ff/2f
 !!black
 *color0:     rgb:00/00/00
 !*color8:     rgb:e0/10/10
-! has no effect or tab color is hardcoded?
+! has no effect or urxvt -pe tabbed tab color is hardcoded?
 *color8:     rgb:34/45/34
 !!red
 *color1:     rgb:e0/10/10

@@ -171,7 +171,7 @@
 (desktop-save-mode 1)
 (setq desktop-load-locked-desktop t)
 (desktop-read) ; gives error ; needed? the desktop wasn't read before
-(setq desktop-base-file-name "desktop_savefile")
+(setq desktop-base-file-name "desktop_savefile") ; don't want hidden files
 (setq desktop-base-lock-name "desktop_lockfile")
 
 ;; old crap. want unique buffer names
@@ -230,9 +230,9 @@
 ;; M-x set-frame-font
 (when window-system
   ;; set-default-font is obsolete
-  ;; (set-frame-font
-  ;; "-unknown-DejaVu Sans Mono\
-  ;; -normal-normal-normal-*-16-*-*-*-m-0-iso10646-1")
+  (set-frame-font
+  "-unknown-DejaVu Sans Mono\
+  -normal-normal-normal-*-16-*-*-*-m-0-iso10646-1")
   ;; smaller laptop fontsize
   ;; "-unknown-DejaVu Sans Mono\
   ;; -normal-normal-normal-*-12-*-*-*-m-0-iso10646-1")
