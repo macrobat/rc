@@ -13,11 +13,13 @@
 "colo wombat256 "too subtle cursor, red bkgrnd on : $ #
 colo wombat256mod  " better diffcolors
 
-"set guifont=DejaVu\ Sans\ Mono\ 10
+" uppercase not needed
+"set guifont=DejaVu\ Sans\ Mono\ 11
 " l and 1 are too close. l has a serif for the left side of the foot
-"set guifont=Inconsolata\ 11
+" set guifont=Inconsolata\ 11
 set guifont=Inconsolata\ 12
-"set guifont=Terminus\ 12
+" set guifont=sourcecodepro\ 11
+" set guifont=Terminus\ 12
 
 "no toolbar or menu
 set guioptions-=T
@@ -37,10 +39,16 @@ set mousehide
 tab all
 
 " :Man whatever. How bind it to K?
-" :so /usr/share/vim/vim74/ftplugin/man.vim
+" it is already bound to <leader>K
+:so /usr/share/vim/vim74/ftplugin/man.vim
 " nunmap K
 " no such mapping. it is a default mapping
-nnoremap K <Nop>
+" nnoremap K <Nop>
+nnoremap K echo "use \\K or :Man <C-r><C-a> for manpages"
+" wontwork
+" <SNR> means <SID> 75 is the script id for man.vim
+" you can only use <SID> in a script contex
+" nnoremap K :call <SNR>75_PreGetPage(0)<CR>
 
 " first, enable status line always
 set laststatus=2
@@ -48,9 +56,18 @@ set laststatus=2
 " like emacs M-x (why is it an ø?) . only in gvim. specific for my setup?
 nnoremap ø :
 
-" emacsy C-SPC visual line
-nnoremap <C-space> V
+" emacs C-SPC visual line
+" save it for vimCtrlSpace?
+" nnoremap <C-space> V
 inoremap <C-space> <C-o>V
+
+" emacs <A-;> for gvim (shows as '»' in gvim)
+nmap » <Plug>NERDCommenterToggle
+vmap » <Plug>NERDCommenterToggle
+
+" convenient backspace, in gvim only
+nnoremap <S-BS> db
+inoremap <S-BS> <Esc>dbi
 
 " <A-q> to format a para
 nnoremap ñ gqap

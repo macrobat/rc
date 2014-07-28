@@ -1,0 +1,227 @@
+" vimtip 1287
+" just :source ~/.vimrc
+
+" Use Vim settings, rather then Vi settings (much better!).
+" This must be first, because it changes other options as a side effect.
+set nocompatible
+
+" colorscheme desert
+
+" open all files in tabs. (use the -p --remote-tab-silent options too)
+"tab all
+
+" slipp :vert före diffsplit
+" (for horizontal splits "-o" as cmdline arg)
+set diffopt+=vertical
+
+" first, enable status line always. "statusline, :h stl
+set laststatus=2
+
+" Make command line two lines high
+set ch=2
+
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+
+set history=7000    " keep lines of command history
+set ruler           " show the cursor position all the time
+set showcmd         " display incomplete commands
+set incsearch       " do incremental searching
+
+" Don't use Ex mode, use Q for formatting
+map Q gq
+
+" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
+" so that you can undo CTRL-U after inserting a line break.
+inoremap <C-U> <C-G>u<C-U>
+
+" In many terminal emulators the mouse works just fine, thus enable it.
+if has('mouse')
+  set mouse=a
+endif
+
+" Switch syntax highlighting on, when the terminal has colors
+" Also switch on highlighting the last used search pattern.
+if &t_Co > 2 || has("gui_running")
+  syntax on
+  set hlsearch
+endif
+
+set autoindent
+
+" Use 'filetype indent on' and be happy.
+"set smartindent "XXX don't use
+
+" Only do this part when compiled with support for autocommands.
+if has("autocmd")
+
+  " Enable file type detection.
+  " Use the default filetype settings, so that mail gets 'tw' set to 72,
+  " 'cindent' is on in C files, etc.
+  " Also load indent files, to automatically do language-dependent indenting.
+  filetype plugin indent on
+
+  " Put these in an autocmd group, so that we can delete them easily.
+  augroup vimrcEx
+  au!
+
+" One of the most important options to activate. Allows you to switch from an
+" unsaved buffer without saving it first. Also allows you to keep an undo
+" history for multiple files. Vim will complain if you try to quit without
+" saving, and swap files will keep you safe if your computer crashes.
+set hidden
+
+" Modelines have historically been a source of security vulnerabilities.  As
+" such, it may be a good idea to disable them and use the securemodelines
+" script, <http://www.vim.org/scripts/script.php?script_id=1876>.
+" set nomodeline
+
+  " For all text files set 'textwidth' to 80 characters.
+  autocmd FileType text setlocal textwidth=80
+
+  " When editing a file, always jump to the last known cursor position.
+  " Don't do it when the position is invalid or when inside an event handler
+  " (happens when dropping a file on gvim).
+  " Also don't do it when the mark is in the first line, that is the default
+  " position when opening a file.
+  autocmd BufReadPost *
+    \ if line("'\"") > 1 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
+
+  " autocmd FileType make setlocal noexpandtab " Makefile
+
+  augroup END
+
+  " move more stuff here
+"else
+
+endif " has("autocmd")
+
+" Convenient command to see the difference between the current buffer and the
+" file it was loaded from, thus the changes you made.
+" Only define it when not defined already.
+if !exists(":DiffOrig")
+  command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
+          \ | wincmd p | diffthis
+endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" swap directory, uniquified names where % is /
+" set directory=~/.vim/swapfiles//,.,~/tmp,/var/tmp,/tmp
+if ! isdirectory(expand('~/.vim/swapfiles'))
+   call mkdir(expand('~/.vim/swapfiles'))
+endif
+if isdirectory(expand('~/.vim/swapfiles'))
+   set directory=~/.vim/swapfiles//
+else
+   set directory=.,/var/tmp,/tmp
+endif
+
+" change dir to wherever you are (will break stuff?)
+se autochdir
+
+" håll sverige rent. slipp fil~
+set nobackup
+" backup file before overwriting, delete original
+set writebackup
+" don't join with two spaces after a '.', '?' and '!'
+set nojoinspaces
+
+" Better command-line completion for emenu, popup...
+set wildmenu
+" Use case insensitive search, except when using capital letters
+set ignorecase
+set smartcase
+
+" Stop certain movements from always going to the first character of a line.
+" While this behaviour deviates from that of Vi, it does what most users
+" coming from other editors would expect.
+set nostartofline
+
+" Instead of failing a command because of unsaved changes, instead raise a
+" dialogue asking if you wish to save changed files.
+set confirm
+
+" Set the command window height to 2 lines, to avoid many cases of having to
+" "press <Enter> to continue"
+set cmdheight=2
+" q: q? q/ for the cmd window. C-f in cmd mode
+set cmdwinheight=14
+
+" Quickly time out on keycodes, but never time out on mappings
+set notimeout ttimeout ttimeoutlen=200
+
+" can't use <S-Insert> with set paste
+set nopaste "see softtabstop
+
+" Indentation settings for using spaces instead of tabs.
+" Do not change 'tabstop' from its default value of 8 with this setup.
+" ('softtabstop' is set to 0 when the 'paste' option is set.
+" See also |ins-expandtab|.  When 'expandtab' is not set, the number of
+" spaces is minimized by using <Tab>s.)
+" set softtabstop=4
+set expandtab
+" set noexpandtab "don't expand a tab to a number of spaces
+" spaces for each tab with normal >> == << and visual > = <
+
+" setting this earlier in the file, inside if (has autocmd)
+" autocmd FileType make setlocal noexpandtab " Makefile
+
+set shiftwidth=4 "8
+set softtabstop=4 "0
+" DONOTWANT!!!
+" if ts=8 sts=4, vim converts 1 tab to 4 spaces and 8 spaces to 1 tab
+set tabstop=4 "8
+
+" allow emacs-like command line editing
+" :h CTRL-R
+cnoremap <C-A>      <Home>
+cnoremap <C-E>      <End>
+"cnoremap <C-N>      <End> "<Down>
+cnoremap <C-P>      <Up>
+cnoremap <C-B>      <S-Left>
+" I want to enable the cmd-line window instead
+"cnoremap <C-F>      <S-Right>
+cnoremap <ESC>b     <S-Left>
+cnoremap <ESC>f     <S-Right>
+cnoremap <ESC><C-H> <C-W>
+" cnoremap <C-B>      <Left>    "should be alt
+" cnoremap <C-F>      <Right>
+
+"let the old window stay in the same place when :sp or :vs
+set splitbelow
+set splitright
+
+" did I write this one myself?
+func! ToggleLineNumbering()
+    if !exists('s:LineNumbering')
+        "echo s:LineNumbering
+        let s:LineNumbering = 0
+    else
+        let s:LineNumbering = (s:LineNumbering + 1) % 3
+    endif
+
+    " maybe 1 rnu, 2 nu, anything else - nothing
+    if s:LineNumbering == 0
+        set nonu
+        set rnu
+        echo "rnu"
+    "elseif &rnu == 1
+    elseif s:LineNumbering == 1
+        set nornu
+        set nu
+        echo "nu"
+    else
+        set nornu
+        set nonu
+        echo
+    endif
+endfunc
+
+" <silent> :
+noremap <silent> <F2> :call ToggleLineNumbering()<CR>
+
+
+

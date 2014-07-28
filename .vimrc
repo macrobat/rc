@@ -76,8 +76,8 @@ set hidden
 " script, <http://www.vim.org/scripts/script.php?script_id=1876>.
 " set nomodeline
 
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
+  " For all text files set 'textwidth' to 80 characters.
+  autocmd FileType text setlocal textwidth=80
 
   " When editing a file, always jump to the last known cursor position.
   " Don't do it when the position is invalid or when inside an event handler
@@ -133,7 +133,7 @@ call SetupVAM()
 " vam doesn't have Insertlessly. it just loads it from ~/.vim/Insertlessly
 " example: VAMActivate vim-airline
 " AirlineTheme solarized " or, like, airlineish
-" ctrlp
+" ctrlp     " yankring uses <C-p>, is it just in the YR buffer?
 " ultisnips
 
 " seems vam does add these now. I want the commands and the help
@@ -143,11 +143,10 @@ call SetupVAM()
 " https://github.com/dahu/Insertlessly
 set runtimepath+=~/.vim/Insertlessly
 
-" don't want colorizer enabled. 100% cpu
+" don't want colorizer defaultly enabled. 100% cpu
 " E492: Not an editor command: ColorClear
-" ColorClear
-" "lazy" eval?
-" just VAMInstall it?
+" if you want it:
+" VAMActivate Colorizer
 
 
 " removing
@@ -166,9 +165,25 @@ set runtimepath+=~/.vim/Insertlessly
 " place new stuff below:
 
 " emacs kill next word and undo bind
-nnoremap <A-d> de
+nnoremap <A-d> dw
 nnoremap <C-_> u
 inoremap <C-_> <esc>ui
+
+" allow emacs-like command line editing
+" :h CTRL-R
+cnoremap <C-A>      <Home>
+cnoremap <C-E>      <End>
+"cnoremap <C-N>      <End> "<Down>
+cnoremap <C-P>      <Up>
+cnoremap <C-B>      <S-Left>
+" I want to enable the cmd-line window instead
+"cnoremap <C-F>      <S-Right>
+cnoremap <ESC>b     <S-Left>
+cnoremap <ESC>f     <S-Right>
+cnoremap <ESC><C-H> <C-W>
+" cnoremap <C-B>      <Left>    "should be alt
+" cnoremap <C-F>      <Right>
+" see also the NERDCommenter <A-;> bind
 
 " To use gc to transpose the current character with the next,
 " without changing the cursor position:
@@ -244,6 +259,7 @@ let g:yankring_share_between_instances = 0
 "let g:yankring_history_file = '~/.vim/yankring_history'
 let g:yankring_history_file = '.vim/yankring_history'
 
+" there is no ft=bash. what's this?
 " defaults to bash syntax highlighting on *.sh files
 let g:is_bash = 1
 
@@ -291,21 +307,26 @@ nnoremap <leader>v :call ToggleVirtualEdit()<CR>
 " error if opening dirs (or other buftypes?)
 " E474: Invalid argument: iskeyword+=-,~,/,!,
 " autocmd! BufAdd * set iskeyword+=-,~,/,!,.,
-"autocmd FileType * set iskeyword+=-,~,/,!,.
-"nmap <leader>w :set iskeyword+=-,~,/,!,
-"If you don't want to remove all autocommands, you can instead use a variable
-"to ensure that Vim includes the autocommands only once: >
+" autocmd FileType * set iskeyword+=-,~,/,!,.
+
+" make this a toggle:
+" nmap <leader>w :set iskeyword+=-,~,/,!,
+" If you don't want to remove all autocommands, you can instead use a variable
+" to ensure that Vim includes the autocommands only once: >
 if !exists("autocommands_loaded")
   let autocommands_loaded = 1
-  au FileType * set iskeyword+=-,~,/,!,.,*
+  " au FileType * set iskeyword+=-,.
+  au FileType * set iskeyword=@,.,/,48-57,_,192-255,-
+  " au FileType text set iskeyword+=-,~,/,!,.,*
+  " don't want (), for example in C
   au FileType * set iskeyword-=(,)
-  " au FileType * set noet " what about yaifa? DONOTWANT! OR NEED!
+  " au FileType * set noet " seems to work for Makefile anyway
 endif
 
-" comment and see if tabs get redrawn when switched to.
+" do tabs get redrawn when switched to.
 " Don't update the display while executing macros
-"set lazyredraw
-set nolazyredraw
+set lazyredraw
+"set nolazyredraw
 
 " E185: Cannot find color scheme 'vividchalk'
 " set runtimepath+=~/.vim/Color_Sampler_Pack/colors/
@@ -350,8 +371,12 @@ nnoremap j gj
 nnoremap <Up> gk
 nnoremap <Down> gj
 
-nnoremap <S-h> gT
-nnoremap <S-l> gt
+" maybe the CtrlSpace plugin
+" nnoremap <S-h> gT
+" nnoremap <S-l> gt
+" just in gvim:
+" nnoremap <A-Left> gT
+" nnoremap <A-Right> gt
 
 " maps ',b' to display the buffer list and invoke the ':buffer' command.
 " You can enter the desired buffer number and hit <Enter> to edit the buffer.
@@ -405,7 +430,7 @@ set confirm
 " "press <Enter> to continue"
 set cmdheight=2
 " q: q? q/ for the cmd window. C-f in cmd mode
-set cmdwinheight=10
+set cmdwinheight=14
 
 " Quickly time out on keycodes, but never time out on mappings
 set notimeout ttimeout ttimeoutlen=200
@@ -413,7 +438,7 @@ set notimeout ttimeout ttimeoutlen=200
 " Use <F11> to toggle between 'paste' and 'nopaste'
 " Why would I ever want to set paste?
 " set pastetoggle=<F11>
-"can't use <S-Insert> with set paste
+" can't use <S-Insert> with set paste
 set nopaste "see softtabstop
 
 " Indentation settings for using spaces instead of tabs.
@@ -431,8 +456,8 @@ set expandtab
 
 set shiftwidth=4 "8
 set softtabstop=4 "0
-" if ts=8 sts=4, vim converts 1 tab to 4 spaces and 8 spaces to 1 tab
 " DONOTWANT!!!
+" if ts=8 sts=4, vim converts 1 tab to 4 spaces and 8 spaces to 1 tab
 set tabstop=4 "8
 " needs autocommand?
 set textwidth=80
@@ -455,20 +480,6 @@ nmap <F7> :NERDTreeToggle<CR>
 " http://vim.wikia.com/wiki/Mapping_keys_in_Vim_-_Tutorial_(Part_1)
 " cannot search /W when :W is mapped to :w
 " cnoremap W w
-" allow emacs-like command line editing
-" :h CTRL-R
-cnoremap <C-A>      <Home>
-cnoremap <C-E>      <End>
-"cnoremap <C-N>      <End> "<Down>
-cnoremap <C-P>      <Up>
-cnoremap <C-B>      <S-Left>
-" I want to enable the cmd-line window instead
-"cnoremap <C-F>      <S-Right>
-cnoremap <ESC>b     <S-Left>
-cnoremap <ESC>f     <S-Right>
-cnoremap <ESC><C-H> <C-W>
-" cnoremap <C-B>      <Left>    "should be alt
-" cnoremap <C-F>      <Right>
 
 "let the old window stay in the same place when :sp or :vs
 set splitbelow
@@ -532,10 +543,12 @@ endfunc
 noremap <silent> <F2> :call ToggleLineNumbering()<CR>
 
 " NERD_commenter is acting up, needs more binds
+" emacs <A-;> for gvim (shows as '»' in gvim)
 nmap  ,cc           <Plug>NERDCommenterComment
 vmap  ,cc           <Plug>NERDCommenterComment
 nmap  ,c<Space>     <Plug>NERDCommenterToggle
-vmap  ,c<Space>     <Plug>NERDCommenterToggle
+"nmap  »             <Plug>NERDCommenterToggle
+"vmap  »             <Plug>NERDCommenterToggle
 nmap  ,cm           <Plug>NERDCommenterMinimal
 vmap  ,cm           <Plug>NERDCommenterMinimal
 nmap  ,cs           <Plug>NERDCommenterSexy
@@ -556,6 +569,7 @@ nmap  ,c$           <Plug>NERDCommenterToEOL
 vmap  ,c$           <Plug>NERDCommenterToEOL
 nmap  ,cA           <Plug>NERDCommenterAppend
 vmap  ,cA           <Plug>NERDCommenterAppend
+" want this always set for C. autocommands? has("icanhas nerd")
 nmap  ,ca           <Plug>NERDCommenterAltDelims
 
 

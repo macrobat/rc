@@ -8,23 +8,23 @@
 # The pound(#) symbol may be used anywhere for comments.
 #
 # A list of keys is in /usr/include/X11/keysym.h and in
-# /usr/include/X11/keysymdef.h 
-# The XK_ is not needed. 
+# /usr/include/X11/keysymdef.h
+# The XK_ is not needed.
 #
-# List of modifier (on my keyboard): 
-#   Control, Shift, Mod1 (Alt), Mod2 (NumLock), 
-#   Mod3 (CapsLock), Mod4, Mod5 (Scroll). 
+# List of modifier (on my keyboard):
+#   Control, Shift, Mod1 (Alt), Mod2 (NumLock),
+#   Mod3 (CapsLock), Mod4, Mod5 (Scroll).
 #
-# Another way to specifie a key is to use 'xev' and set the 
-# keycode with c:nnn or the modifier with m:nnn where nnn is 
-# the keycode or the state returned by xev 
+# Another way to specifie a key is to use 'xev' and set the
+# keycode with c:nnn or the modifier with m:nnn where nnn is
+# the keycode or the state returned by xev
 #
-# This file is created by xbindkey_config 
-# The structure is : 
-# # Remark 
-# "command" 
-# m:xxx + c:xxx 
-# Shift+... 
+# This file is created by xbindkey_config
+# The structure is :
+# # Remark
+# "command"
+# m:xxx + c:xxx
+# Shift+...
 
 # bind to lock screen: xscreensaver-command --lock
 
@@ -35,25 +35,25 @@
 # mute
 "amixer sset Master toggle"
     m:0x0 + c:121
-    XF86AudioMute 
+    XF86AudioMute
 
 # want to free ctrl <up>/<down> for gvim text bubbling, use alt there
 "amixer set Master 1.5dB- unmute"
     m:0x0 + c:122
-    XF86AudioLowerVolume 
+    XF86AudioLowerVolume
 
 "amixer set Master 2dB- unmute"
     m:0x4 + c:116
-    Control + Down 
+    Control + Down
 
 # vol up
 "amixer set Master 1.5dB+ unmute"
     m:0x0 + c:123
-    XF86AudioRaiseVolume 
+    XF86AudioRaiseVolume
 
 "amixer set Master 2dB+ unmute"
     m:0x4 + c:111
-    Control + Up 
+    Control + Up
 
 # add actions for XF86AudioPlay XF86AudioPrev XF86AudioNext
 
@@ -65,23 +65,26 @@
 # using unix epoch timestamps (seconds since 1970-01-01 00:00:00 UTC)
 "scrot '%s_scrot.png' -q 85 -e 'mv $f ~/pics/screenshots'"
     m:0x11 + c:107
-    Shift+Mod2 + Print 
+    Shift+Mod2 + Print
 
-# dmenu_run replaces dmenu_path
-# use it directly without piping?
-#"exe=$(dmenu_path | dmenu -i -nb DarkSlateGray4) && exec $exe"
+# toggle fullscreen. turn off if using awesome
+"wmctrl -r :ACTIVE: -btoggle,fullscreen"
+    m:0x50 + c:41
+        Mod2+Mod4 + f
+
+
 #"exe=$(dmenu_path | dmenu -i -nb DarkSlateGray4 -fn "-*-fixed-*-*-*-*-20-*-*-*-*-*-*-*") && exec $exe"
 "dmenu_run -nb DarkSlateGray4 -fn "-*-fixed-*-*-*-*-20-*-*-*-*-*-*-*""
     m:0x8 + c:65
-    Alt + space 
-    
+    Alt + space
+
     m:0x50 + c:65
     Mod2+Mod4 + space
 
 # lambda ()
 #"Hello from Scheme!"
     #(run-command xdotool type "apanpapan")
-    #(newline))) 
+    #(newline)))
 
 #"xterm"
    #;; (remove-xbindkey '(control p))
@@ -91,13 +94,13 @@
 #"xdotool key Shift+Insert"
 #    #    m:0x10 + c:9
 #    # altgr + shift + 1: ¹
-#    Mod2 + onesuperior 
+#    Mod2 + onesuperior
 
 # Alt + dollar
 #"exe2=$(dmenu_run | dmenu -i -nb DarkOliveGreen -fn "-*-fixed-*-*-*-*-20-*-*-*-*-*-*-*") && urxvt -pe tabbed -e $exe2"
 # "exe2=$(dmenu_run -i -nb DarkOliveGreen -fn "-*-fixed-*-*-*-*-20-*-*-*-*-*-*-*") && urxvt -pe tabbed -e $exe2"
     #m:0x40 + c:51
-    #Mod4 + apostrophe 
+    #Mod4 + apostrophe
 
 # use the global path
 #"~/bin/packages/gitclown/clipbored/scripts/dmenuclip"
@@ -106,11 +109,11 @@
 
 #"/usr/bin/site_perl/dmenuclip"
     #m:0x4 + c:66
-    #Control + Escape 
+    #Control + Escape
 
 # keys won't work:
 	#m:0x50 + c:52
-    #Mod2+Mod4 + z 
+    #Mod2+Mod4 + z
 	#m:0x50 + c:49
 	#Mod2+Mod4 + dollar
 

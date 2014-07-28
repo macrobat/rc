@@ -301,9 +301,9 @@ export BROWSER="firefox"
 export PAGER="less -M -e"
 export EDITOR="vim"
 # for conkeror, may take precedence over EDITOR
-# do not want: su makes root use the same value.
+# nota bene: a plain su makes root use the same value.
 # use su - and source the shell init rc from .profile
-# export VISUAL="gvim -f"
+export VISUAL="gvim -f"
 
 # zsh has pushd and popd
 #function cx() { if [[ $# -eq 0 ]] ; then popd ; else pushd "$@" ; fi ; }
@@ -323,7 +323,12 @@ function drop() { find -L ${2:=.} -iname "*$1*" ; }
 function ec() { emacsclient --create-frame --alternate-editor="" -nw "$@" ; }
 # bsd-games /usr/bin/rot13 is: exec /usr/bin/caesar 13 "$@"
 function rot13() { tr '[a-m][n-z][A-M][N-Z]' '[n-z][a-m][N-Z][A-M]'; }
-function tobc() {echo "scale=5; $1 $2 $3" | bc } # escape the *
+function tobc() { echo "scale=5; $1 $2 $3" | bc } # escape the *
+
+# cro cze dan deu fra hin hun iri ita lat nld por scr slo spa swa swe tur wel
+function adict() { dict -d fd-"${1}"-eng "${2}" | awk 'i++ > 3' }
+function ddict() { dict -d fd-deu-eng "${1:=übersetzen}" | awk 'i++ > 3' }
+function fdict() { dict -d fd-fra-eng "${1:=traduire}" | awk 'i++ > 3' }
 
 #alias vl='c /var/log'
 #alias ca='c ~/.config/awesome'

@@ -7,8 +7,6 @@
 ;;(add-to-list 'load-path "~/.emacs.d/") ; warning
 ;; mapc is for side-effects only, it doesn't return a list like mapcar does
 
-;; don't ask me about vc!!!! HATE
-(defalias 'yes-or-no-p 'y-or-n-p)
 
 (mapc '(lambda (dir) (add-to-list 'load-path dir 'APPEND)) ; put it last
       '(
@@ -128,7 +126,7 @@
 	       (require 'paredit)
                (turn-on-smartparens-mode)
                (sp-use-paredit-bindings)
-               ;; doesn't work here. dynamic scope?'
+               ;; doesn't work. why can I set the above things?'
                ;; (sp-local-pair bla-mode "'" nil :actions nil)
 	       (rainbow-delimiters-mode 1))))
  '(emacs-lisp-mode-hook lisp-mode-hook lisp-interaction-mode-hook
@@ -137,7 +135,10 @@
 ;; doesn't fucking work
 (add-hook 'smartparens-mode-hook
           (lambda () (require 'smartparens-config)) ; less annoying lisp
-          (lambda () (sp-pair "'" nil :actions :rem))) ; work damnit
+          (lambda () (sp-pair "'" nil :actions :rem))) ; work-damnit-I-hate-you
+
+(add-hook 'geiser-repl-mode-hook
+    (lambda () (sp-pair "'" nil :actions :rem)))
 
 ;; there are no modes like that. What is it called?????
 ;; (sp-local-pair geiser-repl-mode "'" nil :actions nil)
@@ -194,12 +195,14 @@
 ;; (add-hook ... '(lambda () ...)) will work, but you shouldn't use it.
 ;; For reasons related to byte-compilation, (lambda () ...) is better.
 
+;; doesn't seem to be built-in. download:
+;; http://immerrr.github.io/lua-mode/
+(setq auto-mode-alist (cons '("\.lua$" . lua-mode) auto-mode-alist))
 
 ;; \\' means end of string. (rx eos) => "\\'"
 ;; M-x unload-feature to un-require
 ;; (add-to-list auto-mode-alist '("\.lua\\'" . lua-mode))
 ;; auto-mode-alist is broken or something. using this instead
-(setq auto-mode-alist (cons '("\.lua$" . lua-mode) auto-mode-alist))
 ;; want c89 // comments in c and c++ mode for c and cpp headers
 (add-to-list 'auto-mode-alist '("\\.c\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
@@ -266,7 +269,7 @@
   ;; (load-file "~/.emacs.d/themes/arjen-theme.elc")
   ;; (color-theme-arjen)
   ;; (color-theme-zenburn) ; (color-theme-gnome2)
-  ;; region has aboring colour, change ~ line 100
+  ;; region has a boring colour, change ~ line 100
 
   ;; nil => S-Ins wontwork. t => changes clipboard
   (setq x-select-enable-clipboard t)
@@ -283,12 +286,15 @@
   (winner-mode 1) ; undo window changes
   ;;(speedbar t) ;; i want it in buffer mode < and narrower in awesome >
 
-  (require 'popwin) ; has no autoloads
-  (setq special-display-function
-        ;;'popwin:special-display-popup-window
-        'special-display-popup-frame ; original value
-        )
-  (setq pop-up-windows nil) ; shit, replaces shown buffer with popup
+  ;; XXX
+  ;; what does it bring to the table?
+  ;; (require 'popwin) ; has no autoloads
+  ;; (setq special-display-function
+  ;;       'popwin:special-display-popup-window
+  ;;       ;; 'special-display-popup-frame ; original value
+  ;;       )
+  ;; (setq pop-up-windows nil) ; shit, replaces buffer with popup
+
   ;; (setq pop-up-windows t)
   ;; (setq display-buffer-function 'popwin:display-buffer)
   ;; how do i know/control in what window a buffer will pop up in?
@@ -368,6 +374,10 @@
       (comment-or-uncomment-region (line-beginning-position) (line-end-position))
     (comment-dwim arg)))
 (global-set-key "\M-;" 'comment-dwim-line)
+
+;; delsel.el . built-in mode. delete selection if you insert
+(delete-selection-mode t)
+
 
 ;; unnecessary, use M-w (global-set-key (kbd "M-e") 'copy-region-as-kill)
 
@@ -458,7 +468,8 @@
 (defalias 'hr  'highlight-regexp)
 (defalias 'rb  'revert-buffer)
 (defalias 'pm  'paredit-mode)
-;; (defalias 'yes-or-no-p 'y-or-n-p) ; moved up
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 (message "==============================================================")
 (message "init: set defaliases")
 (message "==============================================================")
@@ -487,13 +498,21 @@
 (pretty-lambda-for-modes)
 
 ;; bm is better http://www.nongnu.org/bm/ can't jump across buffers, though
-;; (require 'bm) ; no? (file-error "Cannot open load file" "bm")
 ;; var är filen där allt sparas?  ~/.emacs.bmk är vanliga bookmarks
+;; (setq bm-repository-file (expand-file-name "~/.emacs.d/bm-repository"))
+;; :type 'string :group 'bm)
+
 ;; f10 is menu-bar-open
 ;;(define-key global-map [f9] 'bookmark-jump)
 ;;(define-key global-map [f10] 'bookmark-set)
 
+;; there is also Bookmark+
+
+;; won't work, use customize-group bookmark
+;(setq 'bookmark-default-file "~/.emacs.d/bookmarks")
 ;; no autoload
+
+
 ;; (require 'bm)
 ;; toggle bookmarks by clicking in the fringe:
 (global-set-key (kbd "<left-fringe> <mouse-1>")
@@ -502,10 +521,6 @@
             (save-excursion
               (mouse-set-point event)
               (bm-toggle))))
-;; there is also Bookmark+
-
-;; won't work, use customize-group bookmark
-;(setq 'bookmark-default-file "~/.emacs.d/bookmarks")
 
 
 (defun smaller-text () (interactive) (text-scale-adjust -1))
@@ -513,7 +528,7 @@
 (defun larger-text () (interactive) (text-scale-adjust +1))
 (global-set-key (kbd "C-<mouse-4>") 'larger-text)
 
-;; lower mouse scroll from 5. also use with shift (and maybe ctrl)
+;; lower mouse scroll from 5. with shift, scroll 1 line
 (setq mouse-wheel-scroll-amount
 '(4
  ((shift)
@@ -523,12 +538,12 @@
 
 (setq mouse-wheel-progressive-speed nil)
 
-;; is a toggle
+;; is a toggle, use -1
 (blink-cursor-mode -1)
-(setq-default cursor-type '(bar . 5)) ; globally
+(setq-default cursor-type '(bar . 5))
 (setq-default cursor-in-non-selected-windows 'hollow)
-;; tabs are evil. C-x h M-x {un,}tabify
 (setq-default indent-tabs-mode nil)
+;; also: C-x h M-x {un,}tabify
 
 ;; if case is important when searching:
 ;;(setq case-fold-search 'nil)
@@ -629,7 +644,7 @@
 ;; there is no vc-find-file-hook. not eval-after-load
 ;; (add-hook 'after-init-hook
 ;;           '(lambda () (remove-hook 'find-file-hook 'vc-find-file-hook)))
-;; (setq vc-follow-symlinks nil) ; DO_AS_I_SAY_NOT_AS_I_DO
+(setq vc-follow-symlinks nil) ; DO_AS_I_SAY_NOT_AS_I_DO
 ;; Symbol's value as variable is void: global-font-lock-mode-check-buffers
 ;; (setq find-file-hook
 ;;      global-font-lock-mode-check-buffers epa-file-find-file-hook)
@@ -680,15 +695,41 @@
   (slime-scratch))
 
 
-;;; geiser scheme interaction M-x run-geiser
-;; (setq scheme-program-name "racket") ; "mit-scheme" "guile"
+;;; autoload like this. not load-file
+(autoload 'geiser-mode "~/.emacs.d/elisp/geiser/elisp/geiser.el")
+
+;; M-x run-geiser or start it and M-x geiser-connect
 ;; (setq geiser-repl-use-other-window  nil)
 ;; (setq geiser-repl-startup-time 20000) ; on slow puters
-(load-file "~/.emacs.d/elisp/geiser/elisp/geiser.el")
-(setq geiser-impl-installed-implementations '(racket guile))
+(setq geiser-impl-installed-implementations '(racket guile)) ; "mit-scheme" 
 (setq geiser-repl-query-on-kill-p nil)
 (setq geiser-active-implementations '(racket))
 ;; (setq geiser-mode-start-repl-p nil) ; to connect to a running scheme
+
+;; TODO
+;; need to know the process number to flag query-on-exit
+;; (set-process-query-on-exit-flag PROCESS nil)
+;; (map (lambda (p) (process-id p)) (process-list))
+;; (map (lambda (p) (set-process-query-on-exit-flag (process-id p) nil)) (process-list))
+;; (setq delete-exited-processes t) ; delete directly after exit
+
+;; setup something to launch ~/.emacs.d/elisp/geiser/bin/mem-geiser-racket.sh and connect
+;; ulimit -v 453084 ; 550Mb is too small
+;; ./geiser-racket.sh -n localhost -p 37146
+;; (geiser-repl--wait-for-prompt) ; only in the right buffer?
+;; takes like 20 seconds, then there is no racket. half a gig is too small?
+;; (async-shell-command "~/.emacs.d/elisp/geiser/bin/mem-geiser-racket.sh")
+
+(defun run-geiser-limited () (interactive)
+       (async-shell-command
+        "ulimit -v 600000;
+         ~/.emacs.d/elisp/geiser/bin/geiser-racket.sh -n localhost -p 37146"))
+
+;; doesn't work? :/
+(defun connect-to-racket-limited () (interactive)
+       (connect-to-racket "localhost" 37146))
+       ;; (geiser-connect 'racket "localhost" 37146)
+
 
 ;;; ==============================================================
 ;; erc, rcirc, lyskom
@@ -698,7 +739,7 @@
 (setq rcirc-default-user-name "mcRibbit")
 (setq rcirc-server-alist
       '(("irc.freenode.net" :channels
-         ("#emacs" "#lisp" "#debian" "#archlinux"))))
+         ("#emacs" "#debian" "#archlinux"))))
 
 
 ;;; ==============================================================
@@ -729,7 +770,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(safe-local-variable-values (quote ((geiser-scheme-implementation . racket)))))
+ '(safe-local-variable-values (quote ((geiser-scheme-implementation . racket))))
+ '(tab-width 4))
 
 ;; do as I tell you!!!!!!!!!
 (setq enable-local-variables :all)
