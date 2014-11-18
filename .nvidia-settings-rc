@@ -2,7 +2,7 @@
 # /home/occam/.nvidia-settings-rc
 #
 # Configuration file for nvidia-settings - the NVIDIA X Server Settings utility
-# Generated on Sun Mar  2 05:17:01 2014
+# Generated on Mon Aug 25 18:44:07 2014
 #
 
 # ConfigProperties:
@@ -14,10 +14,10 @@ SliderTextEntries = Yes
 IncludeDisplayNameInConfigFile = No
 ShowQuitDialog = No
 UpdateRulesOnProfileNameChange = Yes
-Timer = Graphics_Card_(GPU_0),Yes,1000
-Timer = Thermal_Monitor_(GPU_0),Yes,1000
-Timer = PowerMizer_Monitor_(GPU_0),Yes,1000
 Timer = Memory_Used_(GPU_0),Yes,3000
+Timer = PowerMizer_Monitor_(GPU_0),Yes,1000
+Timer = Thermal_Monitor_(GPU_0),Yes,1000
+Timer = Graphics_Card_(GPU_0),Yes,1000
 
 # Attributes:
 

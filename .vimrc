@@ -365,9 +365,11 @@ nnoremap Y y$
 "vnoremap x :
 "inoremap x : <esc>: " meh :(
 
-" move in visual lines, (useful with long, wrapped lines)
+" move in visual lines, (useful with long, wrapped lines) and the opposite
 nnoremap k gk
 nnoremap j gj
+nnoremap gk k
+nnoremap gj j
 nnoremap <Up> gk
 nnoremap <Down> gj
 

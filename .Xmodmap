@@ -6,6 +6,7 @@
 ! xmodmap -pke to see the list of bindings
 ! use xev to see what a key is called/bound to
 ! alt-gr is the fifth item, alt-gr + shift is the sixth
+! execute a line in the terminal with: xmodmap -e "line here"
 
 ! keysym Escape = Caps_Lock
 ! keysym Caps_Lock = Escape
@@ -23,17 +24,17 @@
 ! don't want control on all of these:
 ! Escape (0x9),  Escape (0x25),  Control_L (0x42),  Control_R (0x69)
 
-! 30 german üÜ
+! 30 german üÜ. maybe not needed on 35 anymore
 ! 32,38 norwegian/danish æÆ øØ
-! 34 åÅ is a deader key with alt-gr
-! 35 dead, easy unmodded ~ asciitilde. ¨ is on 34 å
+! 34 åÅ is an even more dead key with alt-gr
+! 35 dead, easy unmodded ~ asciitilde. ¨ ° are on 34 å
 ! 47,48 {} curly braces
 ! 49 $ is more useful than § (section, pos 6), tilde bar
 ! 51 quotedbl instead of acute '* "×
 ! 52,53 moving <> pos 6 to 5, in front of guillemot
 ! 59,60 [] on the ,. keys
 ! 91 keypad decimal dot instead of comma
-! 135 to combine two chars into one
+! 135 to combine two chars into one. the key often between right super and control
 
 remove Lock = Caps_Lock
 remove Control = Control_L
@@ -58,8 +59,8 @@ keycode 135 = Multi_key Multi_key Multi_key Multi_key Multi_key Multi_key Multi_
 
 ! unlocked numpad
 ! 106 63  82  86    keycode
-! \   &   %   #     unlocked, or locked   with shift
 ! /   *   -   +     locked,   or unlocked with shift
+! \   &   %   #     unlocked, or locked   with shift
 
 ! unlocked numpad, or numlock with shift
 ! < ^ >     79 80 81    7 8 9   less asciicircum greater

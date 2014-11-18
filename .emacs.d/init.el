@@ -34,8 +34,6 @@
 ;; (update-directory-autoloads "~/.emacs.d/packages")
 (defvar elpa-hate '(
 "~/.emacs.d/packages/rainbow-delimiters.el"
-"~/.emacs.d/packages/browse-kill-ring+.el"
-"~/.emacs.d/packages/browse-kill-ring.el"
 "~/.emacs.d/packages/goto-last-change.el"
 "~/.emacs.d/packages/rainbow-mode.el"
 "~/.emacs.d/packages/smartparens.el"
@@ -48,10 +46,15 @@
 "~/.emacs.d/packages/bm.el"
 ))
 
+;; shit, closes windows
+;; "~/.emacs.d/packages/browse-kill-ring+.el"
+;; "~/.emacs.d/packages/browse-kill-ring.el"
+
+;; "~/.emacs.d/packages/browse-kill-ring+-autoloads.el"
+;; "~/.emacs.d/packages/browse-kill-ring-autoloads.el"
+
 (defvar elpa-hate-autoloads '(
 "~/.emacs.d/packages/rainbow-delimiters-autoloads.el"
-"~/.emacs.d/packages/browse-kill-ring+-autoloads.el" ; shit?
-"~/.emacs.d/packages/browse-kill-ring-autoloads.el"
 "~/.emacs.d/packages/goto-last-change-autoloads.el"
 "~/.emacs.d/packages/rainbow-mode-autoloads.el"
 "~/.emacs.d/packages/smartparens-autoloads.el"
@@ -284,6 +287,8 @@
   (tool-bar-mode -1)
   (menu-bar-mode -1)
   (winner-mode 1) ; undo window changes
+  ;; (horizontal-scroll-bar-mode -1)
+  
   ;;(speedbar t) ;; i want it in buffer mode < and narrower in awesome >
 
   ;; XXX
@@ -446,12 +451,12 @@
 
 (with-current-buffer "*Messages*" (local-set-key (kbd "q") 'bury-buffer))
 
-;; FIXME Still deletes windows
+;; FIXME Still deletes windows, disabling
 ;; browse-kill-ring+-autoloads
 ;; browse-kill-ring+ so as not to delete windows
 ;; (require 'browse-kill-ring+)
-(browse-kill-ring-default-keybindings)
-(global-set-key (kbd "C-c k") 'browse-kill-ring)
+;; (browse-kill-ring-default-keybindings)
+;; (global-set-key (kbd "C-c k") 'browse-kill-ring)
 ;; M-w is kill-ring-save
 
 ;; Define aliases ; use C-q C-j to /re/place a return
