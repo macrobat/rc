@@ -1,0 +1,79 @@
+[Main]
+#ambientLight = (int)(1000 * AmbientLightLevel)
+ambientLight=100
+#visualMagnitude = (int)(1000 * FaintestVisible)
+visualMagnitude=7101
+#galaxyLightGain = (int)(1000 * GalaxyLightGain)
+galaxyLightGain=0
+#Rendering limit in light-years
+distanceLimit=1000000
+#Display time in terms of local time zone
+localTime=false
+#Level of Detail in the heads-up-display. 0=None, 1=Terse, 2=Verbose
+verbosity=1
+#Style of star rendering. 0=Fuzzy Points, 1=Points, 2=Scaled Discs
+starStyle=0
+#Resolution of textures. 0=Low, 1=Medium, 2=High
+textureResolution=2
+altSurfaceName=
+#Sync Framerate to Video Refresh
+videoSync=false
+
+[Window]
+width=1600
+height=1118
+x=0
+y=0
+fullScreen=true
+
+#All Render Flag values must be true or false
+[RenderFlags]
+stars=true
+planets=true
+galaxies=true
+diagrams=true
+cloudMaps=true
+orbits=false
+celestialSphere=false
+nightMaps=true
+atmospheres=true
+smoothLines=true
+eclipseShadows=true
+ringShadows=true
+boundaries=false
+autoMag=true
+cometTails=true
+markers=true
+partialTrajectories=false
+nebulae=true
+openClusters=false
+globulars=false
+gridGalactic=false
+gridEcliptic=false
+gridHorizontal=false
+
+#All Orbit Mask values must be true or false
+[OrbitMask]
+planet=true
+moon=true
+asteroid=false
+comet=false
+spacecraft=false
+invisible=false
+unknown=false
+
+#All Label Mode values must be true or false
+[LabelMode]
+star=true
+planet=true
+moon=true
+constellation=false
+galaxy=true
+asteroid=true
+spacecraft=true
+location=false
+comet=false
+nebula=false
+opencluster=false
+i18n=false
+globular=false
