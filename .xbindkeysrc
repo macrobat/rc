@@ -42,18 +42,19 @@
     m:0x0 + c:122
     XF86AudioLowerVolume
 
-"amixer set Master 2dB- unmute"
-    m:0x4 + c:116
-    Control + Down
+# have media keys. don't use up prime key combos
+#"amixer set Master 2dB- unmute"
+    #m:0x4 + c:116
+    #Control + Down
 
 # vol up
 "amixer set Master 1.5dB+ unmute"
     m:0x0 + c:123
     XF86AudioRaiseVolume
 
-"amixer set Master 2dB+ unmute"
-    m:0x4 + c:111
-    Control + Up
+#"amixer set Master 2dB+ unmute"
+    #m:0x4 + c:111
+    #Control + Up
 
 # add actions for XF86AudioPlay XF86AudioPrev XF86AudioNext
 
@@ -75,11 +76,14 @@
 
 #"exe=$(dmenu_path | dmenu -i -nb DarkSlateGray4 -fn "-*-fixed-*-*-*-*-20-*-*-*-*-*-*-*") && exec $exe"
 "dmenu_run -nb DarkSlateGray4 -fn "-*-fixed-*-*-*-*-20-*-*-*-*-*-*-*""
-    m:0x8 + c:65
-    Alt + space
+    #m:0x8 + c:65
+    #Alt + space
 
-    m:0x50 + c:65
-    Mod2+Mod4 + space
+    #m:0x50 + c:65
+    #Mod2+Mod4 + space
+
+    m:0x18 + c:67
+    Alt+Mod2 + F1
 
 # lambda ()
 #"Hello from Scheme!"
@@ -119,3 +123,4 @@
 
 #
 # End of xbindkeys configuration
+

@@ -301,9 +301,9 @@ export BROWSER="firefox"
 export PAGER="less -M -e"
 export EDITOR="vim"
 # for conkeror, may take precedence over EDITOR
+export VISUAL="gvim -f"
 # nota bene: a plain su makes root use the same value.
 # use su - and source the shell init rc from .profile
-export VISUAL="gvim -f"
 
 # zsh has pushd and popd
 #function cx() { if [[ $# -eq 0 ]] ; then popd ; else pushd "$@" ; fi ; }
@@ -319,6 +319,8 @@ function bak() { cp $1{,.bak} ; }
 # made vim use ~/.vim/swapfiles as a swapdir
 #function swp() { find ${1:=.} -name "*.swp" -exec rm -i {} \; ; }
 # put the rest of the argument list at the end. $@:something 2
+# lose is close to losetup
+function lose() { find -L ${2:=.} -iname "*$1*" ; }
 function drop() { find -L ${2:=.} -iname "*$1*" ; }
 function ec() { emacsclient --create-frame --alternate-editor="" -nw "$@" ; }
 # bsd-games /usr/bin/rot13 is: exec /usr/bin/caesar 13 "$@"
@@ -482,6 +484,10 @@ alias m='cat /proc/mounts'
 #alias htp='htpdate -s www.kth.se www.sr.se www.nrk.no'
 
 #alias =''
+
+# don't stop output on C-s
+stty -ixon
+stty ixany
 
 alias sb='source ~/.zshrc'
 alias vb='vim ~/.zshrc'

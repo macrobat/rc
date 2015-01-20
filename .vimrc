@@ -1,7 +1,7 @@
 " vimtip 1287
 " just :source ~/.vimrc
 
-" Use Vim settings, rather then Vi settings (much better!).
+" Use vim settings, rather then vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
@@ -29,7 +29,7 @@ set showcmd         " display incomplete commands
 set incsearch       " do incremental searching
 
 " Don't use Ex mode, use Q for formatting
-map Q gq
+map Q gqap
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
@@ -91,6 +91,9 @@ set hidden
 
   " autocmd FileType make setlocal noexpandtab " Makefile
 
+  " zsh has better syntax hilite than sh
+  au FileType sh set filetype=zsh
+
   augroup END
 
   " move more stuff here
@@ -108,10 +111,19 @@ endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"# generate a populated ~/.vim/
+" mkdir -p ~/.vim/
+if ! isdirectory(expand('~/.vim/'))
+   call mkdir(expand('~/.vim/'))
+endif
+" cd ~/.vim/
+" git clone https://github.com/MarcWeber/vim-addon-manager
+" cd ~/.vim/
+" git clone https://github.com/dahu/Insertlessly
+" ~/.vim/swapfiles is created from this ~/.vimrc
 
 
 " git clone https://github.com/MarcWeber/vim-addon-manager
-
 " This calls the autoload function ActivateAddons in the file vam with a
 " string argument and a dictionary argument
 " call vam#ActivateAddons(['pluginA', 'pluginB'], {'auto_install' : 0})
@@ -121,27 +133,38 @@ function! SetupVAM()
        call vam#ActivateAddons([
         \'The_NERD_tree', 'The_NERD_Commenter', 'CSApprox', 'Gundo', 'buffergrep',
         \ 'Colour_Sampler_Pack', 'Scratch', 'unimpaired', 'YankRing',
-        \ 'surround', 'Insertlessly'], {'auto_install' : 0})
+        \ 'vim-airline', 'surround', 'Insertlessly'], {'auto_install' : 0})
 
        " 'colorizer',
 endf
-call SetupVAM()
+
 " notice that after line break '\' is on the _first_ non-whitespace
+
+" make all commands silent while using vam to bootstrap the vim config
+" hitting enter a dozen times is a little annoying
+" maybe you can surround the code in redir?
+" a file or a var? how use the var?
+"redir >> /tmp/vamlog
+"redir => vamlog redir end
+silent call SetupVAM()
+
 
 " other plugins:
 " pluginA could be github:YourName see vam#install#RewriteName()
 " vam doesn't have Insertlessly. it just loads it from ~/.vim/Insertlessly
 " example: VAMActivate vim-airline
 " AirlineTheme solarized " or, like, airlineish
-" ctrlp     " yankring uses <C-p>, is it just in the YR buffer?
+" ctrlp     " yankring uses <C-p> for emacsy yankpop
 " ultisnips
+" ctrl-space
 
 " seems vam does add these now. I want the commands and the help
 "set runtimepath+=~/.vim/The_NERD_Commenter,~/.vim/unimpaired,~/.vim/Gundo,
 "\ ~/.vim/Insertlessly,~/.vim/CSApprox,~/.vim/The_NERD_tree,~/.vim/YankRing,
 "\ ~/.vim/surround,~/.vim/transwrd
 " https://github.com/dahu/Insertlessly
-set runtimepath+=~/.vim/Insertlessly
+" trying without. have VAM
+" set runtimepath+=~/.vim/Insertlessly
 
 " don't want colorizer defaultly enabled. 100% cpu
 " E492: Not an editor command: ColorClear
@@ -161,8 +184,42 @@ set runtimepath+=~/.vim/Insertlessly
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+" should I place plugin stuff inside something like has("") or exists("") ?
 " place new stuff below:
+
+nnoremap _ :
+nnoremap - :
+
+" swapping. ' is easier to reach. now moves to the specific column
+nnoremap ' `
+nnoremap ` '
+
+" don't accidentally the windows. if really want, use :only
+nnoremap <C-W>O     <Nop>
+nnoremap <C-W>o     <Nop>
+nnoremap <C-W><C-O> <Nop>
+
+" unknown option insertlessly?
+let g:insertlessly_cleanup_trailing_ws = 0
+
+" trace output for testing and debugging C
+" precedes a statement with its own quote and wraps it in a printf()
+" assumes int return type. needs a line ending in ;
+" :call Ctrace()
+function! Ctrace()
+    normal ^yt;iprintf("$i: %d\n", @"pa)T%
+endfunction
+
+" better with normal mode and leader?
+cnoremap Ct         call Ctrace()<CR>
+nnoremap <leader>c :call Ctrace()<CR>
+" normal mode. first non-whitespace. yank to before ;.
+" insert printf(". end of line. insert : %d\n", . paste
+" insert ). move to after the %
+
+
+"horizontal sort
+command! Hsort call setline('.', join(sort(split(getline('.'), ' ')), ' '))
 
 " emacs kill next word and undo bind
 nnoremap <A-d> dw
@@ -180,9 +237,11 @@ cnoremap <C-B>      <S-Left>
 "cnoremap <C-F>      <S-Right>
 cnoremap <ESC>b     <S-Left>
 cnoremap <ESC>f     <S-Right>
-cnoremap <ESC><C-H> <C-W>
-" cnoremap <C-B>      <Left>    "should be alt
-" cnoremap <C-F>      <Right>
+
+" why? useless
+" cnoremap <ESC><C-H> <C-W>
+" cnoremap <C-B>      <Left>    " should be alt
+" cnoremap <C-F>      <Right>   " commandline history window
 " see also the NERDCommenter <A-;> bind
 
 " To use gc to transpose the current character with the next,
@@ -194,10 +253,11 @@ nnoremap <silent> gc xph
 " får problem med massa markeringar, yank-paste blir konstigt
 " nmap <silent> gw :s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR>`'
 
-" TODO: add nohl on these. How? <esc>:nohl<C-m>
+" TODO:
+" add nohl on these. How? <esc>:nohl<C-m>
+" learn more regex
 " doesn't work for åäö. something fails - last line?
 " gw transpose the current word with the next, keep cursor position:
-" :nnoremap <silent> gw "_yiw:s/\(\%#\w\+\)\(\W\+\)\(\w\+\)/\3\2\1/<CR><c-o><c-l>
 " This version will work across newlines:
 nnoremap <silent> gw "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o><c-l>
 
@@ -207,7 +267,7 @@ nnoremap <silent> gl "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\
 
 " To use gr to transpose the current word with the next, keeping cursor on
 " current word: (This feels like "pushing" the word to the right.)
-nnoremap <silent> gr "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>/\w\+\_W\+<CR><c-l>
+nnoremap <silent> gr "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o><c-l>
 
 " To use g} to transpose the current paragraph with the next:
 nnoremap g} {dap}P
@@ -232,7 +292,7 @@ se autochdir
 
 " http://sjl.bitbucket.org/gundo.vim/
 " p on a state to show diff between current and selected state
-let gundo_preview_bottom = 1
+"let gundo_preview_bottom = 1
 nnoremap <F5> :GundoToggle<CR>
 
 " håll sverige rent. slipp fil~
@@ -247,25 +307,44 @@ set nojoinspaces
 " changed with the 'undodir' option. You should keep 'undofile' off,
 " otherwise you end up with two undo files for every write.
 
-"yankring . finns yankring-tutorial
-" bind lite saker
-"let g:yankring
+" does yankring break this? Yes!
+" http://vim.wikia.com/wiki/Mapping_keys_in_Vim_-_Tutorial_(Part_1)
+" If you would prefer Y to be consistent with C and D: (don't change S)
+"nnoremap Y y$
+"map Y y$
+
+"yankring. there is yankring-tutorial
+" place binds inside this function. it will be run after mappings
+" M-y is more emacsy yankpop than <C-p>
+" use <C-n> to go through the ring in the other direction.
+" doesn't take the place of omnicomplete, that works in insert mode
+     "nnoremap <C-P>         :<C-U>YRReplace '-1', P<CR>
+function! YRRunAfterMaps()
+     nnoremap <silent> <F4> :YRShow<CR>
+     nnoremap Y             :<C-U>YRYankCount 'y$'<CR>
+endfunction
+
 let g:yankring_min_element_length = 3
 "let g:yankring_max_element_length " 64K ? ought to be enough for anyone
 let g:yankring_max_display = 30 "max of what will be shown
+let g:yankring_window_height = 14
 "let g:yankring_persist = 0
 let g:yankring_share_between_instances = 0
-" let g:yankring_dot_repeat_yank = 1 "0
+" let g:yankring_dot_repeat_yank = 1
+" do not use. is a prefix for the file name
 "let g:yankring_history_file = '~/.vim/yankring_history'
-let g:yankring_history_file = '.vim/yankring_history'
+let g:yankring_history_dir = '$HOME/.vim/'
+" don't want all clipboard history in the yankring. maybe this helps?
+let g:yankring_clipboard_monitor = 0
 
 " there is no ft=bash. what's this?
 " defaults to bash syntax highlighting on *.sh files
 let g:is_bash = 1
+" zsh highlighting is better. how enable it? some autocmd
 
 " http://vimcasts.org/episodes/bubbling-text/
 " move selected lines <A-Up> and <A-Down>
-" downloaded tpopes unimpaired.vim
+" using tpopes unimpaired.vim
 " http://www.vim.org/scripts/script.php?script_id=1590
 " using M-k and M-j for vim in a terminal
 " Bubble single lines in normal
@@ -312,7 +391,7 @@ nnoremap <leader>v :call ToggleVirtualEdit()<CR>
 " make this a toggle:
 " nmap <leader>w :set iskeyword+=-,~,/,!,
 " If you don't want to remove all autocommands, you can instead use a variable
-" to ensure that Vim includes the autocommands only once: >
+" to ensure that vim includes the autocommands only once: >
 if !exists("autocommands_loaded")
   let autocommands_loaded = 1
   " au FileType * set iskeyword+=-,.
@@ -330,7 +409,8 @@ set lazyredraw
 
 " E185: Cannot find color scheme 'vividchalk'
 " set runtimepath+=~/.vim/Color_Sampler_Pack/colors/
-set runtimepath+=~/.vim/Color_Sampler_Pack/
+" since we have VAM, try without adding to rtpath
+" set runtimepath+=~/.vim/Color_Sampler_Pack/
 " vim känner av number of colors själv. $TERM
 " don't do set t_Co=88 "isf 256
 " testa för icke gui först
@@ -343,7 +423,8 @@ if !has("gui_running")
     " colo northland
     " colo oceanblack
     " colo vibrantink
-    " colo
+    " colo anokha
+    " colo chocolateliquor
     colo vividchalk " too subtle search hilite
 endif
 
@@ -354,11 +435,6 @@ nmap <silent> ,w :set invwrap<CR>:set wrap?<CR>
 " Help yourself! help in its own tab
 command! -bang -nargs=? -complete=help Help tab help<bang> <args>
 command! -bang -nargs=? -complete=help H tab help<bang> <args>
-
-" does yankring break this? Yes!
-" http://vim.wikia.com/wiki/Mapping_keys_in_Vim_-_Tutorial_(Part_1)
-" If you would prefer Y to be consistent with C and D: (don't change S)
-nnoremap Y y$
 
 " dont use, you have to press esc twice to get normal
 "nnoremap x :  " <esc><esc>
@@ -377,25 +453,30 @@ nnoremap <Down> gj
 " nnoremap <S-h> gT
 " nnoremap <S-l> gt
 " just in gvim:
-" nnoremap <A-Left> gT
-" nnoremap <A-Right> gt
-
-" maps ',b' to display the buffer list and invoke the ':buffer' command.
-" You can enter the desired buffer number and hit <Enter> to edit the buffer.
-" (Enter space after)
-nnoremap ,b :ls<CR>:buffer<Space>
+nnoremap <A-Left> gT
+nnoremap <A-Right> gt
 
 " see whitespace
 " nnoremap ,l :set list!:buffer<CR>
 " leader is '\'
 nmap <leader>l :set list!<CR>
 
-" set working dir to current buffer
+" maps ',b' to display the buffer list and invoke the ':buffer' command.
+" You can enter the desired buffer number and hit <Enter> to edit the buffer.
+" (Enter space after) <C-6> switches between 2 last used buffers
+nnoremap ,b :ls<CR>:buffer<Space>
+
+"switch to buffers tab/window if it's in a tab/window
+set switchbuf=usetab
+
+" set working dir to current buffer. (unused in NERDCommenter)
 map ,cd :cd %:p:h<CR>
 " vimtip2, use %% to expand path for current buf
 cabbr <expr> %% expand('%:p:h')
 " cannot search for strings starting with t. maybe "t " is better
 " cabbr t tabe
+
+" tjejjer och grejjer
 imap jj <esc>
 
 "http://vimcasts.org/episodes/the-edit-command/
@@ -408,7 +489,7 @@ imap jj <esc>
 " stop hiliting with C-l
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 inoremap <silent> <C-l> <Esc>:nohl<CR>a
-inoremap <silent> <C-S-l> <Esc>:nohl<CR><C-o>i "kind of useless
+"inoremap <silent> <C-S-l> <Esc>:nohl<CR><C-o>i
 " fail mappings: inserts stuff like ":nohl ":
 " inoremap <silent> <C-l> :execute "nohl"
 " inoremap <silent> <C-l> <C-o>:nohl<CR><C-l>
@@ -420,7 +501,7 @@ set ignorecase
 set smartcase
 
 " Stop certain movements from always going to the first character of a line.
-" While this behaviour deviates from that of Vi, it does what most users
+" While this behaviour deviates from that of vi, it does what most users
 " coming from other editors would expect.
 set nostartofline
 
@@ -434,7 +515,7 @@ set cmdheight=2
 " q: q? q/ for the cmd window. C-f in cmd mode
 set cmdwinheight=14
 
-" Quickly time out on keycodes, but never time out on mappings
+" quickly time out on keycodes, but never time out on mappings
 set notimeout ttimeout ttimeoutlen=200
 
 " Use <F11> to toggle between 'paste' and 'nopaste'
@@ -571,7 +652,7 @@ nmap  ,c$           <Plug>NERDCommenterToEOL
 vmap  ,c$           <Plug>NERDCommenterToEOL
 nmap  ,cA           <Plug>NERDCommenterAppend
 vmap  ,cA           <Plug>NERDCommenterAppend
-" want this always set for C. autocommands? has("icanhas nerd")
+" want this always set for C. autocommands? 
 nmap  ,ca           <Plug>NERDCommenterAltDelims
 
 

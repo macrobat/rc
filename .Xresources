@@ -55,26 +55,36 @@ gvim*geometry			    : 152x56
 urxvt*saveLines			    : 7000
 urxvt*title			        : urxvt
 
+! test out fonts like so:
+!urxvt -fn "xft:dejavu sans mono:pixelsize=15" -bg black -fg white
+!urxvt -fn "xft:Inconsolata:pixelsize=15"
+
 !urxvt*font	    		    : xft:Terminus:pixelsize=15
 !urxvt*italicfont		    : xft:Terminus:pixelsize=15:bold
-!urxvt -fn "xft:dejavu sans mono:pixelsize=15" -bg black -fg white
 !urxvt*font:                 xft:DejaVu Sans Mono:pixelsize=14 !:autohint=true
 !urxvt*boldFont:             xft:DejaVu Sans Mono:pixelsize=14:bold !:autohint=true
 !urxvt*italicFont:           xft:DejaVu Sans Mono:pixelsize=14:italic !:autohint=true
 !urxvt*boldItalicFont:       xft:DejaVu Sans Mono:pixelsize=14:bold:italic !:autohint=true
 
 ! set other hint? set hint for gvim. how does subpixel hints work?
+
 ! comment out temporarily :autohint=true
-!urxvt*font:             xft:Terminus:pixelsize=14
-!urxvt*boldFont:         xft:Terminus:pixelsize=14:bold
-!urxvt*italicFont:       xft:Terminus:pixelsize=14:italic
-!urxvt*boldItalicFont:   xft:Terminus:pixelsize=14:bold:italic
-!urxvt*letterSpace: -2
 ! larger font for desktop
 urxvt*font:             xft:DejaVu Sans Mono:pixelsize=16
 urxvt*boldFont:         xft:DejaVu Sans Mono:pixelsize=16:bold
 urxvt*italicFont:       xft:DejaVu Sans Mono:pixelsize=16:italic
 urxvt*boldItalicFont:   xft:DejaVu Sans Mono:pixelsize=16:bold:italic
+
+URxvt*font:             xft:Terminus:pixelsize=15
+URxvt*boldFont:         xft:Terminus:pixelsize=15:bold
+URxvt*italicFont:       xft:Terminus:pixelsize=15:italic
+URxvt*boldItalicFont:   xft:Terminus:pixelsize=15:bold:italic
+!urxvt*letterSpace: -2
+! smaller font. launch with title?
+Urxvt*font:             xft:Consolas:pixelsize=15
+Urxvt*boldFont:         xft:Consolas:pixelsize=15:bold
+Urxvt*italicFont:       xft:Consolas:pixelsize=15:italic
+Urxvt*boldItalicFont:   xft:Consolas:pixelsize=15:bold:italic
 
 !true for weechat hilite with beep.pl plugin
 urxvt*urgentOnBell		    : false
@@ -93,9 +103,10 @@ urxvt*perl-ext-common	    : default,matcher
 !urxvt*urlLauncher		    : /usr/bin/firefox
 !URxvt*urlLauncher		    : /usr/bin/firefox
 ! it changed name
-urxvt*url-launcher		    : /usr/bin/firefox
+! adding '=' allows clicking on youtube links
+urxvt*matcher.pattern.1	    : \\bwww\\.[\\w-]+\\.[\\w./?&@#-=]*[\\w/-]
 urxvt*matcher.button	    : 1
-urxvt*matcher.pattern.1	    : \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
+urxvt*url-launcher		    : /usr/bin/firefox
 urxvt*secondaryScroll	    : true
 urxvt*jumpScroll		    : true
 urxvt*pastableTabs		    : true

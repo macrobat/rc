@@ -8,6 +8,10 @@ PATH_BAK="$PATH"
 PATH=/usr/local/bin:/usr/bin:/bin:/usr/games:/sbin:/usr/sbin
 export PATH
 
+# don't stop output on C-s
+stty -ixon
+stty ixany
+
 # (some folders i dont have), i might want /opt/qt/bin . mtr is in /usr/sbin
 #export PATH="/bin:/usr/bin:/sbin:/usr/sbin:/opt/java/jre/bin:/usr/bin/perlbin/site:/usr/bin/perlbin/vendor:/usr/bin/perlbin/core:/opt/qt/bin:/usr/local/bin:~/bin"
 # orig path med GNUtjafs
@@ -41,7 +45,7 @@ if [ "$TERM" != "dumb" ]; then
 
     if [[ -x /usr/bin/pacman-color ]]; then
       alias p='pacman-color'
-    fi	
+    fi
 fi
 
 #export BROWSER="opera -w"
@@ -50,9 +54,9 @@ export BROWSER="firefox"
 export PAGER="less -M -e"
 export EDITOR="vim"
 # for conkeror, may take precedence over EDITOR
-# do not want: su makes root use the same value. 
+# do not want: su makes root use the same value.
 # use su - and source the shell init rc from .profile
-# export VISUAL="gvim -f" 
+# export VISUAL="gvim -f"
 
 c() { (($#)) && pushd "$@" || popd; ls -C; } # golfing
 cx() { (($#)) && pushd "$@" || popd; }
@@ -164,23 +168,20 @@ alias wknc='mplayer -cache 1500 http://wknc.sma.ncsu.edu:8000/wkncmq.ogg'  # ncs
 alias cpl='mplayer cdda:// -cache 3000 -cache-min 3 -cdda speed=7'
 
 # åxå lagt in som C-RET i .xbindkeysrc
-# connection refused even if daemon running? 
+# connection refused even if daemon running?
 # urt --cursorColor Orange
 alias urt='urxvt -pe tabbed'   #have urxvtd -q -o -f running
 alias URT='urxvt -name URxvt' #transparent (.Xdefaults)
 alias tid='watch -t -n1 "date +%T| figlet"'
 alias m='cat /proc/mounts'
-alias em='emacsclient'
+alias ec='emacsclient'
 # alias ack='ack-grep' # not necessary in arch
 
-alias ub='mount -t vfat /dev/sdb1 /media/usb/; cd /media/usb/'
+#alias ub='mount -t vfat /dev/sdb1 /media/usb/; cd /media/usb/'
 #alias batt='cat /proc/acpi/battery/C23B/state'
-alias htp='htpdate -s www.kth.se www.sr.se www.nrk.no'
+#alias htp='htpdate -s www.kth.se www.sr.se www.nrk.no'
 
-alias choc='chown -R occam:users'
-alias chov='chown -R veder:users'
-alias chot='chown -R trazan:users'
-#alias chuk='sudo chown -R duke:duke'
+#alias chub='sudo chown -R bob:users'
 
 #alias =''
 #alias =''
@@ -192,8 +193,8 @@ fi
 #want completion, even if i'm in the wheel group and do sudo
 #look in /etc/bash_completion, if it's not working
 complete -cf sudo
-alias ae='source ~/.bashrc'
-alias sb='source ~/.bashrc'
+#alias ae='source ~/.bashrc'
+#alias sb='source ~/.bashrc'
 alias vb='vim ~/.bashrc'
 
 # the string example

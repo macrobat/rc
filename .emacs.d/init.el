@@ -38,7 +38,7 @@
 "~/.emacs.d/packages/rainbow-mode.el"
 "~/.emacs.d/packages/smartparens.el"
 "~/.emacs.d/packages/buffer-move.el"
-"~/.emacs.d/packages/workgroups.el" ; require it or rewrite
+;; "~/.emacs.d/packages/workgroups.el" ; require it or rewrite
 "~/.emacs.d/packages/paredit.el"
 "~/.emacs.d/packages/htmlize.el"
 "~/.emacs.d/packages/popwin.el"
@@ -95,6 +95,8 @@
 ;;     │   └── archive-contents
 ;;     └── marmalade
 ;;         └── archive-contents
+
+;; fic-mode to hilite TODO FIXME
 
 
 ;; http://www.emacswiki.org/emacs/PareditCheatsheet
@@ -158,8 +160,6 @@
 (message "init: section packages end")
 (message "==============================================================")
 
-;;; ^^packages
-;;; ==============================================================
 
 ;; http://www.emacswiki.org/cgi-bin/wiki.pl?SessionManagement
 ;; need desktop-save-mode, and desktop-change-dir?
@@ -238,7 +238,7 @@
   ;; set-default-font is obsolete
   (set-frame-font
   "-unknown-DejaVu Sans Mono\
-  -normal-normal-normal-*-16-*-*-*-m-0-iso10646-1")
+  -normal-normal-normal-*-15-*-*-*-m-0-iso10646-1")
   ;; smaller laptop fontsize
   ;; "-unknown-DejaVu Sans Mono\
   ;; -normal-normal-normal-*-12-*-*-*-m-0-iso10646-1")
@@ -323,8 +323,7 @@
 
 (put 'dired-find-alternate-file 'disabled nil) ; is 'a
 
-;;; ==============================================================
-;;; keys, aliases
+
 (message "==============================================================")
 (message "init: section keys, aliases")
 (message "==============================================================")
@@ -569,11 +568,9 @@
 (global-set-key (kbd "M-o") 'other-window)
 
 (message "==============================================================")
-(message "init: section keys end")
+(message "init: section keys, aliases end")
 (message "==============================================================")
 
-;;; ^^keys ^^aliases
-;;; ==============================================================
 
 (defun ans () (interactive) (ansi-term "/bin/zsh"))
 
