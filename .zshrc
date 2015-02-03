@@ -325,7 +325,7 @@ function drop() { find -L ${2:=.} -iname "*$1*" ; }
 function ec() { emacsclient --create-frame --alternate-editor="" -nw "$@" ; }
 # bsd-games /usr/bin/rot13 is: exec /usr/bin/caesar 13 "$@"
 function rot13() { tr '[a-m][n-z][A-M][N-Z]' '[n-z][a-m][N-Z][A-M]'; }
-function tobc() { echo "scale=5; $1 $2 $3" | bc } # escape the *
+function tobc() { echo "scale=5; $@" | bc } # escape the *
 
 # cro cze dan deu fra hin hun iri ita lat nld por scr slo spa swa swe tur wel
 function adict() { dict -d fd-"${1}"-eng "${2}" | awk 'i++ > 3' }
@@ -489,9 +489,13 @@ alias m='cat /proc/mounts'
 stty -ixon
 stty ixany
 
-alias sb='source ~/.zshrc'
-alias vb='vim ~/.zshrc'
+# for fun and profit
+# alias woman='man'
+# alias herstory='history'
 
 # the string example
 poppins="supercalifragilisticexpialidocious"
+
+alias sb='source ~/.zshrc'
+alias vb='vim ~/.zshrc'
 

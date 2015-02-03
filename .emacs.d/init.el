@@ -390,8 +390,9 @@
 ;; no more unintentional mouse-delete-window:
 (global-set-key (kbd "<mode-line> <mouse-3>") 'nil) ; something better
 
-;; (global-set-key (kbd "C-'") 'dabbrev-expand)
-;; (global-set-key (kbd "C-*") 'hippie-expand) ; is on M-7 M-/
+(global-set-key (kbd "M-'") 'dabbrev-expand)
+;; was pop-tag-mark. is also on M-7 M-/
+(global-set-key (kbd "M-*") 'hippie-expand) ; more severe expansion
 (global-set-key (kbd "<C-tab>") 'dabbrev-expand) ; next-buffer?
 ;; vimmy normal mode m and '
 (global-set-key (kbd "C-'") 'point-to-register)

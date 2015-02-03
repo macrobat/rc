@@ -59,17 +59,21 @@ set laststatus=2
 
 " like emacs M-x (why is it an ø?) . only in gvim. specific for my setup?
 nnoremap ø :
+vnoremap ø :
+inoremap ø <Esc>:
 
 " emacs C-SPC visual line
 " save it for vimCtrlSpace?
 " (buffer/file/tab explorer mixed with a fuzzy finder like CtrlP,
 " and a session and project explorer.)
-" nnoremap <C-space> V
-inoremap <C-space> <C-o>V
+" nmap <C-space> V
+imap <C-space> <C-o>V
 
 " emacs <A-;> for gvim (shows as '»' in gvim)
 nmap » <Plug>NERDCommenterToggle
 vmap » <Plug>NERDCommenterToggle
+"imap » <Esc>:<Plug>NERDCommenterToggle<CR>:startinsert
+"imap » <Plug>NERDCommenterToggle
 
 " convenient backspace, in gvim only
 nnoremap <S-BS> db

@@ -5,7 +5,7 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
-" colorscheme desert
+" colorscheme torte
 
 " open all files in tabs. (use the -p --remote-tab-silent options too)
 "tab all
@@ -23,13 +23,13 @@ set ch=2
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-set history=7000    " keep lines of command history
+set history=9001    " keep lines of command history
 set ruler           " show the cursor position all the time
 set showcmd         " display incomplete commands
 set incsearch       " do incremental searching
 
 " Don't use Ex mode, use Q for formatting
-map Q gqap
+noremap Q gqap
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
@@ -49,8 +49,8 @@ endif
 
 set autoindent
 
-" Use 'filetype indent on' and be happy.
-"set smartindent "XXX don't use
+" Use 'filetype indent on'
+" don't use smartindent, it's worse
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
@@ -65,16 +65,16 @@ if has("autocmd")
   augroup vimrcEx
   au!
 
-" One of the most important options to activate. Allows you to switch from an
-" unsaved buffer without saving it first. Also allows you to keep an undo
-" history for multiple files. Vim will complain if you try to quit without
-" saving, and swap files will keep you safe if your computer crashes.
-set hidden
+  " One of the most important options to activate. Allows you to switch from an
+  " unsaved buffer without saving it first. Also allows you to keep an undo
+  " history for multiple files. Vim will complain if you try to quit without
+  " saving, and swap files will keep you safe if your computer crashes.
+  set hidden
 
-" Modelines have historically been a source of security vulnerabilities.  As
-" such, it may be a good idea to disable them and use the securemodelines
-" script, <http://www.vim.org/scripts/script.php?script_id=1876>.
-" set nomodeline
+  " Modelines have historically been a source of security vulnerabilities.  As
+  " such, it may be a good idea to disable them and use the securemodelines
+  " script, <http://www.vim.org/scripts/script.php?script_id=1876>.
+  " set nomodeline
 
   " For all text files set 'textwidth' to 80 characters.
   autocmd FileType text setlocal textwidth=80
@@ -91,12 +91,43 @@ set hidden
 
   " autocmd FileType make setlocal noexpandtab " Makefile
 
+  " there is no ft=bash
+  " defaults to bash syntax highlighting on *.sh files:
+  " let g:is_bash = 1
   " zsh has better syntax hilite than sh
   au FileType sh set filetype=zsh
 
   augroup END
 
+    " doesntwork: autocmd BufRead,BufNew * |
+    " add more ft python sh perl ruby ...?
+    " ft * doesn't work either. also, opening the cmd history:
+    " Error detected while processing FileType Auto commands for "*":
+    " Error detected while processing FileType Auto commands for
+    " "vim\|c\|lua\|python\|ruby":
+    " E749: empty buffer
+    " ',' separates patterns. au patterns are different
+    "autocmd FileType vim\|c\|cpp\|zsh\|lua\|python\|ruby |
+
+  augroup negnums
+    au!
+    autocmd FileType vim,c,cpp,zsh,lua,python,ruby |
+        \ syn match negNumber '\v<\-\d+(\.\d*)?[ulf]?>' |
+        \ highlight link negNumber Number
+  augroup END
+
+  " t-e~s/t! hyphen-ated foo(bar) dir/file.ext
+  augroup hyphen
+    au!
+    au FileType * set iskeyword=@,.,/,48-57,_,192-255,-
+    au FileType * set iskeyword+=-
+    au FileType * set iskeyword-=(,)
+  augroup END
+
   " move more stuff here
+
+  " BufWritePre remove trailing whitespace
+
 "else
 
 endif " has("autocmd")
@@ -133,10 +164,11 @@ function! SetupVAM()
        call vam#ActivateAddons([
         \'The_NERD_tree', 'The_NERD_Commenter', 'CSApprox', 'Gundo', 'buffergrep',
         \ 'Colour_Sampler_Pack', 'Scratch', 'unimpaired', 'YankRing',
-        \ 'vim-airline', 'surround', 'Insertlessly'], {'auto_install' : 0})
+        \ 'vim-airline', 'surround', 'vimple', 'Insertlessly'],
+        \ {'auto_install' : 0})
 
        " 'colorizer',
-endf
+endfunction
 
 " notice that after line break '\' is on the _first_ non-whitespace
 
@@ -185,7 +217,12 @@ silent call SetupVAM()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " should I place plugin stuff inside something like has("") or exists("") ?
+" no!
 " place new stuff below:
+
+" with shift, just one line. why doesn't it work in insert?
+noremap <S-ScrollWheelUp> <C-Y>
+noremap <S-ScrollWheelDown> <C-E>
 
 nnoremap _ :
 nnoremap - :
@@ -195,19 +232,27 @@ nnoremap ' `
 nnoremap ` '
 
 " don't accidentally the windows. if really want, use :only
-nnoremap <C-W>O     <Nop>
-nnoremap <C-W>o     <Nop>
-nnoremap <C-W><C-O> <Nop>
+nnoremap <C-w>O     <Nop>
+nnoremap <C-w>o     <Nop>
+nnoremap <C-w><C-O> <Nop>
 
-" unknown option insertlessly?
+let g:insertlessly_cleanup_all_ws = 1
 let g:insertlessly_cleanup_trailing_ws = 0
+" to see value
+" echo g:insertlessly_cleanup_trailing_ws
+"Insertlessly enter doesn't work in Scratch.
+"because of :set buftype=nofile
+"function! s:InsertNewline() only inserts on &buftype == ""
+  " can't rewrite like this. E32: no filename
+  " if &buftype == "" || expand('%') == "Scratch"
 
 " trace output for testing and debugging C
-" precedes a statement with its own quote and wraps it in a printf()
+" quinely precedes a statement with its own quote and wraps it in a printf()
 " assumes int return type. needs a line ending in ;
+" If the [!] is given, mappings will not be used
 " :call Ctrace()
 function! Ctrace()
-    normal ^yt;iprintf("$i: %d\n", @"pa)T%
+    normal! ^yt;iprintf("$i: %d\n", @"pa)T%
 endfunction
 
 " better with normal mode and leader?
@@ -326,7 +371,7 @@ endfunction
 
 let g:yankring_min_element_length = 3
 "let g:yankring_max_element_length " 64K ? ought to be enough for anyone
-let g:yankring_max_display = 30 "max of what will be shown
+let g:yankring_max_display = 50 "max of what will be shown
 let g:yankring_window_height = 14
 "let g:yankring_persist = 0
 let g:yankring_share_between_instances = 0
@@ -337,17 +382,17 @@ let g:yankring_history_dir = '$HOME/.vim/'
 " don't want all clipboard history in the yankring. maybe this helps?
 let g:yankring_clipboard_monitor = 0
 
-" there is no ft=bash. what's this?
-" defaults to bash syntax highlighting on *.sh files
-let g:is_bash = 1
-" zsh highlighting is better. how enable it? some autocmd
-
 " http://vimcasts.org/episodes/bubbling-text/
 " move selected lines <A-Up> and <A-Down>
+" bubble single lines in normal
 " using tpopes unimpaired.vim
 " http://www.vim.org/scripts/script.php?script_id=1590
-" using M-k and M-j for vim in a terminal
-" Bubble single lines in normal
+" <A-k> and <A-j> for terminal vim
+" <Plug>unimpairedMoveUp
+" <Plug>unimpairedMoveDown
+" <Plug>unimpairedMoveSelectionUp
+" <Plug>unimpairedMoveSelectionDown
+
 nmap <A-Up> [e
 nmap <A-Down> ]e
 " terminal:
@@ -358,12 +403,13 @@ vmap <A-Up> [egv
 vmap <A-Down> ]egv
 vmap k [egv
 vmap j ]egv
-" Visually select the text that was last edited/pasted
+" visually select the text that was last edited/pasted
 nmap gV `[v`]
 
 " :set ve="all" is useful for tables & visual blocks
-" function names starts with Capital or s: and ends with()
-" ! replaces an old definition, should I redefine it
+" :set ve="block" allows virtual editing in visual block mode
+" user function names starts with Capital or s: and ends with()
+" fu! will replace an old function definition, should it be redefined
 function! ToggleVirtualEdit()
   if &virtualedit == "all"
     set virtualedit=""
@@ -373,64 +419,33 @@ function! ToggleVirtualEdit()
 endfunction
 nnoremap <leader>v :call ToggleVirtualEdit()<CR>
 
-" shortcut " leader is '\'
-" nmap <leader>v :tabedit $MYVIMRC<CR>
-"" Source the vimrc file after saving it
-"if has("autocmd")
-  "autocmd bufwritepost .vimrc source $MYVIMRC
-"endif
-
-" "t-e~s/t!
-" is set per buffer? :( then run it whenever i open one? no ending <CR>?
-" why is ( and not * keywords?
-" error if opening dirs (or other buftypes?)
-" E474: Invalid argument: iskeyword+=-,~,/,!,
-" autocmd! BufAdd * set iskeyword+=-,~,/,!,.,
-" autocmd FileType * set iskeyword+=-,~,/,!,.
-
-" make this a toggle:
-" nmap <leader>w :set iskeyword+=-,~,/,!,
-" If you don't want to remove all autocommands, you can instead use a variable
-" to ensure that vim includes the autocommands only once: >
-if !exists("autocommands_loaded")
-  let autocommands_loaded = 1
-  " au FileType * set iskeyword+=-,.
-  au FileType * set iskeyword=@,.,/,48-57,_,192-255,-
-  " au FileType text set iskeyword+=-,~,/,!,.,*
-  " don't want (), for example in C
-  au FileType * set iskeyword-=(,)
-  " au FileType * set noet " seems to work for Makefile anyway
-endif
-
-" do tabs get redrawn when switched to.
+" do tabs get redrawn when switched to?
 " Don't update the display while executing macros
 set lazyredraw
 "set nolazyredraw
 
 " E185: Cannot find color scheme 'vividchalk'
-" set runtimepath+=~/.vim/Color_Sampler_Pack/colors/
-" since we have VAM, try without adding to rtpath
+" since we have VAM, try without adding to runtimepath
 " set runtimepath+=~/.vim/Color_Sampler_Pack/
-" vim känner av number of colors själv. $TERM
-" don't do set t_Co=88 "isf 256
-" testa för icke gui först
+" vim knows the number of colors in the terminal
+" don't set t_Co=88 instead of 256
 " CSApprox.vim is _sometimes_ better than this:
+" test for non gui first. " colo torte for emergencies
+" don't want themes like anokha or chocolateliquor in a terminal
 if !has("gui_running")
-    " colo torte
     " colo calmar256_light
     " colo jellybeans
     " colo neverness
     " colo northland
     " colo oceanblack
-    " colo vibrantink
-    " colo anokha
-    " colo chocolateliquor
-    colo vividchalk " too subtle search hilite
+    " colo vividchalk " too subtle search hilite
+    colo vibrantink
+    " colo torte
 endif
 
 set wrapscan
 " set text wrapping toggles
-nmap <silent> ,w :set invwrap<CR>:set wrap?<CR>
+nnoremap <silent> ,w :set invwrap<CR>:set wrap?<CR>
 
 " Help yourself! help in its own tab
 command! -bang -nargs=? -complete=help Help tab help<bang> <args>
@@ -456,28 +471,31 @@ nnoremap <Down> gj
 nnoremap <A-Left> gT
 nnoremap <A-Right> gt
 
-" see whitespace
+" see whitespace. tab is two squiggles
 " nnoremap ,l :set list!:buffer<CR>
-" leader is '\'
-nmap <leader>l :set list!<CR>
+" find better unicodes. orig is eol:$
+nnoremap <leader>l :set list!<CR>
+" set listchars=tab:\→_,eol:$,trail:°
+set listchars=tab:\⇒\ ,trail:\‣,extends:\↷,precedes:\↶
 
 " maps ',b' to display the buffer list and invoke the ':buffer' command.
 " You can enter the desired buffer number and hit <Enter> to edit the buffer.
 " (Enter space after) <C-6> switches between 2 last used buffers
 nnoremap ,b :ls<CR>:buffer<Space>
+"nnoremap <leader>l :ls<CR>:b<Space>
 
 "switch to buffers tab/window if it's in a tab/window
 set switchbuf=usetab
 
 " set working dir to current buffer. (unused in NERDCommenter)
-map ,cd :cd %:p:h<CR>
+noremap ,cd :cd %:p:h<CR>
 " vimtip2, use %% to expand path for current buf
 cabbr <expr> %% expand('%:p:h')
 " cannot search for strings starting with t. maybe "t " is better
 " cabbr t tabe
 
 " tjejjer och grejjer
-imap jj <esc>
+inoremap jj <esc>
 
 "http://vimcasts.org/episodes/the-edit-command/
 "cnoremap %% <C-R>=expand('%:h').'/'<cr>
@@ -534,8 +552,6 @@ set expandtab
 " set noexpandtab "don't expand a tab to a number of spaces
 " spaces for each tab with normal >> == << and visual > = <
 
-" setting this earlier in the file, inside if (has autocmd)
-" autocmd FileType make setlocal noexpandtab " Makefile
 
 set shiftwidth=4 "8
 set softtabstop=4 "0
@@ -558,7 +574,7 @@ set textwidth=80
 " the number of hard tabs equals the indentation level, use the Smart Tabs plug-in.
 
 " Toggle the NERD Tree with F7
-nmap <F7> :NERDTreeToggle<CR>
+nnoremap <F7> :NERDTreeToggle<CR>
 
 " http://vim.wikia.com/wiki/Mapping_keys_in_Vim_-_Tutorial_(Part_1)
 " cannot search /W when :W is mapped to :w
@@ -568,22 +584,27 @@ nmap <F7> :NERDTreeToggle<CR>
 set splitbelow
 set splitright
 
-" Maps to make handling windows a bit easier
+" change windows
 noremap <silent> ,h :wincmd h<CR>
 noremap <silent> ,j :wincmd j<CR>
 noremap <silent> ,k :wincmd k<CR>
 noremap <silent> ,l :wincmd l<CR>
-noremap <silent> ,sb :wincmd p<CR>
-" like hjkl
-noremap <silent> <C-F9>  :vertical resize -10<CR>
-noremap <silent> <C-F10> :resize +10<CR>
-noremap <silent> <C-F11> :resize -10<CR>
-noremap <silent> <C-F12> :vertical resize +10<CR>
-noremap <silent> ,s8 :vertical resize 83<CR>
+noremap <silent> ,p :wincmd p<CR>
+" bad keys to map
+" use :res or z{nr} instead
+" vertical means horizontal
+"noremap <silent> <C-F9>  :vertical resize -10<CR>
+"noremap <silent> <C-F10> :resize +10<CR>
+"noremap <silent> <C-F11> :resize -10<CR>
+"noremap <silent> <C-F12> :vertical resize +10<CR>
 noremap <silent> ,L <C-W>L
 noremap <silent> ,K <C-W>K
 noremap <silent> ,H <C-W>H
 noremap <silent> ,J <C-W>J
+" noremap <silent> ,ml <C-W>L
+" noremap <silent> ,mk <C-W>K
+" noremap <silent> ,mh <C-W>H
+" noremap <silent> ,mj <C-W>J
 " kolla ev krock med nerdcommenter (bara normal & visual?)
 " noremap <silent> ,cj :wincmd j<CR>:close<CR>
 " noremap <silent> ,ck :wincmd k<CR>:close<CR>
@@ -591,12 +612,9 @@ noremap <silent> ,J <C-W>J
 " noremap <silent> ,cl :wincmd l<CR>:close<CR>
 " noremap <silent> ,cc :close<CR>
 " noremap <silent> ,cw :cclose<CR>
-" noremap <silent> ,ml <C-W>L
-" noremap <silent> ,mk <C-W>K
-" noremap <silent> ,mh <C-W>H
-" noremap <silent> ,mj <C-W>J
 
 " did I write this one myself?
+" se nu! and se rnu! are toggles and can be combined
 func! ToggleLineNumbering()
     if !exists('s:LineNumbering')
         "echo s:LineNumbering
@@ -604,34 +622,33 @@ func! ToggleLineNumbering()
     else
         let s:LineNumbering = (s:LineNumbering + 1) % 3
     endif
-
     " maybe 1 rnu, 2 nu, anything else - nothing
     if s:LineNumbering == 0
-        set nonu
-        set rnu
-        echo "rnu"
+        set nu
+        set nornu
+        echo "nu"
     "elseif &rnu == 1
     elseif s:LineNumbering == 1
-        set nornu
         set nu
-        echo "nu"
+        set rnu
+        echo "rnu nu"
     else
-        set nornu
         set nonu
+        set nornu
         echo
     endif
 endfunc
-
-" <silent> :
 noremap <silent> <F2> :call ToggleLineNumbering()<CR>
 
-" NERD_commenter is acting up, needs more binds
+
+" NERD_commenter needs some binds. don't noremap?
 " emacs <A-;> for gvim (shows as '»' in gvim)
+" nmap  »             <Plug>NERDCommenterInvert
+" vmap  »             <Plug>NERDCommenterInvert
 nmap  ,cc           <Plug>NERDCommenterComment
 vmap  ,cc           <Plug>NERDCommenterComment
-nmap  ,c<Space>     <Plug>NERDCommenterToggle
-"nmap  »             <Plug>NERDCommenterToggle
-"vmap  »             <Plug>NERDCommenterToggle
+nmap  ,<Space>      <Plug>NERDCommenterInvert
+vmap  ,<Space>      <Plug>NERDCommenterInvert
 nmap  ,cm           <Plug>NERDCommenterMinimal
 vmap  ,cm           <Plug>NERDCommenterMinimal
 nmap  ,cs           <Plug>NERDCommenterSexy
@@ -652,7 +669,7 @@ nmap  ,c$           <Plug>NERDCommenterToEOL
 vmap  ,c$           <Plug>NERDCommenterToEOL
 nmap  ,cA           <Plug>NERDCommenterAppend
 vmap  ,cA           <Plug>NERDCommenterAppend
-" want this always set for C. autocommands? 
+" want this always set for C. autocommands?
 nmap  ,ca           <Plug>NERDCommenterAltDelims
 
 

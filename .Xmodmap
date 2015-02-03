@@ -42,6 +42,8 @@ keysym Caps_Lock = Control_L
 keysym Control_L = Escape
 add Control = Control_L
 
+! moved section from the § key. (left of 1, under esc)
+keycode  14 = 5 percent 5 percent section paragraph EuroSign cent 5 percent EuroSign cent 5 percent EuroSign cent
 keycode  30 = u U u U udiaeresis Udiaeresis downarrow uparrow u U downarrow uparrow u U downarrow uparrow
 keycode  32 = o O o O oslash Oslash oe OE o O oe OE o O oe OE
 ! keycode  34 = aring Aring aring Aring dead_diaeresis dead_abovering dead_diaeresis dead_abovering aring Aring dead_diaeresis dead_abovering aring Aring dead_diaeresis dead_abovering
@@ -49,7 +51,8 @@ keycode  35 = asciitilde asciicircum diaeresis asciicircum udiaeresis Udiaeresis
 keycode  38 = a A a A ae AE ordfeminine masculine a A ordfeminine masculine a A ordfeminine masculine
 keycode  47 = odiaeresis Odiaeresis odiaeresis Odiaeresis braceleft bracketleft oslash Oslash odiaeresis Odiaeresis oslash Oslash
 keycode  48 = adiaeresis Adiaeresis adiaeresis Adiaeresis braceright bracketright ae AE adiaeresis Adiaeresis ae AE
-keycode  49 = dollar asciitilde paragraph onehalf bar section paragraph threequarters section onehalf paragraph threequarters section onehalf paragraph threequarters
+!keycode  49 = dollar asciitilde paragraph onehalf bar section paragraph threequarters section onehalf paragraph threequarters section onehalf paragraph threequarters
+keycode  49 =  dollar backslash paragraph onehalf bar asciitilde paragraph threequarters section onehalf paragraph threequarters section onehalf paragraph threequarters
 keycode  51 = apostrophe asterisk apostrophe asterisk quotedbl multiply acute multiply apostrophe asterisk
 keycode  52 = z Z z Z less guillemotleft guillemotleft less z Z guillemotleft less z Z guillemotleft less
 keycode  53 = x X x X greater guillemotright guillemotright greater x X guillemotright greater x X guillemotright greater
@@ -89,4 +92,7 @@ keycode  91 = parenright period colon period periodcentered dead_abovedot
 
 ! 191 why? mediabuttons? default: XF86Tools NoSymbol XF86Tools
 ! keycode 191 = KP_Delete KP_Separator KP_Delete KP_Separator
+
+! not really using dead_belowdot abovedot on the keycode 61 minus. make it plus plusminus?
+!
 
